@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #121213;
+  background-color: #FFFEFA;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFBF2;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF9933;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E65100;
+}
+
+/* Glassmorphism custom classes */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(255, 251, 242, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(230, 81, 0, 0.1);
+}
+
+/* Active focus ring saffron */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #FF9933;
+  box-shadow: 0 0 0 2px rgba(255, 153, 51, 0.2);
+}
