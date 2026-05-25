@@ -262,7 +262,7 @@ export default function Home() {
         {/* Right side Temple Illustration & Clouds Background */}
         <div className="absolute top-0 right-0 w-[35%] lg:w-[30%] h-full pointer-events-none z-0 hidden sm:block overflow-hidden">
           <img 
-            src="/ii.png" 
+            src="/ti.png" 
             alt="Temple Gopuram" 
             className="absolute top-24 right-[-8px] h-[65%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none"
           />
