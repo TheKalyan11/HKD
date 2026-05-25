@@ -260,13 +260,13 @@ export default function Home() {
         </div>
 
         {/* Right side Temple Illustration & Clouds Background */}
-        <div className="absolute top-0 right-0 w-[35%] lg:w-[30%] h-full pointer-events-none z-0 hidden sm:block overflow-hidden">
+        <div className="absolute top-0 right-0 w-[35%] lg:w-[30%] h-full pointer-events-none z-0 hidden sm:block overflow-hidden" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 100%)', maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 100%)' }}>
           <img 
             src="/ti.png" 
             alt="Temple Gopuram" 
-            className="absolute top-24 right-[-8px] h-[65%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-multiply"
+            className="absolute top-24 right-[-8px] h-[65%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-darken"
           />
-          {/* Smooth radial gradient overlay to fade the illustration base and left edges */}
+          {/* Smooth radial gradient overlay to further blend the illustration base and left edges */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#faf8f5]/30 to-[#faf8f5] h-[20%] top-0" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#faf8f5] via-transparent to-transparent h-[30%] bottom-0" />
