@@ -264,7 +264,7 @@ export default function Home() {
           <img 
             src="/ti.png" 
             alt="Temple Gopuram" 
-            className="absolute top-24 right-[-8px] h-[65%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none"
+            className="absolute top-24 right-[-8px] h-[65%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-multiply"
           />
           {/* Smooth radial gradient overlay to fade the illustration base and left edges */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/40 to-transparent" />
