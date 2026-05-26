@@ -43,9 +43,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`sticky top-0 left-0 w-full z-40 transition-all duration-250 ease-out ${
-      scrolled ? 'bg-transparent shadow-none' : 'shadow-xl'
-    }`}>
+    <nav className="relative w-full z-40 bg-[#050f20] shadow-xl">
       
       {/* 1. TOP HEADER LAYER */}
       <div className={`px-4 sm:px-8 flex items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${
