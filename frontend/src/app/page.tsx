@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { useCms } from '@/components/CmsContext';
 import { VisualEditable } from '@/components/VisualEditable';
-import { ChevronLeft, ChevronRight, ArrowRight, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Play, Calendar, User, BookOpen } from 'lucide-react';
 
 // Stable constant declared outside component to prevent re-creation on render
 const heroSlides = [
@@ -14,11 +14,48 @@ const heroSlides = [
   '/deity-2.jpg'
 ];
 
+const defaultBlogs = [
+  {
+    title: 'The Spiritual Significance of Cow Feeding (Gau Seva)',
+    slug: 'spiritual-significance-of-cow-feeding-gau-seva',
+    excerpt: 'Uncover the deep Vedic scripts highlighting cow protection and the direct spiritual merits of nourishing them.',
+    coverImage: 'https://images.unsplash.com/photo-1570126688035-1e6adadbe99b?q=80&w=600',
+    authorName: 'Swami Gopalananda',
+    createdAt: '2026-05-26T12:00:00.000Z'
+  },
+  {
+    title: 'Daily Annadana: Feeding Pilgrims in Sacred Vrindavan Dham',
+    slug: 'daily-annadana-feeding-pilgrims-vrindavan',
+    excerpt: 'Learn how offering hot khichdi prasadam to sadhus, children, and travelers brings immense purity to our lives.',
+    coverImage: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=600',
+    authorName: 'Sri Radha Dasa',
+    createdAt: '2026-05-26T12:00:00.000Z'
+  }
+];
+
 export default function Home() {
   const { fetchPageContent, isLoading, isEditMode, renderEditableText, renderEditableImage } = useCms();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const [latestBlogs, setLatestBlogs] = useState<any[]>([]);
+
+  // Fetch latest ashram blog posts for "Latest Updates"
+  useEffect(() => {
+    const fetchLatestBlogs = async () => {
+      try {
+        const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${backendUrl}/api/cms/blogs`);
+        if (response.ok) {
+          const data = await response.json();
+          setLatestBlogs(data.slice(0, 2));
+        }
+      } catch (err) {
+        console.error('Error fetching latest updates:', err);
+      }
+    };
+    fetchLatestBlogs();
+  }, []);
   
   // 3D Tilt Effect Handler
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -518,6 +555,352 @@ export default function Home() {
         
         {/* Bottom decorative pattern overlay */}
         <div className="absolute bottom-0 left-0 w-full h-10 opacity-[0.08]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5z%22 fill=%22%23cca75b%22/%3E%3C/svg%3E')" }} />
+      </section>
+
+      {/* 4. FEATURES SECTION */}
+      <section className="relative w-full py-16 bg-white overflow-hidden text-gray-800 flex flex-col items-center">
+        
+        {/* Subtle decorative background elements */}
+        <div className="absolute top-1/3 left-[10%] w-96 h-96 bg-[#ebd9b3]/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-[10%] w-80 h-80 bg-[#510c2a]/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          
+          {/* Section Header with Lotus & Ornament Lines */}
+          <div className="flex flex-col items-center text-center space-y-2 mb-12 relative">
+            
+            {/* Top Gold Ornament with Lotus (Screenshot Match) */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-2 text-[#cca75b]">
+              <div className="flex-1 flex items-center">
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                <span className="text-[10px] -ml-1">◆</span>
+              </div>
+              
+              {/* Golden Lotus Outline Symbol */}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
+                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+              </svg>
+              
+              <div className="flex-1 flex items-center">
+                <span className="text-[10px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+              </div>
+            </div>
+            
+            <h2 className="text-3xl md:text-[36px] font-serif text-[#510c2a] tracking-normal mb-1 font-bold">
+              Features
+            </h2>
+
+            {/* Bottom Gold Ornament Knot (Screenshot Match) */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[200px] md:max-w-[280px] mt-1 text-[#cca75b]">
+              <div className="flex-1 flex items-center justify-end">
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+                <span className="text-[8px] -ml-1">◆</span>
+              </div>
+              
+              {/* Sacred Knot/Scroll Symbol SVG */}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
+                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
+              </svg>
+              
+              <div className="flex-1 flex items-center justify-start">
+                <span className="text-[8px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+              </div>
+            </div>
+            
+            <p className="text-[#5c5245] max-w-xl text-[15px] leading-relaxed pt-3 font-medium">
+              We have planned for many interesting features in the upcoming <br className="hidden sm:block" />
+              Vrindavan Chandrodaya Mandir. Some of them are listed as below:
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            
+            {/* Card 1: Grand Temple Hall */}
+            <div className="bg-white rounded-[20px] overflow-hidden flex flex-col items-center pb-8 relative group border border-[#eae4d5]/50 shadow-[0_8px_30px_rgba(235,220,185,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(81,12,42,0.06)] transition-all duration-300 cursor-pointer">
+              <div className="w-full h-44 overflow-hidden relative">
+                <img 
+                  src="/ii.png" 
+                  alt="Grand Temple Hall" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
+              </div>
+              
+              {/* Overlapping Circle Icon - Custom Temple Outline */}
+              <div className="absolute top-[148px] w-14 h-14 bg-[#fdf8eb] rounded-full flex items-center justify-center border border-[#e0cba0] text-[#510c2a] shadow-md transition-transform duration-300 group-hover:scale-105 z-20">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 4C9 4 7 6.5 7 10H17C17 6.5 15 4 12 4Z" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.1" />
+                  <path d="M12 4V2M11 2h2" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6 10c-1.5 0-2.5 1-2.5 2.5V15h5v-2.5C8.5 11 7.5 10 6 10Z" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M18 10c1.5 0 2.5 1 2.5 2.5V15h-5v-2.5c0-1.5 1-2.5 2.5-2.5Z" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M3 15h18v6H3z" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6 15v6M10 15v6M14 15v6M18 15v6" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M10 21v-3a2 2 0 0 1 4 0v3" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.2" />
+                </svg>
+              </div>
+              
+              <div className="pt-10 px-5 flex flex-col items-center text-center flex-1">
+                <h3 className="text-lg font-serif text-[#510c2a] font-bold mb-0.5 uppercase tracking-wider h-12 flex items-center justify-center">
+                  Grand Temple Hall
+                </h3>
+                
+                {/* Gold Ornament Divider */}
+                <div className="flex items-center justify-center gap-2 my-2.5 text-[#cca75b] w-full max-w-[80px]">
+                  <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                  <span className="text-[10px]">◆</span>
+                  <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                </div>
+                
+                <p className="text-[#5c5245] text-[14px] leading-relaxed mb-6 font-medium flex-1">
+                  The Deities of Sri Radha Vrindavan Chandra will be installed in the Main Temple Hall. This spacious hall can accommodate a large number of people.
+                </p>
+                
+                {/* More Info Button */}
+                <button className="group flex items-center gap-1.5 px-5 py-2 bg-[#510c2a] hover:bg-[#6c163b] text-white rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 text-xs tracking-wide font-serif">
+                  More info
+                  <span className="text-[#cca75b] font-sans text-sm transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: Srila Prabhupada Museum and Expo */}
+            <div className="bg-white rounded-[20px] overflow-hidden flex flex-col items-center pb-8 relative group border border-[#eae4d5]/50 shadow-[0_8px_30px_rgba(235,220,185,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(81,12,42,0.06)] transition-all duration-300 cursor-pointer">
+              <div className="w-full h-44 overflow-hidden relative">
+                <img 
+                  src="/prabhupada.png" 
+                  alt="Srila Prabhupada Museum and Expo" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
+              </div>
+              
+              {/* Overlapping Circle Icon - Custom Museum Columns */}
+              <div className="absolute top-[148px] w-14 h-14 bg-[#fdf8eb] rounded-full flex items-center justify-center border border-[#e0cba0] text-[#510c2a] shadow-md transition-transform duration-300 group-hover:scale-105 z-20">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 3L3 8h18z" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.1" strokeLinejoin="round" />
+                  <circle cx="12" cy="6.5" r="1" fill="currentColor" />
+                  <path d="M12 3V1.5" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M4 8h16v2H4z" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6 10v9M10 10v9M14 10v9M18 10v9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M2 19h20M1 21h22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </div>
+              
+              <div className="pt-10 px-5 flex flex-col items-center text-center flex-1">
+                <h3 className="text-lg font-serif text-[#510c2a] font-bold mb-0.5 uppercase tracking-wider h-12 flex items-center justify-center leading-snug">
+                  Srila Prabhupada Museum <br className="hidden sm:block" /> and Expo
+                </h3>
+                
+                {/* Gold Ornament Divider */}
+                <div className="flex items-center justify-center gap-2 my-2.5 text-[#cca75b] w-full max-w-[80px]">
+                  <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                  <span className="text-[10px]">◆</span>
+                  <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                </div>
+                
+                <p className="text-[#5c5245] text-[14px] leading-relaxed mb-6 font-medium flex-1">
+                  His Divine Grace A.C Bhaktivedanta Swami Prabhupada, the Founder-Acharya of ISKCON is regarded as the greatest spiritual ambassador who introduced Indian spiritual wisdom to the world.
+                </p>
+                
+                {/* More Info Button */}
+                <button className="group flex items-center gap-1.5 px-5 py-2 bg-[#510c2a] hover:bg-[#6c163b] text-white rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 text-xs tracking-wide font-serif">
+                  More info
+                  <span className="text-[#cca75b] font-sans text-sm transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3: Gaushala */}
+            <div className="bg-white rounded-[20px] overflow-hidden flex flex-col items-center pb-8 relative group border border-[#eae4d5]/50 shadow-[0_8px_30px_rgba(235,220,185,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(81,12,42,0.06)] transition-all duration-300 cursor-pointer">
+              <div className="w-full h-44 overflow-hidden relative">
+                <img 
+                  src="/cow.png" 
+                  alt="Gaushala" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
+              </div>
+              
+              {/* Overlapping Circle Icon - Custom Cow Outline */}
+              <div className="absolute top-[148px] w-14 h-14 bg-[#fdf8eb] rounded-full flex items-center justify-center border border-[#e0cba0] text-[#510c2a] shadow-md transition-transform duration-300 group-hover:scale-105 z-20">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M19 15c.6 0 1-.4 1-1V8.5c0-1.5-1-2.5-2.5-2.5H11c-.8 0-1.5-.4-2-1L7.5 3.5C7.2 3.2 6.8 3 6.4 3H5c-.6 0-1 .4-1 1v2.5c0 .3.1.6.3.8l2 2c.4.4.7.9.7 1.4v2.8c0 .8.5 1.5 1.2 1.8l3.8 1.7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M8 15v6M11 15v5M15 15v6M18 15v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M4 4c0-1 1-1.5 1.5-1.5S7 3 7 4M3.5 5.5C3 6 3 7 3.5 7.5M7.5 5.5C8 6 8 7 7.5 7.5" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M13.5 15.2c0 .4-.3.8-.8.8s-.8-.4-.8-.8" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </div>
+              
+              <div className="pt-10 px-5 flex flex-col items-center text-center flex-1">
+                <h3 className="text-lg font-serif text-[#510c2a] font-bold mb-0.5 uppercase tracking-wider h-12 flex items-center justify-center">
+                  Gaushala
+                </h3>
+                
+                {/* Gold Ornament Divider */}
+                <div className="flex items-center justify-center gap-2 my-2.5 text-[#cca75b] w-full max-w-[80px]">
+                  <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                  <span className="text-[10px]">◆</span>
+                  <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                </div>
+                
+                <p className="text-[#5c5245] text-[14px] leading-relaxed mb-6 font-medium flex-1">
+                  We have set up a spacious Gaushala on our campus for cow protection. It is named after the Surabhi cows that are tended by Krishna in Goloka.
+                </p>
+                
+                {/* More Info Button */}
+                <button className="group flex items-center gap-1.5 px-5 py-2 bg-[#510c2a] hover:bg-[#6c163b] text-white rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 text-xs tracking-wide font-serif">
+                  More info
+                  <span className="text-[#cca75b] font-sans text-sm transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        
+        {/* Bottom decorative pattern overlay */}
+        <div className="absolute bottom-0 left-0 w-full h-10 opacity-[0.05]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5z%22 fill=%22%23cca75b%22/%3E%3C/svg%3E')" }} />
+      </section>
+
+      {/* 5. LATEST UPDATES SECTION */}
+      <section className="relative w-full py-16 bg-[#faf8f5] flex flex-col items-center overflow-hidden border-t border-[#eae4d5]/30">
+        
+        {/* Subtle decorative background elements */}
+        <div className="absolute top-1/2 left-[-10%] w-80 h-80 bg-[#cca75b]/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/3 right-[-5%] w-[350px] h-[350px] bg-[#510c2a]/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          
+          {/* Section Header with Lotus & Ornament Lines */}
+          <div className="flex flex-col items-center text-center space-y-2 mb-12 relative">
+            
+            {/* Top Gold Ornament with Lotus (Screenshot Match) */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-2 text-[#cca75b]">
+              <div className="flex-1 flex items-center">
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                <span className="text-[10px] -ml-1">◆</span>
+              </div>
+              
+              {/* Golden Lotus Outline Symbol */}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
+                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+              </svg>
+              
+              <div className="flex-1 flex items-center">
+                <span className="text-[10px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+              </div>
+            </div>
+            
+            <h2 className="text-3xl md:text-[36px] font-serif text-[#510c2a] tracking-normal mb-1 font-bold">
+              Latest Updates
+            </h2>
+
+            {/* Bottom Gold Ornament Knot (Screenshot Match) */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[200px] md:max-w-[280px] mt-1 text-[#cca75b]">
+              <div className="flex-1 flex items-center justify-end">
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+                <span className="text-[8px] -ml-1">◆</span>
+              </div>
+              
+              {/* Sacred Knot/Scroll Symbol SVG */}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
+                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
+              </svg>
+              
+              <div className="flex-1 flex items-center justify-start">
+                <span className="text-[8px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+              </div>
+            </div>
+            
+            <p className="text-[#5c5245] max-w-xl text-[15px] leading-relaxed pt-3 font-medium">
+              Stay informed with the latest insights, cultural articles, and visual reports <br className="hidden sm:block" />
+              from our ashram and cow protection sanctuaries.
+            </p>
+          </div>
+
+          {/* Blogs Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
+            {(latestBlogs.length > 0 ? latestBlogs : defaultBlogs).map((blog) => (
+              <article 
+                key={blog.slug}
+                className="bg-white rounded-[20px] overflow-hidden border border-[#eae4d5]/50 shadow-[0_8px_30px_rgba(235,220,185,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(81,12,42,0.06)] transition-all duration-300 group flex flex-col justify-between cursor-pointer"
+              >
+                <div>
+                  <div className="w-full h-48 overflow-hidden relative">
+                    <img 
+                      src={blog.coverImage} 
+                      alt={blog.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                    />
+                    <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
+                  </div>
+                  
+                  <div className="p-6 md:p-7 space-y-3.5">
+                    {/* Meta row */}
+                    <div className="flex items-center gap-4 text-xs text-[#5c5245] border-b border-[#eae4d5]/50 pb-3 font-medium">
+                      <div className="flex items-center gap-1.5">
+                        <User className="w-3.5 h-3.5 text-[#cca75b]" />
+                        <span>{blog.authorName}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-[#cca75b]" />
+                        <span>{new Date(blog.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Title & Excerpt */}
+                    <h3 className="text-lg md:text-[20px] font-serif text-[#3c1b29] font-bold leading-snug group-hover:text-[#cca75b] transition-colors line-clamp-2 h-14 flex items-center">
+                      {blog.title}
+                    </h3>
+                    <p className="text-[#5c5245] text-[14px] leading-relaxed line-clamp-3 font-medium">
+                      {blog.excerpt}
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Action Link */}
+                <div className="p-6 md:px-7 md:pb-7 pt-0">
+                  <Link
+                    href={`/blog/${blog.slug}`}
+                    className="inline-flex items-center gap-1.5 text-[#510c2a] hover:text-[#cca75b] font-bold text-sm transition-all group-hover:gap-2 font-serif"
+                  >
+                    <BookOpen className="w-4 h-4 text-[#cca75b]" />
+                    <span>Read Article</span>
+                    <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Bottom Button */}
+          <div className="mt-12 flex justify-center">
+            <Link href="/blog">
+              <button className="group flex items-center gap-2 px-6 py-2.5 bg-[#3c1b29] hover:bg-[#4d2335] text-white rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 tracking-wide text-xs font-serif">
+                View All Updates
+                <span className="text-[#cca75b] font-sans text-base transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </button>
+            </Link>
+          </div>
+
+        </div>
+        
+        {/* Bottom decorative pattern overlay */}
+        <div className="absolute bottom-0 left-0 w-full h-10 opacity-[0.05]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5z%22 fill=%22%23cca75b%22/%3E%3C/svg%3E')" }} />
       </section>
 
     </div>
