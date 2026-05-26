@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone, Heart, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 export const Navbar: React.FC = () => {
@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
 
   const isHome = pathname === '/';
 
-  // Menu items config (Home is mapped directly to the logo click)
+  // Menu items config
   const navLinks = [
     { name: 'About Us', href: '/#about', hasDropdown: true },
     { name: 'Features', href: '/#features', hasDropdown: false },
@@ -35,22 +35,134 @@ export const Navbar: React.FC = () => {
 
   // Dynamic Class Resolvers
   const getTopbarClass = () => {
-    return 'bg-[#072149] border-b border-saffron/20 text-white shadow';
-  };
-
-  const getBottombarClass = () => {
-    return 'bg-[#050f20] border-b border-saffron/10 py-2.5';
+    return scrolled 
+      ? 'h-0 opacity-0 pointer-events-none border-none py-0' 
+      : 'h-14 sm:h-16 py-2 border-b border-white/20 bg-[#00a4ef] text-white shadow';
   };
 
   return (
     <nav className="relative w-full z-40 bg-[#050f20] shadow-xl">
       
-      {/* 1. TOP HEADER LAYER */}
-      <div className={`px-4 sm:px-8 flex items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${
-        scrolled 
-          ? 'h-0 opacity-0 pointer-events-none border-none py-0' 
-          : 'h-14 sm:h-16 py-2 border-b border-saffron/20 bg-[#072149] text-white shadow'
-      }`}>
+      {/* ── Brutalist Call Button Styles (Uiverse.io inspired) ── */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .brutalist-button {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          width: 145px;
+          height: 42px;
+          background-color: #000;
+          color: #fff;
+          text-decoration: none;
+          font-family: Arial, sans-serif;
+          font-weight: bold;
+          border: 2px solid #fff;
+          outline: 2px solid #000;
+          box-shadow: 4px 4px 0 #eab308; /* Saffron gold shadow */
+          transition: all 0.1s ease-out;
+          padding: 0 10px;
+          box-sizing: border-box;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .brutalist-button::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.8),
+            transparent
+          );
+          z-index: 1;
+          transition: none;
+          opacity: 0;
+        }
+
+        @keyframes slide {
+          0% { left: -100%; }
+          100% { left: 100%; }
+        }
+
+        .brutalist-button:hover::before {
+          opacity: 1;
+          animation: slide 2s infinite;
+        }
+
+        .brutalist-button:hover {
+          transform: translate(-3px, -3px);
+          box-shadow: 6px 6px 0 #000;
+          background-color: #000;
+          color: #fff;
+        }
+
+        .brutalist-button:active {
+          transform: translate(3px, 3px);
+          box-shadow: 0px 0px 0 #eab308;
+          background-color: #fff;
+          color: #000;
+          border-color: #000;
+        }
+
+        .ms-logo {
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+          flex-shrink: 0;
+          transition: transform 0.2s ease-out;
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .brutalist-button:hover .ms-logo {
+          transform: rotate(-15deg) scale(1.1);
+        }
+
+        .brutalist-button:active .ms-logo {
+          transform: rotate(15deg) scale(0.9);
+        }
+
+        .button-text {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.1;
+          transition: transform 0.2s ease-out;
+          position: relative;
+          z-index: 1;
+        }
+
+        .brutalist-button:hover .button-text {
+          transform: skew(-5deg);
+        }
+
+        .brutalist-button:active .button-text {
+          transform: skew(5deg);
+        }
+
+        .button-text span:first-child {
+          font-size: 8px;
+          text-transform: uppercase;
+          opacity: 0.85;
+          letter-spacing: 0.5px;
+        }
+
+        .button-text span:last-child {
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      ` }} />
+
+      {/* 1. TOP HEADER LAYER (Sky Blue Background) */}
+      <div className={`px-4 sm:px-8 flex items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${getTopbarClass()}`}>
         
         {/* Left Side: Left completely clean / empty */}
         <div className="flex items-center flex-shrink-0 w-[100px] sm:w-[150px]">
@@ -66,15 +178,31 @@ export const Navbar: React.FC = () => {
           />
         </div>
 
-        {/* Right Side: Call & Donate pill buttons */}
-        <div className="flex items-center gap-3 py-2">
-          {/* Custom Phone Pill Call Button (Metallic White) */}
+        {/* Right Side: Uiverse Brutalist Call Now & Donate pill buttons */}
+        <div className="flex items-center gap-4 py-2">
+          
+          {/* Brutalist Call Button from Uiverse with Call Symbol */}
           <a 
             href="tel:+919876543210" 
-            className="flex items-center justify-center bg-gradient-to-b from-white to-slate-100 hover:from-slate-50 hover:to-slate-200 text-charcoal-900 border border-slate-200 rounded-full w-10 h-10 sm:w-11 sm:h-11 shadow-md transition-all active:scale-95 group"
+            className="brutalist-button hidden sm:flex"
             title="Call Us"
           >
-            <Phone className="w-4.5 h-4.5 text-[#072149] fill-[#072149]/15 transition-transform group-hover:rotate-12" />
+            <div className="ms-logo text-white">
+              <Phone className="w-[18px] h-[18px] fill-white text-white" />
+            </div>
+            <div className="button-text">
+              <span>Contact Us</span>
+              <span>Call Now</span>
+            </div>
+          </a>
+
+          {/* Fallback simple call button for tiny mobile viewports */}
+          <a 
+            href="tel:+919876543210" 
+            className="sm:hidden flex items-center justify-center bg-black border border-white rounded-md w-10 h-10 shadow active:scale-95"
+            title="Call Us"
+          >
+            <Phone className="w-4 h-4 text-white fill-white" />
           </a>
 
           {/* Deep Red Donate Rounded Button */}
@@ -108,7 +236,7 @@ export const Navbar: React.FC = () => {
             {/* Bigger Dehradun Logo - Acts directly as the Home button */}
             <Link href="/" className="flex-shrink-0">
               <img 
-                src="/logo-dehradun.jpg" 
+                src="/fh.png" 
                 alt="Hare Krishna Dehradun Movement Logo" 
                 className="h-12 md:h-16 w-auto object-contain rounded border border-white/10 shadow-sm transition-transform hover:scale-102"
               />
