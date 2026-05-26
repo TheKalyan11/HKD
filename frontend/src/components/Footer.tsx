@@ -127,7 +127,7 @@ export function Footer() {
       ` }} />
 
       {/* ── Background Temple (footer.png shifted "up side" to sit right above the divider line) ── */}
-      <div className="absolute z-0 pointer-events-none select-none hidden lg:block transition-all duration-500" style={{ width: '460px', right: '1%', bottom: '90px' }}>
+      <div className="absolute z-0 pointer-events-none select-none hidden xl:block transition-all duration-500" style={{ width: '480px', right: '0%', bottom: '90px' }}>
         <div className="relative w-full h-full">
           <img 
             src="/footer.png" 
@@ -141,23 +141,23 @@ export function Footer() {
 
       {/* ── Realistic Birds flying near temple spire ── */}
       <div className="absolute top-0 right-0 bottom-0 z-0 pointer-events-none select-none" style={{ width: '500px' }}>
-        <div className="absolute bird-1" style={{ right: '14%', top: '18%', width: '45px' }}>
+        <div className="absolute bird-1" style={{ right: '12%', top: '18%', width: '45px' }}>
           <BirdSVG className="w-full h-auto" />
         </div>
-        <div className="absolute bird-2" style={{ right: '22%', top: '24%', width: '45px' }}>
+        <div className="absolute bird-2" style={{ right: '18%', top: '24%', width: '45px' }}>
           <BirdSVG className="w-full h-auto" />
         </div>
       </div>
 
-      {/* ── Main content ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      {/* ── Main content (Wider container max-w-[1520px]) ── */}
+      <div className="max-w-[1520px] mx-auto px-6 lg:px-12 relative z-10">
         
         <div className="flex flex-col lg:flex-row justify-between gap-16 mb-24">
           
           {/* Left Column: Brand Logo & Info */}
-          <div className="w-full lg:w-1/3 pr-8">
+          <div className="w-full lg:w-1/3 pr-12">
             <div className="mb-8">
-              {/* Replaced logo-dehradun.jpg with fh.png and increased height to h-36 for visibility */}
+              {/* Clean, border-less original logo-dehradun.jpg as shown in mockup */}
               <img 
                 src="/fh.png" 
                 alt="Srila Prabhupada's Hare Krishna Movement Dehradun Logo" 
@@ -201,8 +201,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Right Columns: Links with Gold Underline */}
-          <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 lg:pr-[280px]">
+          {/* Right Columns: Links with Gold Underline (Widened with reduced right padding to spread out nicely) */}
+          <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 xl:pr-[240px]">
             {NAV_COLS.map((col) => (
               <div key={col.title}>
                 <h4 className="font-bold text-[#0f4c81] text-[17px] tracking-wide">
