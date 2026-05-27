@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause:wght@100..900&family=Oswald:wght@200..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,4 +48,22 @@ input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: #FF9933;
   box-shadow: 0 0 0 2px rgba(255, 153, 51, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Global Font Weight Override - Removes heavy bold weights for a refined look
+   ───────────────────────────────────────────────────────────────────────────── */
+* {
+  font-weight: 400 !important;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.font-serif, 
+.glass-nav-link, 
+.btn-donate,
+.brutalist-button,
+.button-text span,
+.creatly-btn,
+.cssbuttons-io-button {
+  font-weight: 500 !important;
 }

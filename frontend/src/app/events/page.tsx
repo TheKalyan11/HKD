@@ -19,10 +19,10 @@ export default function EventsPage() {
   const events = [
     {
       id: 'braj-yatra',
-      title: '🐄 Sacred Braj Yatra Pilgrim',
+      title: '🐄 Divine Braj Yatra Pilgrim',
       date: 'Oct 15 - Oct 22, 2026',
       venue: 'Mathura, Govardhan & Vrindavan Dham',
-      desc: 'Embark on a guided spiritual yatra exploring the pasturing forests of Lord Krishna, bathing in sacred lakes, and hearing pastimes from resident saints.',
+      desc: 'Embark on a guided spiritual yatra exploring the pasturing forests of Lord Krishna, bathing in holy lakes, and hearing pastimes from resident saints.',
       cover: 'https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=600',
       packages: ['Standard (Food + Stay)', 'Premium AC Cottage', 'VIP Acharya Tour']
     },
@@ -56,7 +56,7 @@ export default function EventsPage() {
     setIsLoading(true);
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000';
       await axios.post(`${backendUrl}/api/cms/leads`, {
         name,
         email,

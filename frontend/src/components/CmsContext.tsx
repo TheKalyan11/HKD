@@ -45,7 +45,7 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/cms/auth/login`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000'}/api/cms/auth/login`, {
         email,
         password
       });
@@ -73,7 +73,7 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const fetchPageContent = async (pageId: string) => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/cms/pages/${pageId}`);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000'}/api/cms/pages/${pageId}`);
       setPageContent(prev => ({
         ...prev,
         [pageId]: response.data
@@ -103,7 +103,7 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (!token) return false;
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/cms/pages/${pageId}`,
+        `${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000'}/api/cms/pages/${pageId}`,
         pageContent[pageId],
         {
           headers: {

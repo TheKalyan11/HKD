@@ -56,7 +56,7 @@ export default function DonatePage() {
     setIsLoading(true);
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000';
       const orderResponse = await axios.post(`${backendUrl}/api/payments/create-order`, {
         amount,
         donorName: name,
@@ -219,11 +219,11 @@ export default function DonatePage() {
             <div className="bg-gradient-to-br from-saffron-dark to-saffron text-white p-8 rounded-3xl shadow-xl space-y-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5 animate-spin" />
-                <span className="text-xs font-bold tracking-widest uppercase">Sacred Contribution</span>
+                <span className="text-xs font-bold tracking-widest uppercase">Devotional Contribution</span>
               </div>
               <h2 className="text-2xl font-black leading-tight">Donate For Gau Seva & Daily Annadana</h2>
               <p className="text-xs leading-relaxed text-orange-50">
-                Your generous seva protects street cows and distributes sacred prasadam meals to sadhus and families in Mathura.
+                Your generous seva protects street cows and distributes sanctified prasadam meals to sadhus and families in Mathura.
               </p>
               
               <div className="space-y-4 pt-2 text-xs border-t border-white/20">

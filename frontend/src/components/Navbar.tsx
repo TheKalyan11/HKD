@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation';
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -20,13 +22,42 @@ export const Navbar: React.FC = () => {
 
   const isHome = pathname === '/';
 
-  // Menu items config
+  // Menu items config with liquid glass dropdown items for About Us, Gallery, and Patrons Corner
   const navLinks = [
-    { name: 'About Us', href: '/#about', hasDropdown: true },
+    { 
+      name: 'About Us', 
+      href: '/#about', 
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Aspirations', href: '/#about' },
+        { name: 'Governance', href: '/#about' },
+        { name: 'Overview of Vrindavan Chandrodaya Mandir', href: '/#features' },
+        { name: 'Hare Krishna Movement Vrindavan - Social Charitable Activities', href: '/#initiatives' }
+      ]
+    },
     { name: 'Features', href: '/#features', hasDropdown: false },
     { name: 'Social Initiatives', href: '/#initiatives', hasDropdown: false },
-    { name: 'Gallery', href: '/gallery', hasDropdown: true },
-    { name: 'Patrons Corner', href: '/#patrons', hasDropdown: true },
+    { 
+      name: 'Gallery', 
+      href: '/gallery', 
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Daily Darshan', href: '/gallery' },
+        { name: 'Mandir Nirman', href: '/gallery' },
+        { name: 'Milestones', href: '/gallery' },
+        { name: 'Lectures', href: '/gallery' },
+        { name: 'Latest Events', href: '/gallery' }
+      ]
+    },
+    { 
+      name: 'Patrons Corner', 
+      href: '/#patrons', 
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Patrons Corner', href: '/#patrons' },
+        { name: 'Founder Patrons', href: '/#patrons' }
+      ]
+    },
     { name: 'Blogs', href: '/blog', hasDropdown: false },
     { name: 'Yatras', href: '/events', hasDropdown: false },
     { name: 'Youth Programs', href: '/#youth', hasDropdown: false },
@@ -37,14 +68,15 @@ export const Navbar: React.FC = () => {
   const getTopbarClass = () => {
     return scrolled 
       ? 'h-0 opacity-0 pointer-events-none border-none py-0' 
-      : 'h-14 sm:h-16 py-2 border-b border-white/20 bg-[#00a4ef] text-white shadow';
+      : 'h-14 sm:h-16 py-2 border-b border-saffron/20 bg-[#072149] text-white shadow';
   };
 
   return (
-    <nav className="relative w-full z-40 bg-[#050f20] shadow-xl">
+    <nav className="sticky top-0 left-0 w-full z-40 transition-all duration-250 ease-out bg-transparent">
       
-      {/* ── Brutalist Call Button Styles (Uiverse.io inspired) ── */}
+      {/* ── Brutalist Call Button & Glowing Donate Button Styles (Uiverse.io inspired) ── */}
       <style dangerouslySetInnerHTML={{ __html: `
+        /* Brutalist Call Button */
         .brutalist-button {
           display: flex;
           align-items: center;
@@ -159,9 +191,87 @@ export const Navbar: React.FC = () => {
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
+
+        /* Uiverse Glowing Blue Donate Button */
+        .btn-donate {
+          --clr-font-main: hsla(0 0% 20% / 100);
+          --btn-bg-1: hsla(194 100% 69% / 1);
+          --btn-bg-2: hsla(217 100% 56% / 1);
+          --btn-bg-color: hsla(360 100% 100% / 1);
+          --radii: 9999px; /* Pill layout to match previous style */
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.5rem 1.4rem;
+          min-width: 110px;
+          height: 42px;
+          font-size: 0.875rem; /* 14px text-sm */
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          transition: 0.8s;
+          background-size: 280% auto;
+          background-image: linear-gradient(
+            325deg,
+            var(--btn-bg-2) 0%,
+            var(--btn-bg-1) 55%,
+            var(--btn-bg-2) 90%
+          );
+          border: none;
+          border-radius: var(--radii);
+          color: var(--btn-bg-color);
+          box-shadow:
+            0px 0px 15px rgba(71, 184, 255, 0.4),
+            0px 4px 4px -1px rgba(58, 125, 233, 0.2),
+            inset 2px 2px 4px rgba(175, 230, 255, 0.4),
+            inset -2px -2px 4px rgba(19, 95, 216, 0.3);
+        }
+
+        .btn-donate:hover {
+          background-position: right top;
+          transform: translateY(-1px);
+          box-shadow:
+            0px 0px 25px rgba(71, 184, 255, 0.6),
+            0px 6px 8px -1px rgba(58, 125, 233, 0.25);
+        }
+
+        .btn-donate:is(:focus, :focus-visible, :active) {
+          outline: none;
+          box-shadow:
+            0 0 0 3px var(--btn-bg-color),
+            0 0 0 6px var(--btn-bg-2);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .btn-donate {
+            transition: linear;
+          }
+        }
+
+        /* White Glass Link Transitions */
+        .glass-nav-link {
+          color: #1f2937; /* gray-800 */
+          font-size: 0.8rem; /* slightly smaller than 0.875rem */
+          font-weight: 900;
+          text-transform: uppercase;
+          tracking-wider: 0.05em;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.375rem;
+        }
+        .glass-nav-link:hover {
+          color: #0B5DB7; /* theme blue */
+        }
+        .glass-nav-link-active {
+          color: #0B5DB7 !important;
+          border-bottom: 2px solid #0B5DB7;
+          padding-bottom: 2px;
+        }
       ` }} />
 
-      {/* 1. TOP HEADER LAYER (Sky Blue Background) */}
+      {/* 1. TOP HEADER LAYER (Deep Navy Blue #072149) */}
       <div className={`px-4 sm:px-8 flex items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${getTopbarClass()}`}>
         
         {/* Left Side: Left completely clean / empty */}
@@ -178,7 +288,7 @@ export const Navbar: React.FC = () => {
           />
         </div>
 
-        {/* Right Side: Uiverse Brutalist Call Now & Donate pill buttons */}
+        {/* Right Side: Uiverse Brutalist Call Now & Donate buttons */}
         <div className="flex items-center gap-4 py-2">
           
           {/* Brutalist Call Button from Uiverse with Call Symbol */}
@@ -205,10 +315,10 @@ export const Navbar: React.FC = () => {
             <Phone className="w-4 h-4 text-white fill-white" />
           </a>
 
-          {/* Deep Red Donate Rounded Button */}
+          {/* Uiverse Glowing Blue/Sky-Blue Gradient Donate Button */}
           <Link 
             href="/donate" 
-            className="bg-[#9c0404] hover:bg-[#c00606] text-white font-extrabold text-xs sm:text-sm px-6 py-2.5 rounded-full shadow-lg transition-all active:scale-95"
+            className="btn-donate"
           >
             Donate
           </Link>
@@ -224,42 +334,83 @@ export const Navbar: React.FC = () => {
 
       </div>
 
-      {/* 2. NAVIGATION BAR LAYER */}
+      {/* 2. NAVIGATION BAR LAYER (White Liquid Glass Style with Black Text) */}
       <div className={`transition-all duration-250 ease-out xl:block ${isOpen ? 'block' : 'hidden'} ${
         scrolled 
-          ? 'max-w-[1300px] w-[95%] mx-auto mt-3 rounded-full bg-[#050f20]/90 backdrop-blur-md border border-white/10 shadow-2xl py-2 px-6 shadow-blue-900/10' 
-          : 'w-full bg-[#050f20] border-b border-saffron/10 py-2.5'
+          ? 'max-w-[1300px] w-[95%] mx-auto mt-3 rounded-full bg-white/90 backdrop-blur-lg border border-gray-200/50 shadow-2xl py-2 px-6 shadow-gray-200/10' 
+          : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-200/40 py-2.5 shadow-md'
       }`}>
         <div className={scrolled ? "" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
           <div className="flex items-center justify-between xl:justify-center gap-8">
             
-            {/* Bigger Dehradun Logo - Acts directly as the Home button */}
+            {/* Replaced logo with logo-dehradun.jpg back again */}
             <Link href="/" className="flex-shrink-0">
               <img 
-                src="/fh.png" 
+                src="/logo-dehradun.jpg" 
                 alt="Hare Krishna Dehradun Movement Logo" 
-                className="h-12 md:h-16 w-auto object-contain rounded border border-white/10 shadow-sm transition-transform hover:scale-102"
+                className="h-12 md:h-16 w-auto object-contain rounded border border-gray-200/30 shadow-sm transition-transform hover:scale-102"
               />
             </Link>
 
-            {/* Desktop Navigation Links - Centered in One Clean Line with white text */}
+            {/* Desktop Navigation Links - Centered in One Clean Line with black/gray-800 text */}
             <div className="hidden xl:flex items-center gap-5 lg:gap-6.5 2xl:gap-8">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
+                const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
+                const isHovered = hoveredLink === link.name;
+                
                 return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-white text-xs font-black uppercase tracking-wider transition-all hover:text-saffron-light flex items-center gap-1.5 ${
-                      isActive ? 'text-saffron-light border-b-2 border-saffron-light pb-0.5' : ''
-                    }`}
+                  <div 
+                    key={link.name} 
+                    className="relative py-2"
+                    onMouseEnter={() => {
+                      if (hasDropdown) setHoveredLink(link.name);
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredLink(null);
+                    }}
                   >
-                    <span>{link.name}</span>
-                    {link.hasDropdown && (
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-300" />
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`glass-nav-link ${isActive ? 'glass-nav-link-active' : ''}`}
+                    >
+                      <span>{link.name}</span>
+                      {hasDropdown && (
+                        <ChevronDown className={`w-3.5 h-3.5 text-gray-500 transition-transform duration-200 ${isHovered ? 'rotate-180 text-[#0B5DB7]' : ''}`} />
+                      )}
+                    </Link>
+                    
+                    {hasDropdown && (
+                      <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[350px] transition-all duration-300 z-50 ${
+                        isHovered 
+                          ? 'opacity-100 visible translate-y-0 pointer-events-auto' 
+                          : 'opacity-0 invisible translate-y-2 pointer-events-none'
+                      }`}>
+                        {/* Inner card with glass styling and arrow */}
+                        <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-[0_20px_50px_rgba(11,93,183,0.15)] p-2 relative">
+                          <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t border-l border-gray-200/50 rotate-45 pointer-events-none" />
+                          
+                          <div className="relative space-y-1 z-10">
+                            {link.dropdownItems?.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setHoveredLink(null);
+                                }}
+                                className="flex items-start gap-3 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-gray-700 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#0B5DB7]/40 group-hover/item:bg-[#0B5DB7] mt-1.5 transition-colors flex-shrink-0" />
+                                <span>{item.name}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     )}
-                  </Link>
+                  </div>
                 );
               })}
             </div>
@@ -268,7 +419,7 @@ export const Navbar: React.FC = () => {
             <div className="xl:hidden flex items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-saffron p-1 focus:outline-none"
+                className="text-gray-800 hover:text-[#0B5DB7] p-1 focus:outline-none"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -279,24 +430,60 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Drawer menu */}
         {isOpen && (
-          <div className="xl:hidden bg-black/90 border-t border-white/10 px-4 pt-2 pb-6 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto">
+          <div className="xl:hidden bg-black/95 border-t border-white/10 px-4 pt-2 pb-6 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
+              const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
+              const isDropdownOpen = openMobileDropdown === link.name;
+              
+              if (hasDropdown) {
+                return (
+                  <div key={link.name} className="space-y-1">
+                    <button
+                      onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[13px] font-black uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
+                    >
+                      <span>{link.name}</span>
+                      <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
+                    </button>
+                    
+                    {/* Collapsible Accordion content */}
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isDropdownOpen ? 'max-h-[300px] opacity-100 py-1' : 'max-h-0 opacity-0'}`}>
+                      <div className="pl-4 space-y-1 border-l-2 border-white/10 ml-3">
+                        {link.dropdownItems?.map((subLink) => (
+                          <Link
+                            key={subLink.name}
+                            href={subLink.href}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setOpenMobileDropdown(null);
+                            }}
+                            className="block px-3 py-2 text-[11px] font-bold text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
+                          >
+                            {subLink.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-lg text-xs font-black uppercase tracking-wider transition-colors ${
+                  onClick={() => {
+                    setIsOpen(false);
+                    setOpenMobileDropdown(null);
+                  }}
+                  className={`block px-3 py-2 rounded-lg text-[13px] font-black uppercase tracking-wider transition-colors ${
                     isActive 
                       ? 'bg-saffron/20 text-saffron-light' 
                       : 'text-white hover:bg-white/5 hover:text-saffron'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <span>{link.name}</span>
-                    {link.hasDropdown && <ChevronDown className="w-4 h-4 text-slate-400" />}
-                  </div>
+                  {link.name}
                 </Link>
               );
             })}

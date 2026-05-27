@@ -11,7 +11,7 @@ export default function GalleryPage() {
     { type: 'image', url: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=600', title: 'Sadhu Annadana Feeds' },
     { type: 'image', url: 'https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=600', title: 'Radha Kund Sandhya Aarti' },
     { type: 'image', url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600', title: 'Yoga & Meditation Retreat' },
-    { type: 'image', url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600', title: 'Sacred Temple Weddings' },
+    { type: 'image', url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600', title: 'Divine Temple Weddings' },
     { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', title: 'Ashram Sandhya Aarti Preview', thumb: 'https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=600' }
   ];
 

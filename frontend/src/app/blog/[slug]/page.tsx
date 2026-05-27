@@ -15,7 +15,7 @@ export default function BlogDetailPage() {
   useEffect(() => {
     const fetchBlogDetail = async () => {
       try {
-        const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000';
         const response = await axios.get(`${backendUrl}/api/cms/blogs`);
         
         // Find by slug
