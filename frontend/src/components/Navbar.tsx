@@ -251,11 +251,12 @@ export const Navbar: React.FC = () => {
 
         /* White Glass Link Transitions */
         .glass-nav-link {
+          font-family: 'Finlandica Headline', sans-serif;
           color: #1f2937; /* gray-800 */
           font-size: 0.8rem; /* slightly smaller than 0.875rem */
           font-weight: 900;
           text-transform: uppercase;
-          tracking-wider: 0.05em;
+          letter-spacing: 0.05em;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
@@ -362,13 +363,7 @@ export const Navbar: React.FC = () => {
                 return (
                   <div 
                     key={link.name} 
-                    className="relative py-2"
-                    onMouseEnter={() => {
-                      if (hasDropdown) setHoveredLink(link.name);
-                    }}
-                    onMouseLeave={() => {
-                      setHoveredLink(null);
-                    }}
+                    className="relative py-2 group"
                   >
                     <Link
                       href={link.href}
@@ -377,16 +372,12 @@ export const Navbar: React.FC = () => {
                     >
                       <span>{link.name}</span>
                       {hasDropdown && (
-                        <ChevronDown className={`w-3.5 h-3.5 text-gray-500 transition-transform duration-200 ${isHovered ? 'rotate-180 text-[#0B5DB7]' : ''}`} />
+                        <ChevronDown className="w-3.5 h-3.5 text-gray-500 transition-transform duration-200 group-hover:rotate-180 group-hover:text-[#0B5DB7]" />
                       )}
                     </Link>
                     
                     {hasDropdown && (
-                      <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[350px] transition-all duration-300 z-50 ${
-                        isHovered 
-                          ? 'opacity-100 visible translate-y-0 pointer-events-auto' 
-                          : 'opacity-0 invisible translate-y-2 pointer-events-none'
-                      }`}>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[350px] transition-all duration-300 z-50 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto">
                         {/* Inner card with glass styling and arrow */}
                         <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-[0_20px_50px_rgba(11,93,183,0.15)] p-2 relative">
                           <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t border-l border-gray-200/50 rotate-45 pointer-events-none" />
@@ -398,7 +389,6 @@ export const Navbar: React.FC = () => {
                                 href={item.href}
                                 onClick={() => {
                                   setIsOpen(false);
-                                  setHoveredLink(null);
                                 }}
                                 className="flex items-start gap-3 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-gray-700 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item"
                               >

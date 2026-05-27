@@ -8,6 +8,8 @@ import { Footer } from "@/components/Footer";
 import { AIChatbot } from "@/components/AIChatbot";
 import { AdminControlBar } from "@/components/AdminControlBar";
 
+import { SocialFloatWidget } from "@/components/SocialFloatWidget";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -44,8 +46,10 @@ export default function RootLayout({
           {/* Floated Support Overlays */}
           <AIChatbot />
           <AdminControlBar />
+          <SocialFloatWidget />
         </CmsProvider>
       </body>
+
     </html>
   );
 }

@@ -34,13 +34,13 @@ const defaultBlogs = [
 
   {
 
-    title: 'The Spiritual Significance of Cow Feeding (Gau Seva)',
+    title: 'The Divine Life of Nanda Baba',
 
-    slug: 'spiritual-significance-of-cow-feeding-gau-seva',
+    slug: 'spiritual-significance-of-nanda-baba',
 
-    excerpt: 'Uncover the deep Vedic scripts highlighting cow protection and the direct spiritual merits of nourishing them.',
+    excerpt: 'Uncover the deep Vedic scripts highlighting the pastimes of Nanda Baba, the beloved foster father of Lord Krishna in the sacred land of Vrindavan.',
 
-    coverImage: 'https://images.unsplash.com/photo-1588046130717-0eb0c9a3ba15?q=80&w=800',
+    coverImage: '/nanda_baba_blog.png',
 
     authorName: 'Swami Gopalananda',
 
@@ -1775,59 +1775,32 @@ export default function Home() {
               __html: `
 
               .flower-btn {
-
                 height: 4em;
-
                 width: 14em;
-
                 display: flex;
-
                 align-items: center;
-
                 justify-content: center;
-
                 background: transparent;
-
                 border: 0px solid black;
-
                 cursor: pointer;
-
                 position: relative;
-
               }
-
-
 
               .flower-wrapper {
-
                 height: 2em;
-
                 width: 12em;
-
                 position: relative;
-
                 background: transparent;
-
                 display: flex;
-
                 justify-content: center;
-
                 align-items: center;
-
               }
 
-
-
               .flower-text {
-
                 font-size: 14px;
-
                 font-weight: 700;
-
                 z-index: 1;
-
                 color: #0c4a8a;
-
                 padding: 6px 16px;
 
                 border-radius: 6px;
@@ -2839,205 +2812,110 @@ export default function Home() {
             __html: `
 
             .update-hover-card {
-
               position: relative;
-
               display: flex;
-
               flex-direction: column;
-
               width: 100%;
-
-              height: 580px;
-
-              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-
-              overflow: hidden;
-
+              max-width: 350px;
+              margin: 0 auto;
+              height: 480px;
+              background-color: #ffffff;
               border-radius: 12px;
-
-              background: #fff;
-
-              border: 1px solid rgba(234, 228, 213, 0.4);
-
-              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-
+              box-shadow: 15px 15px 30px #d9d9d9, -15px -15px 30px #ffffff;
+              transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s, transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+              overflow: hidden;
               cursor: pointer;
-
               z-index: 1;
-
             }
-
-
-
-            .update-hover-card::before {
-
-              content: "";
-
-              position: absolute;
-
-              left: 0;
-
-              bottom: 0;
-
-              width: 5px;
-
-              height: 100%;
-
-              background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
-
-              z-index: -1;
-
-              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-
-            }
-
-
-
-            .update-hover-card:hover::before {
-
-              width: 100%;
-
-            }
-
-
 
             .update-hover-card:hover {
-
-              box-shadow: none;
-
-              transform: translateY(-5px);
-
+              border-bottom-right-radius: 50px;
+              border-top-left-radius: 50px;
+              transform: scale(1.05);
             }
-
-
 
             .update-hover-card .content-area {
-
-              padding: 24px;
-
+              padding: 20px;
               display: flex;
-
               flex-direction: column;
-
               flex-grow: 1;
-
               justify-content: space-between;
-
-              color: #5c5245;
-
-              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-
+              color: #212121;
+              transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s, transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
             }
 
-
-
-            .update-hover-card:hover .content-area {
-
-              color: #fff;
-
+            .update-hover-card .meta-text {
+              color: rgba(0, 0, 0, 0.6) !important;
+              border-color: rgba(0, 0, 0, 0.1) !important;
             }
-
-
-
-            .update-hover-card:hover .meta-text {
-
-              color: rgba(255, 255, 255, 0.8) !important;
-
-              border-color: rgba(255, 255, 255, 0.2) !important;
-
-            }
-
             
-
-            .update-hover-card:hover .meta-icon {
-
-              color: #fff !important;
-
+            .update-hover-card .meta-icon {
+              color: #212121 !important;
             }
 
-
-
-            .update-hover-card:hover .heading-title {
-
-              color: #fff !important;
-
+            .update-hover-card .heading-title {
+              color: #212121 !important;
+              font-size: 1.1rem !important;
+              line-height: 1.3 !important;
             }
 
-
-
-            .update-hover-card:hover .paragraph-text {
-
-              color: rgba(255, 255, 255, 0.9) !important;
-
+            .update-hover-card .paragraph-text {
+              color: rgba(0, 0, 0, 0.7) !important;
+              font-size: 0.85rem !important;
+              display: -webkit-box !important;
+              -webkit-line-clamp: 2 !important;
+              -webkit-box-orient: vertical !important;
+              overflow: hidden !important;
             }
 
 
 
             .update-hover-card .btn-more {
-
+              position: relative;
+              overflow: hidden;
+              height: 3rem;
+              padding: 0 2rem;
+              border-radius: 1.5rem;
+              background: #3d3a4e;
+              background-size: 400%;
               color: #fff;
-
-              text-decoration: none;
-
-              padding: 10px 20px;
-
-              font-weight: 600;
-
               border: none;
-
               cursor: pointer;
-
-              background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
-
-              border-radius: 5px;
-
-              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-
-              font-size: 14px;
-
-              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-
-              align-self: flex-start;
-
               display: inline-flex;
-
               align-items: center;
-
               gap: 8px;
-
+              font-weight: 600;
+              font-size: 14px;
+              text-decoration: none;
+              align-self: flex-start;
             }
 
-
-
-            .update-hover-card:hover .btn-more {
-
-              color: #212121;
-
-              background: #e8e8e8;
-
-              box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-
+            .update-hover-card .btn-more::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              transform: scaleX(0);
+              transform-origin: 0 50%;
+              width: 100%;
+              height: 100%;
+              border-radius: inherit;
+              background: linear-gradient(
+                82.3deg,
+                rgba(150, 93, 233, 1) 10.8%,
+                rgba(99, 88, 238, 1) 94.3%
+              );
+              transition: all 0.475s;
             }
 
-
-
-            .update-hover-card .btn-more:hover {
-
-              outline: 2px solid #e8e8e8;
-
-              background: transparent;
-
-              color: #e8e8e8;
-
+            .update-hover-card .btn-more:hover::before {
+              transform: scaleX(1);
             }
 
-
-
-            .update-hover-card .btn-more:active {
-
-              box-shadow: none;
-
+            .update-hover-card .btn-more > span,
+            .update-hover-card .btn-more > svg {
+              position: relative;
+              z-index: 1;
             }
 
           ` }} />
@@ -3050,99 +2928,67 @@ export default function Home() {
 
             {(latestBlogs.length > 0 ? latestBlogs : defaultBlogs).map((blog) => (
 
-              <article
+              <div key={blog.slug} className="sazzad-card h-[560px] cursor-pointer group">
+                <div className="sazzad-aurora sazzad-aurora-orange" />
+                <div className="sazzad-bg">
+                  <div className="w-full h-56 overflow-hidden relative">
+                    <img
+                      src={blog.coverImage}
+                      alt={blog.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
+                  </div>
 
-                key={blog.slug}
-
-                className="update-hover-card"
-
-              >
-
-                <div className="w-full h-64 overflow-hidden relative">
-
-                  <img
-
-                    src={blog.coverImage}
-
-                    alt={blog.title}
-
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-
-                  />
-
-                  <div className="absolute inset-0 bg-black/5" />
-
-                </div>
-
-
-
-                <div className="content-area">
-
-                  <div className="space-y-3.5 w-full">
-
-                    {/* Meta row */}
-
-                    <div className="flex items-center gap-4 text-xs text-[#5c5245] border-b border-[#eae4d5]/50 pb-3 font-medium meta-text">
-
-                      <div className="flex items-center gap-1.5">
-
-                        <User className="w-3.5 h-3.5 text-[#cca75b] meta-icon" />
-
-                        <span>{blog.authorName}</span>
-
+                  <div className="pt-6 px-5 flex-1 flex flex-col justify-between items-center text-center pb-6 w-full">
+                    <div className="flex flex-col items-center w-full">
+                      {/* Meta row */}
+                      <div className="flex items-center justify-center gap-4 text-xs text-[#5c5245] border-b border-[#eae4d5]/50 pb-2 mb-3 font-medium w-full">
+                        <div className="flex items-center gap-1.5">
+                          <User className="w-3.5 h-3.5 text-[#cca75b]" />
+                          <span>{blog.authorName}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-[#cca75b]" />
+                          <span>{new Date(blog.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                        </div>
                       </div>
 
-                      <div className="flex items-center gap-1.5">
+                      <h3 className="text-lg font-serif text-[#0c4a8a] font-bold mb-0.5 tracking-wider h-12 flex items-center justify-center line-clamp-2">
+                        {blog.title}
+                      </h3>
 
-                        <Calendar className="w-3.5 h-3.5 text-[#cca75b] meta-icon" />
-
-                        <span>{new Date(blog.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-
+                      {/* Gold Ornament Divider */}
+                      <div className="flex items-center justify-center gap-2 my-2 text-[#cca75b] w-full max-w-[80px]">
+                        <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                        <span className="text-[10px]">◆</span>
+                        <div className="h-[1px] w-full bg-[#cca75b]/60" />
                       </div>
 
+                      <p className="text-[#5c5245] text-[14px] leading-relaxed font-medium line-clamp-3">
+                        {blog.excerpt}
+                      </p>
                     </div>
 
-
-
-                    {/* Title & Excerpt */}
-
-                    <h3 className="text-lg md:text-[20px] font-serif text-[#0a3d73] font-bold leading-snug transition-colors line-clamp-2 h-14 flex items-center heading-title">
-
-                      {blog.title}
-
-                    </h3>
-
-                    <p className="text-[#5c5245] text-[14px] leading-relaxed line-clamp-3 font-medium paragraph-text">
-
-                      {blog.excerpt}
-
-                    </p>
-
-                  </div>
-
-
-
-                  {/* Action Link */}
-
-                  <div className="w-full pt-4">
-
-                    <Link href={`/blog/${blog.slug}`} className="no-underline">
-
-                      <button className="btn-more font-serif">
-
+                    {/* Action Link */}
+                    <Link href={`/blog/${blog.slug}`} className="no-underline mt-4 w-full flex justify-center">
+                      <button className="creatly-btn font-serif" style={{ '--clr': '#0c4a8a' } as React.CSSProperties}>
                         <span>Read Article</span>
-
-                        <ArrowRight className="w-4 h-4" />
-
+                        <div className="creatly-btn__icon-wrapper">
+                          <svg className="creatly-btn__icon-svg w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                          </svg>
+                          <svg className="creatly-btn__icon-svg creatly-btn__icon-svg--copy w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                          </svg>
+                        </div>
                       </button>
-
                     </Link>
-
                   </div>
-
                 </div>
-
-              </article>
+              </div>
 
             ))}
 
@@ -3422,7 +3268,7 @@ export default function Home() {
 
                 <div className="w-full h-40 overflow-hidden relative">
 
-                  <img src="https://images.unsplash.com/photo-1602631985686-2bb0686a6ae6?q=80&w=600" alt="Square Feet Campaign" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src="/square_feet_campaign.png" alt="Square Feet Campaign" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
 
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
 
@@ -3478,7 +3324,7 @@ export default function Home() {
 
                 <div className="w-full h-40 overflow-hidden relative">
 
-                  <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=600" alt="Annadan" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src="/annadan.jpg" alt="Annadan" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
 
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
 
@@ -3534,7 +3380,7 @@ export default function Home() {
 
                 <div className="w-full h-40 overflow-hidden relative">
 
-                  <img src="https://images.unsplash.com/photo-1570126688035-1e6adadbe99b?q=80&w=600" alt="Gau-Seva" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src="/gau_seva.jpg" alt="Gau-Seva" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
 
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
 
@@ -3590,7 +3436,7 @@ export default function Home() {
 
                 <div className="w-full h-40 overflow-hidden relative">
 
-                  <img src="https://images.unsplash.com/photo-1609137882958-b0f5acc7856e?q=80&w=600" alt="Mandir Nitya Seva" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src="/mandir_nitya_seva.png" alt="Mandir Nitya Seva" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
 
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
 
