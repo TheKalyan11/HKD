@@ -1442,7 +1442,7 @@ export default function Home() {
 
             alt="Temple Gopuram"
 
-            className="absolute top-24 right-[-8px] h-[65%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-darken"
+            className="absolute top-4 md:top-2 right-[-8px] h-[80%] w-[260px] md:w-[320px] lg:w-[380px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-darken"
 
             style={{
 

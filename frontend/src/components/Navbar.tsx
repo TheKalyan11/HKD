@@ -338,7 +338,7 @@ export const Navbar: React.FC = () => {
       {/* 2. NAVIGATION BAR LAYER (White Liquid Glass Style with Black Text) */}
       <div className={`transition-all duration-250 ease-out xl:block ${isOpen ? 'block' : 'hidden'} ${
         scrolled 
-          ? 'max-w-[1300px] w-[95%] mx-auto mt-3 rounded-full bg-white/90 backdrop-blur-lg border border-gray-200/50 shadow-2xl py-2 px-6 shadow-gray-200/10' 
+          ? 'xl:max-w-[1300px] w-full xl:w-[95%] mx-auto xl:mt-3 xl:rounded-full bg-white/90 backdrop-blur-lg border-b xl:border border-gray-200/50 shadow-2xl py-2 px-4 xl:px-6 shadow-gray-200/10' 
           : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-200/40 py-2.5 shadow-md'
       }`}>
         <div className={scrolled ? "" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>

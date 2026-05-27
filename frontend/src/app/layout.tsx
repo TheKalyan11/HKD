@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-cream-50 antialiased`}>
+      <body className={`${inter.className} bg-cream-50 antialiased overflow-x-hidden max-w-[100vw] w-full`}>
         <CmsProvider>
           {/* Header Navigation */}
           <Navbar />

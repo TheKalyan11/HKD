@@ -15,7 +15,7 @@ export const SocialFloatWidget = () => {
   };
 
   return (
-    <div className="fixed left-6 bottom-6 z-50 flex flex-col items-center gap-4">
+    <div className="fixed left-2 bottom-2 md:left-6 md:bottom-6 z-50 flex flex-col items-center gap-4 scale-[0.75] md:scale-100 origin-bottom-left">
       
       {/* Audio Element */}
       <audio ref={audioRef} loop src="/hare-krishna-original.mp3" preload="auto"></audio>
