@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Download, Share } from 'lucide-react';
-import ViewsCard from '@/components/ViewsCard';
+
 
 // --- MOCK CMS DATA ---
 type DarshanImage = {
