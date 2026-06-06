@@ -155,7 +155,7 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row justify-between gap-16 mb-24">
           
           {/* Left Column: Brand Logo & Info */}
-          <div className="w-full lg:w-1/3 pr-12">
+          <div className="w-full lg:w-1/3 lg:pr-12">
             <div className="mb-8">
               {/* Clean, border-less original logo-dehradun.jpg as shown in mockup */}
               <img 
@@ -227,7 +227,7 @@ export function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <p className="text-sm text-gray-500 font-semibold">
             © {new Date().getFullYear()} Hare Krishna Dharma Trust. All rights reserved.
           </p>

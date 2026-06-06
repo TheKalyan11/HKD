@@ -26,40 +26,41 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { 
       name: 'About Us', 
-      href: '/#about', 
+      href: '/about', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Aspirations', href: '/#about' },
-        { name: 'Governance', href: '/#about' },
-        { name: 'Overview of Vrindavan Chandrodaya Mandir', href: '/#features' },
-        { name: 'Hare Krishna Movement Vrindavan - Social Charitable Activities', href: '/#initiatives' }
+        { name: 'About Us', href: '/about' },
+        { name: 'Aspirations', href: '/aspirations' },
+        { name: 'Governance', href: '/governance' }
       ]
     },
-    { name: 'Features', href: '/#features', hasDropdown: false },
-    { name: 'Social Initiatives', href: '/#initiatives', hasDropdown: false },
+    { 
+      name: 'Features', 
+      href: '/features', 
+      hasDropdown: false
+    },
+    { 
+      name: 'Activities', 
+      href: '/#initiatives', 
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Gita Life Courses', href: '/gita-life-course' },
+        { name: 'Bhagavad Gita Book Distribution', href: '/book-distribution' },
+        { name: 'Volunteer with Us', href: '/volunteer' },
+        { name: 'Become a Monk', href: '/become-a-monk' }
+      ]
+    },
     { 
       name: 'Gallery', 
       href: '/gallery', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Daily Darshan', href: '/gallery' },
+        { name: 'Daily Darshan', href: '/daily-darshan' },
         { name: 'Mandir Nirman', href: '/gallery' },
-        { name: 'Milestones', href: '/gallery' },
-        { name: 'Lectures', href: '/gallery' },
         { name: 'Latest Events', href: '/gallery' }
       ]
     },
-    { 
-      name: 'Patrons Corner', 
-      href: '/#patrons', 
-      hasDropdown: true,
-      dropdownItems: [
-        { name: 'Patrons Corner', href: '/#patrons' },
-        { name: 'Founder Patrons', href: '/#patrons' }
-      ]
-    },
     { name: 'Blogs', href: '/blog', hasDropdown: false },
-    { name: 'Yatras', href: '/events', hasDropdown: false },
     { name: 'Youth Programs', href: '/#youth', hasDropdown: false },
     { name: 'Donate', href: '/donate', hasDropdown: false },
   ];
@@ -249,18 +250,81 @@ export const Navbar: React.FC = () => {
           }
         }
 
+        /* Beating Heart Button for Second Header */
+        .btn-heart {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          padding: 6px 12px 6px 10px;
+          box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+          background-color: #e8e8e8;
+          border-color: #ffe2e2;
+          border-style: solid;
+          border-width: 4px;
+          border-radius: 35px;
+          font-size: 13px;
+          cursor: pointer;
+          font-weight: 900;
+          color: rgb(134, 124, 124);
+          font-family: monospace;
+          transition: transform 400ms cubic-bezier(0.68, -0.55, 0.27, 2.5),
+                      border-color 400ms ease-in-out,
+                      background-color 400ms ease-in-out;
+          word-spacing: -2px;
+          text-decoration: none;
+        }
+
+        @keyframes movingBorders {
+          0% { border-color: #fce4e4; }
+          50% { border-color: #ffd8d8; }
+          90% { border-color: #fce4e4; }
+        }
+
+        .btn-heart:hover {
+          background-color: #eee;
+          transform: scale(1.05);
+          animation: movingBorders 3s infinite;
+        }
+
+        .btn-heart svg {
+          margin-right: 6px;
+          fill: rgb(255, 110, 110);
+          transition: opacity 100ms ease-in-out;
+        }
+
+        @keyframes beatingHeart {
+          0% { transform: scale(1); }
+          15% { transform: scale(1.15); }
+          30% { transform: scale(1); }
+          45% { transform: scale(1.15); }
+          60% { transform: scale(1); }
+        }
+
+        .btn-heart:hover .empty {
+          opacity: 0;
+        }
+
+        .btn-heart:hover .filled {
+          opacity: 1;
+          animation: beatingHeart 1.2s infinite;
+        }
+
         /* White Glass Link Transitions */
         .glass-nav-link {
           font-family: 'Finlandica Headline', sans-serif;
           color: #1f2937; /* gray-800 */
-          font-size: 0.8rem; /* slightly smaller than 0.875rem */
+          font-size: 0.875rem;
           font-weight: 900;
+          -webkit-text-stroke: 0.5px currentColor;
           text-transform: uppercase;
           letter-spacing: 0.05em;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
           gap: 0.375rem;
+        }
+        .bold-stroke {
+          -webkit-text-stroke: 0.5px currentColor;
         }
         .glass-nav-link:hover {
           color: #0B5DB7; /* theme blue */
@@ -273,7 +337,7 @@ export const Navbar: React.FC = () => {
       ` }} />
 
       {/* 1. TOP HEADER LAYER (Deep Navy Blue #072149) */}
-      <div className={`px-4 sm:px-8 flex items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${getTopbarClass()}`}>
+      <div className={`hidden xl:flex px-4 sm:px-8 items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${getTopbarClass()}`}>
         
         {/* Left Side: Left completely clean / empty */}
         <div className="flex items-center flex-shrink-0 w-[100px] sm:w-[150px]">
@@ -336,13 +400,13 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* 2. NAVIGATION BAR LAYER (White Liquid Glass Style with Black Text) */}
-      <div className={`transition-all duration-250 ease-out xl:block ${isOpen ? 'block' : 'hidden'} ${
+      <div className={`transition-all duration-250 ease-out w-full ${
         scrolled 
           ? 'xl:max-w-[1300px] w-full xl:w-[95%] mx-auto xl:mt-3 xl:rounded-full bg-white/90 backdrop-blur-lg border-b xl:border border-gray-200/50 shadow-2xl py-2 px-4 xl:px-6 shadow-gray-200/10' 
           : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-200/40 py-2.5 shadow-md'
       }`}>
-        <div className={scrolled ? "" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
-          <div className="flex items-center justify-between xl:justify-center gap-8">
+        <div className={scrolled ? "px-4 sm:px-6 lg:px-8" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+          <div className="flex items-center justify-between gap-8 w-full">
             
             {/* Replaced logo with logo-dehradun.jpg back again */}
             <Link href="/" className="flex-shrink-0">
@@ -360,10 +424,34 @@ export const Navbar: React.FC = () => {
                 const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
                 const isHovered = hoveredLink === link.name;
                 
+                if (link.name === 'Donate') {
+                  return (
+                    <div key={link.name} className="relative py-2 group flex items-center">
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="btn-heart group relative overflow-hidden ml-2"
+                      >
+                        <div className="relative flex items-center justify-center w-[20px] h-[20px] mr-[4px]">
+                          <svg className="empty absolute inset-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} height={20}>
+                            <path fill="none" d="M0 0H24V24H0z" />
+                            <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z" />
+                          </svg>
+                          <svg className="filled absolute inset-0 opacity-0 transition-opacity" height={20} width={20} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0H24V24H0z" fill="none" />
+                            <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z" />
+                          </svg>
+                        </div>
+                        Donate
+                      </Link>
+                    </div>
+                  );
+                }
+
                 return (
                   <div 
                     key={link.name} 
-                    className="relative py-2 group"
+                    className="relative py-2 group flex items-center"
                   >
                     <Link
                       href={link.href}
@@ -377,7 +465,7 @@ export const Navbar: React.FC = () => {
                     </Link>
                     
                     {hasDropdown && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[350px] transition-all duration-300 z-50 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[400px] transition-all duration-300 z-50 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto">
                         {/* Inner card with glass styling and arrow */}
                         <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-[0_20px_50px_rgba(11,93,183,0.15)] p-2 relative">
                           <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t border-l border-gray-200/50 rotate-45 pointer-events-none" />
@@ -390,7 +478,7 @@ export const Navbar: React.FC = () => {
                                 onClick={() => {
                                   setIsOpen(false);
                                 }}
-                                className="flex items-start gap-3 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-gray-700 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item"
+                                className="flex items-start gap-3 px-4 py-3 text-left text-[13px] font-black bold-stroke uppercase tracking-wider text-gray-800 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item"
                               >
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#0B5DB7]/40 group-hover/item:bg-[#0B5DB7] mt-1.5 transition-colors flex-shrink-0" />
                                 <span>{item.name}</span>
@@ -406,7 +494,13 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile Menu Action button spacer */}
-            <div className="xl:hidden flex items-center">
+            <div className="xl:hidden flex items-center gap-3">
+              <Link 
+                href="/donate" 
+                className="btn-donate !h-8 !min-w-[70px] !text-[11px] !px-3"
+              >
+                Donate
+              </Link>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-gray-800 hover:text-[#0B5DB7] p-1 focus:outline-none"
@@ -421,6 +515,11 @@ export const Navbar: React.FC = () => {
         {/* Mobile Drawer menu */}
         {isOpen && (
           <div className="xl:hidden bg-black/95 border-t border-white/10 px-4 pt-2 pb-6 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto">
+            <div className="flex gap-2 mb-4 mt-2">
+               <a href="tel:+919876543210" className="flex-1 flex items-center justify-center gap-2 bg-[#0B5DB7] text-white py-2.5 rounded-lg text-sm font-bold">
+                 <Phone className="w-4 h-4" /> Call Now
+               </a>
+            </div>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
@@ -431,7 +530,7 @@ export const Navbar: React.FC = () => {
                   <div key={link.name} className="space-y-1">
                     <button
                       onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
-                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[13px] font-black uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-black bold-stroke uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
                     >
                       <span>{link.name}</span>
                       <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
@@ -448,7 +547,7 @@ export const Navbar: React.FC = () => {
                               setIsOpen(false);
                               setOpenMobileDropdown(null);
                             }}
-                            className="block px-3 py-2 text-[11px] font-bold text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
+                            className="block px-3 py-2 text-sm font-black bold-stroke text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
                           >
                             {subLink.name}
                           </Link>
@@ -467,7 +566,7 @@ export const Navbar: React.FC = () => {
                     setIsOpen(false);
                     setOpenMobileDropdown(null);
                   }}
-                  className={`block px-3 py-2 rounded-lg text-[13px] font-black uppercase tracking-wider transition-colors ${
+                  className={`block px-3 py-2 rounded-lg text-base font-black bold-stroke uppercase tracking-wider transition-colors ${
                     isActive 
                       ? 'bg-saffron/20 text-saffron-light' 
                       : 'text-white hover:bg-white/5 hover:text-saffron'

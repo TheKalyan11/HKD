@@ -82,11 +82,14 @@ export default function BlogPage() {
               <div className="p-6 sm:px-8 sm:pb-8 pt-0">
                 <Link
                   href={`/blog/${blog.slug}`}
-                  className="inline-flex items-center gap-1.5 text-saffron font-bold text-xs hover:text-saffron-dark group-hover:gap-2.5 transition-all"
+                  className="no-underline mt-4 w-full flex"
                 >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Read Article</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <button className="learn-more">
+                    <span className="circle" aria-hidden="true">
+                      <span className="icon arrow" />
+                    </span>
+                    <span className="button-text">Read Article</span>
+                  </button>
                 </Link>
               </div>
 

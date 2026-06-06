@@ -1,8 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause:wght@100..900&family=Finlandica+Headline:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause:wght@100..900&family=Finlandica+Headline:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Instrument+Serif:ital@0;1&family=Inter:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .animate-fade-rise {
+    animation: fade-rise 0.8s ease-out forwards;
+  }
+  .animate-fade-rise-delay {
+    animation: fade-rise 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  .animate-fade-rise-delay-2 {
+    animation: fade-rise 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  .font-instrument {
+    font-family: 'Instrument Serif', serif;
+  }
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@keyframes fade-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 html {
   scroll-behavior: smooth;
@@ -67,3 +98,82 @@ h1, h2, h3, h4, h5, h6,
 .cssbuttons-io-button {
   font-weight: 500 !important;
 }
+
+/* Uiverse Learn More Button */
+button.learn-more {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ background: transparent;
+ padding: 0;
+ font-size: inherit;
+ font-family: inherit;
+ width: 12rem;
+ height: auto;
+}
+button.learn-more .circle {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: relative;
+ display: block;
+ margin: 0;
+ width: 3rem;
+ height: 3rem;
+ background: #0B5DB7;
+ border-radius: 1.625rem;
+}
+button.learn-more .circle .icon {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ margin: auto;
+ background: #fff;
+}
+button.learn-more .circle .icon.arrow {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ left: 0.625rem;
+ width: 1.125rem;
+ height: 0.125rem;
+ background: none;
+}
+button.learn-more .circle .icon.arrow::before {
+ position: absolute;
+ content: "";
+ top: -0.29rem;
+ right: 0.0625rem;
+ width: 0.625rem;
+ height: 0.625rem;
+ border-top: 0.125rem solid #fff;
+ border-right: 0.125rem solid #fff;
+ transform: rotate(45deg);
+}
+button.learn-more .button-text {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 0.75rem 0;
+ margin: 0 0 0 1.85rem;
+ color: #0B5DB7;
+ font-weight: 700;
+ line-height: 1.6;
+ text-align: center;
+ text-transform: uppercase;
+}
+button.learn-more:hover .circle {
+ width: 100%;
+}
+button.learn-more:hover .circle .icon.arrow {
+ background: #fff;
+ transform: translate(1rem, 0);
+}
+button.learn-more:hover .button-text {
+ color: #fff;
+}
+
