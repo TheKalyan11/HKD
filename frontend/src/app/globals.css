@@ -81,23 +81,7 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 2px rgba(255, 153, 51, 0.2);
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   Global Font Weight Override - Removes heavy bold weights for a refined look
-   ───────────────────────────────────────────────────────────────────────────── */
-* {
-  font-weight: 400 !important;
-}
 
-h1, h2, h3, h4, h5, h6, 
-.font-serif, 
-.glass-nav-link, 
-.btn-donate,
-.brutalist-button,
-.button-text span,
-.creatly-btn,
-.cssbuttons-io-button {
-  font-weight: 500 !important;
-}
 
 /* Uiverse Learn More Button */
 button.learn-more {
