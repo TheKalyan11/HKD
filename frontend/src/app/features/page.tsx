@@ -114,14 +114,14 @@ export default function FeaturesPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12 max-w-6xl mx-auto">
           <Reveal delay={0.15} className="h-full flex flex-col">
             <FeatureCard
-              title="Grand Temple Hall"
+              title="Iconic Dehradun Temple"
               imageSrc="/ii.png"
               auroraClass="sazzad-aurora-gold"
-              shortDescription="The Deities of Sri Radha Vrindavan Chandra will be installed in the Main Temple Hall. This spacious hall can accommodate a large number of people."
+              shortDescription="Hare Krishna Movement Dehradun is building a world-class spiritual centre in the picturesque valley to place Krishna proudly on the minds of the people."
               detailedDescription={
                 <>
-                  <p>The Main Temple Hall will house the Deities of Sri Radha Vrindavan Chandra in a spacious, spiritually surcharged environment designed to accommodate thousands of devotees.</p>
-                  <p>Experience continuous devotion with daily aartis, alongside constant kirtans and bhajans. During special festivals, the hall will host elaborate abhisheks and spectacular lamp illuminations, transporting everyone to a world of absolute bliss.</p>
+                  <p>Hare Krishna Movement Dehradun is building an iconic spiritual centre in the heart of Uttarakhand. This majestic temple will serve as a spiritually surcharged sanctuary, designed to accommodate thousands of seekers and devotees.</p>
+                  <p>In pursuance of Srila Prabhupada&apos;s direction, the temple will offer continuous devotion through daily aartis, kirtans, and bhajans. It will act as a vibrant hub of Vedic culture, featuring enlightening discourses, grand festival celebrations, and extensive prasadam distribution to put Dehradun on the global spiritual map.</p>
                 </>
               }
             />
