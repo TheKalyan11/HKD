@@ -56,8 +56,8 @@ export const Navbar: React.FC = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'Daily Darshan', href: '/daily-darshan' },
-        { name: 'Mandir Nirman', href: '/gallery' },
-        { name: 'Latest Events', href: '/gallery' }
+        { name: 'Mandir Nirman', href: '/mandir-nirman' },
+        { name: 'Latest Events', href: '/events' }
       ]
     },
     { name: 'Blogs', href: '/blog', hasDropdown: false },
@@ -347,9 +347,9 @@ export const Navbar: React.FC = () => {
         {/* Center: Srila Prabhupada Portrait Logo */}
         <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
           <img 
-            src="/prabhupada.png" 
+            src="/sp%20logo.png" 
             alt="Srila Prabhupada Portrait" 
-            className="h-14 sm:h-16 w-auto object-contain hover:scale-105 transition-transform"
+            className="h-14 sm:h-[68px] w-auto object-contain hover:scale-105 transition-transform drop-shadow-md"
           />
         </div>
 
