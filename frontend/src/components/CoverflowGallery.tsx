@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryItems = [
@@ -105,13 +104,10 @@ export default function CoverflowGallery() {
               style={style}
               onClick={() => setCurrentIndex(index)}
             >
-              <Image 
+              <img 
                 src={item.src} 
                 alt={item.title} 
-                fill
-                sizes="(max-width: 640px) 280px, (max-width: 768px) 450px, 650px"
-                className="object-cover"
-                priority={index === currentIndex}
+                className="w-full h-full object-cover"
               />
               {/* Dark overlay for side images to highlight the center one */}
               <div 

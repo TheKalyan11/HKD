@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 interface FeatureCardProps {
   title: React.ReactNode;
   imageSrc: string;
@@ -23,12 +22,10 @@ export default function FeatureCard({ title, imageSrc, shortDescription, detaile
             <div className={`sazzad-aurora ${auroraClass}`} />
             <div className="sazzad-bg">
               <div className="w-full h-56 overflow-hidden relative shrink-0">
-                <Image
+                <img
                   src={imageSrc}
                   alt={typeof title === 'string' ? title : 'Feature'}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 350px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
               </div>
