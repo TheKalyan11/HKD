@@ -7,7 +7,8 @@ export default function GitaThreeScene() {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mountNode = mountRef.current;
+    if (!mountNode) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -20,7 +21,7 @@ export default function GitaThreeScene() {
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    mountRef.current.appendChild(renderer.domElement);
+    mountNode.appendChild(renderer.domElement);
 
     // Particles setup
     const geometry = new THREE.BufferGeometry();
@@ -111,8 +112,8 @@ export default function GitaThreeScene() {
       window.removeEventListener("resize", onWindowResize);
       document.removeEventListener("mousemove", onDocumentMouseMove);
       cancelAnimationFrame(animationFrameId);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountNode && renderer.domElement) {
+        mountNode.removeChild(renderer.domElement);
       }
       geometry.dispose();
       material.dispose();
