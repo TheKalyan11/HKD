@@ -274,8 +274,11 @@ export default function GitaLifeCoursePage() {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
-  const [openFeature, setOpenFeature] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggle = (s: string) =>
     setSelected((prev) => prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]);
@@ -345,33 +348,23 @@ export default function GitaLifeCoursePage() {
     { Icon: PIScroll, label: "Sublime Course Material", desc: "Carefully curated content drawn from authentic Vedic scriptures and the writings of Srila Prabhupada, presented in a modern and accessible format." },
   ];
 
+  if (!isMounted) return null;
+
   return (
     <div className="bg-white font-inter">
 
-      {/* ── HERO (untouched) ──────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────── */}
       <div className="min-h-screen p-3 sm:p-4 md:p-6">
-        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)] lg:h-[calc(100vh-48px)]">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)]">
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
             <source src={VIDEO_URL} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/75" />
-          <div className="relative z-10 flex flex-col min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)] lg:h-full p-4 sm:p-6 md:p-8 gap-6">
-            <nav className="flex items-start sm:items-center justify-between w-full">
-              <div className="bg-white/60 backdrop-blur-md rounded-2xl shadow-sm pl-3 sm:pl-4 pr-2 py-2 flex items-center gap-3 sm:gap-6 w-full sm:w-auto">
-                <div className="shrink-0 w-8 h-8 text-gray-900"><PILotus className="w-8 h-8" /></div>
-                <div className="hidden sm:flex items-center gap-5">
-                  {["About", "Modules", "Mentors", "Enroll"].map((l) => (
-                    <a key={l} href={`#${l.toLowerCase()}`} className="text-gray-800 text-sm hover:opacity-60 transition-opacity whitespace-nowrap">{l}</a>
-                  ))}
-                </div>
-                <button className="ml-auto sm:ml-0 bg-black text-white text-sm px-4 sm:px-5 py-2 rounded-xl hover:bg-gray-800 transition-colors" style={{ fontWeight: 500 }}>
-                  Enroll Now
-                </button>
-              </div>
-            </nav>
+          <div className="relative z-10 flex flex-col min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)] p-4 sm:p-6 md:p-8 gap-6">
+
             <div className="flex-1 min-h-[2rem]" />
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-              <div className="lg:max-w-lg xl:max-w-2xl shrink-0">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-6">
+              <div className="flex-1 min-w-0 lg:max-w-lg xl:max-w-2xl mb-4 lg:mb-0">
                 <p className="text-amber-400 text-xs uppercase tracking-[0.3em] mb-3" style={{ fontWeight: 500 }}>
                   Hare Krishna Dehradun &bull; ISKCON
                 </p>
@@ -384,7 +377,7 @@ export default function GitaLifeCoursePage() {
                   A transformative journey into Vedic wisdom — with mentors who live what they teach.
                 </p>
               </div>
-              <div id="enroll" className="w-full lg:w-[min(480px,45%)] shrink-0">
+              <div id="enroll" className="w-full lg:w-[420px] xl:w-[480px] shrink-0">
                 <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden">
                   <div className="p-4 sm:p-6 flex flex-col gap-4">
                     {!sent ? (
@@ -393,13 +386,7 @@ export default function GitaLifeCoursePage() {
                         <div className="flex flex-row items-center justify-between gap-3 bg-gray-50 rounded-2xl px-4 py-2.5">
                           <div className="min-w-0">
                             <p className="text-gray-400 text-xs mb-0.5">Drop us a line</p>
-                            <a href="mailto:dehradun@harekrishna.com" className="text-blue-600 text-sm truncate hover:underline block" style={{ fontWeight: 600 }}>dehradun@harekrishna.com</a>
-                          </div>
-                          <div className="flex items-center gap-1.5 shrink-0">
-                            <SocialBtn className="bg-gray-100 text-gray-800"><SvgX /></SocialBtn>
-                            <SocialBtn className="bg-pink-100 text-pink-500"><SvgStar /></SocialBtn>
-                            <SocialBtn className="bg-orange-100 text-orange-400"><SvgInstagram /></SocialBtn>
-                            <SocialBtn className="bg-blue-100 text-blue-600"><SvgLinkedin /></SocialBtn>
+                            <a href="mailto:contact@hkmdehradun.org" className="text-blue-600 text-sm truncate hover:underline block" style={{ fontWeight: 600 }}>contact@hkmdehradun.org</a>
                           </div>
                         </div>
                         <div className="flex items-center gap-3"><div className="flex-1 h-px bg-gray-200" /><span className="text-gray-400 text-sm" style={{ fontWeight: 500 }}>OR</span><div className="flex-1 h-px bg-gray-200" /></div>
@@ -441,9 +428,9 @@ export default function GitaLifeCoursePage() {
       <div className="relative w-full">
         {/* Mantra and Icon Watermark Background */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none flex flex-col justify-evenly opacity-[0.03] select-none" style={{ minHeight: '100%' }}>
-          {Array.from({ length: 40 }).map((_, i) => (
+          {Array.from({ length: 15 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10 whitespace-nowrap -rotate-3 scale-110 translate-x-[-10%]">
-              {Array.from({ length: 10 }).map((_, j) => (
+              {Array.from({ length: 5 }).map((_, j) => (
                 <div key={j} className="flex items-center gap-6 text-4xl md:text-5xl font-serif text-[#072149] font-bold">
                   <PILotus className="w-10 h-10" />
                   <span>Hare Krishna Hare Krishna Krishna Krishna Hare Hare</span>
@@ -459,26 +446,29 @@ export default function GitaLifeCoursePage() {
 
 
 
-      {/* ══ ABOUT — narrative + sticky panel ═══════════════════ */}
-      <section id="about" className="bg-[#FFFBF2]/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-12 lg:py-16">
-        <div className="max-w-6xl mx-auto">
+      {/* ══ ABOUT — redesigned narrative ═══════════════════ */}
+      <section id="about" className="bg-[#FFFBF2]/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-16 lg:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 100% 0%, #fef3c7 0%, transparent 40%)" }} />
+        
+        <div className="max-w-4xl mx-auto relative z-10 text-center mb-16">
           <AnimeReveal direction="up" delay={80}>
-            <p className="text-xs uppercase tracking-[0.3em] text-[#990000] mb-3" style={{ fontWeight: 500 }}>About the Course</p>
+            <p className="text-amber-600 text-xs uppercase tracking-[0.4em] mb-4" style={{ fontWeight: 600 }}>About the Course</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#072149] leading-tight mb-8" style={{ fontWeight: 600 }}>
+              From the Battlefield{" "}
+              <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>of Kurukshetra</span>
+            </h2>
+            <div className="w-24 h-1 bg-amber-400 mx-auto rounded-full" />
           </AnimeReveal>
+        </div>
 
-          <div className="grid lg:grid-cols-[1fr_400px] gap-16 items-start">
-
-            <AnimeReveal direction="left" delay={140}>
-              <h2 className="text-3xl md:text-4xl text-[#072149] mb-10 leading-tight" style={{ fontWeight: 600 }}>
-                From the Battlefield{" "}
-                <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>of Kurukshetra</span>
-              </h2>
-
-              <div className="space-y-6 text-gray-600 text-base leading-[1.9]">
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <AnimeReveal direction="up" delay={120}>
+              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
                 <p>
                   One of India&apos;s greatest spiritual gifts to the world is the{" "}
-                  <strong className="text-[#072149]">Shrimad Bhagavad Gita</strong>. Spoken by{" "}
-                  <strong className="text-[#072149]">Lord Sri Krishna</strong>, it is a profound guide to leadership,
+                  <strong className="text-[#072149] font-semibold">Shrimad Bhagavad Gita</strong>. Spoken by{" "}
+                  <strong className="text-[#072149] font-semibold">Lord Sri Krishna</strong>, it is a profound guide to leadership,
                   self-discovery, and purposeful living — revealed on the battlefield of Kurukshetra during a moment of
                   intense crisis faced by Arjuna.
                 </p>
@@ -486,24 +476,16 @@ export default function GitaLifeCoursePage() {
                   More than 5,000 years ago, just before the great war began, Arjuna became overwhelmed with fear,
                   confusion, and sorrow. His body trembled, his mouth dried up, and he set aside his bow and arrows.
                 </p>
+                <p className="p-6 bg-white/60 rounded-2xl border border-amber-100 italic text-[#072149] shadow-sm">
+                  In this moment of uncertainty, Arjuna raised profound questions about duty, life, morality,
+                  and the purpose of existence. Lord Krishna spoke the eternal wisdom — illuminating the path
+                  of knowledge, devotion, and righteous action.
+                </p>
+              </div>
+            </AnimeReveal>
 
-                {/* Interactive quote widget */}
-                <div className="relative bg-gradient-to-br from-[#072149] to-[#0a2d60] rounded-2xl p-8 my-8 overflow-hidden">
-                  <div className="absolute top-4 right-6 text-white/8 text-8xl font-serif select-none leading-none">&ldquo;</div>
-                  <div className="absolute bottom-0 right-0 w-32 h-32 rounded-full bg-amber-400/10 blur-2xl translate-x-1/3 translate-y-1/3" />
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-1 h-8 rounded-full bg-amber-400" />
-                      <p className="text-amber-400 text-xs uppercase tracking-widest" style={{ fontWeight: 600 }}>From the Gita</p>
-                    </div>
-                    <p className="text-white/90 text-lg leading-relaxed italic">
-                      In this moment of uncertainty, Arjuna raised profound questions about duty, life, morality,
-                      and the purpose of existence. Lord Krishna spoke the eternal wisdom — illuminating the path
-                      of knowledge, devotion, and righteous action.
-                    </p>
-                  </div>
-                </div>
-
+            <AnimeReveal direction="up" delay={160}>
+              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
                 <p>
                   The Bhagavad Gita teaches not only the true purpose of human life but how to perform one&apos;s
                   responsibilities with sincerity, dedication, and spiritual consciousness. Lasting happiness does not
@@ -513,163 +495,99 @@ export default function GitaLifeCoursePage() {
                   Whether you are a student, professional, entrepreneur, or homemaker, the principles of the Bhagavad
                   Gita can help you face life&apos;s challenges with wisdom and confidence.
                 </p>
-
-                <div className="border-l-4 border-amber-400 pl-5 py-1">
-                  <p className="text-[#072149] text-base leading-relaxed" style={{ fontWeight: 500 }}>
-                    As a service to humanity, we present a systematic and practical{" "}
-                    <strong>6-session foundation course on Bhagavad Gita</strong>, designed to share the essence
-                    of eternal Vedic wisdom.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-2">
-                {["Leadership", "Self-Discovery", "Dharma", "Decision Making", "Inner Peace", "Goal Clarity", "Purposeful Living"].map((tag) => (
-                  <span key={tag} className="text-xs px-3.5 py-2 rounded-full border border-[#072149]/15 bg-[#072149]/5 text-[#072149] hover:bg-[#072149]/10 transition-colors cursor-default" style={{ fontWeight: 500 }}>{tag}</span>
-                ))}
-              </div>
-            </AnimeReveal>
-
-            {/* Sticky panel */}
-            <AnimeReveal direction="right" delay={220}>
-              <div className="lg:sticky lg:top-28 space-y-5">
-
-                {/* GLC card with progress-like visual */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-[0_4px_24px_rgba(7,33,73,0.08)] overflow-hidden">
-                  <div className="h-1.5 bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400" />
-                  <div className="p-7">
-                    <div className="w-12 h-12 text-[#072149] mb-4"><PIBookOpen className="w-12 h-12" /></div>
-                    <h3 className="text-[#072149] text-lg mb-3" style={{ fontWeight: 600 }}>Gita Life Course (GLC)</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      A comprehensive training program aimed at learning the basics of the Gita and its application in life.
-                      The course equips candidates with powerful life tools to set the right goals and make clear decisions.
+                
+                <div className="bg-gradient-to-br from-[#072149] to-[#0a2d60] rounded-3xl p-8 relative overflow-hidden shadow-xl mt-8">
+                  <div className="absolute top-4 right-6 text-white/10 text-8xl font-serif select-none leading-none">&ldquo;</div>
+                  <div className="relative z-10">
+                    <p className="text-white/95 text-lg leading-relaxed italic mb-6">
+                      We are trying to give human society the opportunity for a life of happiness, good health,
+                      peace of mind, and all good qualities through God consciousness.
                     </p>
-                    <div className="mt-5 pt-5 border-t border-gray-100">
-                      <p className="text-amber-600 text-sm italic" style={{ fontWeight: 500 }}>
-                        &ldquo;Enter the gateway to an elated and enlightened life.&rdquo;
-                      </p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center shrink-0">
+                        <PILotus className="w-7 h-7 text-[#072149]" />
+                      </div>
+                      <div>
+                        <p className="text-amber-400 text-sm uppercase tracking-widest" style={{ fontWeight: 600 }}>Srila Prabhupada</p>
+                        <p className="text-white/60 text-xs mt-1">Founder-Acharya, ISKCON</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Live stats widget */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-[0_4px_24px_rgba(7,33,73,0.08)] p-7">
-                  <p className="text-xs uppercase tracking-[0.25em] text-gray-400 mb-5" style={{ fontWeight: 500 }}>Course at a Glance</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { value: 6, suffix: "", label: "Sessions", icon: <PISpark className="w-5 h-5" /> },
-                      { value: 500, suffix: "+", label: "Graduates", icon: <PIMentor className="w-5 h-5" /> },
-                      { value: 100, suffix: "%", label: "Mentor-Led", icon: <PILotus className="w-5 h-5" /> },
-                      { value: 5000, suffix: "+", label: "Yrs of Wisdom", icon: <PIBookOpen className="w-5 h-5" /> },
-                    ].map(({ value, suffix, label, icon }, i) => (
-                      <div key={i} className="bg-gray-50 rounded-xl p-4 text-center group hover:bg-[#072149] transition-colors duration-300">
-                        <div className="w-6 h-6 text-[#072149] mx-auto mb-2 group-hover:text-amber-400 transition-colors duration-300">{icon}</div>
-                        <p className="text-xl text-[#072149] group-hover:text-white transition-colors duration-300" style={{ fontWeight: 700 }}>
-                          <AnimatedCounter target={value} suffix={suffix} />
-                        </p>
-                        <p className="text-[10px] text-gray-400 uppercase tracking-wider group-hover:text-white/50 transition-colors duration-300">{label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Prabhupada quote */}
-                <div className="bg-[#072149] rounded-2xl p-7 relative overflow-hidden">
-                  <div className="absolute top-3 right-4 text-white/8 text-7xl font-serif leading-none select-none">&ldquo;</div>
-                  <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-amber-400/10 blur-2xl -translate-x-1/2 translate-y-1/2" />
-                  <div className="relative z-10">
-                    <div className="w-10 h-10 text-amber-400 mb-4"><PILotus className="w-10 h-10" /></div>
-                    <p className="text-white/90 text-sm leading-relaxed italic mb-5">
-                      We are trying to give human society the opportunity for a life of happiness, good health,
-                      peace of mind, and all good qualities through God consciousness.
-                    </p>
-                    <div className="h-px w-10 bg-amber-400/40 mb-3" />
-                    <p className="text-amber-400 text-xs uppercase tracking-widest" style={{ fontWeight: 600 }}>Srila Prabhupada</p>
-                    <p className="text-white/35 text-xs mt-0.5">Founder-Acharya, ISKCON</p>
-                  </div>
-                </div>
-
               </div>
             </AnimeReveal>
-
           </div>
+
+          <AnimeReveal direction="up" delay={200}>
+            <div className="mt-16 text-center max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-[#072149] leading-relaxed mb-8" style={{ fontWeight: 500 }}>
+                As a service to humanity, we present a systematic and practical{" "}
+                <span className="text-amber-600 font-semibold">6-session foundation course on Bhagavad Gita</span>, 
+                designed to share the essence of eternal Vedic wisdom.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-3">
+                {["Leadership", "Self-Discovery", "Dharma", "Decision Making", "Inner Peace", "Goal Clarity", "Purposeful Living"].map((tag) => (
+                  <span key={tag} className="text-sm px-5 py-2.5 rounded-full border border-amber-200 bg-amber-50 text-[#072149] hover:bg-amber-100 transition-colors shadow-sm cursor-default" style={{ fontWeight: 500 }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </AnimeReveal>
+
         </div>
       </section>
 
 
-      {/* ══ CURRICULUM — tabbed interactive ════════════════════ */}
-      <section id="modules" className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-12 lg:py-16">
-        <div className="max-w-6xl mx-auto">
+      {/* ══ CURRICULUM — redesigned with image & text ════════════════════ */}
+      <section id="modules" className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-12 lg:py-20">
+        <div className="max-w-7xl mx-auto">
 
-          <AnimeReveal direction="up" delay={80} className="mb-16 max-w-3xl">
+          <AnimeReveal direction="up" delay={80} className="mb-12 max-w-3xl">
             <p className="text-xs uppercase tracking-[0.3em] text-[#990000] mb-3" style={{ fontWeight: 500 }}>Curriculum</p>
-            <h2 className="text-3xl md:text-4xl text-[#072149] leading-tight mb-5" style={{ fontWeight: 600 }}>
-              The crown jewel of Vedic wisdom,{" "}
-              <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>unfolded</span>{" "}
-              practically and sublimely.
+            <h2 className="text-3xl md:text-5xl text-[#072149] leading-tight mb-5" style={{ fontWeight: 600 }}>
+              What You Will{" "}
+              <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Learn</span>
             </h2>
-            <p className="text-gray-500 text-base leading-relaxed">
-              The vast knowledge of Vedic literature is condensed in the Bhagavad-gita. Our 6-module curriculum
-              takes you from foundational study to personal transformation.
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+              The vast knowledge of Vedic literature is condensed in Bhagavad-gita, known as the crown jewel of Vedic wisdom. The course unfolds the mystery of Gita practically and sublimely. It includes,
             </p>
           </AnimeReveal>
 
-          {/* Vertical Timeline */}
-          <div className="relative mt-20 max-w-5xl mx-auto">
-            {/* The Line */}
-            <div className="absolute left-[28px] lg:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-amber-200 via-amber-400 to-amber-200 lg:-translate-x-1/2 rounded-full opacity-50" />
-
-            <div className="space-y-16 lg:space-y-24">
-              {curriculumTabs.map((tab, i) => {
-                const isEven = i % 2 === 0;
-                return (
-                  <AnimeReveal key={i} direction={isEven ? "right" : "left"} delay={100}>
-                    <div className={`relative flex flex-col lg:flex-row items-center ${isEven ? 'lg:flex-row-reverse' : ''} gap-8 lg:gap-16`}>
-                      
-                      {/* Timeline Node */}
-                      <div className="absolute left-[28px] lg:left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-amber-50 shadow-[0_0_20px_rgba(251,191,36,0.3)] flex items-center justify-center z-10 shrink-0">
-                        <tab.Icon className="w-6 h-6 text-amber-500" />
-                      </div>
-
-                      {/* Spacer for desktop layout balance */}
-                      <div className="hidden lg:block w-1/2 shrink-0" />
-
-                      {/* Card Content */}
-                      <div className="w-full lg:w-1/2 pl-[80px] lg:pl-0">
-                        <motion.div 
-                          whileHover={{ y: -5, scale: 1.02 }}
-                          className={`bg-white/60 backdrop-blur-xl border border-white/80 p-6 lg:p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(11,93,183,0.08)] transition-all duration-300 relative overflow-hidden group ${!isEven ? 'lg:mr-8' : 'lg:ml-8'}`}
-                        >
-                          {/* Accent Gradient */}
-                          <div className={`absolute top-0 ${isEven ? 'right-0 rounded-bl-full' : 'left-0 rounded-br-full'} w-32 h-32 opacity-20 group-hover:opacity-40 transition-opacity duration-500 bg-gradient-to-br from-amber-300 to-transparent pointer-events-none`} />
-                          
-                          <div className="flex items-center gap-3 mb-4 relative z-10">
-                            <span className="text-sm font-bold text-amber-500 tracking-widest uppercase">Module {String(i + 1).padStart(2, '0')}</span>
-                            <div className="h-[1px] w-10 bg-amber-200" />
-                          </div>
-                          
-                          <h3 className="text-2xl text-[#072149] mb-4 relative z-10" style={{ fontWeight: 700 }}>{tab.title}</h3>
-                          <p className="text-gray-600 mb-6 relative z-10 leading-relaxed">{tab.desc}</p>
-                          
-                          <div className="space-y-3 relative z-10">
-                            {tab.highlights.map((h, hi) => (
-                              <div key={hi} className="flex items-start gap-3">
-                                <div className="mt-1 w-5 h-5 rounded-full bg-[#072149]/5 flex items-center justify-center shrink-0">
-                                  <div className="w-2 h-2 rounded-full bg-[#072149]" />
-                                </div>
-                                <span className="text-sm text-gray-700 font-medium">{h}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      </div>
-
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="space-y-4">
+              {curriculumTabs.map((tab, i) => (
+                <AnimeReveal key={i} direction="up" delay={100 + i * 50}>
+                  <motion.div 
+                    whileHover={{ x: 10 }}
+                    className="flex gap-5 items-start p-4 rounded-2xl hover:bg-white/50 transition-colors"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[#072149]/5 flex items-center justify-center shrink-0 text-[#072149]">
+                      <tab.Icon className="w-6 h-6" />
                     </div>
-                  </AnimeReveal>
-                );
-              })}
+                    <div>
+                      <h3 className="text-xl text-[#072149] mb-2" style={{ fontWeight: 700 }}>{tab.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">{tab.desc}</p>
+                    </div>
+                  </motion.div>
+                </AnimeReveal>
+              ))}
             </div>
+
+            <AnimeReveal direction="left" delay={120}>
+              <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_rgba(7,33,73,0.12)] border border-white/50 group bg-white/40 backdrop-blur-xl p-4 md:p-6 lg:sticky lg:top-24">
+                <div className="absolute inset-0 bg-gradient-to-tr from-amber-100/20 to-blue-50/20 pointer-events-none" />
+                <img 
+                  src="https://hkmdehradun.org/live-site/assets/12/curriculum.png" 
+                  alt="Gita Life Course Curriculum Modules" 
+                  className="w-full h-auto object-contain rounded-2xl shadow-sm transform group-hover:scale-[1.01] transition-transform duration-700 ease-out relative z-10" 
+                />
+              </div>
+            </AnimeReveal>
           </div>
+
         </div>
       </section>
 
@@ -695,105 +613,66 @@ export default function GitaLifeCoursePage() {
         </motion.div>
       </div>
 
-      {/* ══ SPECIAL FEATURES — dark accordion ═════════════════ */}
-      <section className="bg-white/80 backdrop-blur-sm/60 backdrop-blur-3xl px-5 sm:px-10 lg:px-20 py-12 lg:py-16 relative overflow-hidden border-y border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)]">
+      {/* ══ SPECIAL FEATURES — redesigned with image & text ═════════════════ */}
+      <section className="bg-white/80 backdrop-blur-3xl px-5 sm:px-10 lg:px-20 py-12 lg:py-20 relative overflow-hidden border-y border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)]">
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: "radial-gradient(circle, #000000 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-amber-400/30 blur-[80px] -translate-y-1/2 translate-x-1/4" />
 
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           <AnimeReveal direction="up" delay={80} className="mb-14">
-            <div className="grid lg:grid-cols-2 gap-8 items-end">
-              <div>
-                <p className="text-amber-400 text-xs uppercase tracking-[0.3em] mb-3" style={{ fontWeight: 500 }}>What You Get</p>
-                <h2 className="text-3xl md:text-4xl text-[#072149] leading-tight" style={{ fontWeight: 600 }}>
-                  Special{" "}
-                  <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Features</span>
-                </h2>
-              </div>
-              <p className="text-[#072149]/70 text-sm leading-relaxed">
+            <div className="max-w-3xl">
+              <p className="text-amber-500 text-xs uppercase tracking-[0.3em] mb-3" style={{ fontWeight: 500 }}>What You Get</p>
+              <h2 className="text-3xl md:text-5xl text-[#072149] leading-tight mb-5" style={{ fontWeight: 600 }}>
+                Special{" "}
+                <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Features</span>
+              </h2>
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                 Every detail of the Gita Life Course is designed to make your learning immersive,
                 practical, and deeply personal. Here&apos;s what comes with your enrollment.
               </p>
             </div>
           </AnimeReveal>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-10">
-            {specialFeatures.map(({ Icon, label, desc }, i) => (
-              <AnimeReveal key={i} direction="up" delay={100 + i * 60}>
-                <motion.div 
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: "spring", bounce: 0.4 }}
-                  className="bg-white/40 backdrop-blur-xl border border-white/60 p-8 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(11,93,183,0.08)] hover:border-white group relative overflow-hidden h-full flex flex-col"
-                >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-amber-300/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#0B5DB7] mb-6 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-md transition-all duration-300 relative z-10 shrink-0">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl text-[#072149] mb-3 relative z-10" style={{ fontWeight: 700 }}>{label}</h3>
-                  <p className="text-gray-600 leading-relaxed relative z-10">{desc}</p>
-                </motion.div>
-              </AnimeReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-center">
+            
+            <AnimeReveal direction="right" delay={120}>
+              <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_rgba(7,33,73,0.12)] border border-white/50 group bg-white/40 backdrop-blur-xl p-4 md:p-6 lg:order-1 order-2 lg:sticky lg:top-24">
+                <div className="absolute inset-0 bg-gradient-to-tr from-rose-50/20 to-amber-50/20 pointer-events-none" />
+                <img 
+                  src="https://hkmdehradun.org/live-site/assets/12/features.png" 
+                  alt="Gita Life Course Special Features" 
+                  className="w-full h-auto object-contain rounded-2xl shadow-sm transform group-hover:scale-[1.01] transition-transform duration-700 ease-out relative z-10" 
+                />
+              </div>
+            </AnimeReveal>
 
-
-
-
-      {/* ══ CTA ═══════════════════════════════════════════════ */}
-      <section className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-16 lg:py-10 lg:py-12 text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[#072149]/5" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full border border-amber-400/10" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-[#990000]/10" />
-        </div>
-
-        <AnimeReveal direction="up" delay={100}>
-          <div className="relative z-10">
-            <motion.div
-              whileHover={{ rotate: 12, scale: 1.1 }}
-              transition={{ type: "spring", bounce: 0.5 }}
-              className="w-14 h-14 text-[#072149] mx-auto mb-8"
-            >
-              <PILotus className="w-14 h-14" />
-            </motion.div>
-            <p className="text-xs uppercase tracking-[0.3em] text-[#990000] mb-4" style={{ fontWeight: 500 }}>Begin Your Journey</p>
-            <h2 className="text-4xl md:text-6xl text-[#072149] mb-6 leading-tight" style={{ fontWeight: 600 }}>
-              Ready to{" "}
-              <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Transform?</span>
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed max-w-lg mx-auto mb-12">
-              Join the Gita Life Course at Hare Krishna Dehradun and discover the eternal wisdom
-              that has guided millions toward a life of purpose, clarity, and joy.
-            </p>
-            <div className="flex items-center justify-center gap-5 flex-wrap">
-              <motion.a
-                href="#enroll"
-                whileHover={{ y: -3, boxShadow: "0 16px 40px rgba(7,33,73,0.2)" }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-[#072149] text-white text-sm px-10 py-4 rounded-full hover:bg-[#0a2d60] transition-colors duration-200 inline-flex items-center gap-3 shadow-lg"
-                style={{ fontWeight: 600 }}
-              >
-                Enroll Now
-                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.a>
-              <motion.a
-                href="/about"
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="border-2 border-[#072149]/20 text-[#072149] text-sm px-10 py-4 rounded-full hover:border-[#072149] transition-colors duration-200"
-                style={{ fontWeight: 500 }}
-              >
-                Learn About ISKCON
-              </motion.a>
+            <div className="grid sm:grid-cols-2 gap-6 lg:order-2 order-1">
+              {specialFeatures.map(({ Icon, label, desc }, i) => (
+                <AnimeReveal key={i} direction="up" delay={100 + i * 50}>
+                  <motion.div 
+                    whileHover={{ y: -5 }}
+                    className="bg-white/40 backdrop-blur-xl border border-white/60 p-6 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(11,93,183,0.08)] hover:border-white h-full transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#0B5DB7] mb-5 shrink-0">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-lg text-[#072149] mb-3" style={{ fontWeight: 700 }}>{label}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
+                  </motion.div>
+                </AnimeReveal>
+              ))}
             </div>
+
           </div>
-        </AnimeReveal>
+
+        </div>
       </section>
+
+
+
+
+
 
         </div>
       </div>

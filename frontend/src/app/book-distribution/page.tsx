@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { BookOpen, Heart, Users, MapPin, Share2, HandHeart, GraduationCap, HeartHandshake, Sprout } from "lucide-react";
+import React, { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-function AnimeReveal({
+/* ── Scroll-triggered reveal ──────────────────────────── */
+function Reveal({
   children,
   delay = 0,
   direction = "up",
@@ -17,29 +16,16 @@ function AnimeReveal({
   direction?: "up" | "down" | "left" | "right";
   className?: string;
 }) {
-  const ref = React.useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
-
-  const getVariants = () => {
-    switch (direction) {
-      case "up":
-        return { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
-      case "down":
-        return { hidden: { opacity: 0, y: -40 }, visible: { opacity: 1, y: 0 } };
-      case "left":
-        return { hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0 } };
-      case "right":
-        return { hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } };
-    }
-  };
-
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const axis = direction === "up" || direction === "down" ? "y" : "x";
+  const sign = direction === "up" || direction === "left" ? 1 : -1;
   return (
     <motion.div
       ref={ref}
-      variants={getVariants()}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      transition={{ duration: 0.8, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, [axis]: 32 * sign }}
+      animate={inView ? { opacity: 1, [axis]: 0 } : {}}
+      transition={{ duration: 0.7, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -47,555 +33,390 @@ function AnimeReveal({
   );
 }
 
+/* ── Inline SVG icons ─────────────────────────────────── */
+const SvgHeart = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+  </svg>
+);
 
-const galleryImages = [
-  "https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=800",
-  "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600",
-  "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=700",
-  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800",
-  "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=600",
-  "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=700",
-  "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800",
-  "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=600",
-  "https://images.unsplash.com/photo-1519682337058-a94d519337bc?q=80&w=700",
-  "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=800",
-  "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=600",
-  "https://images.unsplash.com/photo-1528319725582-ddc096101511?q=80&w=700",
-];
+const SvgUsers = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 00-3-3.87" />
+    <path d="M16 3.13a4 4 0 010 7.75" />
+  </svg>
+);
 
+const SvgShare = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="18" cy="5" r="3" />
+    <circle cx="6" cy="12" r="3" />
+    <circle cx="18" cy="19" r="3" />
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+  </svg>
+);
+
+const SvgGradCap = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 10l-10-5L2 10l10 5 10-5z" />
+    <path d="M6 12v5c0 2 3 4 6 4s6-2 6-4v-5" />
+    <line x1="22" y1="10" x2="22" y2="16" />
+  </svg>
+);
+
+const SvgHandHeart = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M11 14h2a2 2 0 100-4h-3c-.6 0-1.1.2-1.4.6L3 16" />
+    <path d="M7 20l1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 00-2.75-2.91l-3.07 2.57" />
+    <path d="M2 15l6 5.4" />
+    <path d="M12.56 6.6A3 3 0 0017 4.56" />
+    <path d="M18 3a3 3 0 00-4.44 3.6" />
+  </svg>
+);
+
+const SvgSprout = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 20h10" />
+    <path d="M12 20v-8" />
+    <path d="M12 12c-3.5 0-7-2-7-7 4.5 0 7 2.5 7 7z" />
+    <path d="M12 12c3.5 0 7-2 7-7-4.5 0-7 2.5-7 7z" />
+  </svg>
+);
+
+const SvgArrowRight = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <polyline points="12 5 19 12 12 19" />
+  </svg>
+);
+
+const governanceBgStyle = { backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='800' height='400' viewBox='0 0 800 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23cca75b' stroke-width='2' opacity='0.2'%3E%3Cg transform='translate(100, 50) scale(1.5)'%3E%3Cpath d='M20 5C20 5 10 15 20 35C30 15 20 5 20 5Z'/%3E%3Cpath d='M20 35C10 30 5 20 10 12C15 12 18 25 20 35Z'/%3E%3Cpath d='M20 35C30 30 35 20 30 12C25 12 22 25 20 35Z'/%3E%3C/g%3E%3Cg transform='translate(300, 50) scale(1.5)'%3E%3Ccircle cx='20' cy='10' r='4'/%3E%3Cpath d='M20 15 L20 25 M10 20 L30 20 M10 35 C10 35 15 25 20 25 C25 25 30 35 30 35 M10 35 L30 35'/%3E%3C/g%3E%3Cg transform='translate(500, 50) scale(1.5)'%3E%3Ccircle cx='20' cy='20' r='10' stroke-dasharray='2 2'/%3E%3Cpath d='M20 10 C25 10 30 15 30 20 C30 25 25 30 20 30 C15 30 10 25 10 20 C10 17 12 15 15 15 C17 15 18 17 18 18 C18 19 17 20 16 20'/%3E%3Cpath d='M20 0L20 5 M20 35L20 40 M0 20L5 20 M35 20L40 20 M5 5L10 10 M30 30L35 35 M5 35L10 30 M30 10L35 5'/%3E%3C/g%3E%3Cg transform='translate(700, 50) scale(1.5)'%3E%3Cpath d='M12 25 L12 10 A3 3 0 0 1 18 10 L18 20 M18 15 L18 5 A3 3 0 0 1 24 5 L24 20 M24 15 L24 8 A3 3 0 0 1 30 8 L30 25 C30 35 20 40 12 35 C8 32 5 28 5 25 L5 15 A3 3 0 0 1 11 15 L11 25'/%3E%3Cpath d='M15 25 C18 25 20 27 20 30 C20 32 18 34 16 34 C14 34 12 32 12 30 C12 29 13 28 14 28'/%3E%3C/g%3E%3Cg transform='translate(200, 200) scale(1.5)'%3E%3Ccircle cx='20' cy='6' r='4'/%3E%3Cpath d='M12 16 Q20 13 28 16 L33 28 Q28 25 20 25 Q12 25 7 28 Z'/%3E%3Cpath d='M20 18 L20 24'/%3E%3Cpath d='M5 32 Q20 27 35 32 Q30 38 20 38 Q10 38 5 32 Z'/%3E%3C/g%3E%3Cg transform='translate(400, 200) scale(1.5)'%3E%3Cpath d='M22 5 A 15 15 0 1 0 22 35 A 12 12 0 1 1 22 5 Z'/%3E%3Cpath d='M8 20 L12 20 M10 18 L10 22'/%3E%3C/g%3E%3Cg transform='translate(600, 200) scale(1.5)'%3E%3Cpath d='M20 5 C28 5 30 15 20 18 C18 12 22 10 20 5'/%3E%3Cpath d='M10 25 C5 18 10 10 16 16 C12 18 10 15 10 25'/%3E%3Cpath d='M30 25 C35 18 30 10 24 16 C28 18 30 15 30 25'/%3E%3Cpath d='M10 25 Q20 35 30 25'/%3E%3Ccircle cx='20' cy='22' r='2'/%3E%3C/g%3E%3C/g%3E%3Ctext x='400' y='140' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Krishna Hare Krishna, Krishna Krishna Hare Hare%3C/text%3E%3Ctext x='400' y='165' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Rama Hare Rama, Rama Rama Hare Hare%3C/text%3E%3Ctext x='400' y='340' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Krishna Hare Krishna, Krishna Krishna Hare Hare%3C/text%3E%3Ctext x='400' y='365' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Rama Hare Rama, Rama Rama Hare Hare%3C/text%3E%3C/svg%3E\")", backgroundRepeat: 'repeat', backgroundSize: '600px 300px' };
+
+/* ═══════════════════════════════════════════════════════
+   PAGE
+   ═══════════════════════════════════════════════════════ */
 export default function BookDistributionPage() {
+  const [activeTab, setActiveTab] = React.useState(0);
+  const [isBookOpen, setIsBookOpen] = React.useState(false);
+
+  const initiatives = [
+    {
+      icon: <SvgGradCap className="w-7 h-7" />,
+      title: "Schools",
+      desc: "Interactive sessions, storytelling, and discussions help students apply Gita teachings in daily life.",
+      images: [
+        "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD4.webp"
+      ]
+    },
+    {
+      icon: <SvgHandHeart className="w-7 h-7" />,
+      title: "Old Age Homes",
+      desc: "Spiritual guidance offering comfort, purpose, and inner peace.",
+      images: [
+        "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD7.webp"
+      ]
+    },
+    {
+      icon: <SvgSprout className="w-7 h-7" />,
+      title: "Villages",
+      desc: "Gita satsangs and book distribution to rural families in need.",
+      images: [
+        "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD2.webp"
+      ]
+    },
+  ];
+
   return (
-    <main className="min-h-screen bg-[#FFFBF2] selection:bg-amber-200 selection:text-[#072149] font-sans">
-      
-      {/* ══ HERO SECTION ════════════════════════════════════════ */}
-      <section className="relative pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden min-h-[50vh] flex flex-col justify-center">
-        
-        {/* Video Background */}
+    <main className="min-h-screen bg-[#FFFBF2] font-sans selection:bg-amber-100">
+
+      {/* ── HERO ─────────────────────────────────────── */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+        {/* Background Video - Clear Sky */}
         <div className="absolute inset-0 z-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="w-full h-full object-cover"
-          >
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4" type="video/mp4" />
+          <video autoPlay loop muted playsInline preload="none" className="w-full h-full object-cover">
+            <source src="/214409.mp4" type="video/mp4" />
           </video>
-          {/* Subtle dark overlay to ensure text readability without obscuring the video */}
-          <div className="absolute inset-0 bg-black/20" />
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf8f5]" />
         </div>
 
-        {/* Background Decorative Elements */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-400/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#072149]/5 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-20 relative z-10 w-full">
-          {/* Banner Image */}
-          <AnimeReveal direction="down" delay={100} className="mb-8 w-full flex justify-center">
-            <div className="relative w-full max-w-4xl rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-amber-200/50">
-              <img 
-                src="/hbk.png" 
-                alt="Gita Daan - Bhagavad Gita Distribution" 
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#072149]/40 to-transparent pointer-events-none" />
-            </div>
-          </AnimeReveal>
-
-          <div className="text-center max-w-4xl mx-auto drop-shadow-lg">
-            <AnimeReveal direction="up" delay={200}>
-              <p className="text-white text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4 drop-shadow-md">
-                Share the Gyan, Spread the Light
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl text-[#072149] mb-6 leading-[1.15] drop-shadow-[0_4px_4px_rgba(255,255,255,0.8)]" style={{ fontWeight: 800 }}>
-                Bhagavad Gita <br className="hidden md:block" />
-                <span className="font-instrument italic font-medium text-amber-400 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">Book Distribution</span>
-              </h1>
-              <p className="text-gray-100 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md font-medium">
-                Help us bring the eternal teachings of the Gita to schools, elderly homes, villages, and more.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/donate" className="donate-animated-btn">
-                  Donate Now
-                </Link>
-              </div>
-            </AnimeReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Scrolling Banner */}
-      <div className="relative w-full bg-white overflow-hidden py-4 shadow-sm z-20 border-y border-gray-100">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {Array(4).fill(0).map((_, i) => (
-            <span key={i} className="text-gray-700 font-sans font-medium text-sm px-2 uppercase tracking-[0.2em] flex items-center">
-              <span className="mx-8 text-gray-300 text-lg">○</span> GITA DAAN FOR ALL
-              <span className="mx-8 text-gray-300 text-lg">○</span> PLANTING SEEDS OF KNOWLEDGE
-              <span className="mx-8 text-gray-300 text-lg">○</span> TRANSFORMING LIVES
-              <span className="mx-8 text-gray-300 text-lg">○</span> AWAKENING THE SOUL
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ══ ABOUT SECTION (Brutalist Red) ═══════════════════════════════════════ */}
-      <section className="bg-[#EF3325] text-black pt-16 md:pt-24 pb-12 relative overflow-hidden flex flex-col justify-between" style={{ minHeight: "80vh" }}>
-        
-        {/* Left Side Vertical Text */}
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 -rotate-90 origin-left hidden lg:block select-none">
-          <span className="font-bold tracking-widest text-lg">Bhagavad Gita®</span>
-        </div>
-
-        <div className="w-full px-5 md:px-16 lg:px-32 relative z-10 flex-grow flex flex-col">
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 mb-16">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10 w-full pt-16 pb-20">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Column 1 */}
-            <AnimeReveal direction="up" delay={100}>
-              <h3 className="text-xl md:text-3xl font-extrabold mb-4 tracking-tight">The Origin:</h3>
-              <div className="space-y-4 text-base md:text-lg font-medium leading-relaxed">
-                <p>The Bhagavad Gita is a 700-verse poem embedded within the Mahabharata. It presents a divine conversation between Lord Krishna and Arjuna on the battlefield of Kurukshetra.</p>
-              </div>
-            </AnimeReveal>
-
-            {/* Column 2 */}
-            <AnimeReveal direction="up" delay={200}>
-              <h3 className="text-xl md:text-3xl font-extrabold mb-4 tracking-tight">The Vision:</h3>
-              <div className="space-y-4 text-base md:text-lg font-medium leading-relaxed">
-                <p>The teachings of the Gita go beyond religion, addressing universal themes such as purpose, duty, self-realization, and liberation.</p>
-                <p>Gita distribution is about planting seeds of wisdom that inspire positive change. Studies show improvements in mental well-being, academic focus, and social behavior.</p>
-              </div>
-            </AnimeReveal>
-
-            {/* Column 3 (Icon) */}
-            <AnimeReveal direction="left" delay={300} className="hidden lg:flex justify-end items-start">
-              <div className="w-40 h-40 bg-black rounded-full flex items-center justify-center text-[#EF3325]">
-                <BookOpen className="w-20 h-20" strokeWidth={1.5} />
-              </div>
-            </AnimeReveal>
-            
-          </div>
-
-          {/* Thin Divider Line */}
-          <div className="w-full h-[1px] bg-black/80 mb-8" />
-
-          {/* Massive Text at Bottom */}
-          <div className="mt-auto w-full pt-10">
-            <AnimeReveal direction="up" delay={400}>
-              <div className="flex items-end justify-between w-full">
-                <h2 
-                  className="text-[14vw] leading-[0.75] tracking-tighter m-0"
-                  style={{ fontStyle: "italic", fontWeight: 900 }}
-                >
-                  Gita Daan
-                </h2>
-                <div className="mb-[1.5vw] w-[7vw] h-[7vw] rounded-full border-[0.4vw] border-black flex items-center justify-center shrink-0">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-1/2 h-1/2 text-black">
-                    <path d="M12 2C12 2 12 10 20 12C12 14 12 22 12 22C12 22 12 14 4 12C12 10 12 2 12 2Z" fill="black" />
-                  </svg>
-                </div>
-              </div>
-            </AnimeReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ COMBINED BACKGROUND FOR INITIATIVES & GET INVOLVED ════════════ */}
-      <div className="relative bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/beige_paint_texture.png')" }}>
-        <div className="absolute inset-0 bg-white/40 pointer-events-none z-0" />
-        
-      {/* ══ TICKER BAND ══════════════════════════════════════════ */}
-      <div className="relative z-20 w-full overflow-hidden bg-[#1A1A1A] border-y-[3px] border-[#E05D2D] py-3 flex items-center shadow-lg">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center space-x-8 px-4">
-              <div className="flex items-center space-x-3">
-                <BookOpen className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">GITA DAAN FOR ALL</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-              
-              <div className="flex items-center space-x-3">
-                <Sprout className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">PLANTING SEEDS OF WISDOM</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-              
-              <div className="flex items-center space-x-3">
-                <HeartHandshake className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">TRANSFORMING LIVES</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-              
-              <div className="flex items-center space-x-3">
-                <HandHeart className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">AWAKENING THE SOUL</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ══ INITIATIVES SECTION ════════════════════════════════════ */}
-      <section className="pt-10 pb-10 lg:pt-16 lg:pb-16 relative overflow-hidden bg-transparent">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-200 via-transparent to-transparent" />
-        
-        <div className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-20 relative z-10">
-          <AnimeReveal direction="up" delay={100} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl text-[#072149] font-bold mb-6">Our Initiatives</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Reaching out to different segments of society to share the profound message of the Gita.
-            </p>
-          </AnimeReveal>
-
-          <div className="grid md:grid-cols-3 gap-10 md:gap-8 pt-6">
-            {[
-              {
-                icon: <GraduationCap className="w-8 h-8" />,
-                title: "Schools",
-                desc: "Interactive sessions, storytelling, and discussions help students apply Gita teachings in daily life to build strong character.",
-              },
-              {
-                icon: <HeartHandshake className="w-8 h-8" />,
-                title: "Old Age Homes",
-                desc: "Spiritual guidance offering comfort, purpose, and inner peace to the elderly during their wisdom years.",
-              },
-              {
-                icon: <Sprout className="w-8 h-8" />,
-                title: "Villages",
-                desc: "Gita satsangs and book distribution to rural families in need, fostering community harmony and spiritual upliftment.",
-              }
-            ].map((item, i) => (
-              <AnimeReveal key={i} direction="up" delay={200 + i * 100}>
-                
-                {/* Magic Card Wrapper */}
-                <div className="relative z-10 p-[5px] rounded-2xl group/magic transition-all duration-500 h-full">
-                  
-                  {/* Default Background Gradient */}
-                  <div className="absolute inset-0 rounded-2xl -z-20 bg-gradient-to-r from-[#74ebd5] to-[#acb6e5]" />
-                  
-                  {/* Layer 1 (rotate 2deg) */}
-                  <div className="absolute inset-0 rounded-2xl -z-10 bg-gradient-to-br from-[#f6d365] to-[#fda085] rotate-2 group-hover/magic:opacity-0 transition-opacity duration-300" />
-                  
-                  {/* Layer 2 (rotate -2deg) */}
-                  <div className="absolute inset-0 rounded-2xl -z-10 bg-gradient-to-tr from-[#84fab0] to-[#8fd3f4] -rotate-2 group-hover/magic:opacity-0 transition-opacity duration-300" />
-
-                  {/* Card Content */}
-                  <div className="relative z-20 bg-white rounded-[0.7rem] p-8 h-full flex flex-col group-hover/magic:bg-transparent transition-colors duration-500">
-                    <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover/magic:bg-white/20 group-hover/magic:text-[#072149] transition-all duration-300">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-2xl text-[#072149] font-bold mb-4">{item.title}</h3>
-                    <p className="text-gray-700 leading-relaxed group-hover/magic:text-[#072149] transition-colors duration-500">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                </div>
-
-              </AnimeReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-            {/* ══ GET INVOLVED SECTION ════════════════════════════════ */}
-      <section className="pt-0 pb-16 lg:pb-24 bg-transparent relative">
-        <div className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-20">
-          <AnimeReveal direction="up" delay={100} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl text-[#072149] font-bold mb-6">Get Involved</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Every small effort makes a huge difference. Join us in this noble cause.
-            </p>
-          </AnimeReveal>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <HandHeart className="w-8 h-8" />,
-                title: "Donate",
-                desc: "Support book printing, logistics, and outreach programs. Your contribution funds the distribution of wisdom.",
-                action: "Donate Now",
-                link: "/donate"
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: "Volunteer",
-                desc: "Help distribute books, organize events, or share knowledge by giving your time and energy.",
-                action: "Join Us",
-                link: "/#initiatives"
-              },
-              {
-                icon: <Share2 className="w-8 h-8" />,
-                title: "Spread the Word",
-                desc: "Share our mission on social media and inspire your friends and family to participate in Gita Daan.",
-                action: "Follow Us",
-                link: "/#social"
-              }
-            ].map((item, i) => (
-              <AnimeReveal key={i} direction="up" delay={200 + i * 100} className="h-full">
-                <div className="bg-white p-8 rounded-[10px] h-full flex flex-col items-center text-center hover:rounded-3xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] shadow-[inset_0_-3em_3em_rgba(0,0,0,0.1),0_0_0_2px_rgb(190,190,190),0.3em_0.3em_1em_rgba(0,0,0,0.3)]">
-                  <div className="w-16 h-16 bg-white shadow-[inset_0_-1em_1em_rgba(0,0,0,0.05),0_0_0_1px_rgb(190,190,190)] text-[#072149] rounded-full flex items-center justify-center mb-6">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl text-[#072149] font-bold mb-3">{item.title}</h3>
-                  <p className="text-gray-600 mb-8 flex-grow">
-                    {item.desc}
+            {/* Left Column: Text */}
+            <div className="order-2 lg:order-1 lg:col-span-5 text-center lg:text-left">
+              <Reveal direction="up" delay={100}>
+                <div className="inline-block px-5 py-2 rounded-full border border-amber-500/30 bg-white/40 backdrop-blur-md mb-6 shadow-sm">
+                  <p className="text-[#072149] text-xs md:text-sm tracking-[0.2em] uppercase font-bold">
+                    Share the Gyan, Spread the Light
                   </p>
-                  <Link href={item.link} className="fancy mt-auto">
-                    <span className="top-key" />
-                    <span className="text">{item.action}</span>
-                    <span className="bottom-key-1" />
-                    <span className="bottom-key-2" />
+                </div>
+                
+                <h1 className="text-5xl md:text-6xl lg:text-7xl text-[#072149] mb-6 leading-[1.1] font-bold drop-shadow-[0_2px_10px_rgba(255,255,255,1)]">
+                  Bhagavad Gita <br className="hidden md:block" />
+                  <span className="font-instrument italic text-amber-600 font-medium">
+                    Book Distribution
+                  </span>
+                </h1>
+                
+                <p className="text-[#072149] text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium drop-shadow-[0_1px_5px_rgba(255,255,255,0.8)]">
+                  Help us bring the timeless wisdom of the Gita to schools, elderly homes, villages, and more. Plant the seeds of wisdom today.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link
+                    href="/donate"
+                    className="inline-flex items-center justify-center gap-2 bg-[#072149] text-white px-8 py-4 rounded-full text-sm tracking-wider uppercase hover:bg-amber-600 hover:shadow-[0_10px_30px_rgba(217,119,6,0.3)] transition-all duration-300 font-bold"
+                  >
+                    Donate Now
+                    <SvgArrowRight className="w-5 h-5 ml-1" />
                   </Link>
                 </div>
-              </AnimeReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
+              </Reveal>
             </div>
 
-      {/* ══ TICKER BAND 2 ══════════════════════════════════════════ */}
-      <div className="relative w-full overflow-hidden bg-[#1A1A1A] border-y-[3px] border-[#E05D2D] py-3 flex items-center shadow-lg z-20">
-        <div className="flex animate-marquee-reverse whitespace-nowrap">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center space-x-8 px-4">
-              <div className="flex items-center space-x-3">
-                <HandHeart className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">DONATE TODAY</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-              
-              <div className="flex items-center space-x-3">
-                <Users className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">VOLUNTEER WITH US</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-              
-              <div className="flex items-center space-x-3">
-                <Heart className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">BE THE CHANGE</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-              
-              <div className="flex items-center space-x-3">
-                <Share2 className="w-5 h-5 text-[#E05D2D]" />
-                <span className="text-white font-bold tracking-widest text-sm sm:text-base">SPREAD THE MESSAGE</span>
-              </div>
-              <span className="text-[#E05D2D] text-lg">✦</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ══ GALLERY SECTION ════════════════════════════════════ */}
-      <section className="py-20 lg:py-32 bg-[#FFFBF2] relative">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-20">
-          <AnimeReveal direction="up" delay={100} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl text-[#072149] font-bold mb-6">Moments of Light</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Glimpses of the impact and joy brought by the distribution of the Bhagavad Gita.
-            </p>
-          </AnimeReveal>
-
-          {/* Masonry Grid */}
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-            {galleryImages.map((src, i) => (
-              <AnimeReveal key={i} direction="up" delay={100 + (i % 4) * 100}>
-                <div className="break-inside-avoid relative overflow-hidden rounded-lg group cursor-pointer mb-4">
-                  <img 
-                    src={src} 
-                    alt={`Gita Daan Gallery Image ${i + 1}`} 
-                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  {/* Subtle overlay on hover */}
-                  <div className="absolute inset-0 bg-[#072149]/0 group-hover:bg-[#072149]/20 transition-colors duration-300 pointer-events-none" />
+            {/* Right Column: Hero Image (hbk.png) */}
+            <div className="order-1 lg:order-2 lg:col-span-7">
+              <Reveal direction="left" delay={200} className="relative w-full">
+                <div className="relative w-full max-w-lg mx-auto lg:max-w-full rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(7,33,73,0.15)] border border-white/50 group bg-white/10 backdrop-blur-sm p-4">
+                  <img src="/hbk.png" alt="Gita Daan - Bhagavad Gita Distribution" className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#072149]/10 to-transparent pointer-events-none rounded-[2rem]" />
                 </div>
-              </AnimeReveal>
+              </Reveal>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT GITA DISTRIBUTION ──────────────────── */}
+      <section className="pt-20 lg:pt-28 pb-10 bg-[#faf8f5] relative" style={governanceBgStyle}>
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10 hidden md:block">
+          <motion.div 
+            className="relative w-full aspect-[2/1.3] flex items-center justify-center perspective-[2500px] cursor-pointer"
+            onClick={() => setIsBookOpen(!isBookOpen)}
+            initial={{ x: "-25%" }}
+            animate={{ x: isBookOpen ? "0%" : "-25%" }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* RIGHT PAGE (Static, underneath cover initially) */}
+            <div className="absolute right-0 w-1/2 h-full bg-[#FFFBF2] p-8 md:p-14 rounded-r-2xl shadow-[inset_0_0_40px_rgba(0,0,0,0.05)] border-y border-r border-[#072149]/10 z-0 flex flex-col justify-center">
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black/10 to-transparent pointer-events-none" />
+              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/60 pointer-events-none" />
+              <div className="relative z-10">
+                <p className="text-[#072149]/80 text-lg md:text-xl leading-relaxed mb-8">
+                  The teachings of the Gita go beyond religion, addressing universal themes such as purpose, duty, self-realization, and liberation.
+                </p>
+                <p className="text-[#072149]/80 text-lg md:text-xl leading-relaxed font-medium text-amber-600">
+                  Gita distribution is about planting seeds of wisdom that inspire positive change. Studies show improvements in mental well-being, academic focus, and social behavior.
+                </p>
+              </div>
+              {/* Decorative Book Pages Edge (Right side) */}
+              <div className="absolute right-0 top-4 bottom-4 w-1 bg-white/60 rounded-r-lg shadow-sm" />
+              <div className="absolute right-1 top-3 bottom-3 w-1 bg-white/40 rounded-r-lg shadow-sm" />
+            </div>
+
+            {/* LEFT PAGE FLIPPING MECHANISM (Cover) */}
+            <motion.div 
+              className="absolute right-0 w-1/2 h-full origin-left z-10"
+              initial={{ rotateY: 0 }}
+              animate={{ rotateY: isBookOpen ? -180 : 0 }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {/* Front Face: Book Cover */}
+              <div 
+                className="absolute inset-0 w-full h-full bg-[#072149] rounded-r-2xl shadow-[10px_10px_30px_rgba(0,0,0,0.3)] flex items-center justify-center overflow-hidden border border-white/10"
+                style={{ backfaceVisibility: "hidden" }}
+              >
+                <img 
+                  src="/gita-cover.jpg"
+                  alt="Bhagavad Gita Cover"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute left-3 top-0 bottom-0 w-[1px] bg-white/20 pointer-events-none" />
+                <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-black/40 pointer-events-none" />
+              </div>
+
+              {/* Back Face: Inside Left Page */}
+              <div 
+                className="absolute inset-0 w-full h-full bg-[#FFFBF2] p-8 md:p-14 rounded-l-2xl shadow-[inset_0_0_40px_rgba(0,0,0,0.05)] border-y border-l border-[#072149]/10 flex flex-col justify-center"
+                style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+              >
+                <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/10 to-transparent pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#072149]/20 pointer-events-none" />
+                <div className="relative z-10">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#072149] font-bold mb-6">
+                    About Gita <br/>Distribution
+                  </h2>
+                  <div className="w-16 h-[3px] bg-amber-500 mb-8 rounded-full" />
+                  <p className="text-[#072149]/80 text-lg md:text-xl leading-relaxed font-medium">
+                    The Bhagavad Gita is a 700-verse poem embedded within the Mahabharata. It presents a divine conversation between Lord Krishna and Arjuna on the battlefield of Kurukshetra.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Mobile View (Static Cards) */}
+        <div className="md:hidden max-w-5xl mx-auto px-6 relative z-10">
+          <Reveal className="text-center mb-10">
+            <h2 className="text-3xl text-[#072149] font-bold">About Gita Distribution</h2>
+            <div className="w-16 h-[2px] bg-amber-500 mx-auto mt-4" />
+          </Reveal>
+          
+          <div className="flex flex-col gap-6">
+            <div className="bg-[#FFFBF2] p-8 rounded-2xl shadow-sm border border-[#072149]/10">
+              <p className="text-[#072149]/80 text-lg leading-relaxed font-medium">
+                The Bhagavad Gita is a 700-verse poem embedded within the Mahabharata. It presents a divine conversation between Lord Krishna and Arjuna on the battlefield of Kurukshetra.
+              </p>
+            </div>
+            <div className="bg-[#FFFBF2] p-8 rounded-2xl shadow-sm border border-[#072149]/10">
+               <p className="text-[#072149]/80 text-lg leading-relaxed mb-6">
+                  The teachings of the Gita go beyond religion, addressing universal themes such as purpose, duty, self-realization, and liberation.
+                </p>
+                <p className="text-[#072149]/80 text-lg leading-relaxed font-medium text-amber-600">
+                  Gita distribution is about planting seeds of wisdom that inspire positive change. Studies show improvements in mental well-being, academic focus, and social behavior.
+                </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── OUR INITIATIVES (Tabbed) ─────────────────── */}
+      <section className="py-10 bg-[#faf8f5] relative" style={governanceBgStyle}>
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
+          <Reveal className="mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-[1px] bg-[#072149]/30" />
+              <span className="text-xs tracking-[0.3em] uppercase text-[#072149]/50" style={{ fontWeight: 600 }}>Our initiatives</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl text-[#072149] leading-[1.1]" style={{ fontWeight: 700 }}>
+              Where we reach
+            </h2>
+          </Reveal>
+
+          <div className="flex flex-col gap-12">
+            {initiatives.map((item, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <Reveal key={i} delay={100} className="w-full">
+                  <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_10px_40px_rgba(7,33,73,0.05)] border border-[#072149]/5 hover:shadow-[0_20px_50px_rgba(7,33,73,0.08)] transition-all duration-500`}>
+                    
+                    {/* Text Section */}
+                    <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 flex items-center justify-center text-[#072149] mb-8 shadow-inner">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-3xl lg:text-4xl text-[#072149] mb-6 font-extrabold tracking-tight">
+                        {item.title}
+                      </h3>
+                      <p className="text-[#072149]/70 text-lg lg:text-xl leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Image Gallery Section */}
+                    <div className="w-full lg:w-1/2 flex flex-col gap-6">
+                      {item.images ? (
+                        item.images.map((img, idx) => (
+                          <div key={idx} className="rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(7,33,73,0.08)] w-full border border-[#072149]/5">
+                            <img src={img} alt={`${item.title} ${idx + 1}`} className="w-full h-auto object-contain transform hover:scale-105 transition-transform duration-700" />
+                          </div>
+                        ))
+                      ) : (
+                        <div className="w-full min-h-[250px] lg:min-h-[350px] rounded-3xl bg-gradient-to-br from-[#072149]/[0.02] to-[#072149]/[0.05] flex items-center justify-center border border-dashed border-[#072149]/10">
+                          <div className="text-center p-6 opacity-30">
+                            <div className="w-16 h-16 mx-auto mb-4 text-[#072149]">
+                              {item.icon}
+                            </div>
+                            <span className="text-[#072149] font-medium text-lg">Images coming soon</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                  </div>
+                </Reveal>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── GET INVOLVED ─────────────────────────────── */}
+      <section className="pt-10 pb-24 lg:pb-32 bg-[#faf8f5] relative overflow-hidden" style={governanceBgStyle}>
+        {/* Background Decorative Rings */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#072149]/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-[#072149]/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#072149]/10 rounded-full" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
+          <Reveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl text-[#072149] font-extrabold tracking-tight">
+              Get <span className="text-amber-500 font-instrument italic font-normal">Involved</span>
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <SvgHeart className="w-8 h-8" />,
+                title: "Donate",
+                desc: "Support book printing, logistics, and outreach programs. Every contribution counts.",
+                action: "Donate Now",
+                link: "/donate",
+              },
+              {
+                icon: <SvgUsers className="w-8 h-8" />,
+                title: "Volunteer",
+                desc: "Help distribute books, organize events, or share knowledge in your local community.",
+                action: "Join Us",
+                link: "/volunteer",
+              },
+              {
+                icon: <SvgShare className="w-8 h-8" />,
+                title: "Spread the Word",
+                desc: "Share our mission on social media and inspire others to participate in this noble cause.",
+                action: "Follow Us",
+                link: "/#social",
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 100} className="h-full">
+                <div className="group h-full bg-white border border-[#072149]/5 rounded-3xl p-10 hover:shadow-[0_20px_40px_rgba(7,33,73,0.08)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 text-[#072149] flex items-center justify-center mb-8 group-hover:bg-[#072149] group-hover:text-amber-400 transition-colors duration-500">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-2xl text-[#072149] mb-4 font-bold tracking-wide group-hover:text-amber-500 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#072149]/70 leading-relaxed mb-10 flex-grow text-lg">
+                    {item.desc}
+                  </p>
+                  <Link
+                    href={item.link}
+                    className="inline-flex items-center gap-3 text-[#072149] text-sm tracking-widest uppercase font-bold group-hover:gap-5 group-hover:text-amber-500 transition-all duration-300"
+                  >
+                    {item.action}
+                    <div className="w-8 h-[2px] bg-[#072149] group-hover:bg-amber-500 group-hover:w-12 transition-all duration-300 relative">
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-[#072149] group-hover:border-amber-500 rotate-45 transition-colors duration-300" />
+                    </div>
+                  </Link>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
-    <style dangerouslySetInnerHTML={{__html: `
-        @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        
-        @keyframes marquee-reverse {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
-        }
-        
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-          width: max-content;
-        }
 
-        .animate-marquee-reverse {
-          animation: marquee-reverse 30s linear infinite;
-          width: max-content;
-        }
-
-        .fancy {
-         background-color: transparent;
-         border: 2px solid #000;
-         border-radius: 0;
-         box-sizing: border-box;
-         color: #fff;
-         cursor: pointer;
-         display: inline-block;
-         font-weight: 700;
-         letter-spacing: 0.05em;
-         margin: 0;
-         outline: none;
-         overflow: visible;
-         padding: 1em 1.5em;
-         position: relative;
-         text-align: center;
-         text-decoration: none;
-         text-transform: none;
-         transition: all 0.3s ease-in-out;
-         user-select: none;
-         font-size: 13px;
-         width: 100%;
-        }
-
-        .fancy::before {
-         content: " ";
-         width: 1.5625rem;
-         height: 2px;
-         background: black;
-         top: 50%;
-         left: 1.5em;
-         position: absolute;
-         transform: translateY(-50%);
-         transform-origin: center;
-         transition: background 0.3s linear, width 0.3s linear;
-        }
-
-        .fancy .text {
-         font-size: 1.125em;
-         line-height: 1.33333em;
-         padding-left: 2em;
-         display: block;
-         text-align: left;
-         transition: all 0.3s ease-in-out;
-         text-transform: uppercase;
-         text-decoration: none;
-         color: black;
-        }
-
-        .fancy .top-key {
-         height: 2px;
-         width: 1.5625rem;
-         top: -2px;
-         left: 0.625rem;
-         position: absolute;
-         background: #FFFBF2;
-         transition: width 0.5s ease-out, left 0.3s ease-out;
-        }
-
-        .fancy .bottom-key-1 {
-         height: 2px;
-         width: 1.5625rem;
-         right: 1.875rem;
-         bottom: -2px;
-         position: absolute;
-         background: #FFFBF2;
-         transition: width 0.5s ease-out, right 0.3s ease-out;
-        }
-
-        .fancy .bottom-key-2 {
-         height: 2px;
-         width: 0.625rem;
-         right: 0.625rem;
-         bottom: -2px;
-         position: absolute;
-         background: #FFFBF2;
-         transition: width 0.5s ease-out, right 0.3s ease-out;
-        }
-
-        .fancy:hover {
-         color: white;
-         background: black;
-        }
-
-        .fancy:hover::before {
-         width: 0.9375rem;
-         background: white;
-        }
-
-        .fancy:hover .text {
-         color: white;
-         padding-left: 1.5em;
-        }
-
-        .fancy:hover .top-key {
-         left: -2px;
-         width: 0px;
-        }
-
-        .fancy:hover .bottom-key-1,
-         .fancy:hover .bottom-key-2 {
-         right: 0;
-         width: 0;
-        }
-
-        .donate-animated-btn {
-          position: relative;
-          font-size: 17px;
-          text-transform: uppercase;
-          text-decoration: none;
-          padding: 1em 2.5em;
-          display: inline-block;
-          cursor: pointer;
-          border-radius: 6em;
-          transition: all 0.2s;
-          border: none;
-          font-family: inherit;
-          font-weight: 700;
-          color: black;
-          background-color: white;
-        }
-
-        .donate-animated-btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .donate-animated-btn:active {
-          transform: translateY(-1px);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .donate-animated-btn::after {
-          content: "";
-          display: inline-block;
-          height: 100%;
-          width: 100%;
-          border-radius: 100px;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: -1;
-          transition: all 0.4s;
-          background-color: #fff;
-        }
-
-        .donate-animated-btn:hover::after {
-          transform: scaleX(1.4) scaleY(1.6);
-          opacity: 0;
-        }
-      `}} />
-      </main>
+    </main>
   );
 }

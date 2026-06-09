@@ -7,35 +7,21 @@ export default function BecomeAMonkPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative pt-6 pb-16 overflow-hidden flex items-center justify-center">
-        {/* Video Background */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover scale-105" 
-        >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260503_101827_abebfeec-f243-466b-b494-7f6814c0fbbf.mp4" type="video/mp4" />
-        </video>
-
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10 w-full">
-          <div className="flex flex-col items-center">
-            
-            {/* The provided image */}
-            <div className="relative w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-[4px] border-white/20 bg-black/40 backdrop-blur-sm group">
-              {/* Image */}
-              <img 
-                src="/bcm.png" 
-                alt="Become A Monk" 
-                className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-700 ease-in-out" 
-              />
-              
-              {/* Subtle inner shadow overlay */}
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[2.2rem] pointer-events-none" />
-            </div>
-
-          </div>
+      {/* Hero Section */}
+      <section className="relative w-full flex">
+        <img 
+          src="/bam.png" 
+          alt="Become a Monk" 
+          className="w-full h-auto max-h-[90vh] object-cover block"
+        />
+        {/* Subtle gradient overlay at the bottom for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
+        
+        {/* Overlay Text */}
+        <div className="absolute bottom-6 md:bottom-12 w-full text-center px-4">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif font-black text-white uppercase tracking-wider drop-shadow-xl">
+            BECOME A MONK
+          </h1>
         </div>
       </section>
 
@@ -90,14 +76,14 @@ export default function BecomeAMonkPage() {
                   </p>
                 </div>
                 <div className="relative rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.15)] h-[400px] border-8 border-white group">
-                  <img src="/monk1.png" alt="Monk distributing books" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <img src="/kik.png" alt="Monk meditating on Krishna" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                 </div>
               </div>
 
               {/* Row 2 */}
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1 relative rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.15)] h-[400px] border-8 border-white group">
-                  <img src="/monk2.png" alt="Morning prayer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <img src="https://hkmdehradun.org/live-site/assets/images/monk2.jpg" alt="Morning prayer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                 </div>
                 <div className="order-1 md:order-2">
                   <p>
@@ -125,7 +111,7 @@ export default function BecomeAMonkPage() {
                    </p>
                  </div>
                  <div className="lg:col-span-2 relative rounded-[2.5rem] overflow-hidden shadow-2xl h-[450px] w-full border-8 border-white group rotate-2 hover:rotate-0 transition-transform duration-500">
-                   <img src="/monk3.png" alt="Reading scripture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                   <img src="https://hkmdehradun.org/live-site/assets/images/monk3.jpg" alt="Reading scripture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                  </div>
                </div>
             </div>
@@ -133,7 +119,7 @@ export default function BecomeAMonkPage() {
             {/* Row 3 */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.15)] h-[400px] border-8 border-white group">
-                <img src="/monk4.png" alt="Selfless service" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                <img src="https://hkmdehradun.org/live-site/assets/images/monk5.jpg" alt="Selfless service" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
               </div>
               <div className="space-y-6">
                 <p className="text-xl md:text-2xl font-bold text-gray-900 mb-6">

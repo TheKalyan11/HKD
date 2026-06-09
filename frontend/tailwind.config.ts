@@ -8,6 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['Playfair Display', 'serif'],
+        nav: ['Poppins', 'sans-serif'],
+        body: ['Lora', 'serif'],
+        card: ['Oswald', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+      },
       colors: {
         saffron: {
           light: '#FFB84D',

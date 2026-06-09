@@ -162,9 +162,9 @@ const leaders = [
     title: "Chairman",
     image: "/SriMadhuPanditDasa-1-2.jpg",
     bio: [
-      "Madhu Pandit Dasa was born in 1956 in Nagercoil, India. A National Science Talent Search scholar, he completed his B.Tech. in Civil Engineering from IIT-Mumbai in 1980, where he first encountered the books of Srila Prabhupada. By 1981, he dedicated himself fully to ISKCON's mission.",
-      "Under his inspired leadership, the Government of Karnataka allotted 6.5 acres on Hare Krishna Hill for a grand cultural complex. He led its entire architectural design, construction, and fundraising of Rs. 38 crores, building a team of nearly 100 dedicated missionaries.",
-      "In June 2000 he initiated the Akshaya Patra programme — the world's largest NGO-run mid-day meal programme. He now guides the mission of Hare Krishna Dehradun as Chairman."
+      "Madhu Pandit Dasa was born in Nagercoil, Tamil Nadu. He became a full-time member of ISKCON in 1981 while doing his M.Tech in Civil Engineering from IIT-Bombay. Since then, he has successfully conceived and implemented many large scale public service projects that positively impact millions of people. He has also worked tirelessly to preserve and promote Indian spirituality, culture and heritage among children and youth for their holistic well-being. He is the Chairman and Mentor, Global Hare Krishna Movement and the President of ISKCON Bangalore.",
+      "Madhu Pandit Dasa is the Trustee and Chairman of The Akshaya Patra Foundation, which has contributed immensely to alleviate classroom hunger and improve the nutrition levels of children studying in government schools in India. He has led Akshaya Patra to become an efficient Public-Private Partnership (PPP) and an admired social innovation. He provides visionary guidance for the world’s largest NGO run school meal programme.",
+      "He is also the Chairman of Vrindavan Chandrodaya Mandir and India Heritage Foundation. His stellar contributions have been appreciated through prestigious awards and accolades like Padma Shri, Gandhi Peace Prize, National Award for Child Welfare, Nikkei Asia Prize and Distinguished Alumnus Award by IIT-Bombay."
     ]
   },
   {
@@ -173,23 +173,82 @@ const leaders = [
     title: "President",
     image: "/chanchalapathi-dasa.jpg",
     bio: [
-      "Chanchalapathi Dasa was born in 1963 in Bangalore. While at PSG College of Technology, Coimbatore, he encountered the message of Srila Prabhupada. He later joined the Indian Institute of Science for a Masters in Electrical Communication Engineering.",
-      "In 1984 he became a full-time member of ISKCON Bangalore and rose to Vice President. As Vice Chairman of The Akshaya Patra Foundation, he oversees nationwide activities impacting millions of school children.",
-      "He played a key role in the 'Little Krishna' animated series. He now leads Hare Krishna Dehradun as Temple President, spreading Krishna consciousness throughout Uttarakhand."
+      "Chanchalapathi Dasa was born in 1963 in Bangalore, Karnataka. While an undergraduate student at PSG College of Technology, Coimbatore, he became interested in the message and mission of Srila Prabhupada. Later, he joined the Indian Institute of Science, Bangalore, for the Masters programme in Electrical Communication Engineering. He became a full-time dedicated member of ISKCON Bangalore in 1984 and has conceived various spiritual, cultural and social development programmes in the service of humanity. He led the creation of Little Krishna, a world-class animation series on the childhood pastimes of Krishna. He is the Vice Chairman of Akshaya Patra and directs the strategy, growth, and governance of the Foundation.",
+      "Chanchalapathi Dasa is the Vice Chairman of the Governing Body Committee and Senior Vice President of ISKCON Bangalore. He is also the President of Vrindavan Chandrodaya Mandir, a unique heritage and culture tourism infrastructure project poised to become the tallest Krishna temple in the world."
     ]
   },
   {
     id: 3,
-    name: "Yudishtira Krishna Dasa",
-    title: "Vice President",
-    image: "/images.jpg",
+    name: "Jai Chaitanya Dasa",
+    title: "Governing Body Member",
+    image: "https://hkmdehradun.org/assets/images/jai-chaitanya-dasa.jpeg",
     bio: [
-      "A meritorious student, Yudishtira Krishna Dasa joined M.S. Ramaiah Medical College, Bangalore. During his first year, he encountered Krishna Consciousness and dedicated his life to Srila Prabhupada's mission in 1997.",
-      "He served as Head of Operations of The Akshaya Patra Foundation in Hubli (2004–2008), overseeing the world's largest kitchen at over 200,000 meals per day. He later built Akshaya Patra infrastructure in Bellary for 150,000 children daily.",
-      "He now leads resource mobilisation and community outreach for Hare Krishna Dehradun, bringing his operational expertise to the mission of Krishna consciousness in Uttarakhand."
+      "Jai Chaitanya Dasa was born in 1966 in Trivandradrum Kerala. He came in touch with the teachings of Srila Prabhupada while pursuing his undergraduate course in Commerce at the Mahatma Gandhi College, Trivandrum. He joined ISKCON Bangalore in 1984. He has a deep understanding of the Pancharatra system of Deity worship and meticulously introduced this authentic Vedic tradition in the temples of the movement.",
+      "Jai Chaitanya Dasa is a pioneer of ISKCON Bangalore’s organic farming and rural development programs. He was the President of the Bio-Dynamic Association of India and Secretary of the Asian Fairtrade Producers Association. He has strived to establish self-sufficient farm communities by practising sustainable organic agriculture and develop effective marketing strategies for their produce. He envisions a society where every individual can live in harmony with nature in a caring, giving and responsible manner. He is a member of the Governing Body Committee and serves as the Temple President of Hare Krishna Movement, Chennai. He is also the Project Director of the Krishna Lila Theme Park in Bangalore."
+    ]
+  },
+  {
+    id: 4,
+    name: "Stoka Krishna Swami",
+    title: "Governing Body Member",
+    image: "https://hkmdehradun.org/assets/images/stoka-krishna-swami.jpeg",
+    bio: [
+      "Stoka Krishna Swami was born in 1960 in Mysore, Karnataka. He completed his Bachelors in Electrical Engineering from REC Nagpur. He worked as a lecturer in Malnad College of Engineering, Hassan. Before joining ISKCON in 1989, he also worked for Infosys Technologies Ltd. and Tata Boroughs Ltd. He accepted Sanyasa, the renounced order of spiritual life in 2018. He is a respected teacher and speaker on the philosophy of Krishna Consciousness.",
+      "Stoka Krishna Swami is a member of Governing Body Committee of the Hare Krishna Movement. He is currently heading the activities of the Hare Krishna Movement, Chennai. He is also serving as the Dean of Vaishnava Studies and regularly conducts Vaishnava philosophical courses like Bhakti Shastri for devotees across India. He was the President of ISKCON Mysore and initiated several programs for the holistic development of local communities."
+    ]
+  },
+  {
+    id: 5,
+    name: "Amitasana Dasa",
+    title: "Governing Council Member",
+    image: "https://hkmdehradun.org/assets/images/amitasana-dasa.jpeg",
+    bio: [
+      "Amitasana Dasa was born in 1969 in Namrup, Assam, India. He completed B. Tech. in Computer Science from REC Kurukshetra. He later worked in Kirloskar Computer Services, Bangalore and joined ISKCON Bangalore in 1992. He has organised seminars, workshops and counselling programs to benefit students and professionals from all over the country. He has guided hundreds of people, especially youth, to lead a life of happiness and fulfilment.",
+      "Amitasana Dasa is the President of Hare Krishna Movement, Mumbai and Governing Council Member of Hare Krishna Movement, India. He is also the President of Akshaya Patra operations in Maharashtra. Under his leadership, the Foundation has implemented several development initiatives in the region."
+    ]
+  },
+  {
+    id: 6,
+    name: "Vasudev Keshav Dasa",
+    title: "Treasurer & Zonal Secretary",
+    image: "https://hkmdehradun.org/assets/images/vasudev-keshava-dasa.jpeg",
+    bio: [
+      "Vasudev Keshav Dasa was born in 1973 in Kolkata, West Bengal. He studied B.Tech in Electronics and Communication Engineering from REC Warangal and worked in Wipro Systems as a Systems Engineer. He joined ISKCON Bangalore as a full-time missionary in 1998. As the Head of the Deities related services, he has ensured that high standards of worship are maintained in the temples of the Hare Krishna Movement.",
+      "He is serving as the Treasurer and Zonal Secretary of Governing Body Committee and the Vice President of ISKCON Bangalore. He is also the Dean of the National Institute of Value Education (NIVE), which is imparting Value Education to hundreds of children so that they grow to become responsible citizens. He has designed learning programs to bring about holistic development in young minds by enriching their physical, mental and spiritual well-being."
+    ]
+  },
+  {
+    id: 7,
+    name: "Rajiv Lochan Dasa",
+    title: "Zonal Secretary",
+    image: "https://hkmdehradun.org/assets/images/rajeev-lochan-das.jpeg",
+    bio: [
+      "Rajiv Lochan Dasa was born in Sonipat, Haryana. He studied Bachelors in Science at St. Joseph’s College (Bangalore) and joined ISKCON Bangalore in 1993. He is known for leading ecstatic kirtans and delivering inspiring lectures on Bhagavad-gita and Srimad Bhagavatam.",
+      "Rajiv Lochan Dasa is currently serving as Zonal Secretary of the Governing Body Committee, Hare Krishna Movement and Temple President, ISKCON Hubli. He is supervising the construction of a magnificent Radha Krishna Temple in Hubli. He is the President of Akshaya Patra in Hubli and leads the operations of the world’s largest kitchen there. This best-in-class infrastructure was showcased in National Geographic Channel’s popular documentary series called Mega Kitchens."
+    ]
+  },
+  {
+    id: 8,
+    name: "Satya Gaura Chandra Dasa",
+    title: "Zonal Secretary",
+    image: "https://hkmdehradun.org/assets/images/satyagoura-chandra-dasa.jpeg",
+    bio: [
+      "Satya Gaura Chandra Dasa was born in Rajahmundry, Andhra Pradesh. He is a Gold Medalist in B.Tech (Mechanical Engineering) at Jawaharlal Nehru Technological University, Kakinada. After completing M.Tech from IIT-Chennai, he worked in Novell, a multinational IT firm, before joining ISKCON Bangalore in 1997. He has rendered various services ranging from managing the temple administration to training and development of full-time missionaries.",
+      "He is currently serving as the Zonal Secretary of the Governing Body Committee and the President of Hare Krishna Movement, Hyderabad. He initiated the Hare Krishna Charitable Trust, which is extensively feeding the underprivileged sections of society. He is a Trustee of Akshaya Patra and heads its operations in Telangana and Andhra Pradesh. He has set up kitchens in Kandi, Narasingi, Vishakapatnam, Vijayawada and various other locations, thus enabling the Foundation to serve hygienic and nutritious mid-day meals to lakhs of children."
+    ]
+  },
+  {
+    id: 9,
+    name: "Sri Suvyakta Narasimha Dasa",
+    title: "Senior Vice President",
+    image: "https://hkmdehradun.org/assets/images/suvyakta-narasimha-dasa.jpeg",
+    bio: [
+      "Suvyakta Narasimha Dasa was born in 1973 in Moovattupuzha in Kerala. He completed B.E. (Mechanical) from M S Ramaiah Institute of Technology and secured 5th rank in Bangalore University. After graduation, he worked in Lincoln Helios India Ltd. as a Design Engineer. After becoming a full-time missionary of ISKCON Bangalore in 1999, he has been dedicating his skills and expertise for the welfare of society.",
+      "Suvyakta Narasimha Dasa successfully designed and operationalised Akshaya Patra’s centralised kitchens in Vrindavan, Lucknow, Jaipur and other locations. He has been instrumental in the setting up of the sprawling Vrindavan Chandrodaya Mandir campus. He is currently serving as Senior Vice President of Hare Krishna Movement, Chennai and also overseeing the operations of Akshaya Patra in Tamil Nadu."
     ]
   }
 ];
+
 
 const values = [
   { Icon: IconLotus,    title: 'Devotion First',       desc: 'Every decision flows from love for Lord Sri Krishna and the direct instructions of Srila Prabhupada.' },
@@ -230,303 +289,114 @@ export default function GovernancePage() {
     <div className="min-h-screen bg-[#faf8f5] text-gray-900 font-sans overflow-x-hidden" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='800' height='400' viewBox='0 0 800 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23cca75b' stroke-width='2' opacity='0.2'%3E%3Cg transform='translate(100, 50) scale(1.5)'%3E%3Cpath d='M20 5C20 5 10 15 20 35C30 15 20 5 20 5Z'/%3E%3Cpath d='M20 35C10 30 5 20 10 12C15 12 18 25 20 35Z'/%3E%3Cpath d='M20 35C30 30 35 20 30 12C25 12 22 25 20 35Z'/%3E%3C/g%3E%3Cg transform='translate(300, 50) scale(1.5)'%3E%3Ccircle cx='20' cy='10' r='4'/%3E%3Cpath d='M20 15 L20 25 M10 20 L30 20 M10 35 C10 35 15 25 20 25 C25 25 30 35 30 35 M10 35 L30 35'/%3E%3C/g%3E%3Cg transform='translate(500, 50) scale(1.5)'%3E%3Ccircle cx='20' cy='20' r='10' stroke-dasharray='2 2'/%3E%3Cpath d='M20 10 C25 10 30 15 30 20 C30 25 25 30 20 30 C15 30 10 25 10 20 C10 17 12 15 15 15 C17 15 18 17 18 18 C18 19 17 20 16 20'/%3E%3Cpath d='M20 0L20 5 M20 35L20 40 M0 20L5 20 M35 20L40 20 M5 5L10 10 M30 30L35 35 M5 35L10 30 M30 10L35 5'/%3E%3C/g%3E%3Cg transform='translate(700, 50) scale(1.5)'%3E%3Cpath d='M12 25 L12 10 A3 3 0 0 1 18 10 L18 20 M18 15 L18 5 A3 3 0 0 1 24 5 L24 20 M24 15 L24 8 A3 3 0 0 1 30 8 L30 25 C30 35 20 40 12 35 C8 32 5 28 5 25 L5 15 A3 3 0 0 1 11 15 L11 25'/%3E%3Cpath d='M15 25 C18 25 20 27 20 30 C20 32 18 34 16 34 C14 34 12 32 12 30 C12 29 13 28 14 28'/%3E%3C/g%3E%3Cg transform='translate(200, 200) scale(1.5)'%3E%3Ccircle cx='20' cy='6' r='4'/%3E%3Cpath d='M12 16 Q20 13 28 16 L33 28 Q28 25 20 25 Q12 25 7 28 Z'/%3E%3Cpath d='M20 18 L20 24'/%3E%3Cpath d='M5 32 Q20 27 35 32 Q30 38 20 38 Q10 38 5 32 Z'/%3E%3C/g%3E%3Cg transform='translate(400, 200) scale(1.5)'%3E%3Cpath d='M22 5 A 15 15 0 1 0 22 35 A 12 12 0 1 1 22 5 Z'/%3E%3Cpath d='M8 20 L12 20 M10 18 L10 22'/%3E%3C/g%3E%3Cg transform='translate(600, 200) scale(1.5)'%3E%3Cpath d='M20 5 C28 5 30 15 20 18 C18 12 22 10 20 5'/%3E%3Cpath d='M10 25 C5 18 10 10 16 16 C12 18 10 15 10 25'/%3E%3Cpath d='M30 25 C35 18 30 10 24 16 C28 18 30 15 30 25'/%3E%3Cpath d='M10 25 Q20 35 30 25'/%3E%3Ccircle cx='20' cy='22' r='2'/%3E%3C/g%3E%3C/g%3E%3Ctext x='400' y='140' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Krishna Hare Krishna, Krishna Krishna Hare Hare%3C/text%3E%3Ctext x='400' y='165' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Rama Hare Rama, Rama Rama Hare Hare%3C/text%3E%3Ctext x='400' y='340' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Krishna Hare Krishna, Krishna Krishna Hare Hare%3C/text%3E%3Ctext x='400' y='365' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Rama Hare Rama, Rama Rama Hare Hare%3C/text%3E%3C/svg%3E\")", backgroundRepeat: 'repeat', backgroundSize: '600px 300px' }}>
 
       {/* ── PAGE HEADER ───────────────────────────────────────────── */}
-      <div className="pt-32 pb-8 px-5 text-center relative z-10">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#072149] tracking-tighter uppercase">
-          GOVERNANCE
+      <div className="pt-36 pb-8 px-5 max-w-7xl mx-auto relative z-10">
+        <h1 className="text-4xl md:text-5xl font-medium text-black tracking-tight">
+          Governance
         </h1>
-        <div className="mt-6 flex justify-center">
-          <div className="h-1 w-24 bg-amber-400" />
+        <div className="mt-4">
+          <div className="h-1 w-24 bg-[#7a9cf6]" />
         </div>
       </div>
 
       {/* ── MAIN CONTENT ───────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-28">
 
-        {/* Mission statement */}
-        <Reveal className="max-w-2xl mx-auto text-center pt-20 pb-4">
-          <div className="w-10 h-10 mx-auto mb-6 text-[#072149]">
-            <IconTemple />
-          </div>
-          <h2 className="text-sm font-bold uppercase tracking-[0.25em] text-[#990000] mb-4">
-            Our Governing Mandate
-          </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-5">
-            Hare Krishna Dehradun is governed in accordance with the instructions of
-            Srila Prabhupada, Founder-Acharya of ISKCON. Every member of the Executive
-            Council serves with missionary zeal and professional expertise.
-          </p>
-          <blockquote className="border-l-4 border-amber-400 pl-5 text-left">
-            <p className="text-gray-700 leading-relaxed italic">
-              &ldquo;To broadcast the glories of Lord Sri Krishna and bring the nectar of
-              Krishna consciousness to every home in Dehradun, Uttarakhand, and beyond
-              &mdash; as taught by Srila Prabhupada.&rdquo;
-            </p>
-            <footer className="mt-2 text-xs font-semibold uppercase tracking-widest text-[#990000]">
-              Our Vision
-            </footer>
-          </blockquote>
-        </Reveal>
-
-        {/* Thin rule */}
-        <Reveal className="pt-16 pb-16">
-          <div className="flex items-center gap-4">
-            <div className="flex-1 h-px bg-gray-200" />
-            <div className="w-2 h-2 rounded-full bg-amber-400" />
-            <div className="flex-1 h-px bg-gray-200" />
-          </div>
-        </Reveal>
-
-        {/* Governing Values */}
-        <div className="pb-4">
-          <Reveal className="mb-12">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#990000] mb-2 text-center">
-              Principles
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#072149] text-center uppercase tracking-tight">
-              How We Are Guided
-            </h2>
-          </Reveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {values.map(({ Icon, title, desc }, i) => (
-              <Reveal key={i} delay={i * 0.07}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.2 }}
-                  className="group bg-white border border-gray-100 rounded-2xl p-8
-                    shadow-[0_2px_12px_rgba(7,33,73,0.06)] hover:shadow-[0_8px_28px_rgba(7,33,73,0.11)]
-                    transition-shadow duration-300">
-                  <div className="w-12 h-12 text-[#072149] mb-5 group-hover:text-[#990000] transition-colors duration-300">
-                    <Icon />
-                  </div>
-                  <h3 className="text-sm font-extrabold uppercase tracking-wider text-[#072149] mb-2">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-                </motion.div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* Section divider */}
-        <Reveal className="py-20">
-          <div className="flex items-center gap-4">
-            <div className="flex-1 h-px bg-gray-200" />
-            <div className="w-2 h-2 rounded-full bg-amber-400" />
-            <div className="flex-1 h-px bg-gray-200" />
-          </div>
-        </Reveal>
-
-        {/* Executive Council */}
-        <div>
-          <Reveal className="mb-12">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#990000] mb-2 text-center">
-              Leadership
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#072149] text-center uppercase tracking-tight">
-              Executive Council
-            </h2>
-          </Reveal>
-
-          <style dangerouslySetInnerHTML={{ __html: `
-            .leader-card {
-              position: relative;
-              border-radius: 18px;
-              width: 340px;
-              height: 460px;
-              background: #fff;
-              box-shadow: 0 2px 16px rgba(7,33,73,0.10);
-              transform-style: preserve-3d;
-              perspective: 2000px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-            .leader-cover {
-              top: 0; left: 0;
-              position: absolute;
-              width: 100%; height: 100%;
-              border-radius: 18px;
-              cursor: pointer;
-              transition: transform 0.6s cubic-bezier(0.4,0,0.2,1),
-                          box-shadow 0.4s ease;
-              transform-origin: left center;
-              box-shadow: 0 2px 16px rgba(7,33,73,0.12);
-              overflow: hidden;
-              z-index: 10;
-            }
-            .leader-card:hover .leader-cover {
-              transform: rotateY(-78deg);
-              box-shadow: 12px 12px 24px rgba(7,33,73,0.09);
-            }
-          `}} />
-
-          <div className="flex flex-wrap justify-center gap-8 py-8">
+        {/* Leaders Grid */}
+        <div className="mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {leaders.map((leader, idx) => (
               <motion.div
                 layoutId={`leader-${leader.id}`}
                 key={leader.id}
                 onClick={() => setSelectedId(leader.id)}
-                className="leader-card group cursor-pointer"
+                className="group cursor-pointer flex flex-col"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}>
-
-                {/* Inner page (visible on hover) */}
-                <div className="p-6 text-center h-full flex flex-col justify-center items-center
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-100 gap-3">
-                  <div className="w-10 h-10 text-[#072149] mb-1">
-                    <IconLotus />
-                  </div>
-                  <p className="text-sm font-bold uppercase tracking-widest text-[#990000]">
-                    {leader.title}
-                  </p>
-                  <h4 className="font-extrabold text-[#072149] text-2xl leading-tight">{leader.name}</h4>
-                  <p className="text-sm text-gray-500 leading-relaxed line-clamp-4">{leader.bio[0]}</p>
-                  <div className="mt-2 text-xs font-bold uppercase tracking-widest text-amber-500">
-                    Click to read bio
-                  </div>
-                </div>
-
-                {/* Cover */}
-                <div className="leader-cover">
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}>
+                
+                {/* Image Container */}
+                <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden mb-6 bg-gray-100">
                   <Image
                     src={leader.image}
                     alt={leader.name}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#06183a]/90 via-[#06183a]/15 to-transparent" />
-
-                  {/* Nameplate */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="w-8 h-[2px] bg-amber-400 mb-3" />
-                    <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-amber-400 mb-1">
-                      {leader.title}
-                    </p>
-                    <h3 className="text-2xl font-extrabold text-white leading-tight">
-                      {leader.name}
-                    </h3>
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5" />
+                  
+                  {/* Read Bio indicator */}
+                  <div className="absolute bottom-4 left-4 right-4 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="bg-white/95 backdrop-blur-sm text-black text-[15px] font-semibold py-3.5 px-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100/50">
+                      <span>View Profile</span>
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
                   </div>
+                </div>
+
+                {/* Text Content */}
+                <div className="flex flex-col px-1">
+                  <h3 className="text-[26px] font-semibold text-gray-900 tracking-tight leading-tight mb-1.5 group-hover:text-[#cca75b] transition-colors duration-300">
+                    {leader.name}
+                  </h3>
+                  <p className="text-[17px] font-medium text-gray-500">
+                    {leader.title}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Prabhupada Quote */}
-        <Reveal className="py-4">
-          <div className="bg-[#072149] rounded-2xl px-8 md:px-14 py-12 relative overflow-hidden">
-            <div className="absolute top-6 left-8 text-white/10 text-9xl font-serif leading-none select-none">
-              &ldquo;
-            </div>
-            <div className="relative z-10 max-w-2xl mx-auto text-center">
-              <div className="w-9 h-9 text-amber-400 mx-auto mb-6">
-                <IconLotus />
-              </div>
-              <p className="text-white/90 text-lg md:text-xl leading-relaxed italic mb-6">
-                Our mission is to serve, to spread the glories of Krishna, and to give every
-                soul the opportunity to return back to Godhead &mdash; back home.
-              </p>
-              <div className="w-8 h-px bg-amber-400 mx-auto mb-4" />
-              <p className="text-amber-400/80 text-xs uppercase tracking-[0.25em] font-bold">
-                Srila Prabhupada &bull; Founder-Acharya, ISKCON
-              </p>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* CTA */}
-        <Reveal className="pt-20">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#990000] mb-3">
-              Join the Mission
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#072149] uppercase tracking-tight mb-4">
-              Serve With Us
-            </h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-md mx-auto mb-8">
-              Whether as a devotee, volunteer, or donor &mdash; your service helps us bring
-              Krishna&apos;s grace to every corner of Uttarakhand.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <motion.a
-                href="/aspirations"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 bg-[#072149] text-white font-bold uppercase
-                  tracking-widest px-8 py-3.5 rounded-full text-xs shadow-md
-                  hover:bg-[#0a2d60] transition-colors duration-200">
-                Our Aspirations
-                <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </motion.a>
-              <motion.a
-                href="/"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 border border-[#072149]/30 text-[#072149] font-bold
-                  uppercase tracking-widest px-8 py-3.5 rounded-full text-xs
-                  hover:border-[#072149] transition-colors duration-200">
-                Visit Temple
-              </motion.a>
-            </div>
-          </div>
-        </Reveal>
-
       </div>
 
-      {/* ── LEADER MODAL ───────────────────────────────────────────── */}
+      {/* ── LEADER MODAL (Eternal Exact Style) ──────────────────────── */}
       <AnimatePresence>
         {selectedId && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setSelectedId(null)}
-              className="absolute inset-0 bg-black/55 backdrop-blur-[3px] cursor-pointer" />
-
+          <div className="fixed inset-0 z-50 flex bg-white overflow-y-auto">
             {leaders.map(leader => leader.id === selectedId && (
               <motion.div
                 layoutId={`leader-${leader.id}`}
                 key={leader.id}
-                className="relative bg-white w-full max-w-2xl max-h-[88vh] overflow-y-auto
-                  rounded-2xl shadow-2xl z-10">
-
-                {/* Header bar */}
-                <div className="relative h-48 sm:h-56 overflow-hidden rounded-t-2xl">
-                  <Image src={leader.image} alt={leader.name} fill className="object-cover object-top" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#06183a]/80 to-transparent" />
-                  <div className="absolute bottom-5 left-6 right-14">
-                    <div className="w-6 h-px bg-amber-400 mb-1.5" />
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-400 mb-0.5">
-                      {leader.title}
-                    </p>
-                    <h3 className="text-xl font-extrabold text-white">{leader.name}</h3>
+                className="w-full min-h-screen bg-white relative">
+                
+                <div className="flex flex-col-reverse md:flex-row px-6 lg:max-w-[1200px] mx-auto xl:p-0 gap-6 md:gap-[49px] sm:mt-[120px] mt-[60px] w-full">
+                  <div className="flex-1">
+                    <div className="flex flex-col">
+                      <div className="flex flex-col">
+                        <h1 className="text-2xl font-medium text-left text-[#0A0A0A] sm:text-[40px]">
+                          {leader.name}
+                        </h1>
+                        <h2 className="font-light text-left mt-3 text-[#414A5D] sm:text-[20px]">
+                          {leader.title}
+                        </h2>
+                      </div>
+                      <div className="text-left font-light mt-8 mb-12 whitespace-pre-line text-[#414A5D] sm:text-[20px] sm:mt-12 sm:mb-16">
+                        {leader.bio.map((para, i) => (
+                          <p key={i} className={i > 0 ? "mt-4" : ""}>{para}</p>
+                        ))}
+                      </div>
+                      
+                      <button 
+                        onClick={() => setSelectedId(null)}
+                        className="bg-[#0A0A0A] text-white py-3 px-6 text-sm md:text-base w-max mb-[60px] sm:mb-[120px] hover:bg-black/80 transition-colors">
+                        Show all Governance
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setSelectedId(null)}
-                    className="absolute top-4 right-4 bg-white/15 hover:bg-white/30 backdrop-blur-sm
-                      rounded-full p-2 transition-colors">
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 12L12 4M4 4l8 8" strokeLinecap="round" />
-                    </svg>
-                  </button>
+                  
+                  <div className="relative w-full aspect-[0.74] md:w-auto md:h-[437px] flex-shrink-0">
+                    <Image 
+                      src={leader.image} 
+                      alt={leader.name} 
+                      fill 
+                      className="object-cover block grayscale hover:grayscale-0 transition duration-700" 
+                    />
+                  </div>
                 </div>
 
-                {/* Bio */}
-                <div className="p-7 space-y-4">
-                  {leader.bio.map((para, i) => (
-                    <p key={i} className="text-gray-600 text-sm leading-relaxed">{para}</p>
-                  ))}
-                  <div className="pt-4 border-t border-gray-100 flex items-center gap-3">
-                    <div className="w-5 h-5 text-[#072149]"><IconLotus /></div>
-                    <p className="text-xs text-gray-400">
-                      Servant of Lord Sri Krishna &bull; Hare Krishna Dehradun
-                    </p>
-                  </div>
-                </div>
               </motion.div>
             ))}
           </div>

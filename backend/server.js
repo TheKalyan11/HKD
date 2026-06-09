@@ -1,46 +1,109 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
+const compression = require('compression');
+const hpp = require('hpp');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
+const {
+  apiLimiter,
+  sanitizeInput,
+  enforceHttps,
+  securityHeaders,
+} = require('./middleware/security');
+
+const { initRedis } = require('./services/cache');
+
 const app = express();
 
-// Enable Helmet to set security-focused HTTP headers
-app.use(helmet());
+// HTTPS enforcement in production (behind Cloudflare/nginx)
+app.use(enforceHttps);
 
-// Enable Cross-Origin Resource Sharing (CORS)
-app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  credentials: true
+// Trust first proxy (Cloudflare / nginx / load balancer)
+app.set('trust proxy', 1);
+
+// Helmet: comprehensive security headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://checkout.razorpay.com", "https://fonts.googleapis.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "https:", "blob:"],
+      connectSrc: ["'self'", "https://api.razorpay.com", "https://lux.razorpay.com", process.env.FRONTEND_URL || "http://localhost:3000"],
+      frameSrc: ["'self'", "https://api.razorpay.com"],
+      objectSrc: ["'none'"],
+      baseUri: ["'self'"],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
 }));
 
-// Apply Rate Limiting to prevent brute-force attacks and abuse
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200, // Max 200 requests per IP per window
-  message: { error: 'Too many requests from this IP, please try again later.' }
-});
-app.use('/api/', limiter);
+// Additional security headers
+app.use(securityHeaders);
+
+// GZIP/Brotli compression for all responses
+app.use(compression({
+  level: 6,
+  threshold: 1024,
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) return false;
+    return compression.filter(req, res);
+  },
+}));
+
+// HTTP Parameter Pollution protection
+app.use(hpp());
+
+// CORS with strict origin control
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:3000',
+  'https://hkmdehradun.org',
+  'https://www.hkmdehradun.org',
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  maxAge: 86400,
+}));
+
+// Rate limiting on all API routes
+app.use('/api/', apiLimiter);
 
 // Capture raw body for Razorpay webhook validation BEFORE parsing JSON
 app.post(
   '/api/payments/verify-webhook',
-  express.raw({ type: 'application/json' }),
-  (req, res, next) => {
-    next();
-  }
+  express.raw({ type: 'application/json', limit: '1mb' }),
+  (req, res, next) => { next(); }
 );
 
-// Standard JSON and form parsing for all other routes
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Standard JSON and form parsing with size limits
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
 
-// Setup global request logging
+// Input sanitization (XSS, NoSQL injection prevention)
+app.use(sanitizeInput);
+
+// Request logging
 app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} ${res.statusCode} ${duration}ms`);
+  });
   next();
 });
 
@@ -51,22 +114,39 @@ const cmsRoutes = require('./routes/cms');
 app.use('/api/payments', paymentRoutes);
 app.use('/api/cms', cmsRoutes);
 
-// Health check endpoint
+// Health check
 app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development',
   });
 });
 
-// Error handling middleware
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found.' });
+});
+
+// Global error handler — never leak stack traces
 app.use((err, req, res, next) => {
   console.error('Server error:', err.stack);
-  res.status(500).json({ error: 'Internal Server Error' });
+  const statusCode = err.status || 500;
+  res.status(statusCode).json({
+    error: process.env.NODE_ENV === 'production'
+      ? 'Internal Server Error'
+      : err.message,
+  });
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`[HKD Backend Server] Securely running on port ${PORT}`);
-});
+
+async function start() {
+  await initRedis();
+  app.listen(PORT, () => {
+    console.log(`[HKD Backend] Running on port ${PORT} | env: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
+
+start();

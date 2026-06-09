@@ -6,10 +6,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const galleryItems = [
   { id: 1, src: '/deity-1.jpg', title: 'Jhulan Yatra', subtitle: 'Divine Swing Festival' },
   { id: 2, src: '/deity-2.jpg', title: 'Janmashtami', subtitle: 'Appearance of Lord Krishna' },
-  { id: 3, src: '/annadan.jpg', title: 'Annadaan Seva', subtitle: 'Feeding the pilgrims' },
-  { id: 4, src: '/gau_seva.jpg', title: 'Gau Seva', subtitle: 'Serving the sacred cows' },
-  { id: 5, src: '/about-1.png', title: 'Temple Construction', subtitle: 'Building the grand monument' },
-  { id: 6, src: '/about-us.jpg', title: 'Community Outreach', subtitle: 'Spreading the holy name' },
+  { id: 3, src: '/darshan/DSC04178.JPG', title: 'Daily Darshan', subtitle: 'Divine Darshan' },
+  { id: 4, src: '/mandir-nirman/render-1.jpg', title: 'Mandir Nirman', subtitle: 'Temple Architecture' },
+  { id: 5, src: '/darshan/DSC04071.JPG', title: 'Radha Krishna Darshan', subtitle: 'Daily Darshan' },
+  { id: 6, src: '/mandir-nirman/render-2.jpg', title: 'Mandir Nirman', subtitle: 'Temple Architecture' },
   { id: 7, src: '/mandir_nitya_seva.png', title: 'Nitya Seva', subtitle: 'Daily deity worship' },
 ];
 
@@ -41,13 +41,13 @@ export default function CoverflowGallery() {
 
     const absOffset = Math.abs(offset);
     const sign = Math.sign(offset);
-    
+
     // Flat 3D scaling carousel
     let translateX = 0;
     let scale = 1;
     let zIndex = 10;
     let opacity = 1;
-    
+
     if (absOffset === 0) {
       translateX = 0;
       scale = 1;
@@ -64,7 +64,7 @@ export default function CoverflowGallery() {
       zIndex = 1;
       opacity = 0; // Hides images further out, keeping focus on the middle 3
     }
-    
+
     return {
       transform: `translateX(${translateX}%) scale(${scale})`,
       zIndex,
@@ -74,7 +74,7 @@ export default function CoverflowGallery() {
   };
 
   return (
-    <section 
+    <section
       className="relative w-full pt-16 pb-0 overflow-hidden bg-[#fdfdfd] flex flex-col min-h-[500px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -84,19 +84,19 @@ export default function CoverflowGallery() {
       {/* Top Left Title */}
       <div className="absolute top-12 left-6 md:left-16 lg:left-24 flex items-center gap-4 z-20">
         <span className="w-5 h-[2px] bg-gray-800"></span>
-        <h2 className="text-lg md:text-xl font-bold tracking-[0.15em] text-gray-800 font-sans uppercase">
+        <h2 className="text-lg md:text-xl font-medium tracking-[0.15em] text-gray-800 font-sans uppercase">
           GALLERY
         </h2>
       </div>
-      
+
       {/* Flat 3D Carousel Container */}
-      <div 
-        className="relative w-full max-w-[100vw] h-[300px] sm:h-[400px] md:h-[450px] flex justify-center items-center z-10 mt-12"
+      <div
+        className="relative w-full max-w-[100vw] h-[300px] sm:h-[400px] md:h-[450px] flex justify-center items-center z-10 mt-0"
       >
         {galleryItems.map((item, index) => {
           const style = getCardStyles(index);
           const isCenter = index === currentIndex;
-          
+
           return (
             <div
               key={item.id}
@@ -104,14 +104,15 @@ export default function CoverflowGallery() {
               style={style}
               onClick={() => setCurrentIndex(index)}
             >
-              <img 
-                src={item.src} 
-                alt={item.title} 
-                className="w-full h-full object-cover"
+              <img
+                src={item.src}
+                alt={item.title}
+                loading="lazy"
+                className="w-full h-full object-contain"
               />
               {/* Dark overlay for side images to highlight the center one */}
-              <div 
-                className={`absolute inset-0 bg-black/40 pointer-events-none transition-opacity duration-700 ${isCenter ? 'opacity-0' : 'opacity-100'}`} 
+              <div
+                className={`absolute inset-0 bg-black/40 pointer-events-none transition-opacity duration-700 ${isCenter ? 'opacity-0' : 'opacity-100'}`}
               />
             </div>
           );
@@ -119,20 +120,23 @@ export default function CoverflowGallery() {
       </div>
 
       {/* Navigation Arrows Bottom Center */}
-      <div className="mt-10 flex justify-center items-center gap-4 z-20">
-        <button 
-          onClick={handlePrev}
-          className="w-12 h-12 flex items-center justify-center rounded-full border-[1.5px] border-gray-400 text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:border-gray-600 transition-all active:scale-95 bg-transparent"
-          aria-label="Previous image"
-        >
-          <ChevronLeft className="w-5 h-5 stroke-[1.5]" />
+      <div className="flex justify-center items-center gap-4 z-20 mt-0">
+        {/* Styles moved to globals.css for faster navigation */}
+
+        <button className="button-3d" onClick={handlePrev} aria-label="Previous image">
+          <div className="button-top">
+            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>❮</span>
+          </div>
+          <div className="button-bottom" />
+          <div className="button-base" />
         </button>
-        <button 
-          onClick={handleNext}
-          className="w-12 h-12 flex items-center justify-center rounded-full border-[1.5px] border-gray-400 text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:border-gray-600 transition-all active:scale-95 bg-transparent"
-          aria-label="Next image"
-        >
-          <ChevronRight className="w-5 h-5 stroke-[1.5]" />
+
+        <button className="button-3d" onClick={handleNext} aria-label="Next image">
+          <div className="button-top">
+            <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>❯</span>
+          </div>
+          <div className="button-bottom" />
+          <div className="button-base" />
         </button>
       </div>
     </section>

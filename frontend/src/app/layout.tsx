@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lora } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 
 import { CmsProvider } from "@/components/CmsContext";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { AIChatbot } from "@/components/AIChatbot";
-import { AdminControlBar } from "@/components/AdminControlBar";
 
-import { SocialFloatWidget } from "@/components/SocialFloatWidget";
+const AIChatbot = dynamic(() => import("@/components/AIChatbot").then(m => m.AIChatbot), { ssr: false });
+const AdminControlBar = dynamic(() => import("@/components/AdminControlBar").then(m => m.AdminControlBar), { ssr: false });
+const SocialFloatWidget = dynamic(() => import("@/components/SocialFloatWidget").then(m => m.SocialFloatWidget), { ssr: false });
 
-const inter = Inter({ subsets: ["latin"] });
+const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
   title: "Hare Krishna Dharma Trust - Gau Seva & Annadana Seva",
@@ -30,7 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-cream-50 antialiased overflow-x-hidden max-w-[100vw] w-full`}>
+      <head>
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://hkmdehradun.org" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className={`${lora.className} bg-cream-50 antialiased overflow-x-hidden max-w-[100vw] w-full`}>
         <CmsProvider>
           {/* Header Navigation */}
           <Navbar />

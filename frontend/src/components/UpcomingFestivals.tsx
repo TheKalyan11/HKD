@@ -608,7 +608,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
 
-            <h2 className="text-4xl md:text-[44px] font-serif text-[#0a3d73] tracking-normal mb-1 font-bold">
+            <h2 className="text-4xl md:text-[44px] font-serif text-[#0a3d73] tracking-normal mb-1 font-medium">
               {isHomePage ? 'Upcoming Festivals' : 'Latest Events'}
             </h2>
 
@@ -670,13 +670,13 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             {/* Card 1: Jhulan Yatra */}
 
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
 
               <div className="w-full h-full relative">
 
                 <div className="w-full h-64 overflow-hidden rounded-2xl">
 
-                  <img src="/deity-1.jpg" alt="Jhulan Yatra" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                  <img src="/deity-1.jpg" alt="Jhulan Yatra" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
 
                 </div>
 
@@ -684,9 +684,9 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
                   <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
 
-                  <span className="text-lg font-bold font-serif block text-[#0a3d73]">Jhulan Yatra</span>
+                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Jhulan Yatra</span>
 
-                  <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">July 06 – July 14, 2025</span>
+                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">July 06 – July 14, 2025</span>
 
                   <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
 
@@ -704,13 +704,13 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             {/* Card 2: Janmashtami */}
 
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
 
               <div className="w-full h-full relative">
 
                 <div className="w-full h-64 overflow-hidden rounded-2xl">
 
-                  <img src="/deity-2.jpg" alt="Janmashtami" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                  <img src="/deity-2.jpg" alt="Janmashtami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
 
                 </div>
 
@@ -718,9 +718,9 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
                   <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
 
-                  <span className="text-lg font-bold font-serif block text-[#0a3d73]">Janmashtami</span>
+                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Janmashtami</span>
 
-                  <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">August 15, 2025</span>
+                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">August 15, 2025</span>
 
                   <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
 
@@ -738,13 +738,13 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             {/* Card 3: Radhashtami */}
 
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
 
               <div className="w-full h-full relative">
 
                 <div className="w-full h-64 overflow-hidden rounded-2xl">
 
-                  <img src="/deity-1.jpg" alt="Radhashtami" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                  <img src="/deity-1.jpg" alt="Radhashtami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
 
                 </div>
 
@@ -752,9 +752,9 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
                   <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
 
-                  <span className="text-lg font-bold font-serif block text-[#0a3d73]">Radhashtami</span>
+                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Radhashtami</span>
 
-                  <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">September 01, 2025</span>
+                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">September 01, 2025</span>
 
                   <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
 
@@ -771,15 +771,15 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
             {/* Card 4: Diwali */}
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
               <div className="w-full h-full relative">
                 <div className="w-full h-64 overflow-hidden rounded-2xl">
-                  <img src="/deity-2.jpg" alt="Diwali" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                  <img src="/deity-2.jpg" alt="Diwali" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
                 </div>
                 <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
                   <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                  <span className="text-lg font-bold font-serif block text-[#0a3d73]">Diwali</span>
-                  <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">October 20, 2025</span>
+                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Diwali</span>
+                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">October 20, 2025</span>
                   <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
                     The festival of lights symbolizing the victory of good over evil. Join us for puja, lights and joy.
                   </p>
@@ -790,15 +790,15 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
             {!isHomePage && (
               <>
                 {/* Card 5: Govardhan Puja */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-1.jpg" alt="Govardhan Puja" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                      <img src="/deity-1.jpg" alt="Govardhan Puja" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
                     </div>
                     <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
                       <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-bold font-serif block text-[#0a3d73]">Govardhan Puja</span>
-                      <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">November 01, 2025</span>
+                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Govardhan Puja</span>
+                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">November 01, 2025</span>
                       <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
                         Celebrating the day Lord Krishna lifted Govardhan Hill. Enjoy the grand Annakut offering and ecstatic kirtans.
                       </p>
@@ -807,15 +807,15 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 </div>
 
                 {/* Card 6: Gaura Purnima */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-2.jpg" alt="Gaura Purnima" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                      <img src="/deity-2.jpg" alt="Gaura Purnima" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
                     </div>
                     <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
                       <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-bold font-serif block text-[#0a3d73]">Gaura Purnima</span>
-                      <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">March 14, 2026</span>
+                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Gaura Purnima</span>
+                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">March 14, 2026</span>
                       <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
                         The auspicious appearance day of Sri Chaitanya Mahaprabhu. Join us for Maha Abhishek and fasting until moonrise.
                       </p>
@@ -824,15 +824,15 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 </div>
 
                 {/* Card 7: Rama Navami */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-1.jpg" alt="Rama Navami" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                      <img src="/deity-1.jpg" alt="Rama Navami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
                     </div>
                     <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
                       <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-bold font-serif block text-[#0a3d73]">Rama Navami</span>
-                      <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">April 06, 2026</span>
+                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Rama Navami</span>
+                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">April 06, 2026</span>
                       <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
                         Celebrate the birth of Lord Sri Ramachandra with special arati, readings from the Ramayana, and prasadam.
                       </p>
@@ -841,15 +841,15 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 </div>
 
                 {/* Card 8: Nityananda Trayodashi */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-2.jpg" alt="Nityananda Trayodashi" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                      <img src="/deity-2.jpg" alt="Nityananda Trayodashi" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
                     </div>
                     <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
                       <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-bold font-serif block text-[#0a3d73]">Nityananda Trayodashi</span>
-                      <span className="text-[10px] text-[#cca75b] font-extrabold tracking-widest uppercase block mb-2">February 11, 2026</span>
+                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Nityananda Trayodashi</span>
+                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">February 11, 2026</span>
                       <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
                         Honor the appearance of Lord Nityananda Prabhu, the most merciful incarnation, with ecstatic chanting and feasting.
                       </p>
@@ -872,223 +872,19 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
 
-        {/* View Gallery Button */}
+        {/* View All Festivals Button */}
         {isHomePage && (
         <div className="w-full flex justify-center mt-12 mb-4 relative z-20">
-          <style dangerouslySetInnerHTML={{
-            __html: `
-              .flower-btn {
-                height: 4em;
-                width: 14em;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: transparent;
-                border: 0px solid black;
-                cursor: pointer;
-              }
-
-              .flower-btn-wrapper {
-                height: 2em;
-                width: 11em;
-                position: relative;
-                background: transparent;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-
-              .flower-text {
-                font-size: 15px;
-                font-weight: bold;
-                font-family: serif;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                z-index: 1;
-                color: #000;
-                padding: 4px 12px;
-                border-radius: 4px;
-                background: rgba(255, 255, 255, 0.7);
-                transition: all 0.5s ease;
-              }
-
-              .flower-btn .flower {
-                display: grid;
-                grid-template-columns: 1em 1em;
-                position: absolute;
-                transition: grid-template-columns 0.8s ease;
-              }
-
-              .flower-btn .flower1 {
-                top: -12px;
-                left: -13px;
-                transform: rotate(5deg);
-              }
-
-              .flower-btn .flower2 {
-                bottom: -5px;
-                left: 8px;
-                transform: rotate(35deg);
-              }
-
-              .flower-btn .flower3 {
-                bottom: -15px;
-                transform: rotate(0deg);
-              }
-
-              .flower-btn .flower4 {
-                top: -14px;
-                transform: rotate(15deg);
-              }
-
-              .flower-btn .flower5 {
-                right: 11px;
-                top: -3px;
-                transform: rotate(25deg);
-              }
-
-              .flower-btn .flower6 {
-                right: -15px;
-                bottom: -15px;
-                transform: rotate(30deg);
-              }
-
-              .flower-btn .petal {
-                height: 1em;
-                width: 1em;
-                border-radius: 40% 70% / 7% 90%;
-                background: linear-gradient(#07a6d7, #93e0ee);
-                border: 0.5px solid #96d1ec;
-                z-index: 0;
-                transition: width 0.8s ease, height 0.8s ease;
-              }
-
-              .flower-btn .two {
-                transform: rotate(90deg);
-              }
-
-              .flower-btn .three {
-                transform: rotate(270deg);
-              }
-
-              .flower-btn .four {
-                transform: rotate(180deg);
-              }
-
-              .flower-btn:hover .petal {
-                background: linear-gradient(#0761d7, #93bdee);
-                border: 0.5px solid #96b4ec;
-              }
-
-              .flower-btn:hover .flower {
-                grid-template-columns: 1.5em 1.5em;
-              }
-
-              .flower-btn:hover .flower .petal {
-                width: 1.5em;
-                height: 1.5em;
-              }
-
-              .flower-btn:hover .flower-text {
-                background: rgba(255, 255, 255, 0.4);
-              }
-
-              .flower-btn:hover div.flower1 {
-                animation: 15s linear 0s normal none infinite running flower1;
-              }
-
-              @keyframes flower1 {
-                0% { transform: rotate(5deg); }
-                100% { transform: rotate(365deg); }
-              }
-
-              .flower-btn:hover div.flower2 {
-                animation: 13s linear 1s normal none infinite running flower2;
-              }
-
-              @keyframes flower2 {
-                0% { transform: rotate(35deg); }
-                100% { transform: rotate(-325deg); }
-              }
-
-              .flower-btn:hover div.flower3 {
-                animation: 16s linear 1s normal none infinite running flower3;
-              }
-
-              @keyframes flower3 {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-              }
-
-              .flower-btn:hover div.flower4 {
-                animation: 17s linear 1s normal none infinite running flower4;
-              }
-
-              @keyframes flower4 {
-                0% { transform: rotate(15deg); }
-                100% { transform: rotate(375deg); }
-              }
-
-              .flower-btn:hover div.flower5 {
-                animation: 20s linear 1s normal none infinite running flower5;
-              }
-
-              @keyframes flower5 {
-                0% { transform: rotate(25deg); }
-                100% { transform: rotate(-335deg); }
-              }
-
-              .flower-btn:hover div.flower6 {
-                animation: 15s linear 1s normal none infinite running flower6;
-              }
-
-              @keyframes flower6 {
-                0% { transform: rotate(30deg); }
-                100% { transform: rotate(390deg); }
-              }
-            `
-          }} />
-          <Link href="/events">
-            <button className="flower-btn">
-              <div className="flower-btn-wrapper">
-                <p className="flower-text">View All Festivals</p>
-                <div className="flower flower1">
-                  <div className="petal one" />
-                  <div className="petal two" />
-                  <div className="petal three" />
-                  <div className="petal four" />
-                </div>
-                <div className="flower flower2">
-                  <div className="petal one" />
-                  <div className="petal two" />
-                  <div className="petal three" />
-                  <div className="petal four" />
-                </div>
-                <div className="flower flower3">
-                  <div className="petal one" />
-                  <div className="petal two" />
-                  <div className="petal three" />
-                  <div className="petal four" />
-                </div>
-                <div className="flower flower4">
-                  <div className="petal one" />
-                  <div className="petal two" />
-                  <div className="petal three" />
-                  <div className="petal four" />
-                </div>
-                <div className="flower flower5">
-                  <div className="petal one" />
-                  <div className="petal two" />
-                  <div className="petal three" />
-                  <div className="petal four" />
-                </div>
-                <div className="flower flower6">
-                  <div className="petal one" />
-                  <div className="petal two" />
-                  <div className="petal three" />
-                  <div className="petal four" />
-                </div>
-              </div>
+          <Link href="/events" className="no-underline">
+            <button className="relative px-10 py-4 rounded-full text-[#0c4a8a] font-medium tracking-widest uppercase text-sm bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_0_rgba(12,74,138,0.1)] hover:bg-white/60 hover:shadow-[0_8px_32px_0_rgba(12,74,138,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden group flex items-center justify-center font-serif">
+              <span className="relative z-10 flex items-center gap-2 drop-shadow-sm">
+                View All Festivals
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform duration-300">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent group-hover:translate-x-full transition-transform duration-1000 ease-in-out skew-x-12" />
             </button>
           </Link>
         </div>

@@ -13,7 +13,7 @@ export default function FeatureCard({ title, imageSrc, shortDescription, detaile
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div className="group relative w-full h-full min-h-[560px] flex flex-col [perspective:1000px]">
+    <div className="group relative w-full h-full min-h-[560px] flex flex-col [perspective:1000px] font-card">
       <div className={`relative w-full flex-1 flex flex-col transition-transform duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
         
         {/* FRONT FACE */}
@@ -25,6 +25,7 @@ export default function FeatureCard({ title, imageSrc, shortDescription, detaile
                 <img
                   src={imageSrc}
                   alt={typeof title === 'string' ? title : 'Feature'}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
@@ -32,7 +33,7 @@ export default function FeatureCard({ title, imageSrc, shortDescription, detaile
 
               <div className="pt-6 px-5 flex-1 flex flex-col justify-between items-center text-center pb-6 w-full">
                 <div className="flex flex-col items-center w-full">
-                  <h3 className="text-lg font-serif text-[#0c4a8a] font-bold mb-0.5 uppercase tracking-wider h-12 flex items-center justify-center leading-snug">
+                  <h3 className="text-lg font-serif text-[#0c4a8a] font-medium mb-0.5 uppercase tracking-wider h-12 flex items-center justify-center leading-snug">
                     {title}
                   </h3>
 
@@ -73,7 +74,7 @@ export default function FeatureCard({ title, imageSrc, shortDescription, detaile
             <div className="sazzad-bg !p-8 flex flex-col justify-between items-center text-center">
               
               <div className="flex-1 w-full overflow-y-auto custom-scrollbar pr-2 flex flex-col items-center">
-                <h3 className="text-xl font-serif text-[#0c4a8a] font-bold mb-2 uppercase tracking-wider mt-2">
+                <h3 className="text-xl font-serif text-[#0c4a8a] font-medium mb-2 uppercase tracking-wider mt-2">
                   {title}
                 </h3>
                 

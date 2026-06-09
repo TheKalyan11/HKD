@@ -250,16 +250,11 @@ Apara Ekadashi is a powerful opportunity for spiritual purification and growth. 
               key={index} 
               className="relative flex flex-col justify-between p-8 sm:p-10 min-h-[400px] lg:min-h-[480px] bg-cover bg-center overflow-hidden"
               style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('${blog.image}')`
+                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('${blog.image}')`
               }}
             >
               <div className="mt-2 z-10">
-                <h2 
-                  className="text-[12vw] sm:text-[9vw] md:text-[5.5vw] lg:text-[3.8vw] xl:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter text-white break-normal drop-shadow-lg"
-                  style={{ 
-                    fontFamily: 'Impact, Arial Black, sans-serif'
-                  }}
-                >
+                <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold uppercase leading-tight tracking-wide text-white drop-shadow-lg">
                   {blog.titleLines.map((line, i) => (
                     <span key={i} className="block">{line}</span>
                   ))}

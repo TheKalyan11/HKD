@@ -29,37 +29,37 @@ const NAV_COLS = [
   {
     title: 'Explore',
     links: [
-      { label: 'Home',     href: '/' },
-      { label: 'About Us', href: '/#about' },
-      { label: 'History',  href: '/#history' },
-      { label: 'Services', href: '/#services' },
+      { label: 'Our Mission & Objectives',        href: '/about' },
+      { label: 'Gita Life Courses',               href: '/gita-life' },
+      { label: 'Book Distribution',               href: '/book-distribution' },
+      { label: 'Bhagavad Gita Book Distribution', href: '/book-distribution' },
     ],
   },
   {
     title: 'Links',
     links: [
-      { label: 'Spiritual Teachings',    href: '/blog' },
-      { label: 'Cultural Programs',      href: '/events' },
-      { label: 'Community Initiatives',  href: '/donate' },
-      { label: 'Resource Repository',    href: '/gallery' },
+      { label: 'Daily Darshan',  href: '/daily-darshan' },
+      { label: 'Mandir Nirman', href: '/mandir-nirman' },
+      { label: 'Latest Events',  href: '/events' },
     ],
   },
   {
-    title: 'Events',
+    title: 'Latest Events',
     links: [
-      { label: 'Main Festivals',   href: '/events' },
-      { label: 'Monthly Programs', href: '/events' },
-      { label: 'Temple Activities',href: '/events' },
-      { label: 'Event Gallery',    href: '/gallery' },
+      { label: 'Janmashtami Mahotsav',  href: '/events' },
+      { label: 'Gaura Purnima Festival', href: '/events' },
+      { label: 'Rath Yatra',            href: '/events' },
+      { label: 'Diwali Celebration',    href: '/events' },
     ],
   },
   {
-    title: 'Temple',
+    title: 'Donate Now',
     links: [
-      { label: 'Pooja Timings',  href: '/#pooja' },
-      { label: 'Contact Us',     href: '/#contact' },
-      { label: 'Donate Online',  href: '/donate' },
-      { label: 'Plan Your Visit',href: '/#visit' },
+      { label: 'Gau Seva',               href: '/gau-seva' },
+      { label: 'Annadana Seva',          href: '/annadana-seva' },
+      { label: 'Child Annadana Seva',    href: '/child-annadana-seva' },
+      { label: 'Khichdi Prasadam Seva',  href: '/khichdi-prasadam-seva' },
+      { label: 'Ekadashi Seva',          href: '/ekadashi-seva' },
     ],
   },
 ];
@@ -71,68 +71,16 @@ export function Footer() {
   return (
     <footer className="relative bg-white pt-24 pb-12 overflow-hidden border-t border-gray-100 font-sans">
       
-      {/* ── Realistic Animations ── */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        /* Wing Flapping */
-        @keyframes flap {
-          0%, 100% { transform: scaleY(1); }
-          50%      { transform: scaleY(-0.6); }
-        }
-        .bird-flap {
-          transform-origin: 30px 15px;
-          animation: flap 0.8s infinite ease-in-out;
-        }
-        
-        /* Subtle natural gliding near the spire */
-        @keyframes glide1 {
-          0%, 100% { transform: translate(0, 0) scale(0.6); }
-          50%      { transform: translate(-15px, -10px) scale(0.6); }
-        }
-        @keyframes glide2 {
-          0%, 100% { transform: translate(0, 0) scale(0.5); }
-          50%      { transform: translate(12px, -8px) scale(0.5); }
-        }
-
-        .bird-1 { animation: glide1 8s ease-in-out infinite; }
-        .bird-2 { animation: glide2 10s ease-in-out infinite; }
-        
-        .bird-1 .bird-flap { animation-duration: 0.7s; }
-        .bird-2 .bird-flap { animation-duration: 0.9s; }
-
-        .footer-link {
-          color: #4b5563; /* gray-600 */
-          font-size: 0.95rem;
-          transition: color 0.2s ease, transform 0.2s ease;
-          display: inline-block;
-          font-weight: 500;
-        }
-        .footer-link:hover { 
-          color: #0f4c81; /* Blue theme accent */
-          transform: translateX(2px);
-        }
-
-        .social-icon {
-          width: 36px; height: 36px;
-          display: flex; align-items: center; justify-content: center;
-          color: #0f4c81; /* Matching blue theme */
-          transition: all 0.2s ease;
-          background: transparent;
-          border-radius: 50%;
-        }
-        .social-icon:hover {
-          color: #111827;
-          background: #f3f4f6;
-          transform: translateY(-2px);
-        }
-      ` }} />
+      {/* Styles moved to globals.css for faster navigation */}
 
       {/* ── Background Temple (footer.png shifted "up side" to sit right above the divider line) ── */}
-      <div className="absolute z-0 pointer-events-none select-none hidden xl:block transition-all duration-500" style={{ width: '480px', right: '0%', bottom: '90px' }}>
+      <div className="absolute z-0 pointer-events-none select-none hidden xl:block transition-all duration-500" style={{ width: '480px', right: '0%', bottom: '150px' }}>
         <div className="relative w-full h-full">
-          <img 
-            src="/footer.png" 
-            alt="Temple" 
-            className="w-full h-auto object-contain block opacity-100 transform origin-bottom hover:scale-[1.02] transition-transform duration-700" 
+          <img
+            src="/footer.png"
+            alt="Temple"
+            loading="lazy"
+            className="w-full h-auto object-contain block opacity-100 transform origin-bottom hover:scale-[1.02] transition-transform duration-700"
           />
           {/* Soft gradient bottom fade so the trees sit elegantly on top of the blue line */}
           <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white to-transparent opacity-40" />
@@ -165,39 +113,18 @@ export function Footer() {
               />
             </div>
             
-            <p className="text-gray-500 text-[14px] leading-relaxed mb-8 max-w-[340px] font-medium">
-              Serving the holy land of Vraja, establishing exemplary standards for animal welfare (Gau Seva), hot prasadam distribution, and spiritual development.
-            </p>
-            
-            {/* Social Icons (styled matching reference) */}
-            <div className="flex items-center gap-3">
-              {/* X (Twitter) */}
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X" className="social-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              {/* Instagram */}
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                </svg>
-              </a>
-              {/* LinkedIn */}
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
-                </svg>
-              </a>
-              {/* YouTube */}
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="social-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" />
-                </svg>
-              </a>
+            <div className="text-gray-500 text-[16px] leading-relaxed mb-8 max-w-full font-medium space-y-3">
+              <p>Hare Krishna Mandir is run by Hare Krishna Movement Dehradun, a registered trust.</p>
+              <p>
+                <strong>Address:</strong><br />
+                Khasra No. 801, Suddhowala,<br />
+                Near IIM Kashipur Satellite Campus,<br />
+                Dehradun 248015
+              </p>
+              <p>
+                <strong>Phone:</strong> +91 9398710996<br />
+                <strong>Email:</strong> contact@hkmdehradun.org
+              </p>
             </div>
           </div>
 
@@ -205,7 +132,7 @@ export function Footer() {
           <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 xl:pr-[240px]">
             {NAV_COLS.map((col) => (
               <div key={col.title}>
-                <h4 className="font-bold text-[#0f4c81] text-[17px] tracking-wide">
+                <h4 className="font-medium text-[#0f4c81] text-[17px] tracking-wide">
                   {col.title}
                 </h4>
                 {/* Horizontal Gold Line under Header */}
@@ -227,15 +154,17 @@ export function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col items-center justify-center gap-4 text-center">
           <p className="text-sm text-gray-500 font-semibold">
-            © {new Date().getFullYear()} Hare Krishna Dharma Trust. All rights reserved.
+            © HARE KRISHNA MOVEMENT DEHRADUN. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4 text-sm font-semibold text-gray-500">
             <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
             <span className="text-[#eab308] font-bold">|</span>
-            <Link href="/terms"   className="hover:text-gray-900 transition-colors">Terms of Service</Link>
+            <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms &amp; Conditions</Link>
+            <span className="text-[#eab308] font-bold">|</span>
+            <Link href="/refund-policy" className="hover:text-gray-900 transition-colors">Refund Policy</Link>
           </div>
         </div>
 

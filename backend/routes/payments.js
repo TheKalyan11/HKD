@@ -8,6 +8,7 @@ const { validateWebhookSignature } = require('razorpay/dist/utils/razorpay-utils
 
 const { db, admin } = require('../services/firebase');
 const { generateReceiptPdf } = require('../services/pdfGenerator');
+const { paymentLimiter } = require('../middleware/security');
 const { sendDonationEmailReceipt } = require('../services/email');
 const { sendDonationConfirmation } = require('../services/whatsapp');
 
@@ -31,11 +32,20 @@ try {
  * Route: Create dynamic order for a donation checkout
  * POST /api/payments/create-order
  */
-router.post('/create-order', async (req, res) => {
+router.post('/create-order', paymentLimiter, async (req, res) => {
   const { amount, donorName, email, phone, sevaCategory, panNumber } = req.body;
 
   if (!amount || !donorName || !email || !phone || !sevaCategory) {
     return res.status(400).json({ error: 'Required donor fields are missing.' });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: 'Invalid email address.' });
+  }
+
+  if (typeof amount !== 'number' || amount < 1 || amount > 10000000) {
+    return res.status(400).json({ error: 'Invalid donation amount.' });
   }
 
   // Convert to paise for Razorpay
