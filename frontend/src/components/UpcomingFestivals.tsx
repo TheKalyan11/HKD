@@ -670,7 +670,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             {/* Card 1: Jhulan Yatra */}
 
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
 
               <div className="w-full h-full relative">
 
@@ -704,7 +704,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             {/* Card 2: Janmashtami */}
 
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
 
               <div className="w-full h-full relative">
 
@@ -738,7 +738,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             {/* Card 3: Radhashtami */}
 
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
 
               <div className="w-full h-full relative">
 
@@ -771,7 +771,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
             {/* Card 4: Diwali */}
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
               <div className="w-full h-full relative">
                 <div className="w-full h-64 overflow-hidden rounded-2xl">
                   <img src="/deity-2.jpg" alt="Diwali" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
@@ -790,7 +790,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
             {!isHomePage && (
               <>
                 {/* Card 5: Govardhan Puja */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
                       <img src="/deity-1.jpg" alt="Govardhan Puja" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
@@ -807,7 +807,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 </div>
 
                 {/* Card 6: Gaura Purnima */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
                       <img src="/deity-2.jpg" alt="Gaura Purnima" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
@@ -824,7 +824,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 </div>
 
                 {/* Card 7: Rama Navami */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
                       <img src="/deity-1.jpg" alt="Rama Navami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
@@ -841,7 +841,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 </div>
 
                 {/* Card 8: Nityananda Trayodashi */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full h-[400px] bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
+                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
                   <div className="w-full h-full relative">
                     <div className="w-full h-64 overflow-hidden rounded-2xl">
                       <img src="/deity-2.jpg" alt="Nityananda Trayodashi" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />

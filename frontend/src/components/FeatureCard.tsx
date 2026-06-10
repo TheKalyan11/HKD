@@ -13,7 +13,7 @@ export default function FeatureCard({ title, imageSrc, shortDescription, detaile
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div className="group relative w-full h-full min-h-[560px] flex flex-col [perspective:1000px] font-card">
+    <div className="group relative w-full h-full min-h-[480px] sm:min-h-[560px] flex flex-col [perspective:1000px] font-card">
       <div className={`relative w-full flex-1 flex flex-col transition-transform duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
         
         {/* FRONT FACE */}

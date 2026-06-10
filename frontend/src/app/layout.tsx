@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 
 import { CmsProvider } from "@/components/CmsContext";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-const AIChatbot = dynamic(() => import("@/components/AIChatbot").then(m => m.AIChatbot), { ssr: false });
-const AdminControlBar = dynamic(() => import("@/components/AdminControlBar").then(m => m.AdminControlBar), { ssr: false });
-const SocialFloatWidget = dynamic(() => import("@/components/SocialFloatWidget").then(m => m.SocialFloatWidget), { ssr: false });
+const AdminControlBar = dynamic(() => import("@/components/AdminControlBar"), { ssr: false });
+const SocialFloatWidget = dynamic(() => import("@/components/SocialFloatWidget"), { ssr: false });
 
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
@@ -52,7 +52,10 @@ export default function RootLayout({
           <Footer />
 
           {/* Floated Support Overlays */}
-          <AIChatbot />
+          <Script id="chatling-config" strategy="lazyOnload">
+            {`window.chtlConfig = { chatbotId: "2451993731" }`}
+          </Script>
+          <Script async data-id="2451993731" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js" strategy="lazyOnload" />
           <AdminControlBar />
           <SocialFloatWidget />
         </CmsProvider>

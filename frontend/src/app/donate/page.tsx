@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Script from "next/script";
 import Link from "next/link";
-
+import RespectedContributors from "@/components/RespectedContributors";
 /* ── Scroll-triggered reveal ──────────────────────────── */
 function Reveal({
   children,
@@ -126,10 +126,10 @@ export default function DonatePage() {
       </div>
 
       {/* ── HERO SECTION ─────────────────────────────────────── */}
-      <section className="relative pt-24 lg:pt-32 pb-4 overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10 flex flex-col">
+      <section className="relative pt-20 sm:pt-24 lg:pt-32 pb-4 overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 relative z-10 flex flex-col">
           <Reveal delay={100}>
-            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] text-[#111] tracking-tight mb-2" style={{ fontWeight: 400, lineHeight: 1.15 }}>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] text-[#111] tracking-tight mb-2" style={{ fontWeight: 400, lineHeight: 1.15 }}>
               Join us in the service of Lord.<br />
               <span className="relative inline-block pb-2">
                 Charitable Sevas.
@@ -153,32 +153,34 @@ export default function DonatePage() {
       </section>
 
       {/* ── SEVA CARDS SECTION ────────────────────────────────── */}
-      <section className="pt-8 pb-24 lg:pt-12 lg:pb-32 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+      <section className="pt-6 sm:pt-8 pb-12 lg:pt-12 lg:pb-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 lg:gap-10">
             {sevaCards.map((seva, i) => (
               <Reveal key={i} delay={i * 100} direction="up">
                 <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(7,33,73,0.08)] border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
                   {/* Image Container */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#072149]/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-[#072149]/5 to-[#072149]/15">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <img
                       src={seva.image}
                       alt={seva.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-[0.25,1,0.5,1]"
+                      loading="lazy"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 flex flex-col flex-grow relative bg-white z-20">
-                    <h3 className="text-2xl text-[#072149] mb-4" style={{ fontWeight: 800 }}>
+                  <div className="p-5 sm:p-8 flex flex-col flex-grow relative bg-white z-20">
+                    <h3 className="text-lg sm:text-2xl text-[#072149] mb-3 sm:mb-4" style={{ fontWeight: 800 }}>
                       {seva.title}
                     </h3>
-                    <p className="text-[#072149]/60 text-sm leading-relaxed mb-8 flex-grow">
+                    <p className="text-[#072149]/60 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-8 flex-grow">
                       {seva.desc}
                     </p>
-                    
-                    <div className="pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
+
+                    <div className="pt-4 sm:pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
                       <span className="text-sm text-[#072149]/40 font-medium tracking-wide uppercase">Donate Now</span>
                       {seva.link ? (
                         <Link
@@ -201,6 +203,11 @@ export default function DonatePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ── RESPECTED CONTRIBUTORS SECTION ──────────────────────── */}
+      <section className="pb-16 sm:pb-24 lg:pb-32 relative z-10">
+        <RespectedContributors />
       </section>
     </main>
   );

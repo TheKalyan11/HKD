@@ -82,7 +82,7 @@ export default function CoverflowGallery() {
       onTouchEnd={() => setIsPaused(false)}
     >
       {/* Top Left Title */}
-      <div className="absolute top-12 left-6 md:left-16 lg:left-24 flex items-center gap-4 z-20">
+      <div className="absolute top-16 md:top-12 left-6 md:left-16 lg:left-24 flex items-center gap-4 z-20">
         <span className="w-5 h-[2px] bg-gray-800"></span>
         <h2 className="text-lg md:text-xl font-medium tracking-[0.15em] text-gray-800 font-sans uppercase">
           GALLERY
@@ -100,7 +100,7 @@ export default function CoverflowGallery() {
           return (
             <div
               key={item.id}
-              className="absolute w-[280px] h-[200px] sm:w-[450px] sm:h-[300px] md:w-[650px] md:h-[400px] rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.25)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer bg-white"
+              className="absolute w-[75vw] h-[55vw] sm:w-[450px] sm:h-[300px] md:w-[650px] md:h-[400px] rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.25)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer bg-white"
               style={style}
               onClick={() => setCurrentIndex(index)}
             >

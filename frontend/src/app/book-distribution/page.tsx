@@ -156,7 +156,7 @@ export default function BookDistributionPage() {
                   </p>
                 </div>
                 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl text-[#072149] mb-6 leading-[1.1] font-bold drop-shadow-[0_2px_10px_rgba(255,255,255,1)]">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-[#072149] mb-6 leading-[1.1] font-bold drop-shadow-[0_2px_10px_rgba(255,255,255,1)]">
                   Bhagavad Gita <br className="hidden md:block" />
                   <span className="font-instrument italic text-amber-600 font-medium">
                     Book Distribution

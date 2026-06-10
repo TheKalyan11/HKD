@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useCms } from '@/components/CmsContext';
 
@@ -73,7 +74,7 @@ export default function Home() {
 
   const [latestBlogs, setLatestBlogs] = useState<any[]>([]);
 
-
+  const [selectedBlog, setSelectedBlog] = useState<any>(null);
 
   // Fetch latest ashram blog posts for "Latest Updates"
 
@@ -257,7 +258,7 @@ export default function Home() {
               <img
                 src={slide}
                 alt="Deity"
-                className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10"
+                className="absolute inset-0 w-full h-full object-cover md:object-contain pointer-events-none z-10"
               />
 
 
@@ -353,7 +354,7 @@ export default function Home() {
 
 
 
-        <div className="container mx-auto px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-8 relative z-10">
 
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
 
@@ -379,7 +380,7 @@ export default function Home() {
 
 
 
-                <h2 className="text-4xl md:text-5xl font-serif text-[#3b2b2f] font-medium leading-tight drop-shadow-sm">
+                <h2 className="text-4xl md:text-5xl font-section-heading text-[#3b2b2f] font-medium leading-tight drop-shadow-sm">
 
                   Hare Krishna Movement <br />
 
@@ -438,13 +439,13 @@ export default function Home() {
 
                 <div className="absolute top-[34%] left-[53%] w-10 h-10 pointer-events-none z-30">
 
-                  <div className="absolute animate-music-float-1 opacity-0 text-2xl md:text-3xl text-[#d4af37]" style={{ animationDelay: '0s' }}>&#9835;</div>
+                  <div className="absolute animate-music-float-1 opacity-0 text-xl sm:text-2xl md:text-3xl text-[#d4af37]" style={{ animationDelay: '0s' }}>&#9835;</div>
 
-                  <div className="absolute animate-music-float-2 opacity-0 text-3xl md:text-4xl text-[#d4af37]" style={{ animationDelay: '1.5s', left: '10px', top: '-10px' }}>&#9834;</div>
+                  <div className="absolute animate-music-float-2 opacity-0 text-2xl sm:text-3xl md:text-4xl text-[#d4af37]" style={{ animationDelay: '1.5s', left: '10px', top: '-10px' }}>&#9834;</div>
 
-                  <div className="absolute animate-music-float-3 opacity-0 text-xl md:text-2xl text-[#d4af37]" style={{ animationDelay: '3s', left: '-10px', top: '10px' }}>&#9835;</div>
+                  <div className="absolute animate-music-float-3 opacity-0 text-lg sm:text-xl md:text-2xl text-[#d4af37]" style={{ animationDelay: '3s', left: '-10px', top: '10px' }}>&#9835;</div>
 
-                  <div className="absolute animate-music-float-2 opacity-0 text-2xl md:text-3xl text-[#d4af37]" style={{ animationDelay: '4.5s', left: '20px', top: '-5px' }}>&#9834;</div>
+                  <div className="absolute animate-music-float-2 opacity-0 text-xl sm:text-2xl md:text-3xl text-[#d4af37]" style={{ animationDelay: '4.5s', left: '20px', top: '-5px' }}>&#9834;</div>
 
                 </div>
 
@@ -615,7 +616,7 @@ export default function Home() {
 
 
 
-            <h2 className="text-3xl md:text-[36px] font-serif text-[#0c4a8a] tracking-normal mb-1 font-medium">
+            <h2 className="text-3xl md:text-[36px] font-section-heading text-[#0c4a8a] tracking-normal mb-1 font-medium">
 
               Latest Blogs
 
@@ -676,7 +677,8 @@ export default function Home() {
               width: 100%;
               max-width: 350px;
               margin: 0 auto;
-              height: 480px;
+              min-height: 480px;
+              height: auto;
               background-color: #ffffff;
               font-family: 'Oswald', sans-serif;
               border-radius: 12px;
@@ -785,30 +787,38 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1400px] mx-auto w-full px-2">
             {[
               {
+                id: 1,
                 titleLines: ["AMALAKI", "EKADASHI"],
                 category: "FESTIVAL",
                 description: "Amalaki Ekadashi, also known as Amala Ekadashi...",
+                fullContent: `# Amalaki Ekadashi\n\nAmalaki Ekadashi, also known as Amala Ekadashi, is observed in the month of Phalguna and is glorified in the Brahmanda Purana. Sage Vasishtha told King Mandhata that observing this Ekadashi destroys sins, grants prosperity, and leads to liberation.\n\nIn the kingdom of Vaidisha, King Chitraratha and his citizens faithfully observed Amalaki Ekadashi by worshipping Lord Vishnu and the sacred Amalaki (Amla) tree. A hunter, who lived by killing animals, unknowingly participated by staying awake all night, hearing the Lord's glories, and fasting.\n\nBy the merit of this observance, the hunter was reborn as the righteous King Vasuratha. Later, when enemies attempted to kill him, Lord Vishnu protected him through a divine manifestation. Realizing the Lord's mercy, he devoted his life to devotional service.\n\nBenefit: Anyone who sincerely observes Amalaki Ekadashi attains Lord Vishnu's blessings, freedom from sins, and ultimately His eternal abode.`,
                 image: "/aa.jpg?v=1",
               },
               {
+                id: 2,
                 titleLines: ["CELEBRATING", "DEEPOTSAV"],
                 category: "FESTIVAL",
                 description: "Deepotsav, the festival of light, celebrates...",
+                fullContent: `# Kartik Deepotsav in Braj – The Divine Festival of Lights\n\n## Introduction\n\nDeepotsav, the festival of light, celebrates Kartik Deepotsav, a sacred celebration observed during the holy month of Kartik (October–November). Throughout Braj, devotees offer ghee lamps to Lord Krishna and Srimati Radharani, filling temples and holy places with a radiant glow. The festival represents devotion, gratitude, and remembrance of the Lord's loving pastimes.\n\n## Why Kartik Is Special\n\nKartik is regarded as the most auspicious month in the Vedic calendar. Scriptures describe it as especially dear to Lord Vishnu, making devotional practices performed during this time exceptionally beneficial.\n\n## The Story of Lord Damodara\n\nThe festival commemorates the pastime in which Mother Yashoda lovingly tied young Krishna to a wooden mortar after catching Him stealing butter. Although Krishna is the Supreme Lord, He allowed Himself to be bound by the affection of His devotee. This pastime teaches that sincere devotion and the Lord’s mercy go hand in hand.\n\n## Nalakuvara and Manigriva\n\nDuring this pastime, Krishna delivered Nalakuvara and Manigriva, the sons of Kuvera, who had been cursed to become twin trees. By Krishna’s touch, they were freed from the curse and attained spiritual liberation.\n\n## Deepdaan During Kartik\n\nOffering ghee lamps and singing the Damodarashtakam prayer are important practices during Kartik. These devotional activities help devotees express their love for the Lord and receive His blessings.\n\n## Celebrations in Braj\n\nTemples throughout Braj shine with thousands of lamps, devotional songs, kirtans, and special worship ceremonies. The entire atmosphere becomes vibrant with spiritual joy and devotion.\n\n## Kartik Deepotsav at HKM Dehradun\n\nHKM Dehradun celebrates the entire month with:\n\n* Daily Deepdaan Seva at 8:00 PM\n* Damodarashtakam Kirtan\n* Nauka Vihar Festival\n* Yamuna Boat Ride Pastimes\n* Shobha Yatra\n* Special Spiritual Programs\n\nJoin us and experience the divine blessings and spiritual joy of Kartik Deepotsav.`,
                 image: "/deepostav.png?v=1",
               },
               {
+                id: 3,
                 titleLines: ["CARRY", "THE LORD"],
                 category: "DEVOTION",
                 description: "In the journey of spiritual life, one of the most profound...",
+                fullContent: `# Vaikuntha Ekadashi – Carrying the Lord in Our Hearts\n\n## Introduction\n\nIn the journey of spiritual life, one of the most profound realizations is what Vaikuntha Ekadashi reminds us of: the importance of keeping Lord Krishna at the center of our lives. When we sincerely remember the Lord and follow His instructions, our thoughts become pure, our words become meaningful, and our actions bring happiness to ourselves and others.\n\n## Lord in the Heart\n\nIn the Srimad Bhagavatam, Lord Brahma tells Narada Muni that his words never become false, his mind never wanders toward undesirable thoughts, and his senses never act improperly because Lord Hari always resides in his heart.\n\nWhen we remember Krishna through chanting, hearing, worship, and devotional service, we naturally develop auspicious thoughts, truthful speech, and righteous actions.\n\n## The Example of Srila Prabhupada\n\nGreat devotees like Srila Prabhupada always carried the Lord in their hearts. Because of their deep devotion, their words inspired others, their actions brought spiritual benefit, and their lives became examples of pure service.\n\nSrila Prabhupada dedicated his life to sharing spiritual knowledge through:\n\n* Bhagavad-gita – the science of God\n* Srimad Bhagavatam – the love of God\n* Chaitanya Charitamrita – the process of deepening love for God\n\nHe encouraged everyone to study these scriptures and apply their teachings in daily life.\n\n## The Power of the Holy Name\n\nAlthough Srila Prabhupada wrote many spiritual books, he often said that their ultimate purpose was to inspire people to chant the holy names of the Lord.\n\nIn this age, the most effective spiritual practice is chanting the Hare Krishna Mahamantra:\n\n**Hare Krishna Hare Krishna Krishna Krishna Hare Hare**\n**Hare Rama Hare Rama Rama Rama Hare Hare**\n\n## Conclusion\n\nVaikuntha Ekadashi teaches us that by keeping Lord Krishna in our hearts with sincerity and enthusiasm, we can transform every situation in life. Through devotion, scripture study, and chanting the holy names, we receive the Lord’s guidance, protection, and blessings.`,
                 image: "/carry.jpeg?v=1",
               }
             ].map((blog, index) => (
-              <div 
-                key={index} 
-                className="relative flex flex-col justify-between p-8 sm:p-10 min-h-[400px] lg:min-h-[480px] bg-cover bg-center overflow-hidden rounded-xl font-card"
+              <motion.div 
+                layoutId={`blog-${blog.id}`}
+                key={blog.id} 
+                className="relative flex flex-col justify-between p-8 sm:p-10 min-h-[400px] lg:min-h-[480px] bg-cover bg-center overflow-hidden rounded-xl font-card cursor-pointer"
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('${blog.image}')`
                 }}
+                onClick={() => setSelectedBlog(blog)}
               >
                 <div className="mt-2 z-10">
                   <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-4xl xl:text-5xl font-medium uppercase leading-tight tracking-wide text-white drop-shadow-lg">
@@ -825,14 +835,18 @@ export default function Home() {
                   <p className="text-white font-medium text-xl sm:text-2xl leading-[1.3] max-w-sm pr-4 drop-shadow-md mb-6">
                     {blog.description}
                   </p>
-                  <Link href="/blog" className="no-underline mt-auto">
-                    <button className="group inline-flex items-center gap-2 text-white font-medium tracking-wider text-sm uppercase hover:text-[#ff7a59] transition-colors bg-black/40 hover:bg-black/60 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/20 hover:border-[#ff7a59]/50">
-                      Read More
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
-                  </Link>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedBlog(blog);
+                    }}
+                    className="group inline-flex items-center gap-2 text-white font-medium tracking-wider text-sm uppercase hover:text-[#ff7a59] transition-colors bg-black/40 hover:bg-black/60 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/20 hover:border-[#ff7a59]/50"
+                  >
+                    Read More
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -948,7 +962,7 @@ export default function Home() {
               </div>
             </div>
 
-            <h2 className="text-4xl md:text-[44px] font-serif text-[#0a3d73] tracking-normal mb-1">
+            <h2 className="text-4xl md:text-[44px] font-section-heading text-[#0a3d73] tracking-normal mb-1">
               Charitable Sevas
             </h2>
 
@@ -1061,37 +1075,37 @@ export default function Home() {
             }
           `}} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 relative z-20">
             {[
               {
                 title: "Gau Seva",
                 image: "https://hkmdehradun.org/live-site/assets/12/gau-seva-banner.png",
                 desc: "Support ISKCON's Gaushala and be a part of this noble mission. Your contribution helps provide daily cow care, feeding, and shelter.",
-                link: "/donate"
+                link: "/gau-seva"
               },
               {
                 title: "Annadana Seva",
                 image: "https://hkmdehradun.org/live-site/assets/12/annadaan-seva-banner1.png",
                 desc: "Support ISKCON Temple's Annadana Seva by providing sanctified meals to devotees and the needy. Over 2.89 crore meals served.",
-                link: "/donate"
+                link: "/annadana-seva"
               },
               {
                 title: "Child Annadana Seva",
                 image: "https://hkmdehradun.org/live-site/assets/12/children-annadana-seva-banner.png",
                 desc: "Support the nourishment of children through ISKCON's Child Annadana Seva. Wholesome, nutritious meals for children in need.",
-                link: "/donate"
+                link: "/child-annadana-seva"
               },
               {
                 title: "Khichdi Prasadam Seva",
                 image: "https://hkmdehradun.org/live-site/assets/12/khichdi-seva-banner.png",
                 desc: "Every week, more than 10,000 visitors receive sacred khichdi prasadam at ISKCON temples. This seva ensures that no one goes hungry.",
-                link: "/donate"
+                link: "/khichdi-prasadam-seva"
               },
               {
                 title: "Ekadashi Seva",
                 image: "https://hkmdehradun.org/live-site/assets/12/ekadashi-banner.png",
                 desc: "Celebrate the holy day of Ekadashi by supporting divine sevas at Hare Krishna Mandir. Donations on this day carry special spiritual merit.",
-                link: "/donate"
+                link: "/ekadashi-seva"
               }
             ].map((seva, index) => (
               <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(7,33,73,0.08)] border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col font-card">
@@ -1115,13 +1129,15 @@ export default function Home() {
                     {seva.desc}
                   </p>
                   
-                  <div className="pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
-                    <span className="text-sm text-[#072149]/40 font-medium tracking-wide uppercase">Donate Now</span>
+                  <div className="pt-6 border-t border-gray-100 mt-auto">
                     <Link
                       href={seva.link}
-                      className="w-12 h-12 rounded-full bg-[#FAFAFA] text-[#072149] flex items-center justify-center group-hover:bg-[#072149] group-hover:text-white transition-colors duration-300 shadow-sm"
+                      className="flex items-center justify-between group cursor-pointer"
                     >
-                      <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                      <span className="text-sm text-[#072149]/40 font-medium tracking-wide uppercase group-hover:text-[#072149] transition-colors duration-300">Donate Now</span>
+                      <div className="w-12 h-12 rounded-full bg-[#FAFAFA] text-[#072149] flex items-center justify-center group-hover:bg-[#072149] group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -1152,8 +1168,81 @@ export default function Home() {
 
 
 
-    </div>
 
+
+      {/* Modal / Popup for Blog Content (Governance Style) */}
+      <AnimatePresence>
+        {selectedBlog && (
+          <div className="fixed inset-0 z-[100] flex bg-white overflow-y-auto">
+            <motion.div
+              layoutId={`blog-${selectedBlog.id}`}
+              key={`modal-${selectedBlog.id}`}
+              className="w-full min-h-screen bg-white relative">
+              
+              <div className="flex flex-col-reverse md:flex-row px-6 lg:max-w-[1200px] mx-auto xl:p-0 gap-6 md:gap-[49px] sm:mt-[120px] mt-[60px] w-full">
+                <div className="flex-1">
+                  <div className="flex flex-col">
+                    <div className="flex flex-col">
+                      <span className="text-[#c74b36] font-bold text-sm uppercase tracking-widest block pb-2">
+                        {selectedBlog.category}
+                      </span>
+                      <h1 className="text-2xl font-medium text-left text-[#0A0A0A] sm:text-[40px] leading-tight">
+                        {selectedBlog.titleLines?.join(' ') || selectedBlog.title}
+                      </h1>
+                    </div>
+                    <div className="text-left font-light mt-8 mb-12 whitespace-pre-line text-[#414A5D] sm:text-[20px] sm:mt-12 sm:mb-16">
+                      {selectedBlog.fullContent ? (
+                        selectedBlog.fullContent.split('\n\n').map((paragraph: string, i: number) => {
+                          if (paragraph.startsWith('# ')) {
+                            return <h2 key={i} className="text-3xl font-medium text-gray-900 mb-2 mt-4 leading-tight">{paragraph.replace('# ', '')}</h2>;
+                          }
+                          if (paragraph.startsWith('## ')) {
+                            return <h3 key={i} className="text-xl font-medium text-gray-900 mb-2 mt-6">{paragraph.replace('## ', '')}</h3>;
+                          }
+                          if (paragraph.startsWith('* ')) {
+                            const listItems = paragraph.split('\n').filter((item: string) => item.trim() !== '').map((item: string) => item.replace('* ', ''));
+                            return (
+                              <ul key={i} className="list-disc list-inside space-y-2 ml-4 mt-2">
+                                {listItems.map((item: string, idx: number) => <li key={idx} className="font-light">{item}</li>)}
+                              </ul>
+                            );
+                          }
+                          return (
+                            <p 
+                              key={i} 
+                              className={paragraph.startsWith('Benefit:') ? 'font-medium mt-4 text-[#c74b36]' : 'mt-4'}
+                              dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br />') }}
+                            />
+                          );
+                        })
+                      ) : (
+                        <p className="italic text-gray-400">Full content for this topic is coming soon.</p>
+                      )}
+                    </div>
+                    
+                    <button 
+                      onClick={() => setSelectedBlog(null)}
+                      className="bg-[#0A0A0A] text-white py-3 px-6 text-sm md:text-base w-max mb-[60px] sm:mb-[120px] hover:bg-black/80 transition-colors">
+                      Back to Home
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="relative w-full aspect-[0.74] md:w-[350px] lg:w-[400px] md:h-[470px] lg:h-[540px] flex-shrink-0">
+                  <img 
+                    src={selectedBlog.image || selectedBlog.coverImage} 
+                    alt={selectedBlog.titleLines?.join(' ') || selectedBlog.title} 
+                    className="object-cover block w-full h-full" 
+                  />
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+    </div>
   );
 
 }

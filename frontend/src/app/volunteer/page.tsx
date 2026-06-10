@@ -221,7 +221,7 @@ export default function VolunteerPage() {
               
               {/* Intro Section */}
               <Reveal>
-                <h2 className="text-4xl md:text-5xl lg:text-[4rem] text-gray-900 leading-[1.15] mb-8 tracking-tight" style={{ fontWeight: 800 }}>
+                <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4rem] text-gray-900 leading-[1.15] mb-6 sm:mb-8 tracking-tight" style={{ fontWeight: 800 }}>
                   Offer your time,<br/>
                   <span className="font-instrument italic font-light text-orange-500">energy and love</span>
                 </h2>
@@ -387,7 +387,7 @@ export default function VolunteerPage() {
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
                 <div>
-                  <h3 className="text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-tight leading-tight mb-3">Why<br />Volunteer?</h3>
+                  <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-tight leading-tight mb-3">Why<br />Volunteer?</h3>
                   <div className="w-12 h-1 rounded-full bg-orange-400"></div>
                 </div>
                 <p className="text-gray-400 text-lg md:text-xl font-medium max-w-sm leading-relaxed md:text-right">
@@ -458,7 +458,7 @@ export default function VolunteerPage() {
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
                 <div>
-                  <h3 className="text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-tight leading-tight mb-3">Areas of Seva</h3>
+                  <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-tight leading-tight mb-3">Areas of Seva</h3>
                   <div className="w-12 h-1 rounded-full bg-orange-400"></div>
                 </div>
                 <p className="text-gray-400 text-lg md:text-xl font-medium max-w-sm leading-relaxed md:text-right">

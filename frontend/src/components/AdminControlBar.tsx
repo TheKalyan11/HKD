@@ -5,7 +5,7 @@ import { useCms } from './CmsContext';
 import { Save, LogOut, LayoutGrid, Check, AlertCircle } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-export const AdminControlBar: React.FC = () => {
+export default function AdminControlBar() {
   const { editMode, setEditMode, role, logout, savePageContent, token } = useCms();
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
   const pathname = usePathname();
