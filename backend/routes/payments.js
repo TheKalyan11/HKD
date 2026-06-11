@@ -188,7 +188,8 @@ router.post('/verify-webhook', async (req, res) => {
       freshDonation.id = orderId;
 
       // Generate receipt PDF file in temporary system directory
-      const tempReceiptsDir = path.join(__dirname, '../temp/receipts');
+      const os = require('os');
+      const tempReceiptsDir = path.join(os.tmpdir(), 'receipts');
       if (!fs.existsSync(tempReceiptsDir)) {
         fs.mkdirSync(tempReceiptsDir, { recursive: true });
       }
@@ -259,7 +260,11 @@ router.post('/verify-simulated', async (req, res) => {
     freshDonation.id = orderId;
 
     // Generate local PDF and trigger dispatch pipelines
-    const tempReceiptsDir = path.join(__dirname, '../temp/receipts');
+    const os = require('os');
+    const tempReceiptsDir = path.join(os.tmpdir(), 'receipts');
+    if (!fs.existsSync(tempReceiptsDir)) {
+      fs.mkdirSync(tempReceiptsDir, { recursive: true });
+    }
     const pdfPath = path.join(tempReceiptsDir, `receipt_${orderId}.pdf`);
     await generateReceiptPdf(freshDonation, pdfPath);
 
