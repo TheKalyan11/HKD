@@ -18,10 +18,10 @@ export default function OurMissionPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
             {/* Left Side: Video */}
-            <div className="relative group perspective-[1000px]">
+            <div className="relative group perspective-[1000px] w-full max-w-lg mx-auto lg:max-w-none">
               {/* Soft glow behind the video */}
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-300 via-orange-100 to-blue-200 rounded-[3rem] blur-xl opacity-40 group-hover:opacity-70 transition duration-700" />
               
@@ -32,7 +32,6 @@ export default function OurMissionPage() {
                     loop
                     muted
                     playsInline
-                    preload="none"
                     className="w-full h-auto object-contain transform scale-100 group-hover:scale-[1.02] transition-transform duration-1000"
                   >
                     <source src="/263191.mp4" type="video/mp4" />
@@ -44,15 +43,15 @@ export default function OurMissionPage() {
             </div>
             
             {/* Right Side: Text */}
-            <div className="animate-fade-in-up space-y-8 relative z-10">
+            <div className="animate-fade-in-up space-y-6 lg:space-y-8 relative z-10 text-center lg:text-left">
               
-              <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-serif font-black text-[#072149] tracking-tight leading-[1.05] pb-2">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-serif font-black text-[#072149] tracking-tight leading-[1.1] pb-2">
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-[#072149]">Mission</span>
               </h1>
               
-              <div className="relative">
-                <div className="absolute left-0 top-2 bottom-2 w-1.5 bg-gradient-to-b from-orange-400 to-orange-200 rounded-full" />
-                <p className="text-xl md:text-2xl text-gray-600 font-sans leading-relaxed pl-8">
+              <div className="relative inline-block lg:block text-left">
+                <div className="absolute left-0 top-2 bottom-2 w-1.5 bg-gradient-to-b from-orange-400 to-orange-200 rounded-full hidden lg:block" />
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-sans leading-relaxed lg:pl-8">
                   We are trying to give human society an opportunity for a life of happiness, good health, peace of mind and all good qualities through God Consciousness.
                 </p>
               </div>
@@ -108,20 +107,20 @@ export default function OurMissionPage() {
               Our miseries are due to sinful reactions, and when we follow these three principles, all the material contaminations and sins are washed away; consequently, we are reestablished in our real constitutional position of unlimited bliss and happiness.
             </p>
 
-            <blockquote className="border-l-4 border-orange-500 pl-6 py-2 my-8 bg-orange-50/50 rounded-r-xl italic">
-              <p className="mb-4 text-xl font-serif text-gray-800">
+            <blockquote className="border-l-4 border-orange-500 pl-4 md:pl-6 py-2 my-8 bg-orange-50/50 rounded-r-xl italic">
+              <p className="mb-2 md:mb-4 text-lg md:text-xl font-serif text-gray-800">
                 <strong>Sri Chaitanya Mahaprabhu said:</strong> <em>ceto-darpaṇa-mārjanam bhava-mahā-dāvāgni-nirvāpaṇaṁ</em>
               </p>
-              <p className="text-lg text-gray-700 m-0">
+              <p className="text-base md:text-lg text-gray-700 m-0">
                 "Chanting the holy names of the Lord cleanses the mirror of the heart and stops the miseries of the blazing fire of material existence."
               </p>
             </blockquote>
 
-            <blockquote className="border-l-4 border-blue-500 pl-6 py-2 my-8 bg-blue-50/50 rounded-r-xl italic">
-              <p className="mb-4 text-xl font-serif text-gray-800">
+            <blockquote className="border-l-4 border-blue-500 pl-4 md:pl-6 py-2 my-8 bg-blue-50/50 rounded-r-xl italic">
+              <p className="mb-2 md:mb-4 text-lg md:text-xl font-serif text-gray-800">
                 <strong>Srimad Bhagavatam says:</strong> <em>naṣṭa-prāyeṣv abhadreṣu nityaṁ bhāgavata-sevayā</em>
               </p>
-              <p className="text-lg text-gray-700 m-0">
+              <p className="text-base md:text-lg text-gray-700 m-0">
                 "All the inauspicious things in our heart are completely destroyed by reading Srimad Bhagavatam every day. The darkness of ignorance is dissipated and we become situated in the mode of goodness and develop all good qualities equivalent to that of the demigods."
               </p>
             </blockquote>

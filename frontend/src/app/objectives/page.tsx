@@ -211,7 +211,7 @@ export default function OurObjectivesPage() {
                           </div>
                         </div>
                         {/* Elegant Number Badge */}
-                        <div className={`absolute ${isEven ? '-left-6' : '-right-6'} top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center border border-gray-100 z-20`}>
+                        <div className={`absolute ${isEven ? 'left-4 sm:-left-6' : 'right-4 sm:-right-6'} top-4 sm:top-1/2 sm:-translate-y-1/2 w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center border border-gray-100 z-20`}>
                           <span className="text-3xl font-serif font-bold text-orange-600">{index + 1}</span>
                         </div>
                       </div>

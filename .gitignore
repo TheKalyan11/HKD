@@ -34,3 +34,4 @@ Thumbs.db
 .code-review-graph/
 *.mp4
 *.mov
+.vercel

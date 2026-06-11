@@ -129,7 +129,7 @@ export function Footer() {
           </div>
 
           {/* Right Columns: Links with Gold Underline (Widened with reduced right padding to spread out nicely) */}
-          <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 xl:pr-[240px]">
+          <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 xl:pr-[240px]">
             {NAV_COLS.map((col) => (
               <div key={col.title}>
                 <h4 className="font-medium text-[#0f4c81] text-[17px] tracking-wide">
@@ -155,15 +155,15 @@ export function Footer() {
 
         {/* ── Bottom Bar ── */}
         <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col items-center justify-center gap-4 text-center">
-          <p className="text-sm text-gray-500 font-semibold">
+          <p className="text-sm text-gray-500 font-semibold px-4">
             © HARE KRISHNA MOVEMENT DEHRADUN. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-4 text-sm font-semibold text-gray-500">
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold text-gray-500 px-4">
             <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
-            <span className="text-[#eab308] font-bold">|</span>
+            <span className="text-[#eab308] font-bold hidden sm:inline">|</span>
             <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms &amp; Conditions</Link>
-            <span className="text-[#eab308] font-bold">|</span>
+            <span className="text-[#eab308] font-bold hidden sm:inline">|</span>
             <Link href="/refund-policy" className="hover:text-gray-900 transition-colors">Refund Policy</Link>
           </div>
         </div>
