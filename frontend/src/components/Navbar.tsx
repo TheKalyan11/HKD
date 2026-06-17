@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
       {/* Styles moved to globals.css for faster navigation */}
 
       {/* 1. TOP HEADER LAYER (Deep Navy Blue #072149) */}
-      <div className={`hidden xl:flex px-4 sm:px-8 items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${getTopbarClass()}`}>
+      <div className={`flex px-4 sm:px-8 items-center justify-between relative transition-all duration-250 ease-out overflow-hidden ${getTopbarClass()}`}>
         
         {/* Left Side: Left completely clean / empty */}
         <div className="flex items-center flex-shrink-0 w-[100px] sm:w-[150px]">
@@ -81,11 +81,11 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Center: Srila Prabhupada Portrait Logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+        <div className="absolute left-1/2 transform -translate-x-1/2">
           <img
             src="/sp%20logo.png"
             alt="Srila Prabhupada Portrait"
-            className="h-12 sm:h-14 w-auto object-contain hover:scale-105 transition-transform drop-shadow-md"
+            className="h-10 sm:h-14 w-auto object-contain hover:scale-105 transition-transform drop-shadow-md"
           />
         </div>
 
@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
           {/* Uiverse Glowing Blue/Sky-Blue Gradient Donate Button */}
           <Link 
             href="/donate" 
-            className="btn-donate"
+            className="hidden sm:inline-flex btn-donate"
           >
             Donate
           </Link>
@@ -103,7 +103,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="xl:hidden text-white hover:text-saffron p-1 focus:outline-none ml-2"
+            className="hidden text-white hover:text-saffron p-1 focus:outline-none ml-2"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
