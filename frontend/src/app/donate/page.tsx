@@ -59,13 +59,6 @@ const sevaCards = [
     link: "/annadana-seva"
   },
   {
-    title: "Child Annadana Seva",
-    image: "https://hkmdehradun.org/live-site/assets/12/children-annadana-seva-banner.png",
-    desc: "Support the nourishment of children through ISKCON's Child Annadana Seva. Wholesome, nutritious meals for children in need.",
-    label: "Child Annadana Seva",
-    link: "/child-annadana-seva"
-  },
-  {
     title: "Khichdi Prasadam",
     image: "https://hkmdehradun.org/live-site/assets/12/khichdi-seva-banner.png",
     desc: "Every week, more than 10,000 visitors receive sacred khichdi prasadam at ISKCON temples. This seva ensures that no one goes hungry.",

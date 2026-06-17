@@ -9,7 +9,6 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export const Navbar: React.FC = () => {
         { name: 'Gita Life Courses', href: '/gita-life-course' },
         { name: 'Bhagavad Gita Book Distribution', href: '/book-distribution' },
         { name: 'Volunteer with Us', href: '/volunteer' },
-        { name: 'Become a Monk', href: '/become-a-monk' }
+        { name: 'Challenge Yourself', href: '/become-a-monk' }
       ]
     },
     { 
@@ -63,9 +62,9 @@ export const Navbar: React.FC = () => {
 
   // Dynamic Class Resolvers
   const getTopbarClass = () => {
-    return scrolled 
-      ? 'h-0 opacity-0 pointer-events-none border-none py-0' 
-      : 'h-14 sm:h-16 py-2 border-b border-saffron/20 bg-[#072149] text-white shadow';
+    return scrolled
+      ? 'h-0 opacity-0 pointer-events-none border-none py-0'
+      : 'h-14 sm:h-16 py-1 border-b border-saffron/20 bg-[#072149] text-white shadow';
   };
 
   return (
@@ -83,40 +82,16 @@ export const Navbar: React.FC = () => {
 
         {/* Center: Srila Prabhupada Portrait Logo */}
         <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
-          <img 
-            src="/sp%20logo.png" 
-            alt="Srila Prabhupada Portrait" 
-            className="h-14 sm:h-[68px] w-auto object-contain hover:scale-105 transition-transform drop-shadow-md"
+          <img
+            src="/sp%20logo.png"
+            alt="Srila Prabhupada Portrait"
+            className="h-12 sm:h-14 w-auto object-contain hover:scale-105 transition-transform drop-shadow-md"
           />
         </div>
 
         {/* Right Side: Uiverse Brutalist Call Now & Donate buttons */}
-        <div className="flex items-center gap-4 py-2">
+        <div className="flex items-center gap-4 py-1">
           
-          {/* Brutalist Call Button from Uiverse with Call Symbol */}
-          <a 
-            href="tel:+919876543210" 
-            className="brutalist-button hidden sm:flex"
-            title="Call Us"
-          >
-            <div className="ms-logo text-white">
-              <Phone className="w-[18px] h-[18px] fill-white text-white" />
-            </div>
-            <div className="button-text">
-              <span>Contact Us</span>
-              <span>Call Now</span>
-            </div>
-          </a>
-
-          {/* Fallback simple call button for tiny mobile viewports */}
-          <a 
-            href="tel:+919876543210" 
-            className="sm:hidden flex items-center justify-center bg-black border border-white rounded-md w-10 h-10 shadow active:scale-95"
-            title="Call Us"
-          >
-            <Phone className="w-4 h-4 text-white fill-white" />
-          </a>
-
           {/* Uiverse Glowing Blue/Sky-Blue Gradient Donate Button */}
           <Link 
             href="/donate" 
@@ -139,8 +114,8 @@ export const Navbar: React.FC = () => {
       {/* 2. NAVIGATION BAR LAYER (White Liquid Glass Style with Black Text) */}
       <div className={`transition-all duration-250 ease-out w-full ${
         scrolled 
-          ? 'xl:max-w-[1300px] w-full xl:w-[95%] mx-auto xl:mt-3 xl:rounded-full bg-white/90 backdrop-blur-lg border-b xl:border border-gray-200/50 shadow-2xl py-2 px-4 xl:px-6 shadow-gray-200/10' 
-          : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-200/40 py-2.5 shadow-md'
+          ? 'xl:max-w-[1300px] w-full xl:w-[95%] mx-auto xl:mt-3 xl:rounded-full bg-white/90 backdrop-blur-lg border-b xl:border border-gray-200/50 shadow-2xl py-1.5 px-4 xl:px-6 shadow-gray-200/10' 
+          : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-200/40 py-1 shadow-md'
       }`}>
         <div className={scrolled ? "px-4 sm:px-6 lg:px-8" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
           <div className="flex items-center justify-between gap-8 w-full">
@@ -150,17 +125,16 @@ export const Navbar: React.FC = () => {
               <img 
                 src="/logo-dehradun.jpg" 
                 alt="Hare Krishna Dehradun Movement Logo" 
-                className="h-12 md:h-16 w-auto object-contain rounded border border-gray-200/30 shadow-sm transition-transform hover:scale-102"
+                className="h-8 md:h-10 w-auto object-contain rounded border border-gray-200/30 shadow-sm transition-transform hover:scale-102"
               />
             </Link>
 
             {/* Desktop Navigation Links - Centered in One Clean Line with black/gray-800 text */}
-            <div className="hidden xl:flex items-center gap-5 lg:gap-6.5 2xl:gap-8">
+            <div className="hidden xl:flex items-center gap-4 lg:gap-5 2xl:gap-6">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
-                const isHovered = hoveredLink === link.name;
-                
+
                 if (link.name === 'Donate') {
                   return (
                     <div key={link.name} className="relative py-2 group flex items-center">
@@ -257,7 +231,7 @@ export const Navbar: React.FC = () => {
                   <div key={link.name} className="space-y-1">
                     <button
                       onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
-                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
                     >
                       <span>{link.name}</span>
                       <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
@@ -274,7 +248,7 @@ export const Navbar: React.FC = () => {
                               setIsOpen(false);
                               setOpenMobileDropdown(null);
                             }}
-                            className="block px-3 py-2 text-sm font-black bold-stroke text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
+                            className="block px-3 py-2 text-[14px] font-black bold-stroke text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
                           >
                             {subLink.name}
                           </Link>
@@ -293,7 +267,7 @@ export const Navbar: React.FC = () => {
                     setIsOpen(false);
                     setOpenMobileDropdown(null);
                   }}
-                  className={`block px-3 py-2 rounded-lg text-base font-medium uppercase tracking-wider transition-colors ${
+                  className={`block px-3 py-2 rounded-lg text-[15px] font-medium uppercase tracking-wider transition-colors ${
                     isActive 
                       ? 'bg-saffron/20 text-saffron-light' 
                       : 'text-white hover:bg-white/5 hover:text-saffron'

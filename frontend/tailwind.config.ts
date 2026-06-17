@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
-        nav: ['Poppins', 'sans-serif'],
-        body: ['Lora', 'serif'],
-        card: ['Oswald', 'sans-serif'],
-        sans: ['Poppins', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        heading: ['"TC EN"', 'sans-serif'],
+        nav: ['"TC EN"', 'sans-serif'],
+        body: ['"TC EN"', 'sans-serif'],
+        card: ['"TC EN"', 'sans-serif'],
+        sans: ['"TC EN"', 'sans-serif'],
+        serif: ['"TC EN"', 'sans-serif'],
       },
       colors: {
         saffron: {

@@ -11,7 +11,7 @@ export default function BecomeAMonkPage() {
       <section className="relative w-full flex">
         <img 
           src="/bam.png" 
-          alt="Become a Monk" 
+          alt="Challenge Yourself"
           className="w-full h-auto max-h-[90vh] object-cover block"
         />
         {/* Subtle gradient overlay at the bottom for text readability */}
@@ -20,7 +20,7 @@ export default function BecomeAMonkPage() {
         {/* Overlay Text */}
         <div className="absolute bottom-6 md:bottom-12 w-full text-center px-4">
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif font-black text-white uppercase tracking-wider drop-shadow-xl">
-            BECOME A MONK
+            CHALLENGE YOURSELF
           </h1>
         </div>
       </section>
@@ -56,7 +56,7 @@ export default function BecomeAMonkPage() {
           
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-5xl font-serif font-black text-[#072149] mb-4">
-              How to become a Full-time Monk (Brahmacari) ?
+              Challenge Yourself
             </h2>
             <div className="w-24 h-1.5 bg-orange-500 mx-auto rounded-full" />
           </div>
@@ -68,7 +68,7 @@ export default function BecomeAMonkPage() {
               {/* Row 1 */}
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <p className="first-letter:text-7xl first-letter:font-black first-letter:text-orange-600 first-letter:mr-3 first-letter:float-left mb-6">
+                  <p className="mb-6">
                     While distributing spiritual literature on the streets of Dehradun, I once met a group of software professionals. Their manager became quite surprised when he learned that we live in an ashram and follow the principles of Brahmacarya (celibacy).
                   </p>
                   <p>

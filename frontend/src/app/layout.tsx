@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Lora } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Script from "next/script";
@@ -10,8 +9,6 @@ import { Footer } from "@/components/Footer";
 
 const AdminControlBar = dynamic(() => import("@/components/AdminControlBar"), { ssr: false });
 const SocialFloatWidget = dynamic(() => import("@/components/SocialFloatWidget"), { ssr: false });
-
-const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
   title: "Hare Krishna Dharma Trust - Gau Seva & Annadana Seva",
@@ -35,10 +32,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://hkmdehradun.org" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${lora.className} bg-cream-50 antialiased overflow-x-hidden max-w-[100vw] w-full`}>
+      <body className="bg-cream-50 antialiased overflow-x-clip max-w-[100vw] w-full">
         <CmsProvider>
           {/* Header Navigation */}
           <Navbar />

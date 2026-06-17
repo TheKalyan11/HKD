@@ -15,7 +15,7 @@ export default function SocialFloatWidget() {
   };
 
   return (
-    <div className="fixed left-2 bottom-2 md:left-6 md:bottom-6 z-50 flex flex-col items-center gap-4 scale-[0.6] sm:scale-[0.75] md:scale-100 origin-bottom-left opacity-60 sm:opacity-80 md:opacity-100 hover:opacity-100 transition-opacity duration-300">
+    <div className="fixed left-2 bottom-2 md:left-6 md:bottom-6 z-50 flex flex-col items-center gap-4 scale-[0.85] sm:scale-95 md:scale-100 origin-bottom-left opacity-80 sm:opacity-100 hover:opacity-100 transition-opacity duration-300">
       
       {/* Audio Element */}
       <audio ref={audioRef} loop src="/hare-krishna-original.mp3" preload="auto"></audio>

@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const { validateWebhookSignature } = require('razorpay/dist/utils/razorpay-utils');
 
-const { db, admin } = require('../services/firebase');
+const { db } = require('../services/firebase');
 const { generateReceiptPdf } = require('../services/pdfGenerator');
 const { paymentLimiter } = require('../middleware/security');
 const { sendDonationEmailReceipt } = require('../services/email');
@@ -107,7 +107,11 @@ router.post('/create-order', paymentLimiter, async (req, res) => {
  */
 router.post('/verify-webhook', async (req, res) => {
   const signature = req.headers['x-razorpay-signature'];
-  const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET || 'hkd_webhook_secret_123';
+  const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
+  if (!webhookSecret) {
+    console.error('[Webhook] RAZORPAY_WEBHOOK_SECRET env var is not set.');
+    return res.status(500).send('Webhook secret not configured');
+  }
   const rawBody = req.body; // Buffer from express.raw middleware
 
   try {

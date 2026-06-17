@@ -1,213 +1,414 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Target, Brain, Leaf, Users, Star, Compass, ArrowRight, Heart } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import axios from 'axios';
 
-// Helper component for fade-up animations
 const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.8, delay, ease: "easeOut" }}
+    transition={{ duration: 0.7, delay, ease: "easeOut" }}
     className={className}
   >
     {children}
   </motion.div>
 );
 
+const FOLK_NAV = [
+  { label: 'Home', href: '/youth' },
+  { label: 'About Us', href: '#about' },
+  { label: 'Programs', href: '#programs' },
+  { label: 'Highlights', href: '#highlights' },
+  { label: 'Our Mission', href: '#mission' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const HIGHLIGHTS = [
+  {
+    icon: (
+      <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M16.36 16.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M16.36 7.64l1.42-1.42" strokeLinecap="round"/>
+        <circle cx="12" cy="12" r="5"/>
+      </svg>
+    ),
+    title: 'Talk',
+    desc: 'Inspiring discourses on Bhagavad Gita wisdom',
+  },
+  {
+    icon: (
+      <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+        <path d="M12 6v6l4 2" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: 'Meditation',
+    desc: 'Guided mantra meditation sessions',
+  },
+  {
+    icon: (
+      <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M9 18V5l12-2v13" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="18" cy="16" r="3"/>
+      </svg>
+    ),
+    title: 'Kirtan',
+    desc: 'Soul-stirring devotional music and chanting',
+  },
+  {
+    icon: (
+      <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6 1v3M10 1v3M14 1v3" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: 'Prasadam',
+    desc: 'Sanctified vegetarian feast for all',
+  },
+];
+
+const PROGRAMS = [
+  {
+    title: 'Events That Enlighten',
+    desc: 'Discover the joy of spiritual growth through diverse programs including festivals, cultural events, and thought-provoking seminars that open new doors of understanding.',
+    img: '/darshan/DSC04178.JPG',
+  },
+  {
+    title: 'Life Coaching That Transforms',
+    desc: 'Our experienced mentors provide personalized spiritual guidance, helping you navigate life\'s challenges with clarity, confidence, and a sense of purpose rooted in Vedic wisdom.',
+    img: '/darshan/DSC04071.JPG',
+  },
+  {
+    title: 'Retreats That Rejuvenate',
+    desc: 'Step away from the daily grind and immerse yourself in weekend retreats filled with meditation, yoga, nature walks, and contemplative activities that recharge your soul.',
+    img: '/darshan/DSC04083.JPG',
+  },
+  {
+    title: 'A Community That Cares',
+    desc: 'Join a warm, supportive fellowship of like-minded youth. Build genuine friendships, share experiences, and grow together in an atmosphere of love, respect, and devotion.',
+    img: '/deity-1.jpg',
+  },
+];
+
 export default function YouthFOLKPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [program, setProgram] = useState('Talk');
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email || !phone) return;
+    setSending(true);
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000';
+      await axios.post(`${backendUrl}/api/cms/leads`, {
+        name, email, phone,
+        interestType: 'folk_registration',
+        targetId: program,
+        message: `Interested in: ${program}`,
+      });
+      setSent(true);
+    } catch (err) {
+      console.error('FOLK registration failed:', err);
+    }
+    setSending(false);
+  };
+
+  const folkFont = { fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" };
+
   return (
-    <div 
-      className="w-full bg-[#faf8f5] font-sans relative"
-      style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='800' height='400' viewBox='0 0 800 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23cca75b' stroke-width='2' opacity='0.15'%3E%3Cg transform='translate(100, 50) scale(1.5)'%3E%3Cpath d='M20 5C20 5 10 15 20 35C30 15 20 5 20 5Z'/%3E%3Cpath d='M20 35C10 30 5 20 10 12C15 12 18 25 20 35Z'/%3E%3Cpath d='M20 35C30 30 35 20 30 12C25 12 22 25 20 35Z'/%3E%3C/g%3E%3Cg transform='translate(300, 50) scale(1.5)'%3E%3Ccircle cx='20' cy='10' r='4'/%3E%3Cpath d='M20 15 L20 25 M10 20 L30 20 M10 35 C10 35 15 25 20 25 C25 25 30 35 30 35 M10 35 L30 35'/%3E%3C/g%3E%3Cg transform='translate(500, 50) scale(1.5)'%3E%3Ccircle cx='20' cy='20' r='10' stroke-dasharray='2 2'/%3E%3Cpath d='M20 10 C25 10 30 15 30 20 C30 25 25 30 20 30 C15 30 10 25 10 20 C10 17 12 15 15 15 C17 15 18 17 18 18 C18 19 17 20 16 20'/%3E%3Cpath d='M20 0L20 5 M20 35L20 40 M0 20L5 20 M35 20L40 20 M5 5L10 10 M30 30L35 35 M5 35L10 30 M30 10L35 5'/%3E%3C/g%3E%3Cg transform='translate(700, 50) scale(1.5)'%3E%3Cpath d='M12 25 L12 10 A3 3 0 0 1 18 10 L18 20 M18 15 L18 5 A3 3 0 0 1 24 5 L24 20 M24 15 L24 8 A3 3 0 0 1 30 8 L30 25 C30 35 20 40 12 35 C8 32 5 28 5 25 L5 15 A3 3 0 0 1 11 15 L11 25'/%3E%3Cpath d='M15 25 C18 25 20 27 20 30 C20 32 18 34 16 34 C14 34 12 32 12 30 C12 29 13 28 14 28'/%3E%3C/g%3E%3Cg transform='translate(200, 200) scale(1.5)'%3E%3Ccircle cx='20' cy='6' r='4'/%3E%3Cpath d='M12 16 Q20 13 28 16 L33 28 Q28 25 20 25 Q12 25 7 28 Z'/%3E%3Cpath d='M20 18 L20 24'/%3E%3Cpath d='M5 32 Q20 27 35 32 Q30 38 20 38 Q10 38 5 32 Z'/%3E%3C/g%3E%3Cg transform='translate(400, 200) scale(1.5)'%3E%3Cpath d='M22 5 A 15 15 0 1 0 22 35 A 12 12 0 1 1 22 5 Z'/%3E%3Cpath d='M8 20 L12 20 M10 18 L10 22'/%3E%3C/g%3E%3Cg transform='translate(600, 200) scale(1.5)'%3E%3Cpath d='M20 5 C28 5 30 15 20 18 C18 12 22 10 20 5'/%3E%3Cpath d='M10 25 C5 18 10 10 16 16 C12 18 10 15 10 25'/%3E%3Cpath d='M30 25 C35 18 30 10 24 16 C28 18 30 15 30 25'/%3E%3Cpath d='M10 25 Q20 35 30 25'/%3E%3Ccircle cx='20' cy='22' r='2'/%3E%3C/g%3E%3C/g%3E%3Ctext x='400' y='140' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Krishna Hare Krishna, Krishna Krishna Hare Hare%3C/text%3E%3Ctext x='400' y='165' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Rama Hare Rama, Rama Rama Hare Hare%3C/text%3E%3Ctext x='400' y='340' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Krishna Hare Krishna, Krishna Krishna Hare Hare%3C/text%3E%3Ctext x='400' y='365' font-family='serif' font-size='18' fill='%23cca75b' stroke='none' text-anchor='middle' opacity='0.25' letter-spacing='1.5' font-style='italic'%3EHare Rama Hare Rama, Rama Rama Hare Hare%3C/text%3E%3C/svg%3E\")", backgroundRepeat: 'repeat', backgroundSize: '600px 300px' }}
-    >
-      
-      {/* ── HERO SECTION ──────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden z-10">
-        
-        {/* Soft Decorative Background Elements */}
-        <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-          <div className="absolute top-[-10%] right-[-5%] w-[40rem] h-[40rem] bg-orange-200/40 rounded-full blur-[100px] mix-blend-multiply opacity-70" />
-          <div className="absolute bottom-[-10%] left-[-5%] w-[40rem] h-[40rem] bg-blue-200/40 rounded-full blur-[100px] mix-blend-multiply opacity-70" />
-          <div className="absolute top-[20%] left-[20%] w-[20rem] h-[20rem] bg-[#cca75b]/20 rounded-full blur-[80px] mix-blend-multiply opacity-50" />
+    <div className="w-full" style={folkFont}>
+
+      {/* ── FOLK NAVBAR ──────────────────────────────────── */}
+      <nav className="w-full shadow-lg" style={{ background: 'linear-gradient(180deg, #000000 0%, #02144c 50%, #173978 100%)' }}>
+        {/* Logo row */}
+        <div className="flex items-center justify-center py-6">
+          <div className="text-center">
+            <h2 className="text-[33px] font-bold tracking-wide" style={{ color: '#ffffff' }}>
+              <span className="text-[#f5c518]">f</span>
+              <span className="text-white/60 text-[26px]">o</span>
+              <span className="text-white">l</span>
+              <span className="text-[#f5c518]">k</span>
+            </h2>
+            <p className="text-[13px] tracking-[0.3em] uppercase mt-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Youth Empowerment Club</p>
+          </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
-          <Reveal delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#cca75b]/30 text-[#0c4a8a] text-sm font-bold tracking-widest uppercase shadow-sm mb-6">
-              <Star className="w-4 h-4 text-[#cca75b]" />
-              <span>Youth Empowerment Club</span>
+        {/* Nav links row */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="flex items-center justify-center gap-0 flex-wrap">
+              {FOLK_NAV.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="px-4 md:px-6 py-3 text-[16px] font-medium tracking-wide transition-colors duration-200 whitespace-nowrap hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f5c518]"
+                  style={{ color: '#f5c518' }}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
-          </Reveal>
+          </div>
+        </div>
+      </nav>
 
-          <Reveal delay={0.2}>
-            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-serif font-black text-[#072149] tracking-tight leading-[1.05] mb-6">
-              Friends of <span className="text-[#ea580c]">Lord Krishna</span>
+      {/* ── HERO BANNER ──────────────────────────────────── */}
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+        <img
+          src="/darshan/DSC04179.JPG"
+          alt="FOLK Dehradun"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(2,20,76,0.85) 0%, rgba(2,20,76,0.3) 50%, transparent 100%)' }} />
+        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-12 md:pb-16 text-center px-6">
+          <Reveal>
+            <h1 className="font-bold tracking-tight drop-shadow-xl mb-4" style={{ fontSize: '41px', color: '#ffffff', lineHeight: 1.1 }}>
+              <span className="block text-[40px] md:text-[56px] lg:text-[64px]">Friends of <span style={{ color: '#f5c518' }}>Lord Krishna</span></span>
             </h1>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10">
-              A highly systematic, spiritually enriching youth program dedicated to helping young professionals and students find purpose, balance, and profound happiness through Vedic wisdom.
+            <p className="max-w-2xl mx-auto" style={{ fontSize: '18px', color: 'rgba(255,255,255,0.8)', lineHeight: '28px' }}>
+              A Youth Empowerment Club of Hare Krishna Movement Dehradun, guided by the timeless wisdom of the Bhagavad Gita.
             </p>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/volunteer" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#ea580c] to-[#c2410c] text-white font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                Join FOLK Today
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link 
-                href="#programs" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#072149] border-2 border-[#072149]/10 font-bold rounded-full text-lg shadow-sm hover:border-[#072149]/30 hover:bg-gray-50 transition-all duration-300"
-              >
-                Explore Programs
-              </Link>
-            </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ── THE NEED SECTION ─────────────────────────────────────────────────── */}
-      <section className="py-20 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left Image / Composition */}
-            <Reveal delay={0.2} className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-orange-200 to-blue-200 rounded-[2.5rem] blur-xl opacity-50 transform -rotate-3"></div>
-              <div className="relative rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000" 
-                  alt="Youth Meditation and Discussion" 
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+      {/* ── ABOUT US ─────────────────────────────────────── */}
+      <section id="about" className="py-16 md:py-24" style={{ backgroundColor: '#ffffff' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <Reveal>
+              <div className="overflow-hidden shadow-xl" style={{ borderRadius: '6px' }}>
+                <img
+                  src="/deity-2.jpg"
+                  alt="FOLK Community"
+                  className="w-full h-[400px] object-cover"
                 />
               </div>
             </Reveal>
-
-            {/* Right Text Content */}
-            <div className="space-y-6">
-              <Reveal delay={0.1}>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#072149] leading-tight">
-                  Why Youth Need <span className="text-[#cca75b]">Spiritual Guidance</span>
+            <Reveal delay={0.2}>
+              <div>
+                <h2 className="font-bold mb-6" style={{ fontSize: '40px', color: '#04235f', lineHeight: 1.15 }}>
+                  About <span style={{ color: '#f5c518' }}>FOLK</span>
                 </h2>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  In today's fast-paced world, young people face immense pressure from academics, careers, and social expectations. This constant struggle often leads to stress, anxiety, and a feeling of emptiness despite material success.
+                <p className="mb-6" style={{ fontSize: '18px', color: '#6d6d6d', lineHeight: '28px' }}>
+                  Welcome to FOLK Dehradun, a Youth Empowerment Club of Hare Krishna Movement Dehradun. We are dedicated to fostering a deeper understanding of life&apos;s purpose and the art of living through the teachings of the Bhagavad Gita.
                 </p>
-              </Reveal>
-              <Reveal delay={0.3}>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  The FOLK program is meticulously designed to help youth navigate these modern challenges. By tapping into the timeless wisdom of the Bhagavad Gita, we provide practical tools for mind control, emotional stability, and true personality development.
+                <p className="mb-8" style={{ fontSize: '18px', color: '#6d6d6d', lineHeight: '28px' }}>
+                  Our programs are designed to help young professionals and students navigate modern challenges by tapping into timeless Vedic wisdom, providing practical tools for mind control, emotional stability, and true personality development.
                 </p>
+                <Link
+                  href="#programs"
+                  className="inline-flex items-center gap-2 px-8 py-3 text-white font-semibold transition-colors duration-200 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f5c518]"
+                  style={{ backgroundColor: '#02144c', borderRadius: '50px', fontSize: '16px' }}
+                >
+                  Explore Programs <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATURED PROGRAMS (4 Cards) ──────────────────── */}
+      <section id="programs" className="py-16 md:py-24" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <Reveal>
+            <div className="text-center mb-14">
+              <h2 className="font-bold mb-4" style={{ fontSize: '40px', color: '#04235f' }}>What We Offer</h2>
+              <p style={{ fontSize: '18px', color: '#6d6d6d' }} className="max-w-2xl mx-auto">Transformative programs designed for the modern youth</p>
+            </div>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 gap-8">
+            {PROGRAMS.map((prog, i) => (
+              <Reveal key={prog.title} delay={i * 0.1}>
+                <div className="bg-white overflow-hidden group transition-shadow duration-300 hover:shadow-2xl" style={{ borderRadius: '6px', boxShadow: 'rgba(0,0,0,0.14) 0px 0px 3px 2px' }}>
+                  <div className="h-56 overflow-hidden">
+                    <img
+                      src={prog.img}
+                      alt={prog.title}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-bold mb-3" style={{ fontSize: '22px', color: '#04235f' }}>{prog.title}</h3>
+                    <p style={{ fontSize: '16px', color: '#6d6d6d', lineHeight: '24px' }}>{prog.desc}</p>
+                  </div>
+                </div>
               </Reveal>
-              <Reveal delay={0.4}>
-                <ul className="space-y-4 mt-8">
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HIGHLIGHTS OF PROGRAM ────────────────────────── */}
+      <section id="highlights" className="py-16 md:py-24" style={{ background: 'linear-gradient(180deg, #02144c 0%, #173978 100%)' }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <Reveal>
+            <div className="text-center mb-14">
+              <h2 className="font-bold mb-4" style={{ fontSize: '40px', color: '#ffffff' }}>Highlights of Program</h2>
+              <div className="inline-block font-bold px-8 py-3 mt-4" style={{ backgroundColor: '#f5c518', color: '#02144c', fontSize: '20px', borderRadius: '50px' }}>
+                6:15 PM to 8:40 PM
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {HIGHLIGHTS.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.1}>
+                <div className="flex flex-col items-center text-center group">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-4 transition-colors duration-200" style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '2px solid rgba(245,197,24,0.5)', color: '#f5c518' }}>
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold mb-1" style={{ fontSize: '18px', color: '#ffffff' }}>{item.title}</h3>
+                  <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)' }}>{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── OUR MISSION ──────────────────────────────────── */}
+      <section id="mission" className="py-16 md:py-24" style={{ backgroundColor: '#ffffff' }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <Reveal>
+              <div>
+                <h2 className="font-bold mb-6" style={{ fontSize: '40px', color: '#04235f' }}>Our Mission</h2>
+                <p className="mb-6" style={{ fontSize: '18px', color: '#6d6d6d', lineHeight: '28px' }}>
+                  At FOLK Dehradun, our mission is to empower youth with spiritual knowledge and practical wisdom. We believe that every young person deserves access to the transformative teachings that can help them lead a life of purpose, balance, and genuine happiness.
+                </p>
+                <p className="mb-6" style={{ fontSize: '18px', color: '#6d6d6d', lineHeight: '28px' }}>
+                  Through engaging events, expert life coaching, rejuvenating retreats, and a caring community, we provide a holistic environment for personal and spiritual growth rooted in the ancient Vedic tradition.
+                </p>
+                <ul className="space-y-3">
                   {[
-                    "Overcome stress and anxiety through meditation",
-                    "Build authentic, meaningful relationships",
-                    "Develop powerful leadership and communication skills",
-                    "Find a deeper spiritual purpose in life"
+                    'Overcome stress and anxiety through meditation',
+                    'Build authentic, meaningful relationships',
+                    'Develop leadership and communication skills',
+                    'Find a deeper spiritual purpose in life',
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <div className="mt-1 bg-green-100 p-1 rounded-full text-green-600">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                      <div className="mt-1 w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#f5c518' }}>
+                        <svg className="w-3 h-3" style={{ color: '#02144c' }} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                       </div>
-                      <span className="text-gray-700 font-medium">{item}</span>
+                      <span className="font-medium" style={{ fontSize: '16px', color: '#212529' }}>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </Reveal>
-            </div>
-            
-          </div>
-        </div>
-      </section>
-
-      {/* ── CORE PROGRAMS GRID ──────────────────────────────────────────────── */}
-      <section id="programs" className="py-24 relative z-10 bg-white/40 backdrop-blur-sm border-y border-[#cca75b]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16">
-            <Reveal>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#072149] mb-4">Our Core Activities</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">Transformative programs tailored for the modern youth.</p>
-            </Reveal>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            
-            <Reveal delay={0.1}>
-              <div className="h-full bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                  <Brain className="w-7 h-7" />
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-[#072149] mb-4">Art of Mind Control</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  A highly acclaimed workshop teaching you how to harness the power of your mind. Learn to improve focus, conquer negative habits, and meditate effectively using mantra chanting.
-                </p>
               </div>
             </Reveal>
-
             <Reveal delay={0.2}>
-              <div className="h-full bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                <div className="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mb-6">
-                  <Target className="w-7 h-7" />
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-[#072149] mb-4">Personality Development</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  True personality goes beyond physical appearance. We explore the profound teachings of Vedic texts to cultivate virtues like patience, tolerance, leadership, and unwavering confidence.
-                </p>
+              <div className="overflow-hidden shadow-xl" style={{ borderRadius: '6px' }}>
+                <img
+                  src="/darshan/DSC04180.JPG"
+                  alt="FOLK Mission"
+                  className="w-full h-[400px] object-cover object-top"
+                />
               </div>
             </Reveal>
-
-            <Reveal delay={0.3}>
-              <div className="h-full bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6">
-                  <Leaf className="w-7 h-7" />
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-[#072149] mb-4">Weekend Retreats</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Step away from the concrete jungle. Our weekend camps offer a revitalizing blend of nature, music, philosophy, and delicious prasadam to recharge your spiritual batteries.
-                </p>
-              </div>
-            </Reveal>
-
           </div>
         </div>
       </section>
 
-      {/* ── CALL TO ACTION ──────────────────────────────────────────────────── */}
-      <section className="py-24 relative z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[#0c4a8a]">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+      {/* ── CONTACT / REGISTER FORM ──────────────────────── */}
+      <section id="contact" className="py-16 md:py-24" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="max-w-2xl mx-auto px-6">
           <Reveal>
-            <Heart className="w-16 h-16 text-[#cca75b] mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-              Begin Your Journey Inward
-            </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Experience the joy of self-realization. Join thousands of youth who have transformed their lives through the FOLK program.
+            <div className="bg-white overflow-hidden" style={{ borderRadius: '6px', boxShadow: 'rgba(0,0,0,0.14) 0px 0px 3px 2px' }}>
+              <div className="px-8 py-6 text-center" style={{ background: 'linear-gradient(90deg, #02144c, #173978)' }}>
+                <h2 className="font-bold" style={{ fontSize: '30px', color: '#ffffff' }}>Join FOLK Dehradun</h2>
+                <p className="mt-1" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)' }}>Register for our upcoming sessions</p>
+              </div>
+
+              <div className="p-8">
+                {!sent ? (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label className="block mb-2 font-semibold uppercase tracking-wider" style={{ fontSize: '12px', color: '#6d6d6d' }}>Full Name</label>
+                      <input
+                        value={name} onChange={e => setName(e.target.value)} placeholder="Your name"
+                        className="w-full px-4 py-3 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#173978]"
+                        style={{ border: '1px solid #ddd', borderRadius: '4px', fontSize: '16px', color: '#212529' }}
+                      />
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block mb-2 font-semibold uppercase tracking-wider" style={{ fontSize: '12px', color: '#6d6d6d' }}>Email</label>
+                        <input
+                          type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email address"
+                          className="w-full px-4 py-3 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#173978]"
+                          style={{ border: '1px solid #ddd', borderRadius: '4px', fontSize: '16px', color: '#212529' }}
+                        />
+                      </div>
+                      <div>
+                        <label className="block mb-2 font-semibold uppercase tracking-wider" style={{ fontSize: '12px', color: '#6d6d6d' }}>Phone</label>
+                        <input
+                          type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="Phone number"
+                          className="w-full px-4 py-3 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#173978]"
+                          style={{ border: '1px solid #ddd', borderRadius: '4px', fontSize: '16px', color: '#212529' }}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block mb-2 font-semibold uppercase tracking-wider" style={{ fontSize: '12px', color: '#6d6d6d' }}>Select Program</label>
+                      <select
+                        value={program} onChange={e => setProgram(e.target.value)}
+                        className="w-full px-4 py-3 bg-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#173978]"
+                        style={{ border: '1px solid #ddd', borderRadius: '4px', fontSize: '16px', color: '#212529' }}
+                      >
+                        <option>Talk</option>
+                        <option>Meditation</option>
+                        <option>Kirtan</option>
+                        <option>Prasadam</option>
+                        <option>All Programs</option>
+                      </select>
+                    </div>
+                    <button
+                      type="submit" disabled={sending}
+                      className="w-full font-bold py-3.5 tracking-wide transition-colors duration-200 disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02144c]"
+                      style={{ backgroundColor: '#f5c518', color: '#02144c', fontSize: '18px', borderRadius: '50px', border: 'none' }}
+                    >
+                      {sending ? 'Submitting...' : 'Register Now'}
+                    </button>
+                  </form>
+                ) : (
+                  <div className="text-center py-10">
+                    <div className="w-16 h-16 rounded-full bg-green-50 border-2 border-green-200 flex items-center justify-center text-green-600 text-3xl mx-auto mb-4">&#10003;</div>
+                    <p className="font-bold" style={{ fontSize: '20px', color: '#04235f' }}>You&apos;re Registered!</p>
+                    <p className="mt-2" style={{ fontSize: '16px', color: '#6d6d6d' }}>We&apos;ll reach out to you with session details soon.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── CTA BANNER ───────────────────────────────────── */}
+      <section className="py-16" style={{ background: 'linear-gradient(90deg, #02144c, #173978)' }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <Reveal>
+            <h2 className="font-bold mb-4" style={{ fontSize: '33px', color: '#ffffff' }}>Begin Your Journey Inward</h2>
+            <p className="max-w-2xl mx-auto mb-8" style={{ fontSize: '18px', color: 'rgba(255,255,255,0.7)', lineHeight: '28px' }}>
+              Experience the joy of self-realization. Join youth who have transformed their lives through the FOLK program.
             </p>
-            <Link 
-              href="/volunteer" 
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#cca75b] text-[#072149] font-bold rounded-full text-lg shadow-xl hover:bg-white transition-all duration-300 transform hover:scale-105"
+            <Link
+              href="/volunteer"
+              className="inline-flex items-center gap-2 px-10 py-4 font-bold transition-colors duration-200 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f5c518]"
+              style={{ backgroundColor: '#f5c518', color: '#02144c', fontSize: '18px', borderRadius: '50px' }}
             >
-              Register for Next Session
-              <ArrowRight className="w-5 h-5" />
+              Join FOLK Today <ArrowRight className="w-5 h-5" />
             </Link>
           </Reveal>
         </div>

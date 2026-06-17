@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?: boolean }) {
+  // trigger recompile
   return (
     <>
       {/* 3. UPCOMING FESTIVALS SECTION */}
@@ -483,7 +484,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
         {/* Right side Temple Illustration & Clouds Background */}
 
-        <div className="absolute top-0 right-0 w-[35%] lg:w-[30%] h-full pointer-events-none z-0 hidden sm:block overflow-hidden">
+        <div className="absolute top-0 right-0 w-[32%] lg:w-[28%] h-full pointer-events-none z-0 hidden sm:block overflow-hidden">
 
           <img
 
@@ -491,7 +492,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
             alt="Temple Gopuram"
 
-            className="absolute top-4 md:top-2 right-[-8px] h-[80%] w-[260px] md:w-[320px] lg:w-[380px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-darken"
+            className="absolute top-4 md:top-2 right-0 h-[85%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-darken"
 
             style={{
 
@@ -657,213 +658,41 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
               Join our upcoming festivals and be a part of the divine experience.
 
             </p>
-
           </div>
 
-
-
           {/* Festivals Grid */}
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-20">
-
-
-
-            {/* Card 1: Jhulan Yatra */}
-
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-
-              <div className="w-full h-full relative">
-
-                <div className="w-full h-64 overflow-hidden rounded-2xl">
-
-                  <img src="/deity-1.jpg" alt="Jhulan Yatra" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-
-                </div>
-
-                <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-
-                  <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-
-                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Jhulan Yatra</span>
-
-                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">July 06 – July 14, 2025</span>
-
-                  <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-
-                    Celebrate the divine swing festival of Radha Krishna with kirtans, beautiful decorations and devotion.
-
-                  </p>
-
-                </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto relative z-20">
+            {/* Card 1: Panihati */}
+            <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
+              <div className="w-full h-56 overflow-hidden rounded-2xl shrink-0">
+                <img src="/deity-1.jpg" alt="Panihati Festival" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
               </div>
-
+              <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
+                <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Panihati Chida Dahi Utsav</span>
+                <span className="text-[11px] text-[#cca75b] font-medium tracking-widest uppercase block mt-1">June 11, 2025</span>
+                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-0 group-hover:mt-3 opacity-0 group-hover:opacity-100">
+                  <p className="overflow-hidden text-[14px] text-[#5c5245] leading-relaxed">
+                    The famous Festival of Chipped Rice celebrated in honor of Lord Nityananda Prabhu. Devotees relish chida, dahi and sweets in joyful kirtan.
+                  </p>
+                </div>
+              </div>
             </div>
-
-
 
             {/* Card 2: Janmashtami */}
-
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-
-              <div className="w-full h-full relative">
-
-                <div className="w-full h-64 overflow-hidden rounded-2xl">
-
-                  <img src="/deity-2.jpg" alt="Janmashtami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-
-                </div>
-
-                <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-
-                  <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-
-                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Janmashtami</span>
-
-                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">August 15, 2025</span>
-
-                  <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-
+            <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
+              <div className="w-full h-56 rounded-2xl shrink-0 overflow-hidden">
+                <img src="/tem.png" alt="Janmashtami Temple" loading="lazy" className="group-hover:scale-105 w-full h-full object-cover object-center duration-500" />
+              </div>
+              <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
+                <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Janmashtami</span>
+                <span className="text-[11px] text-[#cca75b] font-medium tracking-widest uppercase block mt-1">August 16, 2025</span>
+                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-0 group-hover:mt-3 opacity-0 group-hover:opacity-100">
+                  <p className="overflow-hidden text-[14px] text-[#5c5245] leading-relaxed">
                     Commemorate the appearance of Lord Krishna with fasting, midnight aarti, kirtans and joyful celebrations.
-
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            {/* Card 3: Radhashtami */}
-
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-
-              <div className="w-full h-full relative">
-
-                <div className="w-full h-64 overflow-hidden rounded-2xl">
-
-                  <img src="/deity-1.jpg" alt="Radhashtami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-
-                </div>
-
-                <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-
-                  <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-
-                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Radhashtami</span>
-
-                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">September 01, 2025</span>
-
-                  <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-
-                    Honoring the appearance of Srimati Radharani with special puja, kirtans and divine pastimes.
-
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            {/* Card 4: Diwali */}
-            <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-              <div className="w-full h-full relative">
-                <div className="w-full h-64 overflow-hidden rounded-2xl">
-                  <img src="/deity-2.jpg" alt="Diwali" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-                </div>
-                <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-                  <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                  <span className="text-lg font-medium font-serif block text-[#0a3d73]">Diwali</span>
-                  <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">October 20, 2025</span>
-                  <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-                    The festival of lights symbolizing the victory of good over evil. Join us for puja, lights and joy.
                   </p>
                 </div>
               </div>
             </div>
-
-            {!isHomePage && (
-              <>
-                {/* Card 5: Govardhan Puja */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-                  <div className="w-full h-full relative">
-                    <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-1.jpg" alt="Govardhan Puja" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-                    </div>
-                    <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-                      <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Govardhan Puja</span>
-                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">November 01, 2025</span>
-                      <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-                        Celebrating the day Lord Krishna lifted Govardhan Hill. Enjoy the grand Annakut offering and ecstatic kirtans.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 6: Gaura Purnima */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-                  <div className="w-full h-full relative">
-                    <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-2.jpg" alt="Gaura Purnima" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-                    </div>
-                    <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-                      <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Gaura Purnima</span>
-                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">March 14, 2026</span>
-                      <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-                        The auspicious appearance day of Sri Chaitanya Mahaprabhu. Join us for Maha Abhishek and fasting until moonrise.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 7: Rama Navami */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-                  <div className="w-full h-full relative">
-                    <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-1.jpg" alt="Rama Navami" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-                    </div>
-                    <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-                      <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Rama Navami</span>
-                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">April 06, 2026</span>
-                      <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-                        Celebrate the birth of Lord Sri Ramachandra with special arati, readings from the Ramayana, and prasadam.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 8: Nityananda Trayodashi */}
-                <div className="relative group cursor-pointer overflow-hidden duration-500 w-full min-h-[400px] h-auto bg-white/85 backdrop-blur-md text-gray-800 p-4 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card">
-                  <div className="w-full h-full relative">
-                    <div className="w-full h-64 overflow-hidden rounded-2xl">
-                      <img src="/deity-2.jpg" alt="Nityananda Trayodashi" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-                    </div>
-                    <div className="absolute w-full left-0 p-4 -bottom-16 duration-500 group-hover:-translate-y-14 z-20">
-                      <div className="absolute -z-10 left-0 bottom-[-40px] w-full h-[180px] opacity-0 duration-500 group-hover:opacity-100 group-hover:bg-white rounded-2xl shadow-xl border border-[#eae4d5]/30" />
-                      <span className="text-lg font-medium font-serif block text-[#0a3d73]">Nityananda Trayodashi</span>
-                      <span className="text-[10px] text-[#cca75b] font-medium tracking-widest uppercase block mb-2">February 11, 2026</span>
-                      <p className="group-hover:opacity-100 w-full duration-500 opacity-0 text-xs text-[#5c5245] leading-relaxed">
-                        Honor the appearance of Lord Nityananda Prabhu, the most merciful incarnation, with ecstatic chanting and feasting.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-
-
-
-
-
-
           </div>
 
 

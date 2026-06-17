@@ -37,7 +37,7 @@ const objectives = [
   {
     title: "Spreading the Holy Name",
     text: "It is our first and foremost objective to inspire people to chant the Hare Krishna Maha-mantra. Chanting the holy name is the Yuga-dharma; and Supreme Lord Sri Krishna descended as Sri Chaitanya Mahaprabhu to inaugurate this dharma and propagate the Sankirtana Movement. He desired that the entire world be inundated with the chanting of the holy name. Srila Prabhupada the founder-acharya of ISKCON accepted this as the mission of his life and established the world-wide Hare Krishna Movement to spread the holy names. Following in his footsteps, we, the disciples of Srila Prabhupada, have initiated various programs like Chanters Club, Harinam Festival, Hare Krishna Flash Mobs, etc., to spread the holy names and inspire as many people as possible to chant the Hare Krishna Maha-mantra.",
-    image: "https://hkmdehradun.org/assets/images/spreading-the-holy-name.jpg"
+    image: "/monk2.png"
   },
   {
     title: "Gorgeous Deity-Worship and Opulent Festivals",
@@ -134,36 +134,12 @@ export default function OurObjectivesPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-12 md:pt-28 md:pb-16 overflow-hidden z-10">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] bg-orange-200/40 rounded-full blur-[100px] opacity-60 mix-blend-multiply" />
-          <div className="absolute bottom-[-10%] right-[-5%] w-[40rem] h-[40rem] bg-blue-200/30 rounded-full blur-[100px] opacity-60 mix-blend-multiply" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex justify-start">
-          <div className="max-w-xl text-left">
-            <Reveal direction="right" delay={100}>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm border border-orange-200/50 text-orange-600 text-sm font-bold tracking-widest uppercase shadow-sm mb-6">
-                <Target className="w-4 h-4" />
-                <span>HKM Dehradun</span>
-              </div>
-            </Reveal>
-            
-            <Reveal direction="right" delay={200}>
-              <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-serif font-black text-[#072149] tracking-tight leading-[1.05] pb-4">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-[#072149]">Objectives</span>
-              </h1>
-            </Reveal>
-
-            <Reveal direction="right" delay={300}>
-              <blockquote className="border-l-4 border-orange-400 pl-6 my-6 italic">
-                <p className="text-xl md:text-2xl text-gray-600 font-serif leading-relaxed">
-                  "HKM Dehradun is a charitable society dedicated to spreading the teachings of Lord Krishna through devotion, service, and spiritual education."
-                </p>
-              </blockquote>
-            </Reveal>
-          </div>
-        </div>
+      <section className="relative w-full overflow-hidden z-10">
+        <img 
+          src="/ourobjectives .png" 
+          alt="Our Objectives" 
+          className="w-full h-auto object-cover" 
+        />
       </section>
 
       {/* Main Content Area */}
@@ -181,9 +157,6 @@ export default function OurObjectivesPage() {
                     <div className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-orange-50/50 relative overflow-hidden group">
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-[#072149] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                       <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-                        <div className="flex-shrink-0 w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
-                          <span className="text-3xl font-serif font-bold text-orange-600">{index + 1}</span>
-                        </div>
                         <div>
                           <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#072149] mb-4">{obj.title}</h2>
                           <p className="text-lg text-gray-600 leading-relaxed max-w-4xl">{obj.text}</p>
@@ -209,10 +182,6 @@ export default function OurObjectivesPage() {
                               className="w-full h-auto transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
                             />
                           </div>
-                        </div>
-                        {/* Elegant Number Badge */}
-                        <div className={`absolute ${isEven ? 'left-4 sm:-left-6' : 'right-4 sm:-right-6'} top-4 sm:top-1/2 sm:-translate-y-1/2 w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center border border-gray-100 z-20`}>
-                          <span className="text-3xl font-serif font-bold text-orange-600">{index + 1}</span>
                         </div>
                       </div>
                     </Reveal>

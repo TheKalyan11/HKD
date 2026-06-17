@@ -27,39 +27,39 @@ const BirdSVG = ({ className = '', style = {} }: { className?: string, style?: R
 ───────────────────────────────────────────── */
 const NAV_COLS = [
   {
-    title: 'Explore',
+    title: 'About Us',
     links: [
-      { label: 'Our Mission & Objectives',        href: '/about' },
-      { label: 'Gita Life Courses',               href: '/gita-life' },
-      { label: 'Book Distribution',               href: '/book-distribution' },
-      { label: 'Bhagavad Gita Book Distribution', href: '/book-distribution' },
+      { label: 'Our Mission',    href: '/mission' },
+      { label: 'Objectives',     href: '/objectives' },
+      { label: 'Governance',     href: '/governance' },
+      { label: 'Youth Programs', href: '/youth' },
     ],
   },
   {
-    title: 'Links',
+    title: 'Activities',
+    links: [
+      { label: 'Gita Life Courses',  href: '/gita-life-course' },
+      { label: 'Book Distribution',  href: '/book-distribution' },
+      { label: 'Volunteer With Us',  href: '/volunteer' },
+      { label: 'Challenge Yourself',  href: '/become-a-monk' },
+    ],
+  },
+  {
+    title: 'Gallery & Events',
     links: [
       { label: 'Daily Darshan',  href: '/daily-darshan' },
       { label: 'Mandir Nirman', href: '/mandir-nirman' },
-      { label: 'Latest Events',  href: '/events' },
-    ],
-  },
-  {
-    title: 'Latest Events',
-    links: [
-      { label: 'Janmashtami Mahotsav',  href: '/events' },
-      { label: 'Gaura Purnima Festival', href: '/events' },
-      { label: 'Rath Yatra',            href: '/events' },
-      { label: 'Diwali Celebration',    href: '/events' },
+      { label: 'Latest Blogs',  href: '/blog' },
+      { label: 'Latest Events', href: '/events' },
     ],
   },
   {
     title: 'Donate Now',
     links: [
-      { label: 'Gau Seva',               href: '/gau-seva' },
-      { label: 'Annadana Seva',          href: '/annadana-seva' },
-      { label: 'Child Annadana Seva',    href: '/child-annadana-seva' },
-      { label: 'Khichdi Prasadam Seva',  href: '/khichdi-prasadam-seva' },
-      { label: 'Ekadashi Seva',          href: '/ekadashi-seva' },
+      { label: 'Gau Seva',              href: '/gau-seva' },
+      { label: 'Annadana Seva',         href: '/annadana-seva' },
+      { label: 'Khichdi Prasadam Seva', href: '/khichdi-prasadam-seva' },
+      { label: 'Ekadashi Seva',         href: '/ekadashi-seva' },
     ],
   },
 ];
@@ -69,7 +69,7 @@ const NAV_COLS = [
 ───────────────────────────────────────────── */
 export function Footer() {
   return (
-    <footer className="relative bg-white pt-24 pb-12 overflow-hidden border-t border-gray-100 font-sans">
+    <footer className="relative bg-white pt-24 pb-4 overflow-hidden border-t border-gray-100 font-sans">
       
       {/* Styles moved to globals.css for faster navigation */}
 
@@ -154,12 +154,12 @@ export function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col items-center justify-center gap-4 text-center">
-          <p className="text-sm text-gray-500 font-semibold px-4">
+        <div className="border-t-2 border-[#0f4c81] pt-8 flex flex-col items-center justify-center gap-2 text-center">
+          <p className="text-base text-gray-500 font-semibold px-4">
             © HARE KRISHNA MOVEMENT DEHRADUN. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold text-gray-500 px-4">
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-sm sm:text-base font-semibold text-gray-500 px-4">
             <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
             <span className="text-[#eab308] font-bold hidden sm:inline">|</span>
             <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms &amp; Conditions</Link>

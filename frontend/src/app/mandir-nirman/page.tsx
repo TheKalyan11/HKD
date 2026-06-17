@@ -23,7 +23,6 @@ const MOCK_DATA: DarshanImage[] = [
   { id: 'm7', url: '/mandir-nirman/render-7.jpg', date: '2026-06-09', title: 'Central Lawn' },
   { id: 'm8', url: '/mandir-nirman/render-8.jpg', date: '2026-06-09', title: 'Cascading Waterfalls' },
   { id: 'm9', url: '/mandir-nirman/render-9.jpg', date: '2026-06-09', title: 'Goshala Pathways' },
-  { id: 'm10', url: '/mandir-nirman/render-10.jpg', date: '2026-06-09', title: 'Tree-Lined Walkways' },
   { id: 'm11', url: '/mandir-nirman/render-11.jpg', date: '2026-06-09', title: 'Courtyard Fountain' },
 ];
 

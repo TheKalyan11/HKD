@@ -360,61 +360,77 @@ export default function GitaLifeCoursePage() {
             <source src={VIDEO_URL} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/75" />
-          <div className="relative z-10 flex flex-col min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)] p-4 sm:p-6 md:p-8 gap-6">
+          <div className="relative z-10 flex flex-col min-h-[35vh] sm:min-h-[38vh] md:min-h-[42vh] p-4 sm:p-6 md:p-8 gap-6">
 
             <div className="flex-1 min-h-[2rem]" />
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-6">
               <div className="flex-1 min-w-0 lg:max-w-lg xl:max-w-2xl mb-4 lg:mb-0">
-                <p className="text-amber-400 text-xs uppercase tracking-[0.3em] mb-3" style={{ fontWeight: 500 }}>
-                  Hare Krishna Dehradun &bull; ISKCON
-                </p>
-                <p className="text-white text-3xl sm:text-4xl xl:text-5xl leading-tight drop-shadow-lg" style={{ fontWeight: 500 }}>
-                  Discover life&apos;s purpose<br />
-                  through the{" "}
-                  <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Bhagavad Gita</span>
-                </p>
-                <p className="text-white/65 text-base mt-4 max-w-md leading-relaxed">
-                  A transformative journey into Vedic wisdom — with mentors who live what they teach.
-                </p>
               </div>
               <div id="enroll" className="w-full lg:w-[420px] xl:w-[480px] shrink-0">
-                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden">
-                  <div className="p-4 sm:p-6 flex flex-col gap-4">
+                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+                  {/* Card header */}
+                  <div className="bg-gradient-to-r from-[#072149] to-[#0a2d60] px-6 py-5">
+                    <h2 className="text-white text-2xl tracking-tight font-semibold">Enroll Today</h2>
+                    <p className="text-white/60 text-sm mt-1">Begin your journey with the Bhagavad Gita</p>
+                  </div>
+
+                  <div className="p-6 flex flex-col gap-5">
                     {!sent ? (
                       <>
-                        <h2 className="text-xl sm:text-2xl text-black tracking-tight" style={{ fontWeight: 600 }}>Enroll Today! 🙏</h2>
-                        <div className="flex flex-row items-center justify-between gap-3 bg-gray-50 rounded-2xl px-4 py-2.5">
-                          <div className="min-w-0">
-                            <p className="text-gray-400 text-xs mb-0.5">Drop us a line</p>
-                            <a href="mailto:contact@hkmdehradun.org" className="text-blue-600 text-sm truncate hover:underline block" style={{ fontWeight: 600 }}>contact@hkmdehradun.org</a>
+                        {/* Email contact */}
+                        <a href="mailto:contact@hkmdehradun.org" className="flex items-center gap-3 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 hover:bg-blue-100 transition-colors group">
+                          <div className="w-8 h-8 rounded-full bg-[#072149] flex items-center justify-center shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                           </div>
+                          <div className="min-w-0">
+                            <p className="text-gray-400 text-sm font-instrument">Drop us a line</p>
+                            <p className="text-blue-600 text-base font-semibold font-instrument truncate">contact@hkmdehradun.org</p>
+                          </div>
+                        </a>
+
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 h-px bg-gray-200" />
+                          <span className="text-gray-400 text-xs font-medium tracking-wider uppercase">or fill the form</span>
+                          <div className="flex-1 h-px bg-gray-200" />
                         </div>
-                        <div className="flex items-center gap-3"><div className="flex-1 h-px bg-gray-200" /><span className="text-gray-400 text-sm" style={{ fontWeight: 500 }}>OR</span><div className="flex-1 h-px bg-gray-200" /></div>
+
                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                           <div>
-                            <label className="text-sm text-black block mb-2" style={{ fontWeight: 500 }}>Tell us about yourself</label>
+                            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">Your Details</label>
                             <div className="flex flex-col sm:flex-row gap-2">
-                              <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" className={inputClass} />
-                              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className={inputClass} />
+                              <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" className={`${inputClass} flex-1`} />
+                              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email address" className={`${inputClass} flex-1`} />
                             </div>
                           </div>
-                          <textarea rows={3} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What brings you to this course? Any questions for your mentor..." className={`${inputClass} resize-none`} />
+
                           <div>
-                            <p className="text-sm text-black mb-2" style={{ fontWeight: 500 }}>I&apos;m interested in&hellip;</p>
-                            <div className="flex flex-wrap gap-1.5">
+                            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">Message</label>
+                            <textarea rows={3} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What brings you to this course? Any questions for your mentor..." className={`${inputClass} resize-none w-full`} />
+                          </div>
+
+                          <div>
+                            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">I&apos;m interested in</label>
+                            <div className="flex flex-wrap gap-2">
                               {MODULES.map((mod) => (
-                                <button key={mod} type="button" onClick={() => toggle(mod)} className={`text-xs px-3 py-2 rounded-lg border transition-all ${selected.includes(mod) ? "bg-gray-100 text-black border-black" : "bg-white text-gray-700 border-gray-200 hover:border-gray-400"}`}>{mod}</button>
+                                <button key={mod} type="button" onClick={() => toggle(mod)}
+                                  className={`text-xs px-3 py-1.5 rounded-full border font-medium transition-all ${selected.includes(mod) ? "bg-[#072149] text-white border-[#072149]" : "bg-white text-gray-600 border-gray-200 hover:border-[#072149] hover:text-[#072149]"}`}>
+                                  {mod}
+                                </button>
                               ))}
                             </div>
                           </div>
-                          <button type="submit" disabled={sending} className="w-full bg-black text-white text-sm py-3 rounded-2xl hover:bg-gray-800 transition-colors disabled:opacity-60" style={{ fontWeight: 600 }}>{sending ? "Sending…" : "Send Enrollment Request"}</button>
+
+                          <button type="submit" disabled={sending}
+                            className="w-full bg-gradient-to-r from-[#072149] to-[#0a2d60] text-white text-sm font-semibold py-3.5 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 mt-1 tracking-wide">
+                            {sending ? "Sending…" : "Send Enrollment Request"}
+                          </button>
                         </form>
                       </>
                     ) : (
-                      <div className="flex flex-col items-center py-6 gap-3">
-                        <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-xl">&#10003;</div>
-                        <p className="text-base text-gray-900" style={{ fontWeight: 600 }}>You&apos;re all set!</p>
-                        <p className="text-sm text-gray-500">Expect a reply within 24 hours.</p>
+                      <div className="flex flex-col items-center py-8 gap-3">
+                        <div className="w-14 h-14 rounded-full bg-green-50 border border-green-200 flex items-center justify-center text-green-600 text-2xl">&#10003;</div>
+                        <p className="text-base text-gray-900 font-semibold">You&apos;re all set!</p>
+                        <p className="text-sm text-gray-500 text-center">Expect a reply within 24 hours.</p>
                       </div>
                     )}
                   </div>
@@ -504,8 +520,8 @@ export default function GitaLifeCoursePage() {
                       peace of mind, and all good qualities through God consciousness.
                     </p>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center shrink-0">
-                        <PILotus className="w-7 h-7 text-[#072149]" />
+                      <div className="w-16 h-16 shrink-0">
+                        <img src="/sp%20logo.png" alt="Srila Prabhupada" className="w-full h-full object-contain" />
                       </div>
                       <div>
                         <p className="text-amber-400 text-sm uppercase tracking-widest" style={{ fontWeight: 600 }}>Srila Prabhupada</p>

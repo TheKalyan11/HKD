@@ -1,4 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Inter:wght@100..900&family=Bebas+Neue&family=Cause:wght@100..900&family=Finlandica+Headline:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause&family=Chelsea+Market&family=Finlandica+Headline:ital,wght@0,100..900;1,100..900&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@200..700&display=swap');
+
+@font-face {
+  font-family: 'Black Qulaity';
+  src: local('Black Qulaity'), url('/fonts/black-qulaity.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TC EN';
+  src: local('TC EN'), url('/fonts/TwCenMTStdSemiMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Balaram';
+  src: local('Balaram'), url('/fonts/balaram.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Balaram';
+  src: local('Balaram Italic'), url('/fonts/balaram-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -17,25 +49,31 @@
     opacity: 0;
   }
   .font-instrument {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'TC EN', sans-serif;
   }
   .font-inter {
-    font-family: 'Inter', sans-serif;
+    font-family: 'TC EN', sans-serif;
   }
   .font-heading {
-    font-family: 'Playfair Display', serif;
   }
   .font-nav {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'TC EN', sans-serif;
   }
   .font-body {
-    font-family: 'Lora', serif;
+    font-family: 'TC EN', sans-serif;
   }
   .font-card {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'TC EN', sans-serif;
   }
   .font-section-heading {
-    font-family: 'Playfair Display', serif;
+  }
+  .font-balaram {
+    font-family: 'Balaram', sans-serif;
+  }
+  .bg-mantra-pattern {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nODAwJyBoZWlnaHQ9JzQwMCcgdmlld0JveD0nMCAwIDgwMCA0MDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+CjxnIGZpbGw9J25vbmUnIHN0cm9rZT0nI2NjYTc1Yicgc3Ryb2tlLXdpZHRoPScxLjUnIG9wYWNpdHk9JzAuMyc+CjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDE2MCwgNjApIHNjYWxlKDEuNSknPgo8cGF0aCBkPSdNMjAgNUMyMCA1IDEwIDE1IDIwIDM1QzMwIDE1IDIwIDUgMjAgNVonLz4KPHBhdGggZD0nTTIwIDM1QzEwIDMwIDUgMjAgMTAgMTJDMTUgMTIgMTggMjUgMjAgMzVaJy8+CjxwYXRoIGQ9J00yMCAzNUMzMCAzMCAzNSAyMCAzMCAxMkMyNSAxMiAyMiAyNSAyMCAzNVonLz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg1NjAsIDI2MCkgc2NhbGUoMS41KSc+CjxsaW5lIHgxPSc1JyB5MT0nMzUnIHgyPSczNScgeTI9JzUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPgo8Y2lyY2xlIGN4PScxMicgY3k9JzI4JyByPScxJyBmaWxsPScjY2NhNzViJyBzdHJva2U9J25vbmUnLz4KPGNpcmNsZSBjeD0nMTcnIGN5PScyMycgcj0nMScgZmlsbD0nI2NjYTc1Yicgc3Ryb2tlPSdub25lJy8+CjxjaXJjbGUgY3g9JzIyJyBjeT0nMTgnIHI9JzEnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScvPgo8cGF0aCBkPSdNMzUgNSBRIDQwIC01IDQ1IDUgUSA0MCAxNSAzNSA1JyBzdHJva2Utd2lkdGg9JzEnLz4KPGNpcmNsZSBjeD0nNDAnIGN5PSc1JyByPScxLjUnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScvPgo8cGF0aCBkPSdNMTAgMzAgUSAxNSAzNSAxMCA0MCBNIDE1IDI1IFEgMjAgMzUgMTUgNDAnIHN0cm9rZS13aWR0aD0nMScvPgo8L2c+CjwvZz4KPHRleHQgeD0nNDAwJyB5PScxODAnIGZvbnQtZmFtaWx5PSdHZW9yZ2lhLCBzZXJpZicgZm9udC1zaXplPScyMCcgZmlsbD0nI2NjYTc1Yicgc3Ryb2tlPSdub25lJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBvcGFjaXR5PScwLjMnIGxldHRlci1zcGFjaW5nPScyJyBmb250LXN0eWxlPSdpdGFsaWMnPkhhcmUgS3Jpc2huYSBIYXJlIEtyaXNobmEsIEtyaXNobmEgS3Jpc2huYSBIYXJlIEhhcmU8L3RleHQ+Cjx0ZXh0IHg9JzQwMCcgeT0nMjEwJyBmb250LWZhbWlseT0nR2VvcmdpYSwgc2VyaWYnIGZvbnQtc2l6ZT0nMjAnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScgdGV4dC1hbmNob3I9J21pZGRsZScgb3BhY2l0eT0nMC4zJyBsZXR0ZXItc3BhY2luZz0nMicgZm9udC1zdHlsZT0naXRhbGljJz5IYXJlIFJhbWEgSGFyZSBSYW1hLCBSYW1hIFJhbWEgSGFyZSBIYXJlPC90ZXh0Pgo8L3N2Zz4=");
+    background-repeat: repeat;
+    background-size: 800px 400px;
   }
 }
 
@@ -51,11 +89,12 @@
 }
 
 html {
+  font-size: 18px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img, video {
@@ -65,13 +104,11 @@ img, video {
 body {
   color: #121213;
   background-color: #FFFEFA;
-  font-family: 'Lora', serif;
-  overflow-x: hidden;
+  font-family: 'TC EN', sans-serif;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  text-transform: uppercase;
 }
 
 /* Custom premium scrollbar styling */
@@ -197,12 +234,12 @@ button.learn-more:hover .button-text {
   display: flex;
   align-items: center;
   cursor: pointer;
-  width: 145px;
+  width: 165px;
   height: 42px;
   background-color: #000;
   color: #fff;
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'TC EN', 'Source Sans 3', sans-serif;
   font-weight: bold;
   border: 2px solid #fff;
   outline: 2px solid #000;
@@ -279,13 +316,13 @@ button.learn-more:hover .button-text {
   transform: skew(5deg);
 }
 .button-text span:first-child {
-  font-size: 8px;
+  font-size: 12px;
   text-transform: uppercase;
   opacity: 0.85;
   letter-spacing: 0.5px;
 }
 .button-text span:last-child {
-  font-size: 12px;
+  font-size: 17px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -299,10 +336,10 @@ button.learn-more:hover .button-text {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.4rem;
-  min-width: 110px;
-  height: 42px;
-  font-size: 0.875rem;
+  padding: 0.4rem 1rem;
+  min-width: 90px;
+  height: 36px;
+  font-size: 1.0625rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -330,7 +367,7 @@ button.learn-more:hover .button-text {
   background-color: white;
   color: black;
   border-radius: 10em;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   padding: 0.5em 1.5em;
   cursor: pointer;
@@ -353,9 +390,9 @@ button.learn-more:hover .button-text {
   box-shadow: 0 0 0 0 black;
 }
 .glass-nav-link {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'TC EN', sans-serif;
   color: #1f2937;
-  font-size: 0.875rem;
+  font-size: 1.0625rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;

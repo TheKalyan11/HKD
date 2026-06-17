@@ -187,28 +187,11 @@ export default function VolunteerPage() {
   return (
     <div className="bg-[#FFFBF2] min-h-screen font-sans overflow-x-hidden relative">
 
-      {/* ── HERO SECTION (UNCHANGED) ──────────────────── */}
-      <section className={`relative min-h-[60vh] md:min-h-[80vh] overflow-hidden flex items-center justify-center transition-all duration-1000 ${mounted ? "opacity-100" : "opacity-0"}`}>
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover scale-105 brightness-[0.6] contrast-[1.2]">
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-white text-black mix-blend-screen flex flex-col items-center justify-center pointer-events-none">
-          <h1
-            className="font-black uppercase tracking-tight text-[18vw] sm:text-[16vw] md:text-[14vw] leading-[0.85] text-center w-full px-4"
-            style={{ fontFamily: "Impact, Arial Narrow, sans-serif", transform: "scaleY(1.15)" }}
-          >
-            Volunteer<br />With Us
-          </h1>
-        </div>
-        <div className="absolute inset-0 pointer-events-none mix-blend-multiply" style={{ backgroundColor: "#f4f0e6" }} />
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <h1
-            className="font-black uppercase tracking-tight text-[18vw] sm:text-[16vw] md:text-[14vw] leading-[0.85] text-center w-full px-4"
-            style={{ fontFamily: "Impact, Arial Narrow, sans-serif", transform: "scaleY(1.15)", color: "transparent", WebkitTextStroke: "2px rgba(0,0,0,0.1)" }}
-          >
-            Volunteer<br />With Us
-          </h1>
-        </div>
+      {/* ── HERO SECTION ──────────────────── */}
+      <section className="flex items-center justify-center px-6 pt-10 pb-4">
+        <h1 className="text-[#072149] font-bold text-4xl sm:text-5xl md:text-6xl tracking-wide uppercase">
+          Volunteer With Us
+        </h1>
       </section>
 
       {/* ── MAIN CONTENT (Split Layout) ───────────────── */}
