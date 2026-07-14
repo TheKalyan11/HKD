@@ -14,16 +14,16 @@ type DarshanImage = {
 
 // Data for Mandir Nirman
 const MOCK_DATA: DarshanImage[] = [
-  { id: 'm1', url: '/mandir-nirman/render-1.jpg', date: '2026-06-09', title: 'Main Temple View' },
-  { id: 'm2', url: '/mandir-nirman/render-2.jpg', date: '2026-06-09', title: 'Temple Entrance' },
-  { id: 'm3', url: '/mandir-nirman/render-3.jpg', date: '2026-06-09', title: 'Lush Gardens' },
-  { id: 'm4', url: '/mandir-nirman/render-4.jpg', date: '2026-06-09', title: 'Goshala' },
-  { id: 'm5', url: '/mandir-nirman/render-5.jpg', date: '2026-06-09', title: 'Water Features' },
-  { id: 'm6', url: '/mandir-nirman/render-6.jpg', date: '2026-06-09', title: 'Aerial Campus Layout' },
-  { id: 'm7', url: '/mandir-nirman/render-7.jpg', date: '2026-06-09', title: 'Central Lawn' },
-  { id: 'm8', url: '/mandir-nirman/render-8.jpg', date: '2026-06-09', title: 'Cascading Waterfalls' },
-  { id: 'm9', url: '/mandir-nirman/render-9.jpg', date: '2026-06-09', title: 'Goshala Pathways' },
-  { id: 'm11', url: '/mandir-nirman/render-11.jpg', date: '2026-06-09', title: 'Courtyard Fountain' },
+  { id: 'm1', url: '/mandir-nirman/render-1.webp', date: '2026-06-09', title: 'Main Temple View' },
+  { id: 'm2', url: '/mandir-nirman/render-2.webp', date: '2026-06-09', title: 'Temple Entrance' },
+  { id: 'm3', url: '/mandir-nirman/render-3.webp', date: '2026-06-09', title: 'Lush Gardens' },
+  { id: 'm4', url: '/mandir-nirman/render-4.webp', date: '2026-06-09', title: 'Goshala' },
+  { id: 'm5', url: '/mandir-nirman/render-5.webp', date: '2026-06-09', title: 'Water Features' },
+  { id: 'm6', url: '/mandir-nirman/render-6.webp', date: '2026-06-09', title: 'Aerial Campus Layout' },
+  { id: 'm7', url: '/mandir-nirman/render-7.webp', date: '2026-06-09', title: 'Central Lawn' },
+  { id: 'm8', url: '/mandir-nirman/render-8.webp', date: '2026-06-09', title: 'Cascading Waterfalls' },
+  { id: 'm9', url: '/mandir-nirman/render-9.webp', date: '2026-06-09', title: 'Goshala Pathways' },
+  { id: 'm11', url: '/mandir-nirman/render-11.webp', date: '2026-06-09', title: 'Courtyard Fountain' },
 ];
 
 export default function MandirNirmanPage() {

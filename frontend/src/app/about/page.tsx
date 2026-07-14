@@ -118,7 +118,7 @@ export default function AboutPage() {
         {/* 1. SRILA PRABHUPADA */}
         <ScrollRevealSection className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/3 flex justify-center order-1">
-            <ParallaxTiltImage src="/about-3.png" alt="Srila Prabhupada" reverse={true} />
+            <ParallaxTiltImage src="/about-3.webp" alt="Srila Prabhupada" reverse={true} />
           </div>
           <div className="w-full md:w-2/3 flex flex-col items-center md:items-end text-center md:text-right order-2">
             <h2 className="section-title uppercase">Srila Prabhupada</h2>
@@ -139,14 +139,14 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="w-full md:w-1/3 flex justify-center order-1 md:order-2">
-             <ParallaxTiltImage src="/about-4.png" alt="Chairman" />
+             <ParallaxTiltImage src="/about-4.webp" alt="Chairman" />
           </div>
         </ScrollRevealSection>
 
         {/* 3. PRESIDENT'S MESSAGE */}
         <ScrollRevealSection className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/3 flex justify-center order-1">
-            <ParallaxTiltImage src="/about-5.png" alt="President" reverse={true} />
+            <ParallaxTiltImage src="/about-5.webp" alt="President" reverse={true} />
           </div>
           <div className="w-full md:w-2/3 flex flex-col items-center md:items-end text-center md:text-right order-2">
             <h2 className="section-title uppercase">President's Message</h2>

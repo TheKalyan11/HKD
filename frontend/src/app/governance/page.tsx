@@ -160,7 +160,7 @@ const leaders = [
     id: 1,
     name: "Madhu Pandit Dasa",
     title: "Chairman",
-    image: "/SriMadhuPanditDasa-1-2.jpg",
+    image: "/SriMadhuPanditDasa-1-2.webp",
     bio: [
       "Madhu Pandit Dasa was born in Nagercoil, Tamil Nadu. He became a full-time member of ISKCON in 1981 while doing his M.Tech in Civil Engineering from IIT-Bombay. Since then, he has successfully conceived and implemented many large scale public service projects that positively impact millions of people. He has also worked tirelessly to preserve and promote Indian spirituality, culture and heritage among children and youth for their holistic well-being. He is the Chairman and Mentor, Global Hare Krishna Movement and the President of ISKCON Bangalore.",
       "Madhu Pandit Dasa is the Trustee and Chairman of The Akshaya Patra Foundation, which has contributed immensely to alleviate classroom hunger and improve the nutrition levels of children studying in government schools in India. He has led Akshaya Patra to become an efficient Public-Private Partnership (PPP) and an admired social innovation. He provides visionary guidance for the world’s largest NGO run school meal programme.",
@@ -171,7 +171,7 @@ const leaders = [
     id: 2,
     name: "Chanchalapathi Dasa",
     title: "President",
-    image: "/chanchalapathi-dasa.jpg",
+    image: "/chanchalapathi-dasa.webp",
     bio: [
       "Chanchalapathi Dasa was born in 1963 in Bangalore, Karnataka. While an undergraduate student at PSG College of Technology, Coimbatore, he became interested in the message and mission of Srila Prabhupada. Later, he joined the Indian Institute of Science, Bangalore, for the Masters programme in Electrical Communication Engineering. He became a full-time dedicated member of ISKCON Bangalore in 1984 and has conceived various spiritual, cultural and social development programmes in the service of humanity. He led the creation of Little Krishna, a world-class animation series on the childhood pastimes of Krishna. He is the Vice Chairman of Akshaya Patra and directs the strategy, growth, and governance of the Foundation.",
       "Chanchalapathi Dasa is the Vice Chairman of the Governing Body Committee and Senior Vice President of ISKCON Bangalore. He is also the President of Vrindavan Chandrodaya Mandir, a unique heritage and culture tourism infrastructure project poised to become the tallest Krishna temple in the world."
@@ -309,7 +309,7 @@ export default function GovernancePage() {
                 layoutId={`leader-${leader.id}`}
                 key={leader.id}
                 onClick={() => setSelectedId(leader.id)}
-                className="group cursor-pointer flex flex-col"
+                className="group cursor-pointer flex flex-col max-w-[280px] mx-auto w-full"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}>

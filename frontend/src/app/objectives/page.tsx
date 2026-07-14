@@ -37,7 +37,7 @@ const objectives = [
   {
     title: "Spreading the Holy Name",
     text: "It is our first and foremost objective to inspire people to chant the Hare Krishna Maha-mantra. Chanting the holy name is the Yuga-dharma; and Supreme Lord Sri Krishna descended as Sri Chaitanya Mahaprabhu to inaugurate this dharma and propagate the Sankirtana Movement. He desired that the entire world be inundated with the chanting of the holy name. Srila Prabhupada the founder-acharya of ISKCON accepted this as the mission of his life and established the world-wide Hare Krishna Movement to spread the holy names. Following in his footsteps, we, the disciples of Srila Prabhupada, have initiated various programs like Chanters Club, Harinam Festival, Hare Krishna Flash Mobs, etc., to spread the holy names and inspire as many people as possible to chant the Hare Krishna Maha-mantra.",
-    image: "/monk2.png"
+    image: "/monk2.webp"
   },
   {
     title: "Gorgeous Deity-Worship and Opulent Festivals",
@@ -57,7 +57,7 @@ const objectives = [
   {
     title: "Missionary Development",
     text: "The fifth objective is to maintain and nourish a vibrant, inspired and committed community of missionaries with mature understanding of Srila Prabhupada’s instructions for his Krishna consciousness movement. Aspiring devotees who want to dedicate their lives to serve the mission of Srila Prabhupada are given basic facilities to be part of the community, get trained in a disciplined way of life, and serve the mission for the greater good of the society.",
-    image: "/bam.png"
+    image: "/bam.webp"
   },
   {
     title: "Resource Mobilization",
@@ -133,12 +133,11 @@ export default function OurObjectivesPage() {
         />
       </div>
 
-      {/* Hero Section */}
       <section className="relative w-full overflow-hidden z-10">
         <img 
-          src="/ourobjectives .png" 
+          src="/ourobjectives .webp" 
           alt="Our Objectives" 
-          className="w-full h-auto object-cover" 
+          className="w-full h-auto max-h-[40vh] object-cover" 
         />
       </section>
 

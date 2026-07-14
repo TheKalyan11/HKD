@@ -135,8 +135,17 @@ export default function BookDistributionPage() {
       {/* ── HERO ─────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         {/* Background Video - Clear Sky */}
-        <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline preload="none" className="w-full h-full object-cover">
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            disablePictureInPicture 
+            controls={false}
+            preload="none" 
+            className="w-full h-full object-cover pointer-events-none"
+          >
             <source src="/214409.mp4" type="video/mp4" />
           </video>
           {/* Overlay to ensure text readability */}
@@ -183,7 +192,7 @@ export default function BookDistributionPage() {
             <div className="order-1 lg:order-2 lg:col-span-7">
               <Reveal direction="left" delay={200} className="relative w-full">
                 <div className="relative w-full max-w-lg mx-auto lg:max-w-full rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(7,33,73,0.15)] border border-white/50 group bg-white/10 backdrop-blur-sm p-4">
-                  <img src="/hbk.png" alt="Gita Daan - Bhagavad Gita Distribution" className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700" />
+                  <img src="/hbk.webp" alt="Gita Daan - Bhagavad Gita Distribution" className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#072149]/10 to-transparent pointer-events-none rounded-[2rem]" />
                 </div>
               </Reveal>
@@ -234,7 +243,7 @@ export default function BookDistributionPage() {
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <img 
-                  src="/gita-cover.jpg"
+                  src="/gita-cover.webp"
                   alt="Bhagavad Gita Cover"
                   className="w-full h-full object-cover"
                 />

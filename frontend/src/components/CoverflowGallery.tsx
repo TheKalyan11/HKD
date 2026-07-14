@@ -4,19 +4,19 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const galleryItems = [
-  { id: 1,  src: '/darshan/DSC04178.JPG',       title: 'Daily Darshan',         subtitle: 'Divine Darshan',           pos: 'object-top' },
-  { id: 2,  src: '/darshan/DSC04071.JPG',       title: 'Radha Krishna Darshan', subtitle: 'Daily Darshan',            pos: 'object-top' },
-  { id: 3,  src: '/darshan/DSC04179.JPG',       title: 'Daily Darshan',         subtitle: 'Morning Darshan',          pos: 'object-top' },
-  { id: 4,  src: '/darshan/DSC04180.JPG',       title: 'Daily Darshan',         subtitle: 'Evening Aarti',            pos: 'object-top' },
-  { id: 5,  src: '/darshan/DSC04181.JPG',       title: 'Daily Darshan',         subtitle: 'Deity Darshan',            pos: 'object-top' },
-  { id: 6,  src: '/darshan/DSC04083.JPG',       title: 'Daily Darshan',         subtitle: 'Divine Blessings',         pos: 'object-top' },
-  { id: 7,  src: '/mandir-nirman/render-1.jpg', title: 'Mandir Nirman',         subtitle: 'Temple Architecture',      pos: 'object-center' },
-  { id: 8,  src: '/mandir-nirman/render-2.jpg', title: 'Mandir Nirman',         subtitle: 'Temple Design',            pos: 'object-center' },
-  { id: 9,  src: '/mandir-nirman/render-3.jpg', title: 'Mandir Nirman',         subtitle: 'Temple Vision',            pos: 'object-center' },
-  { id: 10, src: '/mandir-nirman/render-4.jpg', title: 'Mandir Nirman',         subtitle: 'Grand Temple',             pos: 'object-center' },
-  { id: 11, src: '/mandir-nirman/render-5.jpg', title: 'Mandir Nirman',         subtitle: 'Temple Construction',      pos: 'object-center' },
-  { id: 12, src: '/deity-1.jpg',                title: 'Jhulan Yatra',          subtitle: 'Divine Swing Festival',    pos: 'object-center' },
-  { id: 13, src: '/deity-2.jpg',                title: 'Janmashtami',           subtitle: 'Appearance of Lord Krishna', pos: 'object-center' },
+  { id: 1,  src: '/darshan/DSC04178.webp',       title: 'Daily Darshan',         subtitle: 'Divine Darshan',           pos: 'object-top' },
+  { id: 2,  src: '/darshan/DSC04071.webp',       title: 'Radha Krishna Darshan', subtitle: 'Daily Darshan',            pos: 'object-top' },
+  { id: 3,  src: '/darshan/DSC04179.webp',       title: 'Daily Darshan',         subtitle: 'Morning Darshan',          pos: 'object-top' },
+  { id: 4,  src: '/darshan/DSC04180.webp',       title: 'Daily Darshan',         subtitle: 'Evening Aarti',            pos: 'object-top' },
+  { id: 5,  src: '/darshan/DSC04181.webp',       title: 'Daily Darshan',         subtitle: 'Deity Darshan',            pos: 'object-top' },
+  { id: 6,  src: '/darshan/DSC04083.webp',       title: 'Daily Darshan',         subtitle: 'Divine Blessings',         pos: 'object-top' },
+  { id: 7,  src: '/mandir-nirman/render-1.webp', title: 'Mandir Nirman',         subtitle: 'Temple Architecture',      pos: 'object-center' },
+  { id: 8,  src: '/mandir-nirman/render-2.webp', title: 'Mandir Nirman',         subtitle: 'Temple Design',            pos: 'object-center' },
+  { id: 9,  src: '/mandir-nirman/render-3.webp', title: 'Mandir Nirman',         subtitle: 'Temple Vision',            pos: 'object-center' },
+  { id: 10, src: '/mandir-nirman/render-4.webp', title: 'Mandir Nirman',         subtitle: 'Grand Temple',             pos: 'object-center' },
+  { id: 11, src: '/mandir-nirman/render-5.webp', title: 'Mandir Nirman',         subtitle: 'Temple Construction',      pos: 'object-center' },
+  { id: 12, src: '/deity-1.webp',                title: 'Jhulan Yatra',          subtitle: 'Divine Swing Festival',    pos: 'object-center' },
+  { id: 13, src: '/deity-2.webp',                title: 'Janmashtami',           subtitle: 'Appearance of Lord Krishna', pos: 'object-center' },
 ];
 
 const TOTAL = galleryItems.length;
@@ -60,7 +60,7 @@ export default function CoverflowGallery() {
         </div>
 
         {/* ── Coverflow track ────────────────────── */}
-        <div className="relative h-[260px] sm:h-[340px] md:h-[420px] lg:h-[500px] flex items-center justify-center">
+        <div className="relative h-[220px] sm:h-[280px] md:h-[360px] lg:h-[420px] flex items-center justify-center">
           {galleryItems.map((item, idx) => {
             const off    = getOffset(idx, current);
             const absOff = Math.abs(off);
@@ -103,7 +103,7 @@ export default function CoverflowGallery() {
             return (
               <div
                 key={item.id}
-                className="absolute left-1/2 w-[58%] sm:w-[56%] md:w-[55%] h-full overflow-hidden cursor-pointer"
+                className="absolute left-1/2 w-[55%] sm:w-[45%] md:w-[42%] lg:w-[40%] h-full overflow-hidden cursor-pointer"
                 style={{
                   transform:  `translateX(${translateX}) scale(${scale})`,
                   zIndex,

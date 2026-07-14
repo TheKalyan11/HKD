@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause&family=Chelsea+Market&family=Finlandica+Headline:ital,wght@0,100..900;1,100..900&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@200..700&display=swap');
-
 @font-face {
   font-family: 'Black Qulaity';
   src: local('Black Qulaity'), url('/fonts/black-qulaity.ttf') format('truetype');
@@ -449,110 +447,169 @@ button.learn-more:hover .button-text {
 /* ═══════════════════════════════════════════════
    Social Float Widget Styles (extracted from inline)
 ═══════════════════════════════════════════════ */
-.social-widget-ul {
-  list-style: none;
+/* ── WhatsApp Float Expand Button Styles ──────────────────────────────── */
+.whatsapp-float-btn {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  row-gap: 0.75rem;
-  padding: 0;
-  margin: 0;
-}
-.social-widget-ul .icon-content {
-  margin: 0;
-  position: relative;
-}
-.social-widget-ul .icon-content .tooltip {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%) translateX(10px);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 5px;
-  opacity: 0;
-  visibility: hidden;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  z-index: 100;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  pointer-events: none;
-}
-.social-widget-ul .icon-content:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) translateX(15px);
-}
-.social-widget-ul .icon-content .tooltip::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  transform: translateY(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent;
-}
-.social-widget-ul .icon-content a {
+  justify-content: flex-start;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 215, 87, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: #00d757;
+  text-decoration: none;
+}
+
+.whatsapp-float-btn .sign {
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #4d4d4d;
-  background-color: #fff;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.social-widget-ul .icon-content a:hover {
-  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+
+.whatsapp-float-btn .sign svg {
+  width: 26px;
+  height: 26px;
+}
+
+.whatsapp-float-btn .sign svg path {
+  fill: white;
+}
+
+.whatsapp-float-btn .text {
+  opacity: 0;
   color: white;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-10px);
+  padding-right: 18px;
 }
-.social-widget-ul .icon-content a svg {
+
+.whatsapp-float-btn:hover {
+  width: 148px;
+  border-radius: 40px;
+  background-color: #00e05a;
+  box-shadow: 0 6px 20px rgba(0, 215, 87, 0.45), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-float-btn:hover .text {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.whatsapp-float-btn:active {
+  transform: scale(0.96);
+}
+
+/* ── Footer Animated Social Card (Liquid Glass White with Black Logo) ── */
+.footer-social-card {
+  width: fit-content;
+  height: fit-content;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  gap: 12px;
+  overflow: hidden;
+  border-radius: 9999px;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.08),
+    0 4px 10px -2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.footer-social-card a {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  justify-content: center;
+  overflow: hidden;
   position: relative;
-  z-index: 1;
-  width: 24px;
-  height: 24px;
+  transition: all 0.4s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
-.social-widget-ul .icon-content a .filled {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: #000;
-  transition: all 0.3s ease-in-out;
+
+.footer-social-card a:hover {
+  transform: scale(1.15);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
-.social-widget-ul .icon-content a:hover .filled {
-  height: 100%;
+
+/* Instagram */
+.footer-social-card a:nth-child(1):hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
-.social-widget-ul .icon-content a[data-social="whatsapp"] .filled,
-.social-widget-ul .icon-content a[data-social="whatsapp"] ~ .tooltip {
-  background-color: #25D366;
+/* Twitter / X */
+.footer-social-card a:nth-child(2):hover {
+  background-color: #00acee;
 }
-.social-widget-ul .icon-content a[data-social="whatsapp"] ~ .tooltip::before {
-  border-right-color: #25D366;
-}
-.social-widget-ul .icon-content a[data-social="instagram"] .filled,
-.social-widget-ul .icon-content a[data-social="instagram"] ~ .tooltip {
-  background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
-}
-.social-widget-ul .icon-content a[data-social="instagram"] ~ .tooltip::before {
-  border-right-color: #e1306c;
-}
-.social-widget-ul .icon-content a[data-social="youtube"] .filled,
-.social-widget-ul .icon-content a[data-social="youtube"] ~ .tooltip {
+/* YouTube */
+.footer-social-card a:nth-child(3):hover {
   background-color: #ff0000;
 }
-.social-widget-ul .icon-content a[data-social="youtube"] ~ .tooltip::before {
-  border-right-color: #ff0000;
+/* WhatsApp */
+.footer-social-card a:nth-child(4):hover {
+  background-color: #25d366;
+}
+
+.footer-social-card a:active {
+  transform: scale(1.05);
+  transition-duration: 0.3s;
+}
+
+.footer-social-card a svg:first-child {
+  display: flex;
+  transform: scale(1.2) translateY(0px);
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  opacity: 1;
+  transition: all 0.4s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.footer-social-card a svg:first-child path {
+  fill: #111827;
+}
+
+.footer-social-card a:hover svg:first-child {
+  transform: scale(1.2) translateY(-40px);
+  opacity: 0;
+}
+
+.footer-social-card a svg:last-child {
+  display: flex;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transform: scale(1.2) translateY(30px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.footer-social-card a svg:last-child path {
+  fill: rgb(255, 255, 255);
+}
+
+.footer-social-card a:hover svg:last-child {
+  opacity: 1;
+  transform: scale(1.2) translateY(0px);
 }
 .toggle-cont {
   width: 60px;

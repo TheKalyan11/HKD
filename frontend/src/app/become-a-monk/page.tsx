@@ -7,19 +7,18 @@ export default function BecomeAMonkPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      {/* Hero Section */}
-      <section className="relative w-full flex">
+      <section className="relative w-full overflow-hidden bg-[#072149]">
         <img 
-          src="/bam.png" 
+          src="/bam.webp" 
           alt="Challenge Yourself"
-          className="w-full h-auto max-h-[90vh] object-cover block"
+          className="w-full h-auto max-h-[75vh] object-cover object-center block"
         />
-        {/* Subtle gradient overlay at the bottom for text readability */}
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
+        {/* Subtle bottom gradient overlay for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
         
         {/* Overlay Text */}
-        <div className="absolute bottom-6 md:bottom-12 w-full text-center px-4">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif font-black text-white uppercase tracking-wider drop-shadow-xl">
+        <div className="absolute bottom-6 sm:bottom-8 md:bottom-12 w-full text-center px-4 z-10">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-white uppercase tracking-wider drop-shadow-xl">
             CHALLENGE YOURSELF
           </h1>
         </div>
@@ -76,7 +75,7 @@ export default function BecomeAMonkPage() {
                   </p>
                 </div>
                 <div className="relative rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.15)] h-[400px] border-8 border-white group">
-                  <img src="/kik.png" alt="Monk meditating on Krishna" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <img src="/kik.webp" alt="Monk meditating on Krishna" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                 </div>
               </div>
 
@@ -142,7 +141,7 @@ export default function BecomeAMonkPage() {
                       <p className="font-serif text-lg font-bold text-orange-900 mb-2">BG 2.69</p>
                       <Quote className="w-8 h-8 text-orange-300 mx-auto" />
                     </div>
-                    <div className="cover bg-cover bg-center border-l-8 border-[#2e1507]" style={{ backgroundImage: "url('/gita-cover.jpg')" }}>
+                    <div className="cover bg-cover bg-center border-l-8 border-[#2e1507]" style={{ backgroundImage: "url('/gita-cover.webp')" }}>
                       <div className="absolute inset-0 bg-black/10 rounded-r-[10px] shadow-[inset_8px_0_15px_rgba(0,0,0,0.4)] pointer-events-none"></div>
                     </div>
                   </div>

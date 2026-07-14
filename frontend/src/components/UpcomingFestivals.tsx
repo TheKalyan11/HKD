@@ -488,7 +488,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
           <img
 
-            src="/ti.png"
+            src="/ti.webp"
 
             alt="Temple Gopuram"
 
@@ -665,7 +665,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
             {/* Card 1: Panihati */}
             <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
               <div className="w-full h-56 overflow-hidden rounded-2xl shrink-0">
-                <img src="/deity-1.jpg" alt="Panihati Festival" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
+                <img src="/deity-1.webp" alt="Panihati Festival" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
               </div>
               <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
                 <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Panihati Chida Dahi Utsav</span>
@@ -681,7 +681,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
             {/* Card 2: Janmashtami */}
             <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
               <div className="w-full h-56 rounded-2xl shrink-0 overflow-hidden">
-                <img src="/tem.png" alt="Janmashtami Temple" loading="lazy" className="group-hover:scale-105 w-full h-full object-cover object-center duration-500" />
+                <img src="https://hkmdehradun.org/live-site/assets/images/sri-gaura-purnima.png" alt="Janmashtami Temple" loading="lazy" className="group-hover:scale-105 w-full h-full object-cover object-center duration-500" />
               </div>
               <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
                 <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Janmashtami</span>

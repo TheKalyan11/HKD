@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hare Krishna Dharma Trust - Gau Seva & Annadana Seva",
     description: "Support cow protection and food feeding in the holy land of Mathura Vrindavan. Secure tax exemption 80G receipts generated instantly.",
-    images: [{ url: '/og-image.jpg' }]
+    images: [{ url: '/og-image.webp' }]
   }
 };
 

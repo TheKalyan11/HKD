@@ -16,16 +16,16 @@ type DarshanImage = {
 
 // We add some simulated height variations to make the masonry look realistic
 const MOCK_DATA: DarshanImage[] = [
-  { id: 'd6', url: '/darshan/DSC04178.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 450 },
-  { id: 'd7', url: '/darshan/DSC04179.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 550 },
-  { id: 'd8', url: '/darshan/DSC04180.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 650 },
-  { id: 'd9', url: '/darshan/DSC04181.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 500 },
-  { id: 'd10', url: '/darshan/DSC04182.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 600 },
-  { id: 'd1', url: '/darshan/DSC04071.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 600 },
-  { id: 'd2', url: '/darshan/DSC04072.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 500 },
-  { id: 'd3', url: '/darshan/DSC04074.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 650 },
-  { id: 'd4', url: '/darshan/DSC04083.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 550 },
-  { id: 'd5', url: '/darshan/DSC04087.JPG', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 700 },
+  { id: 'd6', url: '/darshan/DSC04178.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 450 },
+  { id: 'd7', url: '/darshan/DSC04179.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 550 },
+  { id: 'd8', url: '/darshan/DSC04180.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 650 },
+  { id: 'd9', url: '/darshan/DSC04181.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 500 },
+  { id: 'd10', url: '/darshan/DSC04182.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 600 },
+  { id: 'd1', url: '/darshan/DSC04071.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 600 },
+  { id: 'd2', url: '/darshan/DSC04072.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 500 },
+  { id: 'd3', url: '/darshan/DSC04074.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 650 },
+  { id: 'd4', url: '/darshan/DSC04083.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 550 },
+  { id: 'd5', url: '/darshan/DSC04087.webp', date: '2026-06-06', title: 'Radha Krishna Darshan', height: 700 },
 ];
 
 export default function DailyDarshanPage() {

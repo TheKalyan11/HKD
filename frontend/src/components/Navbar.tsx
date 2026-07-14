@@ -19,6 +19,10 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (pathname && pathname.startsWith('/youth')) {
+    return null;
+  }
+
   const isHome = pathname === '/';
 
   // Menu items config with liquid glass dropdown items for About Us, Gallery, and Patrons Corner
@@ -81,11 +85,12 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Center: Srila Prabhupada Portrait Logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
           <img
-            src="/sp%20logo.png"
+            src="/sp%20logo.webp"
             alt="Srila Prabhupada Portrait"
-            className="h-10 sm:h-14 w-auto object-contain hover:scale-105 transition-transform drop-shadow-md"
+            style={{ height: '48px', width: 'auto' }}
+            className="object-contain hover:scale-105 transition-transform drop-shadow-md"
           />
         </div>
 
@@ -114,7 +119,7 @@ export const Navbar: React.FC = () => {
       {/* 2. NAVIGATION BAR LAYER (White Liquid Glass Style with Black Text) */}
       <div className={`transition-all duration-250 ease-out w-full ${
         scrolled 
-          ? 'xl:max-w-[1300px] w-full xl:w-[95%] mx-auto xl:mt-3 xl:rounded-full bg-white/90 backdrop-blur-lg border-b xl:border border-gray-200/50 shadow-2xl py-1.5 px-4 xl:px-6 shadow-gray-200/10' 
+          ? 'max-w-[1300px] w-[95%] mx-auto mt-2 sm:mt-3 rounded-full bg-white/75 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.14)] py-1.5 px-4 sm:px-6' 
           : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-200/40 py-1 shadow-md'
       }`}>
         <div className={scrolled ? "px-4 sm:px-6 lg:px-8" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
@@ -123,9 +128,10 @@ export const Navbar: React.FC = () => {
             {/* Replaced logo with logo-dehradun.jpg back again */}
             <Link href="/" className="flex-shrink-0">
               <img 
-                src="/logo-dehradun.jpg" 
+                src="/logo-dehradun.webp" 
                 alt="Hare Krishna Dehradun Movement Logo" 
-                className="h-8 md:h-10 w-auto object-contain rounded border border-gray-200/30 shadow-sm transition-transform hover:scale-102"
+                style={{ height: '40px', width: 'auto' }}
+                className="object-contain rounded border border-gray-200/30 shadow-sm transition-transform hover:scale-102"
               />
             </Link>
 
@@ -212,74 +218,74 @@ export const Navbar: React.FC = () => {
 
           </div>
         </div>
+      </div>
 
-        {/* Mobile Drawer menu */}
-        {isOpen && (
-          <div className="xl:hidden bg-black/95 border-t border-white/10 px-4 pt-2 pb-6 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto">
-            <div className="flex gap-2 mb-4 mt-2">
-               <a href="tel:+919876543210" className="flex-1 flex items-center justify-center gap-2 bg-[#0B5DB7] text-white py-2.5 rounded-lg text-sm font-medium">
-                 <Phone className="w-4 h-4" /> Call Now
-               </a>
-            </div>
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
-              const isDropdownOpen = openMobileDropdown === link.name;
-              
-              if (hasDropdown) {
-                return (
-                  <div key={link.name} className="space-y-1">
-                    <button
-                      onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
-                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
-                    >
-                      <span>{link.name}</span>
-                      <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
-                    </button>
-                    
-                    {/* Collapsible Accordion content */}
-                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isDropdownOpen ? 'max-h-[300px] opacity-100 py-1' : 'max-h-0 opacity-0'}`}>
-                      <div className="pl-4 space-y-1 border-l-2 border-white/10 ml-3">
-                        {link.dropdownItems?.map((subLink) => (
-                          <Link
-                            key={subLink.name}
-                            href={subLink.href}
-                            onClick={() => {
-                              setIsOpen(false);
-                              setOpenMobileDropdown(null);
-                            }}
-                            className="block px-3 py-2 text-[14px] font-black bold-stroke text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
-                          >
-                            {subLink.name}
-                          </Link>
-                        ))}
-                      </div>
+      {/* Mobile Drawer menu */}
+      {isOpen && (
+        <div className="xl:hidden bg-black/95 border-t border-white/10 px-4 pt-2 pb-6 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto">
+          <div className="flex gap-2 mb-4 mt-2">
+             <a href="tel:+919876543210" className="flex-1 flex items-center justify-center gap-2 bg-[#0B5DB7] text-white py-2.5 rounded-lg text-sm font-medium">
+               <Phone className="w-4 h-4" /> Call Now
+             </a>
+          </div>
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
+            const isDropdownOpen = openMobileDropdown === link.name;
+            
+            if (hasDropdown) {
+              return (
+                <div key={link.name} className="space-y-1">
+                  <button
+                    onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium uppercase tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
+                  >
+                    <span>{link.name}</span>
+                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
+                  </button>
+                  
+                  {/* Collapsible Accordion content */}
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isDropdownOpen ? 'max-h-[300px] opacity-100 py-1' : 'max-h-0 opacity-0'}`}>
+                    <div className="pl-4 space-y-1 border-l-2 border-white/10 ml-3">
+                      {link.dropdownItems?.map((subLink) => (
+                        <Link
+                          key={subLink.name}
+                          href={subLink.href}
+                          onClick={() => {
+                            setIsOpen(false);
+                            setOpenMobileDropdown(null);
+                          }}
+                          className="block px-3 py-2 text-[14px] font-black bold-stroke text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
+                        >
+                          {subLink.name}
+                        </Link>
+                      ))}
                     </div>
                   </div>
-                );
-              }
-              
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => {
-                    setIsOpen(false);
-                    setOpenMobileDropdown(null);
-                  }}
-                  className={`block px-3 py-2 rounded-lg text-[15px] font-medium uppercase tracking-wider transition-colors ${
-                    isActive 
-                      ? 'bg-saffron/20 text-saffron-light' 
-                      : 'text-white hover:bg-white/5 hover:text-saffron'
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                </div>
               );
-            })}
-          </div>
-        )}
-      </div>
+            }
+            
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => {
+                  setIsOpen(false);
+                  setOpenMobileDropdown(null);
+                }}
+                className={`block px-3 py-2 rounded-lg text-[15px] font-medium uppercase tracking-wider transition-colors ${
+                  isActive 
+                    ? 'bg-saffron/20 text-saffron-light' 
+                    : 'text-white hover:bg-white/5 hover:text-saffron'
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </div>
+      )}
 
     </nav>
   );

@@ -180,20 +180,6 @@ const PIScroll = ({ className }: { className?: string }) => (
   </PIcon>
 );
 
-/* ── constants ─────────────────────────────────────────────── */
-const VIDEO_URL =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260602_150901_c45b90ec-18d7-42ff-90e2-b95d7109e330.mp4";
-
-const MODULES = [
-  "Gita Study",
-  "Vedic Ideology",
-  "Practical Spirituality",
-  "Educational Tours",
-  "Mantra Meditation",
-  "Personal Mentoring",
-  "All Topics",
-];
-
 /* ── Animated counter widget ────────────────────────────────── */
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -268,31 +254,11 @@ function AccordionItem({ icon, label, desc, isOpen, onClick }: {
 
 /* ── page ───────────────────────────────────────────────────── */
 export default function GitaLifeCoursePage() {
-  const [selected, setSelected] = useState<string[]>([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  const toggle = (s: string) =>
-    setSelected((prev) => prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSending(false);
-    setSent(true);
-  };
-
-  const inputClass =
-    "flex-1 min-w-0 text-sm px-3 py-2.5 rounded-xl border border-gray-200 bg-transparent placeholder-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
   const curriculumTabs = [
     {
@@ -356,91 +322,14 @@ export default function GitaLifeCoursePage() {
       {/* ── HERO ──────────────────────────────────────────────── */}
       <div className="min-h-screen p-3 sm:p-4 md:p-6">
         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)]">
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src={VIDEO_URL} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/75" />
-          <div className="relative z-10 flex flex-col min-h-[35vh] sm:min-h-[38vh] md:min-h-[42vh] p-4 sm:p-6 md:p-8 gap-6">
-
-            <div className="flex-1 min-h-[2rem]" />
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-6">
-              <div className="flex-1 min-w-0 lg:max-w-lg xl:max-w-2xl mb-4 lg:mb-0">
-              </div>
-              <div id="enroll" className="w-full lg:w-[420px] xl:w-[480px] shrink-0">
-                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-                  {/* Card header */}
-                  <div className="bg-gradient-to-r from-[#072149] to-[#0a2d60] px-6 py-5">
-                    <h2 className="text-white text-2xl tracking-tight font-semibold">Enroll Today</h2>
-                    <p className="text-white/60 text-sm mt-1">Begin your journey with the Bhagavad Gita</p>
-                  </div>
-
-                  <div className="p-6 flex flex-col gap-5">
-                    {!sent ? (
-                      <>
-                        {/* Email contact */}
-                        <a href="mailto:contact@hkmdehradun.org" className="flex items-center gap-3 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 hover:bg-blue-100 transition-colors group">
-                          <div className="w-8 h-8 rounded-full bg-[#072149] flex items-center justify-center shrink-0">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                          </div>
-                          <div className="min-w-0">
-                            <p className="text-gray-400 text-sm font-instrument">Drop us a line</p>
-                            <p className="text-blue-600 text-base font-semibold font-instrument truncate">contact@hkmdehradun.org</p>
-                          </div>
-                        </a>
-
-                        <div className="flex items-center gap-3">
-                          <div className="flex-1 h-px bg-gray-200" />
-                          <span className="text-gray-400 text-xs font-medium tracking-wider uppercase">or fill the form</span>
-                          <div className="flex-1 h-px bg-gray-200" />
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                          <div>
-                            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">Your Details</label>
-                            <div className="flex flex-col sm:flex-row gap-2">
-                              <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" className={`${inputClass} flex-1`} />
-                              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email address" className={`${inputClass} flex-1`} />
-                            </div>
-                          </div>
-
-                          <div>
-                            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">Message</label>
-                            <textarea rows={3} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What brings you to this course? Any questions for your mentor..." className={`${inputClass} resize-none w-full`} />
-                          </div>
-
-                          <div>
-                            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">I&apos;m interested in</label>
-                            <div className="flex flex-wrap gap-2">
-                              {MODULES.map((mod) => (
-                                <button key={mod} type="button" onClick={() => toggle(mod)}
-                                  className={`text-xs px-3 py-1.5 rounded-full border font-medium transition-all ${selected.includes(mod) ? "bg-[#072149] text-white border-[#072149]" : "bg-white text-gray-600 border-gray-200 hover:border-[#072149] hover:text-[#072149]"}`}>
-                                  {mod}
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-
-                          <button type="submit" disabled={sending}
-                            className="w-full bg-gradient-to-r from-[#072149] to-[#0a2d60] text-white text-sm font-semibold py-3.5 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 mt-1 tracking-wide">
-                            {sending ? "Sending…" : "Send Enrollment Request"}
-                          </button>
-                        </form>
-                      </>
-                    ) : (
-                      <div className="flex flex-col items-center py-8 gap-3">
-                        <div className="w-14 h-14 rounded-full bg-green-50 border border-green-200 flex items-center justify-center text-green-600 text-2xl">&#10003;</div>
-                        <p className="text-base text-gray-900 font-semibold">You&apos;re all set!</p>
-                        <p className="text-sm text-gray-500 text-center">Expect a reply within 24 hours.</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img 
+            src="/gita hero.webp" 
+            alt="Gita Life Course" 
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
         </div>
       </div>
-      {/* ── end hero ──────────────────────────────────────────── */}
+      {/* ── end hero ──────────────────────────────────────────── */ }
       <div className="relative w-full">
         {/* Mantra and Icon Watermark Background */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none flex flex-col justify-evenly opacity-[0.03] select-none" style={{ minHeight: '100%' }}>
@@ -521,7 +410,7 @@ export default function GitaLifeCoursePage() {
                     </p>
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 shrink-0">
-                        <img src="/sp%20logo.png" alt="Srila Prabhupada" className="w-full h-full object-contain" />
+                        <img src="/sp%20logo.webp" alt="Srila Prabhupada" className="w-full h-full object-contain" />
                       </div>
                       <div>
                         <p className="text-amber-400 text-sm uppercase tracking-widest" style={{ fontWeight: 600 }}>Srila Prabhupada</p>

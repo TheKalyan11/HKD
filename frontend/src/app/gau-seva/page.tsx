@@ -157,7 +157,7 @@ export default function GauSevaPage() {
           <img 
             src="https://hkmdehradun.org/live-site/assets/12/gau-home.png" 
             alt="Gau Seva Banner" 
-            className="w-full h-auto max-h-[70vh] object-cover"
+            className="w-full h-auto max-h-[40vh] object-cover"
           />
         </motion.div>
       </section>

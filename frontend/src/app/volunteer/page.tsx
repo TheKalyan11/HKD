@@ -194,9 +194,8 @@ export default function VolunteerPage() {
         </h1>
       </section>
 
-      {/* ── MAIN CONTENT (Split Layout) ───────────────── */}
       <section className="bg-[#faf9f6]">
-        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 pt-12 pb-2 lg:pt-16 lg:pb-2">
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-20">
             
             {/* ── LEFT COLUMN (Info) ────────────────────── */}
@@ -365,7 +364,7 @@ export default function VolunteerPage() {
 
       {/* ── WHY VOLUNTEER (Editorial Text Style) ──────────── */}
       <section className="bg-[#faf9f6]">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 py-16 lg:py-24">
+          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-2 pb-10 lg:pt-2 lg:pb-16">
             
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
@@ -407,7 +406,7 @@ export default function VolunteerPage() {
                 },
               ].map((item, i) => (
                 <Reveal key={i} delay={i * 80}>
-                  <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-12 border-b border-gray-200 hover:border-gray-400 transition-colors duration-300 cursor-default">
+                  <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-6 border-b border-gray-200 hover:border-gray-400 transition-colors duration-300 cursor-default">
                     {/* Number */}
                     <div className="md:col-span-1">
                       <span className={`text-sm font-black tracking-widest uppercase ${item.accent}`}>{item.num}</span>
@@ -436,7 +435,7 @@ export default function VolunteerPage() {
 
       {/* ── AREAS OF SEVA (Editorial Text Style) ──────────── */}
       <section className="bg-white">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 py-16 lg:py-24">
+          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 pb-16 lg:pt-16 lg:pb-24">
 
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
@@ -453,7 +452,7 @@ export default function VolunteerPage() {
             <div className="space-y-0">
               {serviceCategories.map((cat, i) => (
                 <Reveal key={i} delay={i * 80}>
-                  <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-12 border-b border-gray-200 hover:border-gray-400 transition-colors duration-300 cursor-default">
+                  <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-6 border-b border-gray-200 hover:border-gray-400 transition-colors duration-300 cursor-default">
                     {/* Number */}
                     <div className="md:col-span-1">
                       <span className="text-sm font-black tracking-widest uppercase text-orange-500">0{i + 1}</span>

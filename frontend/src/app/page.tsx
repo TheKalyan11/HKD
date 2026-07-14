@@ -17,9 +17,9 @@ import UpcomingFestivals from '@/components/UpcomingFestivals';
 // Stable constant declared outside component to prevent re-creation on render
 
 const heroSlides = [
-  '/h1.png',
-  '/h2.png',
-  '/h3.png'
+  '/h1.webp',
+  '/h2.webp',
+  '/h3.webp'
 ];
 
 
@@ -34,7 +34,7 @@ const defaultBlogs = [
 
     excerpt: 'Uncover the deep Vedic scripts highlighting the pastimes of Nanda Baba, the beloved foster father of Lord Krishna in the sacred land of Vrindavan.',
 
-    coverImage: '/nanda_baba_blog.png',
+    coverImage: '/nanda_baba_blog.webp',
 
     authorName: 'Swami Gopalananda',
 
@@ -340,13 +340,13 @@ export default function Home() {
 
 
 
-      {/* 2. ABOUT US SECTION (HKM Dehradun & PNG Graphics with Animated Music) */}
+      {/* 2. ABOUT US SECTION (HKM Dehradun) */}
 
-      <section id="about" className="relative w-full py-4 lg:py-6 bg-[#fbf6f0] overflow-hidden text-gray-800 flex items-center justify-center">
+      <section id="about" className="relative w-full py-16 lg:py-24 bg-[#fbf6f0] overflow-hidden text-gray-800 flex items-center justify-center">
 
         {/* Subtle decorative background elements */}
 
-        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-[#d4af37]/10 rounded-full blur-[80px] pointer-events-none -translate-y-1/2" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#d4af37]/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="absolute bottom-0 left-10 w-96 h-96 bg-white/50 rounded-full blur-[100px] pointer-events-none" />
 
@@ -354,172 +354,59 @@ export default function Home() {
 
         <div className="container mx-auto px-4 sm:px-8 relative z-10">
 
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
+          <div className="max-w-3xl mx-auto text-center flex flex-col items-center justify-center space-y-8">
 
 
 
-            {/* Left Content (Text & Mission) */}
+            {/* Header area */}
 
-            <div className="flex-1 flex flex-col justify-center space-y-6 lg:pr-12 relative z-20">
+            <div className="space-y-4 flex flex-col items-center">
 
+              <div className="flex items-center gap-4 text-[#d4af37]">
 
+                <div className="h-px w-12 bg-current"></div>
 
-              {/* Header area */}
+                <span className="uppercase tracking-[0.25em] font-medium text-xs sm:text-sm">About Us</span>
 
-              <div className="space-y-4">
-
-                <div className="flex items-center gap-4 text-[#d4af37]">
-
-                  <div className="h-px w-16 bg-current"></div>
-
-                  <span className="uppercase tracking-[0.25em] font-medium text-sm">About Us</span>
-
-                </div>
-
-
-
-                <h2 className="text-4xl md:text-5xl font-section-heading text-[#3b2b2f] font-medium leading-tight drop-shadow-sm">
-
-                  Hare Krishna Movement <br />
-
-                  <span className="text-[#d4af37]">Dehradun</span>
-
-                </h2>
+                <div className="h-px w-12 bg-current"></div>
 
               </div>
 
 
 
-              {/* Body Text (Dehradun Matter) */}
+              <h2 className="text-4xl md:text-5xl font-section-heading text-[#3b2b2f] font-medium leading-tight drop-shadow-sm">
 
-              <div className="space-y-4 text-[#4a4a4a] text-[16px] leading-relaxed max-w-lg">
+                Hare Krishna Movement <br />
 
-                <p>
+                <span className="text-[#d4af37]">Dehradun</span>
 
-                  We aspire to create a world-class and iconic spiritual centre for Sri Krishna in the picturesque valley of Dehradun in pursuance of Srila Prabhupada&apos;s direction.
-
-                </p>
-
-                <p>
-
-                  Hare Krishna Movement Dehradun will place Krishna proudly on the minds of the people and Dehradun on the global spiritual map.
-
-                </p>
-
-              </div>
+              </h2>
 
             </div>
 
 
 
-            {/* Right Graphics (PNG Combo & Music Animation) */}
+            {/* Body Text (Dehradun Matter) */}
 
-            <div className="flex-1 w-full flex items-center justify-center lg:justify-end z-10 pt-6 lg:pt-8">
+            <div className="space-y-6 text-[#4a4a4a] text-lg sm:text-xl leading-relaxed max-w-2xl text-center">
 
-              <div className="relative w-[95%] lg:w-[85%] max-w-[500px] animate-float drop-shadow-2xl mt-4 lg:mt-6">
+              <p>
 
-                {/* Uploaded Combined Krishna & Cow PNG */}
+                We aspire to create a world-class and iconic spiritual centre for Sri Krishna in the picturesque valley of Dehradun in pursuance of Srila Prabhupada&apos;s direction.
 
-                <img
+              </p>
 
-                  src="/krishna-cow-combo.png"
+              <p>
 
-                  alt="Krishna and Cow"
-                  loading="lazy"
+                Hare Krishna Movement Dehradun will place Krishna proudly on the minds of the people and Dehradun on the global spiritual map.
 
-                  className="w-full h-auto object-contain z-20 relative"
-
-                />
-
-
-
-                {/* Floating Music Notes Animation (Positioned exactly near the flute's tip) */}
-
-                <div className="absolute top-[34%] left-[53%] w-10 h-10 pointer-events-none z-30">
-
-                  <div className="absolute animate-music-float-1 opacity-0 text-xl sm:text-2xl md:text-3xl text-[#d4af37]" style={{ animationDelay: '0s' }}>&#9835;</div>
-
-                  <div className="absolute animate-music-float-2 opacity-0 text-2xl sm:text-3xl md:text-4xl text-[#d4af37]" style={{ animationDelay: '1.5s', left: '10px', top: '-10px' }}>&#9834;</div>
-
-                  <div className="absolute animate-music-float-3 opacity-0 text-lg sm:text-xl md:text-2xl text-[#d4af37]" style={{ animationDelay: '3s', left: '-10px', top: '10px' }}>&#9835;</div>
-
-                  <div className="absolute animate-music-float-2 opacity-0 text-xl sm:text-2xl md:text-3xl text-[#d4af37]" style={{ animationDelay: '4.5s', left: '20px', top: '-5px' }}>&#9834;</div>
-
-                </div>
-
-              </div>
+              </p>
 
             </div>
-
-
 
           </div>
 
         </div>
-
-
-
-        {/* Global CSS for music floating animations */}
-
-        <style dangerouslySetInnerHTML={{
-
-          __html: `
-
-          @keyframes musicFloat1 {
-
-            0% { transform: translate(0, 0) scale(0.5) rotate(-10deg); opacity: 0; }
-
-            20% { opacity: 1; }
-
-            80% { opacity: 1; }
-
-            100% { transform: translate(60px, -100px) scale(1.5) rotate(20deg); opacity: 0; }
-
-          }
-
-          @keyframes musicFloat2 {
-
-            0% { transform: translate(0, 0) scale(0.5) rotate(10deg); opacity: 0; }
-
-            20% { opacity: 1; }
-
-            80% { opacity: 1; }
-
-            100% { transform: translate(90px, -70px) scale(1.2) rotate(-20deg); opacity: 0; }
-
-          }
-
-          @keyframes musicFloat3 {
-
-            0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 0; }
-
-            20% { opacity: 1; }
-
-            80% { opacity: 1; }
-
-            100% { transform: translate(40px, -120px) scale(1.8) rotate(15deg); opacity: 0; }
-
-          }
-
-          .animate-music-float-1 { animation: musicFloat1 5s linear infinite; }
-
-          .animate-music-float-2 { animation: musicFloat2 5s linear infinite; }
-
-          .animate-music-float-3 { animation: musicFloat3 5s linear infinite; }
-
-          
-
-          @keyframes gentleFloat {
-
-            0%, 100% { transform: translateY(0); }
-
-            50% { transform: translateY(-12px); }
-
-          }
-
-          .animate-float { animation: gentleFloat 6s ease-in-out infinite; }
-
-        `}} />
 
       </section>
 
@@ -771,7 +658,7 @@ export default function Home() {
                 category: "FESTIVAL",
                 description: "Amalaki Ekadashi, also known as Amala Ekadashi...",
                 fullContent: `# Amalaki Ekadashi\n\nAmalaki Ekadashi, also known as Amala Ekadashi, is observed in the month of Phalguna and is glorified in the Brahmanda Purana. Sage Vasishtha told King Mandhata that observing this Ekadashi destroys sins, grants prosperity, and leads to liberation.\n\nIn the kingdom of Vaidisha, King Chitraratha and his citizens faithfully observed Amalaki Ekadashi by worshipping Lord Vishnu and the sacred Amalaki (Amla) tree. A hunter, who lived by killing animals, unknowingly participated by staying awake all night, hearing the Lord's glories, and fasting.\n\nBy the merit of this observance, the hunter was reborn as the righteous King Vasuratha. Later, when enemies attempted to kill him, Lord Vishnu protected him through a divine manifestation. Realizing the Lord's mercy, he devoted his life to devotional service.\n\nBenefit: Anyone who sincerely observes Amalaki Ekadashi attains Lord Vishnu's blessings, freedom from sins, and ultimately His eternal abode.`,
-                image: "/aa.jpg?v=1",
+                image: "/aa.webp?v=1",
               },
               {
                 id: 2,
@@ -779,7 +666,7 @@ export default function Home() {
                 category: "FESTIVAL",
                 description: "Deepotsav, the festival of light, celebrates...",
                 fullContent: `# Kartik Deepotsav in Braj – The Divine Festival of Lights\n\n## Introduction\n\nDeepotsav, the festival of light, celebrates Kartik Deepotsav, a sacred celebration observed during the holy month of Kartik (October–November). Throughout Braj, devotees offer ghee lamps to Lord Krishna and Srimati Radharani, filling temples and holy places with a radiant glow. The festival represents devotion, gratitude, and remembrance of the Lord's loving pastimes.\n\n## Why Kartik Is Special\n\nKartik is regarded as the most auspicious month in the Vedic calendar. Scriptures describe it as especially dear to Lord Vishnu, making devotional practices performed during this time exceptionally beneficial.\n\n## The Story of Lord Damodara\n\nThe festival commemorates the pastime in which Mother Yashoda lovingly tied young Krishna to a wooden mortar after catching Him stealing butter. Although Krishna is the Supreme Lord, He allowed Himself to be bound by the affection of His devotee. This pastime teaches that sincere devotion and the Lord’s mercy go hand in hand.\n\n## Nalakuvara and Manigriva\n\nDuring this pastime, Krishna delivered Nalakuvara and Manigriva, the sons of Kuvera, who had been cursed to become twin trees. By Krishna’s touch, they were freed from the curse and attained spiritual liberation.\n\n## Deepdaan During Kartik\n\nOffering ghee lamps and singing the Damodarashtakam prayer are important practices during Kartik. These devotional activities help devotees express their love for the Lord and receive His blessings.\n\n## Celebrations in Braj\n\nTemples throughout Braj shine with thousands of lamps, devotional songs, kirtans, and special worship ceremonies. The entire atmosphere becomes vibrant with spiritual joy and devotion.\n\n## Kartik Deepotsav at HKM Dehradun\n\nHKM Dehradun celebrates the entire month with:\n\n* Daily Deepdaan Seva at 8:00 PM\n* Damodarashtakam Kirtan\n* Nauka Vihar Festival\n* Yamuna Boat Ride Pastimes\n* Shobha Yatra\n* Special Spiritual Programs\n\nJoin us and experience the divine blessings and spiritual joy of Kartik Deepotsav.`,
-                image: "/deepostav.png?v=1",
+                image: "/deepostav.webp?v=1",
               },
               {
                 id: 3,
@@ -787,7 +674,7 @@ export default function Home() {
                 category: "DEVOTION",
                 description: "In the journey of spiritual life, one of the most profound...",
                 fullContent: `# Vaikuntha Ekadashi – Carrying the Lord in Our Hearts\n\n## Introduction\n\nIn the journey of spiritual life, one of the most profound realizations is what Vaikuntha Ekadashi reminds us of: the importance of keeping Lord Krishna at the center of our lives. When we sincerely remember the Lord and follow His instructions, our thoughts become pure, our words become meaningful, and our actions bring happiness to ourselves and others.\n\n## Lord in the Heart\n\nIn the Srimad Bhagavatam, Lord Brahma tells Narada Muni that his words never become false, his mind never wanders toward undesirable thoughts, and his senses never act improperly because Lord Hari always resides in his heart.\n\nWhen we remember Krishna through chanting, hearing, worship, and devotional service, we naturally develop auspicious thoughts, truthful speech, and righteous actions.\n\n## The Example of Srila Prabhupada\n\nGreat devotees like Srila Prabhupada always carried the Lord in their hearts. Because of their deep devotion, their words inspired others, their actions brought spiritual benefit, and their lives became examples of pure service.\n\nSrila Prabhupada dedicated his life to sharing spiritual knowledge through:\n\n* Bhagavad-gita – the science of God\n* Srimad Bhagavatam – the love of God\n* Chaitanya Charitamrita – the process of deepening love for God\n\nHe encouraged everyone to study these scriptures and apply their teachings in daily life.\n\n## The Power of the Holy Name\n\nAlthough Srila Prabhupada wrote many spiritual books, he often said that their ultimate purpose was to inspire people to chant the holy names of the Lord.\n\nIn this age, the most effective spiritual practice is chanting the Hare Krishna Mahamantra:\n\n**Hare Krishna Hare Krishna Krishna Krishna Hare Hare**\n**Hare Rama Hare Rama Rama Rama Hare Hare**\n\n## Conclusion\n\nVaikuntha Ekadashi teaches us that by keeping Lord Krishna in our hearts with sincerity and enthusiasm, we can transform every situation in life. Through devotion, scripture study, and chanting the holy names, we receive the Lord’s guidance, protection, and blessings.`,
-                image: "/carry.jpeg?v=1",
+                image: "/carry.webp?v=1",
               }
             ].map((blog, index) => (
               <motion.div 
@@ -1083,13 +970,13 @@ export default function Home() {
             ].map((seva, index) => (
               <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(7,33,73,0.08)] border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col font-card">
                 {/* Image Container */}
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[16/9] overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#072149]/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
                   <img
                     src={seva.image}
                     alt={seva.title}
                     loading="lazy"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-[0.25,1,0.5,1]"
+                    className="w-full h-full object-fill transform group-hover:scale-110 transition-transform duration-700 ease-[0.25,1,0.5,1]"
                   />
                 </div>
 
@@ -1131,7 +1018,7 @@ export default function Home() {
       </section>
 
       {/* 7. GALLERY SECTION */}
-      <section className="relative py-6 overflow-hidden bg-[#faf8f5] bg-mantra-pattern border-t border-[#eae4d5]/30">
+      <section className="relative pt-6 pb-0 overflow-hidden bg-white">
         <div className="absolute top-1/2 left-[-10%] w-80 h-80 bg-[#cca75b]/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute top-1/3 right-[-5%] w-[350px] h-[350px] bg-[#0c4a8a]/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative z-10">

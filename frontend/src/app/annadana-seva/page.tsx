@@ -157,7 +157,7 @@ export default function AnnadanaSevaPage() {
           <img 
             src="https://hkmdehradun.org/live-site/assets/12/annadanam.jpeg" 
             alt="Annadana Seva Banner" 
-            className="w-full h-auto max-h-[70vh] object-cover"
+            className="w-full h-auto max-h-[40vh] object-cover"
           />
         </motion.div>
       </section>

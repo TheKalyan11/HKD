@@ -170,7 +170,7 @@ export default function EkadashiSevaPage() {
           <img 
             src="https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png" 
             alt="Ekadashi Seva Banner" 
-            className="w-full h-auto max-h-[70vh] object-cover"
+            className="w-full h-auto max-h-[40vh] object-cover"
           />
         </motion.div>
       </section>
