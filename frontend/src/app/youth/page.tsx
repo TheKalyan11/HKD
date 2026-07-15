@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Menu, X, ChevronLeft, ChevronRight, Pause, Play, BookOpen, Mic, Music, Utensils, Sparkles, User, Mail, Phone, Calendar, CheckCircle2, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
+import FolkNavbar from '@/components/FolkNavbar';
 
 const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -60,15 +61,6 @@ const AnimatedCounter = ({ end, duration = 2.2, suffix = "", prefix = "", format
   );
 };
 
-const FOLK_NAV = [
-  { label: 'Back to Website', href: '/' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Workshop', href: '#programs' },
-  { label: 'Life Coach', href: '#mission' },
-  { label: 'Club', href: '#highlights' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Blogs', href: '/blog' },
-];
 
 const EMPOWERED_PROGRAMS = [
   {
@@ -96,6 +88,20 @@ const EMPOWERED_PROGRAMS = [
     bg: '#ECC94B',
   },
   {
+    title: 'Happiness Workshops',
+    desc: 'Experience genuine joy, stress-free living, and inner fulfillment.',
+    img: '/empowered-4.png',
+    bg: '#ED8936',
+    href: '/happiness-workshops',
+  },
+  {
+    title: 'Self Empowerment Workshops',
+    desc: 'Unleash your ultimate focus, resilience, and leadership potential.',
+    img: '/empowered-1.png',
+    bg: '#D69E2E',
+    href: '/self-empowerment-workshops',
+  },
+  {
     title: 'Residency',
     desc: 'Reside with Like Minded and Progressive companions.',
     img: '/empowered-5.png',
@@ -105,7 +111,7 @@ const EMPOWERED_PROGRAMS = [
     title: 'Expeditions',
     desc: 'Enter the Divine Realms. Experience the Transcendence.',
     img: '/empowered-6.png',
-    bg: '#D69E2E',
+    bg: '#A68A00',
   },
 ];
 
@@ -114,18 +120,9 @@ export default function YouthFOLKPage() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [program, setProgram] = useState('Talk');
+  const [workshopType, setWorkshopType] = useState('Happiness Workshops');
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -143,13 +140,14 @@ export default function YouthFOLKPage() {
     e.preventDefault();
     if (!name || !email || !phone) return;
     setSending(true);
+    const finalTargetId = program === 'Workshop' ? `Workshop: ${workshopType}` : program;
     try {
       const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000';
       await axios.post(`${backendUrl}/api/cms/leads`, {
         name, email, phone,
         interestType: 'folk_registration',
-        targetId: program,
-        message: `Interested in: ${program}`,
+        targetId: finalTargetId,
+        message: `Interested in: ${finalTargetId}`,
       });
       setSent(true);
     } catch (err) {
@@ -162,98 +160,7 @@ export default function YouthFOLKPage() {
     <div className="w-full">
 
       {/* ── CUSTOM FOLK NAVBAR (Liquid Glass Style with Round Edges on Scroll) ──────────────── */}
-      <div className={`sticky z-50 transition-all duration-300 ${scrolled ? 'top-3 px-3 sm:px-6' : 'top-0 w-full'}`}>
-        <header
-          style={{ fontFamily: "'TC EN', sans-serif" }}
-          className={`transition-all duration-300 ${
-            scrolled
-              ? `max-w-6xl mx-auto ${mobileMenuOpen ? 'rounded-3xl' : 'rounded-full'} bg-white/75 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.14)]`
-              : 'w-full bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm'
-          }`}
-        >
-          <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-
-            {/* Logo */}
-            <Link href="/youth" className="flex items-center gap-2">
-              <img
-                src="/channels4_profile-removebg-preview.png"
-                alt="FOLK Logo"
-                className="h-16 sm:h-20 w-auto object-contain"
-              />
-            </Link>
-
-            {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-5 lg:gap-7">
-              {FOLK_NAV.map((item) => {
-                if (item.label === 'Back to Website') {
-                  return (
-                    <div key={item.label} className="relative py-2 flex items-center">
-                      <Link
-                        href={item.href}
-                        className="btn-custom-donate !m-0 !px-4 !py-1.5 !text-[14px]"
-                      >
-                        ← {item.label}
-                      </Link>
-                    </div>
-                  );
-                }
-                return (
-                  <div key={item.label} className="relative py-2 group flex items-center">
-                    <Link
-                      href={item.href}
-                      className="glass-nav-link transition-colors duration-200"
-                    >
-                      <span>{item.label}</span>
-                    </Link>
-                  </div>
-                );
-              })}
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-800 hover:text-[#0B5DB7] transition-colors"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Dropdown Panel */}
-          {mobileMenuOpen && (
-            <div
-              className="md:hidden w-full bg-white/95 backdrop-blur-xl border-t border-gray-100/50 px-6 py-4 flex flex-col gap-4 rounded-b-3xl"
-              style={{ fontFamily: "'TC EN', sans-serif" }}
-            >
-              {FOLK_NAV.map((item) => {
-                if (item.label === 'Back to Website') {
-                  return (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="btn-custom-donate !m-0 w-full text-center"
-                    >
-                      ← {item.label}
-                    </Link>
-                  );
-                }
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="glass-nav-link py-1.5"
-                  >
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-        </header>
-      </div>
+      <FolkNavbar />
 
       {/* ── INTERACTIVE HERO CARD CAROUSEL (Zero-flash horizontal scroll matching user design) ── */}
       <section className="py-4 sm:py-8 px-4 sm:px-6 max-w-7xl mx-auto select-none">
@@ -607,13 +514,13 @@ export default function YouthFOLKPage() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-10">
-            {EMPOWERED_PROGRAMS.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.1}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-10">
+            {EMPOWERED_PROGRAMS.map((item, i) => {
+              const CardContent = (
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="flex flex-col items-center text-center p-5 rounded-2xl transition-colors duration-300 hover:bg-[#FAF8F5] border border-transparent hover:border-[#E2D8C5]/50 group cursor-pointer shadow-sm hover:shadow-lg"
+                  className="flex flex-col items-center text-center p-5 rounded-2xl transition-colors duration-300 hover:bg-[#FAF8F5] border border-transparent hover:border-[#E2D8C5]/50 group cursor-pointer shadow-sm hover:shadow-lg h-full"
                 >
                   <motion.div
                     whileHover={{ rotate: [0, -6, 6, 0], scale: 1.1 }}
@@ -638,8 +545,20 @@ export default function YouthFOLKPage() {
                     {item.desc}
                   </p>
                 </motion.div>
-              </Reveal>
-            ))}
+              );
+
+              return (
+                <Reveal key={item.title} delay={i * 0.1}>
+                  {item.href ? (
+                    <Link href={item.href} className="block h-full">
+                      {CardContent}
+                    </Link>
+                  ) : (
+                    CardContent
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -984,6 +903,7 @@ export default function YouthFOLKPage() {
                   <div className="space-y-3">
                     {[
                       { id: 'Talk', label: 'Flagship Youth Talks & Seminars' },
+                      { id: 'Workshop', label: 'FOLK Workshops & Specialized Training' },
                       { id: 'Meditation', label: 'Mantra Meditation & Inner Peace' },
                       { id: 'Kirtan', label: 'Ecstatic Kirtan & Spiritual Music' },
                       { id: 'Prasadam', label: 'Divine Prasadam & Conscious Cooking' },
@@ -991,29 +911,47 @@ export default function YouthFOLKPage() {
                     ].map((opt) => {
                       const isSelected = program === opt.id;
                       return (
-                        <label
-                          key={opt.id}
-                          onClick={() => setProgram(opt.id)}
-                          className={`flex items-center gap-4 p-3.5 rounded-lg cursor-pointer transition-all ${
-                            isSelected
-                              ? 'bg-[#02144c]/[0.05] text-[#02144c] font-semibold'
-                              : 'hover:bg-gray-50 text-[#202124]'
-                          }`}
-                        >
-                          {/* Custom Radio Indicator */}
-                          <div
-                            className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors shrink-0 ${
-                              isSelected ? 'border-[#02144c]' : 'border-[#5f6368]'
+                        <div key={opt.id} className="flex flex-col">
+                          <label
+                            onClick={() => setProgram(opt.id)}
+                            className={`flex items-center gap-4 p-3.5 rounded-lg cursor-pointer transition-all ${
+                              isSelected
+                                ? 'bg-[#02144c]/[0.05] text-[#02144c] font-semibold'
+                                : 'hover:bg-gray-50 text-[#202124]'
                             }`}
                           >
+                            {/* Custom Radio Indicator */}
                             <div
-                              className={`w-2.5 h-2.5 rounded-full bg-[#02144c] transition-transform duration-200 ${
-                                isSelected ? 'scale-100' : 'scale-0'
+                              className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors shrink-0 ${
+                                isSelected ? 'border-[#02144c]' : 'border-[#5f6368]'
                               }`}
-                            />
-                          </div>
-                          <span className="text-sm sm:text-base leading-snug">{opt.label}</span>
-                        </label>
+                            >
+                              <div
+                                className={`w-2.5 h-2.5 rounded-full bg-[#02144c] transition-transform duration-200 ${
+                                  isSelected ? 'scale-100' : 'scale-0'
+                                }`}
+                              />
+                            </div>
+                            <span className="text-sm sm:text-base leading-snug">{opt.label}</span>
+                          </label>
+
+                          {/* Google-Forms Style Dropdown for Workshop Categories */}
+                          {opt.id === 'Workshop' && isSelected && (
+                            <div className="ml-9 mt-1.5 mb-2 p-3.5 bg-[#FAF8F5] border border-[#dadce0] rounded-lg shadow-inner">
+                              <label className="block text-xs font-bold text-[#70757a] uppercase tracking-wider mb-2">
+                                Select Workshop Category:
+                              </label>
+                              <select
+                                value={workshopType}
+                                onChange={(e) => setWorkshopType(e.target.value)}
+                                className="w-full sm:w-96 p-3 rounded-md border border-[#dadce0] bg-white text-[#202124] font-medium text-base sm:text-[1.0625rem] focus:border-[#02144c] focus:ring-1 focus:ring-[#02144c] transition-all outline-none cursor-pointer shadow-sm"
+                              >
+                                <option value="Happiness Workshops">Happiness Workshops & Joyful Living</option>
+                                <option value="Self Empowerment Workshops">Self Empowerment & Mind Mastery Workshops</option>
+                              </select>
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
@@ -1036,8 +974,10 @@ export default function YouthFOLKPage() {
                       setEmail('');
                       setPhone('');
                       setProgram('Talk');
+                      setWorkshopType('Happiness Workshops');
                     }}
                     className="px-4 py-2 rounded text-[#02144c] font-medium text-sm hover:bg-[#02144c]/[0.06] transition-colors cursor-pointer"
+
                   >
                     Clear form
                   </button>
