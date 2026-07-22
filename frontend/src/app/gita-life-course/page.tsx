@@ -414,7 +414,7 @@ export default function GitaLifeCoursePage() {
                       </div>
                       <div>
                         <p className="text-amber-400 text-sm uppercase tracking-widest" style={{ fontWeight: 600 }}>Srila Prabhupada</p>
-                        <p className="text-white/60 text-xs mt-1">Founder-Acharya, ISKCON</p>
+                        <p className="text-white/60 text-xs mt-1">Founder-Acharya, Hare Krishna Movement</p>
                       </div>
                     </div>
                   </div>
@@ -447,7 +447,7 @@ export default function GitaLifeCoursePage() {
 
 
       {/* ══ CURRICULUM — redesigned with image & text ════════════════════ */}
-      <section id="modules" className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-12 lg:py-20">
+      <section id="modules" className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-12 lg:py-8">
         <div className="max-w-7xl mx-auto">
 
           <AnimeReveal direction="up" delay={80} className="mb-12 max-w-3xl">

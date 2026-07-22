@@ -196,7 +196,7 @@ export default function KhichdiPrasadamSevaPage() {
               </h2>
               
               <p className="text-xl font-light mb-8 text-gray-600 leading-relaxed">
-                At Hare Krishna Mandir (ISKCON), we serve free Khichdi Prasadam to everyone who visits the temple. This is not just food but a divine blessing of Lord Krishna, filled with love, devotion, and compassion.
+                At Hare Krishna Movement Dehradun, we serve free Khichdi Prasadam to everyone who visits the temple. This is not just food but a divine blessing of Lord Krishna, filled with love, devotion, and compassion.
               </p>
               
               <div className="overflow-hidden rounded-2xl mb-12 shadow-sm border border-gray-100">
@@ -219,7 +219,7 @@ export default function KhichdiPrasadamSevaPage() {
                 </span>
               </h3>
               <p className="text-gray-500 font-light leading-relaxed mb-6">
-                Every week, more than 10,000 people visit the ISKCON temple and receive this sacred prasadam. No one goes hungry—this seva is open to all, without any restrictions.
+                Every week, more than 10,000 people visit Hare Krishna Movement Dehradun and receive this sacred prasadam. No one goes hungry—this seva is open to all, without any restrictions.
               </p>
               <ul className="list-disc list-inside space-y-3 text-gray-500 font-light mb-10">
                 <li>Providing free, sanctified prasadam to everyone visiting the temple.</li>
@@ -229,7 +229,7 @@ export default function KhichdiPrasadamSevaPage() {
 
               <h3 className="text-xl font-medium text-[#0A0A0A] mb-6">
                 <span className="relative inline-block pb-1">
-                  How Can You Support ISKCON?
+                  How Can You Support Hare Krishna Movement Dehradun?
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
@@ -426,7 +426,7 @@ export default function KhichdiPrasadamSevaPage() {
                 <button
                   type="submit"
                   disabled={loading || (!amount && !customAmount)}
-                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center uppercase"
+                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center"
                 >
                   {loading ? (
                     <span className="w-6 h-6 border-2 border-[#1A82D6]/30 border-t-[#1A82D6] rounded-full animate-spin"></span>

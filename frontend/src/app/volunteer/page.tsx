@@ -364,7 +364,7 @@ export default function VolunteerPage() {
 
       {/* ── WHY VOLUNTEER (Editorial Text Style) ──────────── */}
       <section className="bg-[#faf9f6]">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-2 pb-10 lg:pt-2 lg:pb-16">
+          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-2 pb-10 lg:pt-2 lg:pb-6">
             
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
@@ -435,7 +435,7 @@ export default function VolunteerPage() {
 
       {/* ── AREAS OF SEVA (Editorial Text Style) ──────────── */}
       <section className="bg-white">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 pb-16 lg:pt-16 lg:pb-24">
+          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 pb-16 lg:pt-16 lg:pb-8">
 
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">

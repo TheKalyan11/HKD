@@ -36,7 +36,7 @@ function Reveal({
 const objectives = [
   {
     title: "Spreading the Holy Name",
-    text: "It is our first and foremost objective to inspire people to chant the Hare Krishna Maha-mantra. Chanting the holy name is the Yuga-dharma; and Supreme Lord Sri Krishna descended as Sri Chaitanya Mahaprabhu to inaugurate this dharma and propagate the Sankirtana Movement. He desired that the entire world be inundated with the chanting of the holy name. Srila Prabhupada the founder-acharya of ISKCON accepted this as the mission of his life and established the world-wide Hare Krishna Movement to spread the holy names. Following in his footsteps, we, the disciples of Srila Prabhupada, have initiated various programs like Chanters Club, Harinam Festival, Hare Krishna Flash Mobs, etc., to spread the holy names and inspire as many people as possible to chant the Hare Krishna Maha-mantra.",
+    text: "It is our first and foremost objective to inspire people to chant the Hare Krishna Maha-mantra. Chanting the holy name is the Yuga-dharma; and Supreme Lord Sri Krishna descended as Sri Chaitanya Mahaprabhu to inaugurate this dharma and propagate the Sankirtana Movement. He desired that the entire world be inundated with the chanting of the holy name. Srila Prabhupada accepted this as the mission of his life and established the world-wide Hare Krishna Movement to spread the holy names. Following in his footsteps, we, the disciples of Srila Prabhupada, have initiated various programs like Chanters Club, Harinam Festival, Hare Krishna Flash Mobs, etc., to spread the holy names and inspire as many people as possible to chant the Hare Krishna Maha-mantra.",
     image: "/monk2.webp"
   },
   {
@@ -61,17 +61,17 @@ const objectives = [
   },
   {
     title: "Resource Mobilization",
-    text: "The support for the mission comes from donors and patrons and they are one of our major stakeholders. It is due to their support that we are able to render our services to the society. We provide various opportunities for our donors and patrons to advance in their spiritual life by educating them on the principles of spiritual life through the books written by Srila Prabhupada. The patrons are also invited on special occasions like their birthday or marriage anniversary, to visit the temple and take the blessings of the Lord. We also invite them for major festivals at the temple. You can also be a patron of ISKCON.",
+    text: "The support for the mission comes from donors and patrons and they are one of our major stakeholders. It is due to their support that we are able to render our services to the society. We provide various opportunities for our donors and patrons to advance in their spiritual life by educating them on the principles of spiritual life through the books written by Srila Prabhupada. The patrons are also invited on special occasions like their birthday or marriage anniversary, to visit the temple and take the blessings of the Lord. We also invite them for major festivals at the temple. You can also be a patron of Hare Krishna Movement Dehradun.",
     image: "https://hkmdehradun.org/assets/images/fund-raising.jpg"
   },
   {
     title: "To increase Krishna Consciousness",
-    text: "People from all walks of life irrespective of caste, creed and gender are encouraged to participate in our programs to develop their understanding of the spiritual practices that will help them in leading a peaceful life filled with happiness and prosperity. To increase God consciousness in the society, ISKCON Bangalore conducts specific programs for children (Cultural Education), youth (FOLK Programs), professionals (Life Sublime) and other members of the society (Krishnashraya). These programs are conducted free of cost, you need not pay for it. Next time you visit the temple; enquire at the Temple Reception to know more about the programs and how you can be part of this.",
+    text: "People from all walks of life irrespective of caste, creed and gender are encouraged to participate in our programs to develop their understanding of the spiritual practices that will help them in leading a peaceful life filled with happiness and prosperity. To increase God consciousness in the society, Hare Krishna Movement Dehradun conducts specific programs for children (Cultural Education), youth (FOLK Programs), professionals (Life Sublime) and other members of the society (Krishnashraya). These programs are conducted free of cost, you need not pay for it. Next time you visit the temple; enquire at the Temple Reception to know more about the programs and how you can be part of this.",
     image: "https://hkmdehradun.org/assets/images/increase-krishna-consciousness.jpg"
   },
   {
     title: "Special Purpose Enterprises",
-    text: "Touchstone Foundation, an independent trust associated with ISKCON Bangalore, has been involved in various ventures to generate the funds required for sustaining our charitable initiatives. As you exit the temple hall, there are various counters selling prasadam (food offered to the Lord) and devotional artifacts. There is an exclusive section for handicrafts called Dakshinakriti. The food court offers varieties of delicious sattvik preparations to satisfy your taste buds and for a heavy meal you can stop at the Annakuta Restaurant or the Higher Taste Restaurant – God’s own Cuisine. The profits generated from these initiatives support our charitable programs.",
+    text: "Touchstone Foundation, an independent trust associated with Hare Krishna Movement Dehradun, has been involved in various ventures to generate the funds required for sustaining our charitable initiatives. As you exit the temple hall, there are various counters selling prasadam (food offered to the Lord) and devotional artifacts. There is an exclusive section for handicrafts called Dakshinakriti. The food court offers varieties of delicious sattvik preparations to satisfy your taste buds and for a heavy meal you can stop at the Annakuta Restaurant or the Higher Taste Restaurant – God’s own Cuisine. The profits generated from these initiatives support our charitable programs.",
     image: "https://hkmdehradun.org/assets/images/devotional-item.jpg"
   },
   {
@@ -81,7 +81,7 @@ const objectives = [
   },
   {
     title: "Life in Harmony with Nature",
-    text: "Another objective is to bring about a way of life that is in harmony with nature and offers a sustainable alternative to the dominant consumerist and materialistic world. Srila Prabhupada always instructed his disciples to accept a simple life style. He always stressed on simple living and high thinking. He initiated the farm project at New Vrindavan, United States. ISKCON Bangalore has its farm in Mahadevapura where there are hundreds of cows and bulls. There is also a goshala in the temple premises at Hare Krishna Hill which maintains around 25 cows.",
+    text: "Another objective is to bring about a way of life that is in harmony with nature and offers a sustainable alternative to the dominant consumerist and materialistic world. Srila Prabhupada always instructed his disciples to accept a simple life style. He always stressed on simple living and high thinking. He initiated the farm project at New Vrindavan, United States. Hare Krishna Movement Dehradun maintains a Gaushala where cows and bulls are protected and cared for with love and devotion.",
     image: "https://hkmdehradun.org/assets/images/harmony-with-nature.jpg"
   },
   {

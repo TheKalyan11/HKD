@@ -450,7 +450,7 @@ export default function GauSevaPage() {
                 <button
                   type="submit"
                   disabled={loading || (!amount && !customAmount)}
-                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center uppercase"
+                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center"
                 >
                   {loading ? (
                     <span className="w-6 h-6 border-2 border-[#1A82D6]/30 border-t-[#1A82D6] rounded-full animate-spin"></span>

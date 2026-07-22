@@ -47,21 +47,21 @@ const sevaCards = [
   {
     title: "Gau Seva",
     image: "https://hkmdehradun.org/live-site/assets/12/gau-seva-banner.png",
-    desc: "Support ISKCON's Gaushala and be a part of this noble mission. Your contribution helps provide daily cow care, feeding, and shelter.",
+    desc: "Support Hare Krishna Movement Dehradun's Gaushala and be a part of this noble mission. Your contribution helps provide daily cow care, feeding, and shelter.",
     label: "Gau Seva",
     link: "/gau-seva"
   },
   {
     title: "Annadana Seva",
     image: "https://hkmdehradun.org/live-site/assets/12/annadaan-seva-banner1.png",
-    desc: "Support ISKCON Temple's Annadana Seva by providing sanctified meals to devotees and the needy. Over 2.89 crore meals served.",
+    desc: "Support Hare Krishna Movement Dehradun's Annadana Seva by providing sanctified meals to devotees and the needy. Over 2.89 crore meals served.",
     label: "Annadana Seva",
     link: "/annadana-seva"
   },
   {
     title: "Khichdi Prasadam",
     image: "https://hkmdehradun.org/live-site/assets/12/khichdi-seva-banner.png",
-    desc: "Every week, more than 10,000 visitors receive sacred khichdi prasadam at ISKCON temples. This seva ensures that no one goes hungry.",
+    desc: "Every week, more than 10,000 visitors receive sacred khichdi prasadam at Hare Krishna Movement Dehradun. This seva ensures that no one goes hungry.",
     label: "Khichdi Prasadam Seva",
     link: "/khichdi-prasadam-seva"
   },
@@ -174,7 +174,7 @@ export default function DonatePage() {
                     </p>
 
                     <div className="pt-3 border-t border-gray-100 flex items-center justify-between mt-auto">
-                      <span className="text-xs text-[#072149]/50 font-semibold tracking-wide uppercase">Donate Now</span>
+                      <span className="text-xs text-[#072149]/50 font-semibold tracking-wide">Donate Now</span>
                       {seva.link ? (
                         <Link
                           href={seva.link}

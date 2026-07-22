@@ -73,7 +73,7 @@ export default function MissionBook() {
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
             <div className="relative z-10">
               <p className="text-[10px] sm:text-xs md:text-xl leading-snug md:leading-relaxed text-gray-900 font-medium text-center">
-                Srila Prabhupada, our beloved spiritual master and the founder-acharya of the International Society for Krishna Consciousness (ISKCON) has blessed us with this opportunity for a happy and peaceful life. We just have to practice the following principles:
+                Srila Prabhupada, our beloved spiritual master and the founder-acharya of the worldwide Hare Krishna Movement has blessed us with this opportunity for a happy and peaceful life. We just have to practice the following principles:
               </p>
               <div className="mt-2 md:mt-8 flex justify-center animate-bounce">
                 <div className="text-orange-500 flex items-center gap-1 md:gap-2 text-[8px] md:text-sm font-bold uppercase tracking-wider">

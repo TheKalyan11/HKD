@@ -209,7 +209,7 @@ export default function ChildAnnadanaSevaPage() {
 
               <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
                 <span className="relative inline-block pb-1">
-                  Support ISKCON's Temple for Annadaan
+                  Support Hare Krishna Movement Dehradun for Annadaan
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
@@ -276,7 +276,7 @@ export default function ChildAnnadanaSevaPage() {
           <div className="lg:w-1/2 relative">
             <div className="bg-[#E2F1F8] rounded-2xl p-6 sm:p-8 sticky top-32 shadow-sm border border-white/50">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#5A9CEC] text-center mb-6 drop-shadow-sm">
-                Offer Annadana With ISKCON
+                Offer Annadana With Hare Krishna Movement Dehradun
               </h2>
               
               <form onSubmit={handlePayment} className="space-y-6">
@@ -434,7 +434,7 @@ export default function ChildAnnadanaSevaPage() {
                 <button
                   type="submit"
                   disabled={loading || (!amount && !customAmount)}
-                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center uppercase"
+                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center"
                 >
                   {loading ? (
                     <span className="w-6 h-6 border-2 border-[#1A82D6]/30 border-t-[#1A82D6] rounded-full animate-spin"></span>

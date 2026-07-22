@@ -73,17 +73,15 @@ export function Footer() {
       
       {/* Styles moved to globals.css for faster navigation */}
 
-      {/* ── Background Temple (footer.webp shifted "up side" to sit right above the divider line) ── */}
-      <div className="absolute z-10 pointer-events-none select-none hidden xl:block transition-all duration-500" style={{ width: '480px', right: '0%', bottom: '110px' }}>
+      {/* ── Background Temple ── */}
+      <div className="absolute z-10 pointer-events-none select-none hidden xl:block transition-all duration-500" style={{ width: '480px', right: '0%', bottom: '105px' }}>
         <div className="relative w-full h-full">
           <img
-            src="/footer.webp"
+            src="/bottom_corner_side-removebg-preview.png"
             alt="Temple"
             loading="lazy"
             className="w-full h-auto object-contain block opacity-100 transform origin-bottom hover:scale-[1.02] transition-transform duration-700"
           />
-          {/* Soft gradient bottom fade so the trees sit elegantly on top of the blue line */}
-          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white to-transparent opacity-40" />
         </div>
       </div>
 
@@ -100,10 +98,10 @@ export function Footer() {
       {/* ── Main content (Wider container max-w-[1520px]) ── */}
       <div className="max-w-[1520px] mx-auto px-6 lg:px-12 relative z-10">
         
-        <div className="flex flex-col lg:flex-row justify-between gap-16 mb-12">
+        <div className="flex flex-col lg:flex-row justify-start gap-8 lg:gap-12 xl:gap-16 mb-12">
           
           {/* Left Column: Brand Logo & Info */}
-          <div className="w-full lg:w-1/3 lg:pr-12">
+          <div className="w-full lg:w-auto lg:max-w-[280px]">
             <div className="mb-4">
               {/* Clean, border-less original logo-dehradun.jpg as shown in mockup */}
               <img 
@@ -113,8 +111,7 @@ export function Footer() {
               />
             </div>
             
-            <div className="text-gray-500 text-[14px] leading-relaxed mb-4 max-w-full font-medium space-y-2">
-              <p>Hare Krishna Mandir is run by Hare Krishna Movement Dehradun, a registered trust.</p>
+            <div className="text-gray-500 text-[16.5px] leading-relaxed mb-4 max-w-full font-medium space-y-3">
               <p>
                 <strong>Address:</strong><br />
                 Khasra No. 801, Suddhowala,<br />
@@ -128,45 +125,48 @@ export function Footer() {
             </div>
 
             {/* Follow Us Social Links */}
-            <div className="mt-4">
-              <h4 className="font-bold text-[#0f4c81] text-[14px] tracking-wide mb-2 uppercase">
+            <div className="mt-5">
+              <h4 className="font-bold text-[#0f4c81] text-[17.5px] tracking-wide mb-3 uppercase text-center lg:text-left">
                 Follow Us
               </h4>
-              <div className="flex items-center gap-2.5">
-                {/* Instagram */}
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 hover:bg-saffron text-gray-500 hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100" aria-label="Instagram">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 16 16">
-                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+              <div className="flex justify-center lg:justify-start items-center bg-[#f2f2f2] shadow-[0px_0px_15px_#00000027] py-[10px] px-[8px] rounded-[5em] w-fit mx-auto lg:mx-0">
+                <a href="#" className="flex justify-center items-center w-[38px] h-[38px] rounded-full mx-[6px] bg-[#0077b5] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-[#f2f2f2] hover:shadow-[0px_0px_6px_3px_#00000027] group" aria-label="LinkedIn">
+                  <svg className="h-[16px] fill-[#f2f2f2] group-hover:fill-[#0077b5] transition-colors duration-300" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                    <g id="Icons" stroke="none" strokeWidth={1}>
+                      <g transform="translate(-702.000000, -265.000000)">
+                        <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn"></path>
+                      </g>
+                    </g>
                   </svg>
                 </a>
-                {/* Twitter / X */}
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 hover:bg-saffron text-gray-500 hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100" aria-label="Twitter">
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
-                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                <a href="#" className="flex justify-center items-center w-[38px] h-[38px] rounded-full mx-[6px] bg-[#3b5998] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-[#f2f2f2] hover:shadow-[0px_0px_6px_3px_#00000027] group" aria-label="Facebook">
+                  <svg className="h-[16px] fill-[#f2f2f2] group-hover:fill-[#3b5998] transition-colors duration-300" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xmlSpace="preserve">
+                    <g id="XMLID_834_">
+                      <path id="XMLID_835_" d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064 c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996 V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545 C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703 c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z" />
+                    </g>
                   </svg>
                 </a>
-                {/* YouTube */}
-                <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 hover:bg-saffron text-gray-500 hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100" aria-label="YouTube">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 16 16">
-                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
-                  </svg>
-                </a>
-                {/* WhatsApp */}
-                <a href="https://api.whatsapp.com/send?phone=+919999999999" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 hover:bg-saffron text-gray-500 hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100" aria-label="WhatsApp">
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
-                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                <a href="#" className="flex justify-center items-center w-[38px] h-[38px] rounded-full mx-[6px] bg-[#c13584] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-[#f2f2f2] hover:shadow-[0px_0px_6px_3px_#00000027] group" aria-label="Instagram">
+                  <svg className="h-[16px] fill-[#f2f2f2] group-hover:fill-[#c13584] transition-colors duration-300" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" strokeWidth={1}>
+                      <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                          <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7288.98792 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]"></path>
+                        </g>
+                      </g>
+                    </g>
                   </svg>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Columns: Links with Gold Underline (Widened with reduced right padding to spread out nicely) */}
-          <div className="w-full lg:w-2/3 flex flex-col justify-between">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 xl:pr-[240px]">
+          {/* Right Columns: Links with Gold Underline */}
+          <div className="w-full lg:flex-1 flex flex-col justify-between">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 xl:pr-[120px]">
               {NAV_COLS.map((col) => (
                 <div key={col.title}>
-                  <h4 className="font-bold text-[#0f4c81] text-[15px] tracking-wide">
+                  <h4 className="font-bold text-[#0f4c81] text-[17.5px] tracking-wide">
                     {col.title}
                   </h4>
                   {/* Horizontal Gold Line under Header */}
@@ -189,17 +189,29 @@ export function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="border-t border-[#eab308]/50 pt-5 flex flex-col items-center justify-center gap-2 text-center">
-          <p className="text-sm text-gray-500 font-semibold px-4">
-            © HARE KRISHNA MOVEMENT DEHRADUN. All rights reserved.
+        <div className="relative pt-6 flex flex-col items-center justify-center gap-3.5 text-center text-[14.5px] text-gray-500 font-medium w-full">
+          {/* Elegant Gradient Border */}
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#eab308]/50 to-transparent"></div>
+          
+          <p className="tracking-wide">
+            © {new Date().getFullYear()} <span className="text-gray-700 font-semibold">Hare Krishna Movement Dehradun</span>. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold text-gray-500 px-4">
-            <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
-            <span className="text-[#eab308] font-bold hidden sm:inline">|</span>
-            <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms &amp; Conditions</Link>
-            <span className="text-[#eab308] font-bold hidden sm:inline">|</span>
-            <Link href="/refund-policy" className="hover:text-gray-900 transition-colors">Refund Policy</Link>
+          <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 mt-1">
+            <Link href="/privacy" className="relative group transition-colors duration-300 hover:text-[#0f4c81]">
+              <span className="relative z-10">Privacy Policy</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#0f4c81] transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <span className="text-[#eab308]/70 hidden sm:inline select-none text-xs">✦</span>
+            <Link href="/terms" className="relative group transition-colors duration-300 hover:text-[#0f4c81]">
+              <span className="relative z-10">Terms &amp; Conditions</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#0f4c81] transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <span className="text-[#eab308]/70 hidden sm:inline select-none text-xs">✦</span>
+            <Link href="/refund-policy" className="relative group transition-colors duration-300 hover:text-[#0f4c81]">
+              <span className="relative z-10">Refund Policy</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#0f4c81] transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </div>
         </div>
 

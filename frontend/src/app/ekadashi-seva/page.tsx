@@ -210,7 +210,7 @@ export default function EkadashiSevaPage() {
               </h2>
               
               <p className="text-xl font-light mb-12 text-gray-600 leading-relaxed">
-                Ekadashi donation is considered highly auspicious, a day of immense spiritual significance dedicated to devotion, fasting, and seva. At Hare Krishna Mandir, Bhadraj – ISKCON Dehradun, we observe each Ekadashi with heartfelt offerings, prayers, and sacred services.
+                Ekadashi donation is considered highly auspicious, a day of immense spiritual significance dedicated to devotion, fasting, and seva. At Hare Krishna Mandir, Bhadraj – Hare Krishna Movement Dehradun, we observe each Ekadashi with heartfelt offerings, prayers, and sacred services.
               </p>
 
               <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
@@ -240,7 +240,7 @@ export default function EkadashiSevaPage() {
                 </span>
               </h3>
               <p className="text-gray-500 font-light leading-relaxed mb-10">
-                Support Khichdi Prasadam Seva at ISKCON Dehradun by helping distribute sanctified vegetarian meals to devotees, visitors, and the underprivileged. Your contribution allows us to serve thousands with warm, nutritious prasadam on this sacred day.
+                Support Khichdi Prasadam Seva at Hare Krishna Movement Dehradun by helping distribute sanctified vegetarian meals to devotees, visitors, and the underprivileged. Your contribution allows us to serve thousands with warm, nutritious prasadam on this sacred day.
               </p>
 
               <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
@@ -271,7 +271,7 @@ export default function EkadashiSevaPage() {
               </h3>
               <div className="space-y-4 mb-10">
                 <blockquote className="border-l-4 border-[#1A82D6] pl-5 py-2 italic text-gray-600 font-light bg-gray-50 rounded-r-lg leading-relaxed">
-                  Scriptures declare that donations on Ekadashi bring eternal blessings and spiritual merit. By supporting Ekadashi Annadana Seva and contributing to ISKCON temple donations, you not only serve the deities but also uplift your soul through devotion and compassion.
+                  Scriptures declare that donations on Ekadashi bring eternal blessings and spiritual merit. By supporting Ekadashi Annadana Seva and contributing to Hare Krishna Movement Dehradun donations, you not only serve the deities but also uplift your soul through devotion and compassion.
                 </blockquote>
               </div>
             </div>
@@ -436,12 +436,12 @@ export default function EkadashiSevaPage() {
                 <button
                   type="submit"
                   disabled={loading || totalAmount === 0}
-                  className="w-full py-4 mt-4 rounded-full bg-[#EAEAEA] text-[#2A91D9] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center uppercase"
+                  className="w-full py-4 mt-4 rounded-full bg-[#EAEAEA] text-[#2A91D9] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center"
                 >
                   {loading ? (
                     <span className="w-6 h-6 border-2 border-[#2A91D9]/30 border-t-[#2A91D9] rounded-full animate-spin"></span>
                   ) : (
-                    `DONATE ₹ ${totalAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                    `Donate ₹ ${totalAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                   )}
                 </button>
 

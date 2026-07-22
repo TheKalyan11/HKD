@@ -10,7 +10,11 @@ import { useCms } from '@/components/CmsContext';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import CoverflowGallery from '@/components/CoverflowGallery';
 import FeatureCard from '@/components/FeatureCard';
+import GuptVrindavanDhamSection from '@/components/GuptVrindavanDhamSection';
+import ExploreTemple from '@/components/ExploreTemple';
+import FolkYouthPrograms from '@/components/FolkYouthPrograms';
 import UpcomingFestivals from '@/components/UpcomingFestivals';
+import MagicRings from '@/components/MagicRings';
 
 
 
@@ -353,69 +357,117 @@ export default function Home() {
 
 
         <div className="container mx-auto px-4 sm:px-8 relative z-10">
-
-          <div className="max-w-3xl mx-auto text-center flex flex-col items-center justify-center space-y-8">
-
-
-
-            {/* Header area */}
-
-            <div className="space-y-4 flex flex-col items-center">
-
-              <div className="flex items-center gap-4 text-[#d4af37]">
-
-                <div className="h-px w-12 bg-current"></div>
-
-                <span className="uppercase tracking-[0.25em] font-medium text-xs sm:text-sm">About Us</span>
-
-                <div className="h-px w-12 bg-current"></div>
-
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-[1200px] mx-auto">
+            {/* Left: Circular Video Preview with Animated Waves */}
+            <div className="flex justify-center items-center order-2 lg:order-1 relative min-h-[400px] sm:min-h-[600px] overflow-visible">
+              {/* MagicRings WebGL Background */}
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  inset: '-80px',
+                  zIndex: 0,
+                  background: 'transparent',
+                  overflow: 'visible',
+                }}
+              >
+                <MagicRings
+                  color="#A855F7"
+                  colorTwo="#6366F1"
+                  ringCount={6}
+                  speed={1}
+                  attenuation={10}
+                  lineThickness={2}
+                  baseRadius={0.35}
+                  radiusStep={0.1}
+                  scaleRate={0.1}
+                  opacity={1}
+                  blur={0}
+                  noiseAmount={0.1}
+                  rotation={0}
+                  ringGap={1.5}
+                  fadeIn={0.7}
+                  fadeOut={0.5}
+                  followMouse={false}
+                  mouseInfluence={0.2}
+                  hoverScale={1.2}
+                  parallax={0.05}
+                  clickBurst={false}
+                />
               </div>
 
+              {/* Main Circle */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-10"
+              >
+                <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:w-[460px] md:h-[460px] rounded-full overflow-hidden relative group cursor-pointer"
+                  style={{
+                    border: "10px solid",
+                    borderColor: "#c084fc",
+                    boxShadow: "0 0 0 4px #a855f755, 0 0 60px #a855f740",
+                  }}
+                >
+                  <img
+                    src="/mandir-nirman/render-3.webp"
+                    alt="Temple Video"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+              </motion.div>
 
-
-              <h2 className="text-4xl md:text-5xl font-section-heading text-[#3b2b2f] font-medium leading-tight drop-shadow-sm">
-
-                Hare Krishna Movement <br />
-
-                <span className="text-[#d4af37]">Dehradun</span>
-
-              </h2>
-
+              {/* Play Button */}
+              <motion.div
+                className="absolute z-20 bottom-[10%] sm:bottom-16 right-[15%] sm:right-[10%]"
+              >
+                <button className="cursor-pointer">
+                  <div className="w-[60px] h-[60px] sm:w-[83px] sm:h-[83px] bg-blue-50 rounded-full relative shadow-[inset_0px_0px_1px_1px_rgba(0,0,0,0.3),_2px_3px_5px_rgba(0,0,0,0.1)] flex items-center justify-center transform scale-75 sm:scale-100 origin-bottom-right transition-transform hover:scale-90 sm:hover:scale-110">
+                    <div className="absolute w-[72px] h-[72px] z-10 bg-black rounded-full left-1/2 -translate-x-1/2 top-[5px] blur-[1px]" />
+                    <label className="group cursor-pointer absolute w-[72px] h-[72px] bg-gradient-to-b from-blue-600 to-blue-400 rounded-full left-1/2 -translate-x-1/2 top-[5px] shadow-[inset_0px_4px_2px_#60a5fa,inset_0px_-4px_0px_#1e3a8a,0px_0px_2px_rgba(0,0,0,10)] active:shadow-[inset_0px_4px_2px_rgba(96,165,250,0.5),inset_0px_-4px_2px_rgba(37,99,235,0.5),0px_0px_2px_rgba(0,0,0,10)] z-20 flex items-center justify-center">
+                      <div className="w-8 group-active:w-[31px] fill-blue-100 drop-shadow-[0px_2px_2px_rgba(0,0,0,0.5)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24">
+                          <path d="M20.492,7.969,10.954.975A5,5,0,0,0,3,5.005V19a4.994,4.994,0,0,0,7.954,4.03l9.538-6.994a5,5,0,0,0,0-8.062Z" />
+                        </svg>
+                      </div>
+                    </label>
+                  </div>
+                </button>
+              </motion.div>
             </div>
 
+            {/* Right: The Matter */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 order-1 lg:order-2">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 text-[#d4af37] justify-center lg:justify-start">
+                  <div className="h-px w-12 bg-current"></div>
+                  <span className="uppercase tracking-[0.25em] font-medium text-xs sm:text-sm">About Us</span>
+                  <div className="h-px w-12 bg-current lg:hidden"></div>
+                </div>
 
+                <h2 className="text-4xl md:text-5xl lg:text-[56px] font-section-heading text-[#3b2b2f] font-medium leading-[1.1] drop-shadow-sm">
+                  Hare Krishna Movement <br className="hidden lg:block" />
+                  <span className="text-[#d4af37]">Dehradun</span>
+                </h2>
+              </div>
 
-            {/* Body Text (Dehradun Matter) */}
-
-            <div className="space-y-6 text-[#4a4a4a] text-lg sm:text-xl leading-relaxed max-w-2xl text-center">
-
-              <p>
-
-                We aspire to create a world-class and iconic spiritual centre for Sri Krishna in the picturesque valley of Dehradun in pursuance of Srila Prabhupada&apos;s direction.
-
-              </p>
-
-              <p>
-
-                Hare Krishna Movement Dehradun will place Krishna proudly on the minds of the people and Dehradun on the global spiritual map.
-
-              </p>
-
+              <div className="space-y-6 text-[#4a4a4a] text-lg sm:text-xl leading-relaxed max-w-xl">
+                <p>
+                  We aspire to create a world-class and iconic spiritual centre for Sri Krishna in the picturesque valley of Dehradun in pursuance of Srila Prabhupada&apos;s direction.
+                </p>
+                <p>
+                  Hare Krishna Movement Dehradun will place Krishna proudly on the minds of the people and Dehradun on the global spiritual map.
+                </p>
+              </div>
             </div>
-
           </div>
-
         </div>
 
       </section>
 
-
-
-
-
-
       <UpcomingFestivals isHomePage={true} />
+
+      <ExploreTemple />
 
 
 
@@ -438,91 +490,9 @@ export default function Home() {
 
 
 
-            {/* Top Gold Ornament with Lotus (Screenshot Match) */}
-
-            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-1.5 text-[#cca75b]">
-
-              <div className="flex-1 flex items-center">
-
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-
-                <span className="text-[10px] -ml-1">◆</span>
-
-              </div>
-
-
-
-              {/* Golden Lotus Outline Symbol */}
-
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
-
-                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
-
-                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-
-                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-
-                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-
-                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-
-              </svg>
-
-
-
-              <div className="flex-1 flex items-center">
-
-                <span className="text-[10px] -mr-1">◆</span>
-
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-
-              </div>
-
-            </div>
-
-
-
             <h2 className="text-3xl md:text-[36px] font-section-heading text-[#0c4a8a] tracking-normal mb-1 font-medium">
-
               Latest Blogs
-
             </h2>
-
-
-
-            {/* Bottom Gold Ornament Knot (Screenshot Match) */}
-
-            <div className="flex items-center justify-center gap-3 w-full max-w-[200px] md:max-w-[280px] mt-1 text-[#cca75b]">
-
-              <div className="flex-1 flex items-center justify-end">
-
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-
-                <span className="text-[8px] -ml-1">◆</span>
-
-              </div>
-
-
-
-              {/* Divine Knot/Scroll Symbol SVG */}
-
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
-
-                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
-
-              </svg>
-
-
-
-              <div className="flex-1 flex items-center justify-start">
-
-                <span className="text-[8px] -mr-1">◆</span>
-
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-
-              </div>
-
-            </div>
 
 
 

@@ -179,7 +179,7 @@ export default function BookDistributionPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <Link
                     href="/donate"
-                    className="inline-flex items-center justify-center gap-2 bg-[#072149] text-white px-8 py-4 rounded-full text-sm tracking-wider uppercase hover:bg-amber-600 hover:shadow-[0_10px_30px_rgba(217,119,6,0.3)] transition-all duration-300 font-bold"
+                    className="inline-flex items-center justify-center gap-2 bg-[#072149] text-white px-8 py-4 rounded-full text-sm tracking-wider hover:bg-amber-600 hover:shadow-[0_10px_30px_rgba(217,119,6,0.3)] transition-all duration-300 font-bold"
                   >
                     Donate Now
                     <SvgArrowRight className="w-5 h-5 ml-1" />
@@ -301,7 +301,7 @@ export default function BookDistributionPage() {
       {/* ── OUR INITIATIVES (Tabbed) ─────────────────── */}
       <section className="py-10 bg-[#faf8f5] relative" style={governanceBgStyle}>
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
-          <Reveal className="mb-16">
+          <Reveal className="mb-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[1px] bg-[#072149]/30" />
               <span className="text-xs tracking-[0.3em] uppercase text-[#072149]/50" style={{ fontWeight: 600 }}>Our initiatives</span>
@@ -412,7 +412,7 @@ export default function BookDistributionPage() {
                   </p>
                   <Link
                     href={item.link}
-                    className="inline-flex items-center gap-3 text-[#072149] text-sm tracking-widest uppercase font-bold group-hover:gap-5 group-hover:text-amber-500 transition-all duration-300"
+                    className="inline-flex items-center gap-3 text-[#072149] text-sm tracking-widest font-bold group-hover:gap-5 group-hover:text-amber-500 transition-all duration-300"
                   >
                     {item.action}
                     <div className="w-8 h-[2px] bg-[#072149] group-hover:bg-amber-500 group-hover:w-12 transition-all duration-300 relative">

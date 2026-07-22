@@ -565,89 +565,9 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
 
-            {/* Top Gold Ornament with Lotus (Screenshot Match) */}
-
-            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-2 text-[#cca75b]">
-
-              <div className="flex-1 flex items-center">
-
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-
-                <span className="text-[10px] -ml-1">◆</span>
-
-              </div>
-
-
-
-              {/* Golden Lotus Outline Symbol */}
-
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
-
-                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
-
-                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-
-                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-
-                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-
-                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-
-              </svg>
-
-
-
-              <div className="flex-1 flex items-center">
-
-                <span className="text-[10px] -mr-1">◆</span>
-
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-
-              </div>
-
-            </div>
-
-
-
             <h2 className="text-4xl md:text-[44px] font-serif text-[#0a3d73] tracking-normal mb-1 font-medium">
               {isHomePage ? 'Upcoming Festivals' : 'Latest Events'}
             </h2>
-
-
-
-            {/* Bottom Gold Ornament Knot (Screenshot Match) */}
-
-            <div className="flex items-center justify-center gap-3 w-full max-w-[200px] md:max-w-[280px] mt-2 text-[#cca75b]">
-
-              <div className="flex-1 flex items-center justify-end">
-
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-
-                <span className="text-[8px] -ml-1">◆</span>
-
-              </div>
-
-
-
-              {/* Divine Knot/Scroll Symbol SVG */}
-
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
-
-                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
-
-              </svg>
-
-
-
-              <div className="flex-1 flex items-center justify-start">
-
-                <span className="text-[8px] -mr-1">◆</span>
-
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-
-              </div>
-
-            </div>
 
 
 
@@ -676,6 +596,24 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                   </p>
                 </div>
               </div>
+              <div className="pt-3.5 mt-2 px-3 pb-2 border-t border-[#eae4d5]/60 flex items-center justify-between gap-3 relative z-20 shrink-0">
+                <Link
+                  href="/festivals/panihati"
+                  className="text-[15px] sm:text-[16px] font-bold text-[#5c5245] hover:text-[#0a3d73] transition-colors flex items-center gap-1.5 group/link no-underline"
+                >
+                  <span>Explore</span>
+                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/festivals/panihati#donate"
+                  className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#FCD34D] hover:bg-[#FBBF24] text-[#0a3d73] font-extrabold text-[14px] sm:text-[15px] shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center no-underline border border-[#FCD34D]/80"
+                >
+                  <span>Donate</span>
+                </Link>
+              </div>
             </div>
 
             {/* Card 2: Janmashtami */}
@@ -691,6 +629,24 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                     Commemorate the appearance of Lord Krishna with fasting, midnight aarti, kirtans and joyful celebrations.
                   </p>
                 </div>
+              </div>
+              <div className="pt-3.5 mt-2 px-3 pb-2 border-t border-[#eae4d5]/60 flex items-center justify-between gap-3 relative z-20 shrink-0">
+                <Link
+                  href="/festivals/janmashtami"
+                  className="text-[15px] sm:text-[16px] font-bold text-[#5c5245] hover:text-[#0a3d73] transition-colors flex items-center gap-1.5 group/link no-underline"
+                >
+                  <span>Explore</span>
+                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/festivals/janmashtami#donate"
+                  className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#FCD34D] hover:bg-[#FBBF24] text-[#0a3d73] font-extrabold text-[14px] sm:text-[15px] shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center no-underline border border-[#FCD34D]/80"
+                >
+                  <span>Donate</span>
+                </Link>
               </div>
             </div>
           </div>

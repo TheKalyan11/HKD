@@ -381,7 +381,7 @@ export default function YouthFOLKPage() {
       </section>
 
       {/* ── ABOUT US ─────────────────────────────────────── */}
-      <section id="about" className="py-16 md:py-24" style={{ backgroundColor: '#ffffff' }}>
+      <section id="about" className="py-16 md:py-8" style={{ backgroundColor: '#ffffff' }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <Reveal>
