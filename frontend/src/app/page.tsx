@@ -14,7 +14,7 @@ import GuptVrindavanDhamSection from '@/components/GuptVrindavanDhamSection';
 import ExploreTemple from '@/components/ExploreTemple';
 import FolkYouthPrograms from '@/components/FolkYouthPrograms';
 import UpcomingFestivals from '@/components/UpcomingFestivals';
-import MagicRings from '@/components/MagicRings';
+import MusicWaves from '@/components/MusicWaves';
 
 
 
@@ -80,7 +80,7 @@ export default function Home() {
 
   const [selectedBlog, setSelectedBlog] = useState<any>(null);
 
-  // Fetch latest ashram blog posts for "Latest Updates"
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);  // Fetch latest ashram blog posts for "Latest Updates"
 
   useEffect(() => {
 
@@ -358,8 +358,8 @@ export default function Home() {
 
         <div className="container mx-auto px-4 sm:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-[1200px] mx-auto">
-            {/* Left: Circular Video Preview with Animated Waves */}
-            <div className="flex justify-center items-center order-2 lg:order-1 relative min-h-[400px] sm:min-h-[600px] overflow-visible">
+            {/* Left: Circular Video Preview */}
+            <div className="flex justify-center items-center order-2 lg:order-1 relative min-h-[400px] sm:min-h-[500px]">
               {/* MagicRings WebGL Background */}
               <div
                 className="absolute pointer-events-none"
@@ -370,29 +370,7 @@ export default function Home() {
                   overflow: 'visible',
                 }}
               >
-                <MagicRings
-                  color="#A855F7"
-                  colorTwo="#6366F1"
-                  ringCount={6}
-                  speed={1}
-                  attenuation={10}
-                  lineThickness={2}
-                  baseRadius={0.35}
-                  radiusStep={0.1}
-                  scaleRate={0.1}
-                  opacity={1}
-                  blur={0}
-                  noiseAmount={0.1}
-                  rotation={0}
-                  ringGap={1.5}
-                  fadeIn={0.7}
-                  fadeOut={0.5}
-                  followMouse={false}
-                  mouseInfluence={0.2}
-                  hoverScale={1.2}
-                  parallax={0.05}
-                  clickBurst={false}
-                />
+                <MusicWaves />
               </div>
 
               {/* Main Circle */}
@@ -401,17 +379,19 @@ export default function Home() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-10"
               >
-                <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:w-[460px] md:h-[460px] rounded-full overflow-hidden relative group cursor-pointer"
+                <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:w-[460px] md:h-[460px] rounded-full overflow-hidden relative group cursor-pointer shadow-2xl"
                   style={{
-                    border: "10px solid",
-                    borderColor: "#c084fc",
-                    boxShadow: "0 0 0 4px #a855f755, 0 0 60px #a855f740",
+                    border: "8px solid white",
+                    boxShadow: "0 20px 50px -12px rgba(0,0,0,0.3)",
                   }}
                 >
-                  <img
-                    src="/mandir-nirman/render-3.webp"
-                    alt="Temple Video"
+                  <video
+                    src="/Video%20from%20Vishwas%20Murthy.mp4"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
@@ -421,8 +401,8 @@ export default function Home() {
               <motion.div
                 className="absolute z-20 bottom-[10%] sm:bottom-16 right-[15%] sm:right-[10%]"
               >
-                <button className="cursor-pointer">
-                  <div className="w-[60px] h-[60px] sm:w-[83px] sm:h-[83px] bg-blue-50 rounded-full relative shadow-[inset_0px_0px_1px_1px_rgba(0,0,0,0.3),_2px_3px_5px_rgba(0,0,0,0.1)] flex items-center justify-center transform scale-75 sm:scale-100 origin-bottom-right transition-transform hover:scale-90 sm:hover:scale-110">
+                <button className="cursor-pointer" onClick={() => setIsVideoModalOpen(true)}>
+                  <div className="w-[83px] h-[83px] bg-blue-50 rounded-full relative shadow-[inset_0px_0px_1px_1px_rgba(0,0,0,0.3),_2px_3px_5px_rgba(0,0,0,0.1)] flex items-center justify-center">
                     <div className="absolute w-[72px] h-[72px] z-10 bg-black rounded-full left-1/2 -translate-x-1/2 top-[5px] blur-[1px]" />
                     <label className="group cursor-pointer absolute w-[72px] h-[72px] bg-gradient-to-b from-blue-600 to-blue-400 rounded-full left-1/2 -translate-x-1/2 top-[5px] shadow-[inset_0px_4px_2px_#60a5fa,inset_0px_-4px_0px_#1e3a8a,0px_0px_2px_rgba(0,0,0,10)] active:shadow-[inset_0px_4px_2px_rgba(96,165,250,0.5),inset_0px_-4px_2px_rgba(37,99,235,0.5),0px_0px_2px_rgba(0,0,0,10)] z-20 flex items-center justify-center">
                       <div className="w-8 group-active:w-[31px] fill-blue-100 drop-shadow-[0px_2px_2px_rgba(0,0,0,0.5)]">
@@ -464,6 +444,42 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isVideoModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setIsVideoModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsVideoModalOpen(false)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-colors cursor-pointer"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <video
+                src="/Video%20from%20Vishwas%20Murthy.mp4"
+                className="w-full h-full object-contain"
+                controls
+                autoPlay
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <UpcomingFestivals isHomePage={true} />
 

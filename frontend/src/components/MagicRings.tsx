@@ -1,252 +1,29 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import React from 'react';
+import './MagicRings.css';
 
-const vertexShader = `
-void main() {
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}
-`;
-
-const fragmentShader = `
-precision highp float;
-
-uniform float uTime, uAttenuation, uLineThickness;
-uniform float uBaseRadius, uRadiusStep, uScaleRate;
-uniform float uOpacity, uNoiseAmount, uRotation, uRingGap;
-uniform float uFadeIn, uFadeOut;
-uniform float uMouseInfluence, uHoverAmount, uHoverScale, uParallax, uBurst;
-uniform vec2 uResolution, uMouse;
-uniform vec3 uColor, uColorTwo;
-uniform int uRingCount;
-
-const float HP = 1.5707963;
-const float CYCLE = 3.45;
-
-float fade(float t) {
-  return t < uFadeIn ? smoothstep(0.0, uFadeIn, t) : 1.0 - smoothstep(uFadeOut, CYCLE - 0.2, t);
-}
-
-float ring(vec2 p, float ri, float cut, float t0, float px) {
-  float t = mod(uTime + t0, CYCLE);
-  float r = ri + t / CYCLE * uScaleRate;
-  float d = abs(length(p) - r);
-  float a = atan(abs(p.y), abs(p.x)) / HP;
-  float th = max(1.0 - a, 0.5) * px * uLineThickness;
-  float h = (1.0 - smoothstep(th, th * 1.5, d)) + 1.0;
-  d += pow(cut * a, 3.0) * r;
-  return h * exp(-uAttenuation * d) * fade(t);
-}
-
-void main() {
-  float px = 1.0 / min(uResolution.x, uResolution.y);
-  vec2 p = (gl_FragCoord.xy - 0.5 * uResolution.xy) * px;
-  float cr = cos(uRotation), sr = sin(uRotation);
-  p = mat2(cr, -sr, sr, cr) * p;
-  p -= uMouse * uMouseInfluence;
-  float sc = mix(1.0, uHoverScale, uHoverAmount) + uBurst * 0.3;
-  p /= sc;
-  vec3 c = vec3(0.0);
-  float rcf = max(float(uRingCount) - 1.0, 1.0);
-  for (int i = 0; i < 10; i++) {
-    if (i >= uRingCount) break;
-    float fi = float(i);
-    vec2 pr = p - fi * uParallax * uMouse;
-    vec3 rc = mix(uColor, uColorTwo, fi / rcf);
-    c = mix(c, rc, vec3(ring(pr, uBaseRadius + fi * uRadiusStep, pow(uRingGap, fi), i == 0 ? 0.0 : 2.95 * fi, px)));
-  }
-  c *= 1.0 + uBurst * 2.0;
-  float n = fract(sin(dot(gl_FragCoord.xy + uTime * 100.0, vec2(12.9898, 78.233))) * 43758.5453);
-  c += (n - 0.5) * uNoiseAmount;
-  gl_FragColor = vec4(c, max(c.r, max(c.g, c.b)) * uOpacity);
-}
-`;
-
-function hexToRgb(hex: string): [number, number, number] {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
-    : [1, 0, 1];
-}
-
-interface MagicRingsProps {
-  color?: string;
-  colorTwo?: string;
-  speed?: number;
-  ringCount?: number;
-  attenuation?: number;
-  lineThickness?: number;
-  baseRadius?: number;
-  radiusStep?: number;
-  scaleRate?: number;
-  opacity?: number;
-  blur?: number;
-  noiseAmount?: number;
-  rotation?: number;
-  ringGap?: number;
-  fadeIn?: number;
-  fadeOut?: number;
-  followMouse?: boolean;
-  mouseInfluence?: number;
-  hoverScale?: number;
-  parallax?: number;
-  clickBurst?: boolean;
-}
-
-export default function MagicRings({
-  color = '#fc42ff',
-  colorTwo = '#42fcff',
-  speed = 1,
-  ringCount = 6,
-  attenuation = 10,
-  lineThickness = 2,
-  baseRadius = 0.35,
-  radiusStep = 0.1,
-  scaleRate = 0.1,
-  opacity = 1,
-  blur = 0,
-  noiseAmount = 0.1,
-  rotation = 0,
-  ringGap = 1.5,
-  fadeIn = 0.7,
-  fadeOut = 0.5,
-  followMouse = false,
-  mouseInfluence = 0.2,
-  hoverScale = 1.2,
-  parallax = 0.05,
-  clickBurst = false,
-}: MagicRingsProps) {
-  const mountRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = mountRef.current;
-    if (!container) return;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0x000000, 0); // fully transparent background
-    renderer.domElement.style.position = 'absolute';
-    renderer.domElement.style.inset = '0';
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    renderer.domElement.style.background = 'transparent';
-    container.appendChild(renderer.domElement);
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-    const [r1, g1, b1] = hexToRgb(color);
-    const [r2, g2, b2] = hexToRgb(colorTwo);
-
-    const uniforms = {
-      uTime: { value: 0 },
-      uResolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
-      uMouse: { value: new THREE.Vector2(0, 0) },
-      uColor: { value: new THREE.Vector3(r1, g1, b1) },
-      uColorTwo: { value: new THREE.Vector3(r2, g2, b2) },
-      uAttenuation: { value: attenuation },
-      uLineThickness: { value: lineThickness },
-      uBaseRadius: { value: baseRadius },
-      uRadiusStep: { value: radiusStep },
-      uScaleRate: { value: scaleRate },
-      uOpacity: { value: opacity },
-      uNoiseAmount: { value: noiseAmount },
-      uRotation: { value: rotation },
-      uRingGap: { value: ringGap },
-      uFadeIn: { value: fadeIn },
-      uFadeOut: { value: fadeOut },
-      uMouseInfluence: { value: followMouse ? mouseInfluence : 0 },
-      uHoverAmount: { value: 0 },
-      uHoverScale: { value: hoverScale },
-      uParallax: { value: parallax },
-      uBurst: { value: 0 },
-      uRingCount: { value: ringCount },
-    };
-
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    const material = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms,
-      transparent: true,
-    });
-
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    let animId: number;
-    let startTime = Date.now();
-    let hoverAmount = 0;
-    let burst = 0;
-
-    const animate = () => {
-      animId = requestAnimationFrame(animate);
-      const elapsed = (Date.now() - startTime) / 1000;
-      uniforms.uTime.value = elapsed * speed;
-      uniforms.uHoverAmount.value += (hoverAmount - uniforms.uHoverAmount.value) * 0.05;
-      uniforms.uBurst.value *= 0.92;
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    const handleResize = () => {
-      if (!container) return;
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      renderer.setSize(w, h);
-      uniforms.uResolution.value.set(w, h);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!followMouse) return;
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      const y = -((e.clientY - rect.top) / rect.height - 0.5) * 2;
-      uniforms.uMouse.value.set(x, y);
-    };
-
-    const handleMouseEnter = () => { hoverAmount = 1; };
-    const handleMouseLeave = () => {
-      hoverAmount = 0;
-      if (!followMouse) uniforms.uMouse.value.set(0, 0);
-    };
-
-    const handleClick = () => {
-      if (clickBurst) burst = 1;
-      uniforms.uBurst.value = 1;
-    };
-
-    const ro = new ResizeObserver(handleResize);
-    ro.observe(container);
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseenter', handleMouseEnter);
-    container.addEventListener('mouseleave', handleMouseLeave);
-    container.addEventListener('click', handleClick);
-
-    if (blur > 0) {
-      renderer.domElement.style.filter = `blur(${blur}px)`;
-    }
-
-    return () => {
-      cancelAnimationFrame(animId);
-      ro.disconnect();
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseenter', handleMouseEnter);
-      container.removeEventListener('mouseleave', handleMouseLeave);
-      container.removeEventListener('click', handleClick);
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
-    };
-  }, [color, colorTwo, speed, ringCount, attenuation, lineThickness, baseRadius, radiusStep, scaleRate, opacity, blur, noiseAmount, rotation, ringGap, fadeIn, fadeOut, followMouse, mouseInfluence, hoverScale, parallax, clickBurst]);
-
+export default function MagicRings() {
   return (
-    <div
-      ref={mountRef}
-      style={{ width: '100%', height: '100%' }}
-    />
+    <div className="loader-wrapper">
+      <div className="loader">
+        <div style={{ '--i': 1, '--inset': '44%' } as React.CSSProperties} className="box">
+          <div className="logo">
+            <svg className="svg" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z" />
+              <path d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z" />
+              <path d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z" />
+            </svg>
+          </div>
+        </div>
+        <div style={{ '--i': 2, '--inset': '40%' } as React.CSSProperties} className="box" />
+        <div style={{ '--i': 3, '--inset': '36%' } as React.CSSProperties} className="box" />
+        <div style={{ '--i': 4, '--inset': '32%' } as React.CSSProperties} className="box" />
+        <div style={{ '--i': 5, '--inset': '28%' } as React.CSSProperties} className="box" />
+        <div style={{ '--i': 6, '--inset': '24%' } as React.CSSProperties} className="box" />
+        <div style={{ '--i': 7, '--inset': '20%' } as React.CSSProperties} className="box" />
+        <div style={{ '--i': 8, '--inset': '16%' } as React.CSSProperties} className="box" />
+      </div>
+    </div>
   );
 }
