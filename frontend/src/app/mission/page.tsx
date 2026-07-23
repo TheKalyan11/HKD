@@ -20,12 +20,12 @@ export default function OurMissionPage() {
           </div>
 
           {/* Page Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-3">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-4">
             Our <span className="text-[#d4af37]">Mission</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-[#5c5245] max-w-2xl text-[15px] sm:text-[16px] leading-relaxed font-medium mb-8">
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-8">
             Rediscovering real happiness and fulfilling the ultimate goal of human life through spiritual wisdom and divine service.
           </p>
 
@@ -45,8 +45,8 @@ export default function OurMissionPage() {
       <section className="py-10 md:py-16 relative z-10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
           
-          <div className="max-w-none text-[#5c5245] font-sans text-[15px] sm:text-[16px] leading-relaxed">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#072149] tracking-tight mb-6 text-center">
+          <div className="max-w-none text-[#5c5245] font-sans text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed">
+            <h2 className="text-2xl sm:text-3xl md:text-[40px] font-extrabold text-[#072149] tracking-tight mb-6 text-center">
               What is the mission of human life?
             </h2>
 
@@ -58,47 +58,47 @@ export default function OurMissionPage() {
               />
             </div>
             
-            <p className="mb-6 leading-relaxed font-normal text-[#5c5245] text-[15px] sm:text-[16px]">
+            <p className="mb-6 leading-relaxed font-normal text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px]">
               The mission of human life is to end the miseries of material existence and attain a blissful life. We are constantly searching after happiness, but we often fail in our pursuit. We may get a glimpse of happiness, but it does not last forever. We do not want miseries, but we cannot avoid them.
             </p>
             
-            <p className="mb-8 leading-relaxed font-normal text-[#5c5245] text-[15px] sm:text-[16px]">
+            <p className="mb-8 leading-relaxed font-normal text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px]">
               Scriptures inform us that we are spiritual beings, part and parcel of the Supreme Lord Sri Krishna, and by nature we are full of happiness – <em className="text-[#072149] font-medium">ānandamayo ‘bhyāsāt</em> (vedānta-sūtra). Then, why do we suffer? How do we rediscover the lost happiness and lead a blissful life?
             </p>
 
             <MissionBook />
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#072149] tracking-tight mb-6 mt-10">
+            <h2 className="text-2xl sm:text-3xl md:text-[40px] font-extrabold text-[#072149] tracking-tight mb-6 mt-10">
               How does this work?
             </h2>
             
-            <p className="mb-6 leading-relaxed font-normal text-[#5c5245] text-[15px] sm:text-[16px]">
+            <p className="mb-6 leading-relaxed font-normal text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px]">
               First, let us understand the root cause of our problems that makes our life miserable. We are entrapped in this material world from time immemorial and the happiness we pursue here is temporary and illusory. In the pursuit of such happiness, we engage in various activities, pious and sinful, that bind us more and more in this material world.
             </p>
             
-            <p className="mb-8 leading-relaxed font-normal text-[#5c5245] text-[15px] sm:text-[16px]">
+            <p className="mb-8 leading-relaxed font-normal text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px]">
               Our miseries are due to sinful reactions, and when we follow these three principles, all the material contaminations and sins are washed away; consequently, we are reestablished in our real constitutional position of unlimited bliss and happiness.
             </p>
 
-            <blockquote className="border-l-4 border-amber-500 pl-4 md:pl-6 py-3 my-8 bg-amber-50/60 rounded-r-2xl border border-r border-t border-b border-amber-200/50">
-              <p className="mb-2 text-[15px] sm:text-[16px] text-[#072149] font-bold">
+            <blockquote className="border-l-4 border-amber-500 pl-4 md:pl-6 py-3.5 my-8 bg-amber-50/60 rounded-r-2xl border border-r border-t border-b border-amber-200/50">
+              <p className="mb-2 text-[16px] sm:text-[18px] text-[#072149] font-bold">
                 Sri Chaitanya Mahaprabhu said: <span className="font-semibold text-amber-700 italic tracking-wide ml-1">ceto-darpaëa-märjanam bhava-mahä-dävägni-nirväpaëaà</span>
               </p>
-              <p className="text-[14px] sm:text-[15px] text-[#5c5245] leading-relaxed italic m-0">
+              <p className="text-[15px] sm:text-[16px] text-[#5c5245] leading-relaxed italic m-0">
                 "Chanting the holy names of the Lord cleanses the mirror of the heart and stops the miseries of the blazing fire of material existence."
               </p>
             </blockquote>
 
-            <blockquote className="border-l-4 border-[#072149] pl-4 md:pl-6 py-3 my-8 bg-blue-50/60 rounded-r-2xl border border-r border-t border-b border-blue-200/50">
-              <p className="mb-2 text-[15px] sm:text-[16px] text-[#072149] font-bold">
+            <blockquote className="border-l-4 border-[#072149] pl-4 md:pl-6 py-3.5 my-8 bg-blue-50/60 rounded-r-2xl border border-r border-t border-b border-blue-200/50">
+              <p className="mb-2 text-[16px] sm:text-[18px] text-[#072149] font-bold">
                 Srimad Bhagavatam says: <span className="font-semibold text-[#072149] italic tracking-wide ml-1">nañöa-präyeñv abhadreñu nityaà bhägavata-sevayä</span>
               </p>
-              <p className="text-[14px] sm:text-[15px] text-[#5c5245] leading-relaxed italic m-0">
+              <p className="text-[15px] sm:text-[16px] text-[#5c5245] leading-relaxed italic m-0">
                 "All the inauspicious things in our heart are completely destroyed by reading Srimad Bhagavatam every day. The darkness of ignorance is dissipated and we become situated in the mode of goodness and develop all good qualities equivalent to that of the demigods."
               </p>
             </blockquote>
 
-            <p className="mb-6 leading-relaxed font-normal text-[#5c5245] text-[15px] sm:text-[16px]">
+            <p className="mb-6 leading-relaxed font-normal text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px]">
               By honoring prasadam (food offered to the Lord) we do not incur further sinful reactions. Krishna says in the Bhagavad-gita (3.13): <em className="text-[#072149] font-medium">"The devotees of the Lord are released from all kinds of sins because they eat food which is offered first for sacrifice. Others, who prepare food for personal sense enjoyment, verily eat only sin."</em>
             </p>
 

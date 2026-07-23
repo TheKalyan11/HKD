@@ -145,12 +145,12 @@ export default function OurObjectivesPage() {
           </div>
 
           {/* Page Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-3">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-4">
             Our <span className="text-[#d4af37]">Objectives</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-[#5c5245] max-w-2xl text-[15px] sm:text-[16px] leading-relaxed font-medium mb-8">
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-8">
             Guiding principles and core spiritual objectives dedicated to propagating Krishna consciousness and uplifting human society.
           </p>
 
@@ -182,8 +182,8 @@ export default function OurObjectivesPage() {
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-[#072149] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                       <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
                         <div>
-                          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#072149] mb-4 tracking-tight">{obj.title}</h2>
-                          <p className="text-[15px] sm:text-[16px] text-[#5c5245] leading-relaxed max-w-4xl font-normal">{obj.text}</p>
+                          <h2 className="text-2xl sm:text-3xl md:text-[36px] font-extrabold text-[#072149] mb-4 tracking-tight">{obj.title}</h2>
+                          <p className="text-[16px] sm:text-[17px] md:text-[18px] text-[#5c5245] leading-relaxed max-w-4xl font-normal">{obj.text}</p>
                         </div>
                       </div>
                     </div>
@@ -216,13 +216,13 @@ export default function OurObjectivesPage() {
                     <Reveal direction={isEven ? "left" : "right"} delay={200}>
                       <div className="space-y-6">
 
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#072149] tracking-tight leading-tight">
+                        <h2 className="text-2xl sm:text-3xl md:text-[36px] font-extrabold text-[#072149] tracking-tight leading-tight">
                           {obj.title}
                         </h2>
                         <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-[#072149] rounded-full" />
                         <div className="space-y-4">
                           {obj.text.split('\n\n').map((paragraph, i) => (
-                            <p key={i} className="text-[15px] sm:text-[16px] text-[#5c5245] leading-relaxed font-normal">{paragraph}</p>
+                            <p key={i} className="text-[16px] sm:text-[17px] md:text-[18px] text-[#5c5245] leading-relaxed font-normal">{paragraph}</p>
                           ))}
                         </div>
                       </div>
