@@ -121,10 +121,10 @@ export default function DailyDarshanPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f6efeb] pt-20 pb-20">
+    <main className="min-h-screen bg-[#faf8f5] pt-0 pb-20 font-sans">
       
       {/* Dark Animated Header Card */}
-      <div className="w-full z-20 px-4 pt-4 pb-12 flex flex-col items-center">
+      <div className="w-full z-20 px-4 pt-2 sm:pt-4 pb-8 flex flex-col items-center">
         <style dangerouslySetInnerHTML={{__html: `
           .header-outer {
             width: 100%;
