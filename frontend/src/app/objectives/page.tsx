@@ -37,7 +37,7 @@ const objectives = [
   {
     title: "1. Spreading the Holy Name",
     text: "It is our first and foremost objective to inspire people to chant the Hare Krishna Maha-mantra. Chanting the holy name is the Yuga-dharma; and Supreme Lord Sri Krishna descended as Sri Chaitanya Mahaprabhu to inaugurate this dharma and propagate the Sankirtana Movement. He desired that the entire world be inundated with the chanting of the holy name. Srila Prabhupada accepted this as the mission of his life and established the world-wide Hare Krishna Movement to spread the holy names. Following in his footsteps, we, the disciples of Srila Prabhupada, have initiated various programs like Chanters Club, Harinam Festival, Hare Krishna Flash Mobs, etc., to spread the holy names and inspire as many people as possible to chant the Hare Krishna Maha-mantra.",
-    image: "/monk2.webp"
+    image: "/hero-deity-1.webp"
   },
   {
     title: "2. Gorgeous Deity-Worship and Opulent Festivals",
