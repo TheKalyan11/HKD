@@ -78,14 +78,14 @@ export default function FolkNavbar() {
                         href="/happiness-workshops"
                         className="px-4 py-3 rounded-xl hover:bg-[#02144c]/[0.06] transition-colors flex flex-col"
                       >
-                        <span className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] uppercase tracking-wide">Happiness Workshops</span>
+                        <span className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] tracking-wide">Happiness Workshops</span>
                         <span className="text-xs text-gray-500 font-normal">Joy & Stress-Free Living</span>
                       </Link>
                       <Link
                         href="/self-empowerment-workshops"
                         className="px-4 py-3 rounded-xl hover:bg-[#02144c]/[0.06] transition-colors flex flex-col"
                       >
-                        <span className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] uppercase tracking-wide">Self Empowerment Workshops</span>
+                        <span className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] tracking-wide">Self Empowerment Workshops</span>
                         <span className="text-xs text-gray-500 font-normal">Focus & Mind Mastery</span>
                       </Link>
                     </div>
@@ -149,14 +149,14 @@ export default function FolkNavbar() {
                       <Link
                         href="/happiness-workshops"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] hover:text-[#0B5DB7] py-1.5 uppercase tracking-wide"
+                        className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] hover:text-[#0B5DB7] py-1.5 tracking-wide"
                       >
                         → Happiness Workshops
                       </Link>
                       <Link
                         href="/self-empowerment-workshops"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] hover:text-[#0B5DB7] py-1.5 uppercase tracking-wide"
+                        className="text-base sm:text-[1.0625rem] font-semibold text-[#02144c] hover:text-[#0B5DB7] py-1.5 tracking-wide"
                       >
                         → Self Empowerment Workshops
                       </Link>

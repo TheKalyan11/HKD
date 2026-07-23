@@ -166,10 +166,10 @@ export const Navbar: React.FC = () => {
                                 onClick={() => {
                                   setIsOpen(false);
                                 }}
-                                className={`flex items-start gap-3 px-4 py-3 text-left uppercase tracking-wider text-gray-800 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item ${
+                                className={`flex items-start gap-3 px-4 py-3 text-left capitalize tracking-wide text-gray-800 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item ${
                                   link.name === 'Youth Programs'
                                     ? 'text-base sm:text-[1.0625rem] font-semibold'
-                                    : 'text-[13px] font-medium'
+                                    : 'text-[15px] font-medium'
                                 }`}
                               >
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#0B5DB7]/40 group-hover/item:bg-[#0B5DB7] mt-1.5 transition-colors flex-shrink-0" />
@@ -223,7 +223,7 @@ export const Navbar: React.FC = () => {
                 <div key={link.name} className="space-y-1">
                   <button
                     onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
-                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium ${link.name === 'Donate Now' || link.name === 'Donate' ? '' : 'uppercase'} tracking-wider transition-colors text-white hover:bg-white/5 hover:text-saffron`}
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium tracking-wide transition-colors text-white hover:bg-white/5 hover:text-saffron`}
                   >
                     <span>{link.name}</span>
                     <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
@@ -240,7 +240,7 @@ export const Navbar: React.FC = () => {
                             setIsOpen(false);
                             setOpenMobileDropdown(null);
                           }}
-                          className="block px-3 py-2 text-[14px] font-black bold-stroke text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
+                          className="block px-3 py-2 text-[14px] font-medium text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
                         >
                           {subLink.name}
                         </Link>
@@ -259,7 +259,7 @@ export const Navbar: React.FC = () => {
                   setIsOpen(false);
                   setOpenMobileDropdown(null);
                 }}
-                className={`block px-3 py-2 rounded-lg text-[15px] font-medium ${link.name === 'Donate Now' || link.name === 'Donate' ? '' : 'uppercase'} tracking-wider transition-colors ${
+                className={`block px-3 py-2 rounded-lg text-[15px] font-medium tracking-wide transition-colors ${
                   isActive 
                     ? 'bg-saffron/20 text-saffron-light' 
                     : 'text-white hover:bg-white/5 hover:text-saffron'

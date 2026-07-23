@@ -601,7 +601,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
           </div>
 
           {/* Festivals Grid */}
-          <div className="grid grid-cols-1 gap-8 max-w-md mx-auto relative z-20 mt-12 md:mt-16">
+          <div className="grid grid-cols-1 gap-8 max-w-md mx-auto relative z-20 mt-4 md:mt-6">
 
             {/* Card 2: Janmashtami */}
             <div className="bg-white rounded-[40px] p-3 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-2xl border border-gray-100 transition-shadow duration-300 flex flex-col h-full min-h-[440px] group font-sans">
@@ -615,7 +615,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none"></div>
 
                 <div className="relative z-10 px-2 pb-2">
-                  <h3 className="text-[28px] lg:text-[32px] font-bold text-[#FCD34D] drop-shadow-md tracking-tight mb-4 leading-tight">
+                  <h3 className="text-[38px] lg:text-[46px] font-extrabold text-[#FCD34D] drop-shadow-lg tracking-tight mb-4 leading-tight">
                     Janmashtami
                   </h3>
                   

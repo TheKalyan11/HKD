@@ -15,6 +15,7 @@ import ExploreTemple from '@/components/ExploreTemple';
 import FolkYouthPrograms from '@/components/FolkYouthPrograms';
 import UpcomingFestivals from '@/components/UpcomingFestivals';
 import MusicWaves from '@/components/MusicWaves';
+import FaqSection from '@/components/FaqSection';
 
 
 
@@ -485,191 +486,19 @@ export default function Home() {
 
       {/* 6. ONLINE DONATIONS SECTION */}
       <section className="relative w-full pt-10 pb-16 bg-[#faf8f5] overflow-hidden flex flex-col items-center">
-
-        {/* Style tag for custom ripple donate buttons */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          .ripple-btn {
-            position: relative;
-            outline: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #0c4a8a;
-            min-width: 200px;
-            border: 0;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
-            box-sizing: border-box;
-            padding: 12px 20px;
-            color: #fff;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-          }
-          .ripple-btn:hover {
-            opacity: .95;
-            background: #0a3d73;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, .15);
-          }
-          .ripple-btn .ripple-animation {
-            border-radius: 100%;
-            animation: ripple 0.6s linear infinite;
-            display: inline-block;
-            flex-shrink: 0;
-            width: 0;
-            height: 0;
-          }
-          @keyframes ripple {
-            0% {
-              box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2), 0 0 0 10px rgba(255, 255, 255, 0.2), 0 0 0 20px rgba(255, 255, 255, 0.2), 0 0 0 30px rgba(255, 255, 255, 0.2);
-            }
-            100% {
-              box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2), 0 0 0 20px rgba(255, 255, 255, 0.2), 0 0 0 30px rgba(255, 255, 255, 0.2), 0 0 0 40px rgba(255, 255, 255, 0);
-            }
-          }
-        ` }} />
-
         <div className="w-full max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
 
           {/* Section Header */}
-          <div className="flex flex-col items-center text-center space-y-2 mb-6 relative">
-
-            {/* Top Gold Ornament */}
-            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-1.5 text-[#cca75b]">
-              <div className="flex-1 flex items-center">
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-                <span className="text-[10px] -ml-1">◆</span>
-              </div>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
-                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
-                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-              </svg>
-              <div className="flex-1 flex items-center">
-                <span className="text-[10px] -mr-1">◆</span>
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-              </div>
+          <div className="flex flex-col items-center text-center mb-10 relative">
+            <div className="flex items-center gap-3 text-[#d4af37] mb-3">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">CHARITABLE SEVAS</span>
+              <div className="h-px w-10 bg-current"></div>
             </div>
-
-            <h2 className="text-4xl md:text-[44px] font-section-heading text-[#0a3d73] tracking-normal mb-1">
-              Online Donation
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#3b2b2f] tracking-tight">
+              Online <span className="text-[#d4af37]">Donation</span>
             </h2>
-
-            {/* Bottom ornament */}
-            <div className="flex items-center justify-center gap-3 w-full max-w-[260px] mb-1 text-[#cca75b]">
-              <div className="flex-1 flex items-center">
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-                <span className="text-[8px] -ml-1">◆</span>
-              </div>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
-                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
-              </svg>
-              <div className="flex-1 flex items-center justify-start">
-                <span className="text-[8px] -mr-1">◆</span>
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-              </div>
-            </div>
-
-            <p className="text-[#5c5245] max-w-2xl text-[15px] leading-relaxed pt-2">
-              Join Us in The Service of Lord
-            </p>
-
-
-
-
           </div>
-
-
-
-          {/* Donations Grid — sazzad-card style matching Festivals section */}
-
-          <style dangerouslySetInnerHTML={{
-            __html: `
-            @keyframes crossfade {
-              0% { opacity: 1; }
-              25% { opacity: 1; }
-              33.33% { opacity: 0; }
-              91.66% { opacity: 0; }
-              100% { opacity: 1; }
-            }
-            .slideshow-img {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-              background-color: #f8f6f2;
-              opacity: 0;
-              animation: crossfade 15s infinite;
-              transition: transform 0.7s ease;
-            }
-            .slideshow-img:nth-child(1) { animation-delay: 0s; }
-            .slideshow-img:nth-child(2) { animation-delay: -10s; }
-            .slideshow-img:nth-child(3) { animation-delay: -5s; }
-
-            .new-donate-btn {
-              font-size: 15px;
-              padding: 0.8em 2.4em;
-              font-weight: 500;
-              background: #0a3d73;
-              color: white;
-              border: none;
-              position: relative;
-              overflow: hidden;
-              border-radius: 0.6em;
-              cursor: pointer;
-            }
-
-            .new-donate-btn .gradient {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              left: 0;
-              top: 0;
-              border-radius: 0.6em;
-              margin-top: -0.25em;
-              background-image: linear-gradient(
-                rgba(0, 0, 0, 0),
-                rgba(0, 0, 0, 0),
-                rgba(0, 0, 0, 0.3)
-              );
-            }
-
-            .new-donate-btn .label {
-              position: relative;
-              top: -1px;
-            }
-
-            .new-donate-btn .transition {
-              transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-              transition-duration: 500ms;
-              background-color: rgba(204, 167, 91, 0.6);
-              border-radius: 9999px;
-              width: 0;
-              height: 0;
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              transform: translate(-50%, -50%);
-            }
-
-            .new-donate-btn:hover .transition {
-              width: 14em;
-              height: 14em;
-            }
-
-            .new-donate-btn:active {
-              transform: scale(0.97);
-            }
-          `}} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 relative z-20">
             {[
@@ -760,45 +589,16 @@ export default function Home() {
 
 
 
-          {/* Section Header with Lotus & Ornament Lines */}
-          <div className="flex flex-col items-center text-center space-y-2 mb-6 relative">
-            {/* Top Gold Ornament */}
-            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-1.5 text-[#cca75b]">
-              <div className="flex-1 flex items-center">
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-                <span className="text-[10px] -ml-1">◆</span>
-              </div>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
-                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
-                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
-                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
-              </svg>
-              <div className="flex-1 flex items-center">
-                <span className="text-[10px] -mr-1">◆</span>
-                <div className="h-[1px] w-full bg-[#cca75b]/60" />
-              </div>
+          {/* Section Header */}
+          <div className="flex flex-col items-center text-center mb-10 relative">
+            <div className="flex items-center gap-3 text-[#d4af37] mb-3">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">INSIGHTS</span>
+              <div className="h-px w-10 bg-current"></div>
             </div>
-
-            <h2 className="text-3xl md:text-[36px] font-section-heading text-[#0c4a8a] tracking-normal mb-1 font-medium">
-              Latest Blogs
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#3b2b2f] tracking-tight">
+              Latest <span className="text-[#d4af37]">Blogs</span>
             </h2>
-
-            {/* Bottom ornament */}
-            <div className="flex items-center justify-center gap-3 w-full max-w-[260px] mb-1 mt-2 text-[#cca75b]">
-              <div className="flex-1 flex items-center">
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-                <span className="text-[8px] -ml-1">◆</span>
-              </div>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
-                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
-              </svg>
-              <div className="flex-1 flex items-center justify-start">
-                <span className="text-[8px] -mr-1">◆</span>
-                <div className="h-[1px] w-full bg-[#cca75b]/50" />
-              </div>
-            </div>
           </div>
 
 
@@ -1029,6 +829,9 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-full h-10 opacity-[0.05]" style={{ backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nODAwJyBoZWlnaHQ9JzQwMCcgdmlld0JveD0nMCAwIDgwMCA0MDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+CjxnIGZpbGw9J25vbmUnIHN0cm9rZT0nI2NjYTc1Yicgc3Ryb2tlLXdpZHRoPScxLjUnIG9wYWNpdHk9JzAuMyc+CjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDE2MCwgNjApIHNjYWxlKDEuNSknPgo8cGF0aCBkPSdNMjAgNUMyMCA1IDEwIDE1IDIwIDM1QzMwIDE1IDIwIDUgMjAgNVonLz4KPHBhdGggZD0nTTIwIDM1QzEwIDMwIDUgMjAgMTAgMTJDMTUgMTIgMTggMjUgMjAgMzVaJy8+CjxwYXRoIGQ9J00yMCAzNUMzMCAzMCAzNSAyMCAzMCAxMkMyNSAxMiAyMiAyNSAyMCAzNVonLz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg1NjAsIDI2MCkgc2NhbGUoMS41KSc+CjxsaW5lIHgxPSc1JyB5MT0nMzUnIHgyPSczNScgeTI9JzUnIHN0cm9rZS13aWR0aD0nNCcgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJy8+CjxjaXJjbGUgY3g9JzEyJyBjeT0nMjgnIHI9JzEnIGZpbGw9JyNmYWY4ZjUnIHN0cm9rZT0nbm9uZScvPgo8Y2lyY2xlIGN4PScxNycgY3k9JzIzJyByPScxJyBmaWxsPScjZmFmOGY1JyBzdHJva2U9J25vbmUnLz4KPGNpcmNsZSBjeD0nMjInIGN5PScxOCcgcj0nMScgZmlsbD0nI2ZhZjhmNScgc3Ryb2tlPSdub25lJy8+CjxjaXJjbGUgY3g9JzI3JyBjeT0nMTMnIHI9JzEnIGZpbGw9JyNmYWY4ZjUnIHN0cm9rZT0nbm9uZScvPgo8cGF0aCBkPSdNMzMgNyBDIDQyIC04IDUyIDUgMzcgMTMnIHN0cm9rZS13aWR0aD0nMScvPgo8ZWxsaXBzZSBjeD0nNDEnIGN5PSczJyByeD0nMi41JyByeT0nMS41JyB0cmFuc2Zvcm09J3JvdGF0ZSg0NSA0MSAzKScgc3Ryb2tlLXdpZHRoPScxJy8+CjxjaXJjbGUgY3g9JzQxJyBjeT0nMycgcj0nMC41JyBmaWxsPScjY2NhNzViJyBzdHJva2U9J25vbmUnLz4KPHBhdGggZD0nTTEyIDI4IFEgNSAzOCAxMCA0NSBNIDE3IDIzIFEgMTIgMzUgMjAgNDInIHN0cm9rZS13aWR0aD0nMScvPgo8L2c+CjwvZz4KPHRleHQgeD0nNDAwJyB5PScxODAnIGZvbnQtZmFtaWx5PSdHZW9yZ2lhLCBzZXJpZicgZm9udC1zaXplPScyMCcgZmlsbD0nI2NjYTc1Yicgc3Ryb2tlPSdub25lJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBvcGFjaXR5PScwLjMnIGxldHRlci1zcGFjaW5nPScyJyBmb250LXN0eWxlPSdpdGFsaWMnPkhhcmUgS3Jpc2huYSBIYXJlIEtyaXNobmEsIEtyaXNobmEgS3Jpc2huYSBIYXJlIEhhcmU8L3RleHQ+Cjx0ZXh0IHg9JzQwMCcgeT0nMjEwJyBmb250LWZhbWlseT0nR2VvcmdpYSwgc2VyaWYnIGZvbnQtc2l6ZT0nMjAnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScgdGV4dC1hbmNob3I9J21pZGRsZScgb3BhY2l0eT0nMC4zJyBsZXR0ZXItc3BhY2luZz0nMicgZm9udC1zdHlsZT0naXRhbGljJz5IYXJlIFJhbWEgSGFyZSBSYW1hLCBSYW1hIFJhbWEgSGFyZSBIYXJlPC90ZXh0Pgo8L3N2Zz4=')" }} />
 
       </section>
+
+      {/* FAQ SECTION */}
+      <FaqSection />
 
 
 
