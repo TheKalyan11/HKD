@@ -362,8 +362,8 @@ button.learn-more:hover .button-text {
   .btn-donate { transition: linear; }
 }
 .btn-custom-donate {
-  background-color: #FCD34D;
-  color: #000000;
+  background-color: #f38312;
+  color: #ffffff;
   border-radius: 9999px;
   font-size: 15px;
   font-weight: 700;
@@ -374,7 +374,7 @@ button.learn-more:hover .button-text {
   cursor: pointer;
   transition: all 0.25s ease;
   border: 1px solid transparent;
-  box-shadow: 0 4px 12px rgba(245, 183, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(243, 131, 18, 0.3);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -383,13 +383,13 @@ button.learn-more:hover .button-text {
 }
 .btn-custom-donate:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(245, 183, 0, 0.4);
-  background-color: #FBBF24;
-  color: #000000;
+  box-shadow: 0 6px 16px rgba(243, 131, 18, 0.5);
+  background-color: #d9710b;
+  color: #ffffff;
 }
 .btn-custom-donate:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(245, 183, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(243, 131, 18, 0.2);
 }
 .glass-nav-link {
   font-family: 'TC EN', sans-serif;
