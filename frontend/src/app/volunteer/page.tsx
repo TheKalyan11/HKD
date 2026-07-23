@@ -509,55 +509,24 @@ export default function VolunteerPage() {
                 <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#f8fafc] via-[#ecfeff]/50 to-[#cffaffe6] p-6 sm:p-7 border border-white/80 shadow-[0_15px_40px_rgba(6,182,212,0.12)] hover:shadow-[0_20px_50px_rgba(6,182,212,0.22)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between h-full group">
                   
                   <div>
-                    {/* Top Header Row: Icon Badge & Share Icon */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-14 h-14 rounded-full bg-cyan-100/90 text-[#072149] border border-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-                        {cat.icon}
-                      </div>
-
-                      <div className="w-9 h-9 rounded-full bg-white/70 backdrop-blur-md flex items-center justify-center text-gray-500 border border-white/60 shadow-2xs hover:bg-white transition-colors cursor-pointer" title="Share Seva">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                        </svg>
-                      </div>
-                    </div>
-
                     {/* Title & Subtitle */}
                     <h3 className="text-2xl font-bold text-[#072149] tracking-tight mb-0.5">
                       {cat.title} <span className="text-[#d4af37]">Seva</span>
                     </h3>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan-800 mb-4">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan-800 mb-5">
                       {cat.subtitle}
                     </p>
 
                     {/* Pill Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-6">
                       {cat.items.map((item) => (
                         <span
                           key={item}
-                          className="px-3 py-1 bg-white/80 backdrop-blur-md border border-white/80 text-[#5c5245] text-xs rounded-full font-semibold shadow-2xs"
+                          className="px-3 py-1.5 bg-white/80 backdrop-blur-md border border-white/80 text-[#5c5245] text-xs rounded-full font-semibold shadow-2xs"
                         >
                           {item}
                         </span>
                       ))}
-                    </div>
-
-                    {/* 3-Column Stats Row */}
-                    <div className="grid grid-cols-3 gap-1 py-3.5 my-4 border-y border-cyan-200/40 text-center">
-                      <div>
-                        <p className="text-xs font-bold text-[#072149] flex items-center justify-center gap-1">
-                          <span className="text-amber-500">★</span> {cat.rating}
-                        </p>
-                        <p className="text-[11px] text-gray-500 font-medium mt-0.5">Rating</p>
-                      </div>
-                      <div className="border-x border-cyan-200/40 px-1">
-                        <p className="text-xs font-bold text-[#072149] truncate">{cat.badge}</p>
-                        <p className="text-[11px] text-gray-500 font-medium mt-0.5">Seva Type</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-[#072149] truncate">{cat.type}</p>
-                        <p className="text-[11px] text-gray-500 font-medium mt-0.5">Mode</p>
-                      </div>
                     </div>
                   </div>
 
@@ -565,7 +534,7 @@ export default function VolunteerPage() {
                   <a
                     href="#register-form"
                     onClick={() => setAreaOfInterest(`${cat.title} ${cat.subtitle}`)}
-                    className="w-full bg-white/90 hover:bg-[#072149] text-[#072149] hover:text-white font-bold py-3.5 px-6 rounded-full border border-white/80 shadow-sm transition-all text-sm flex items-center justify-center gap-2 group/btn mt-2"
+                    className="w-full bg-white/90 hover:bg-[#072149] text-[#072149] hover:text-white font-bold py-3.5 px-6 rounded-full border border-white/80 shadow-sm transition-all text-sm flex items-center justify-center gap-2 group/btn mt-4"
                   >
                     <span>Apply for Seva</span>
                     <SvgArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" />
