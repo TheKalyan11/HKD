@@ -53,7 +53,21 @@ export default function ReelsPage() {
   }, []);
 
   return (
-    <main className="bg-[#0a0a0a] sm:bg-[#1a1a1a] min-h-screen flex items-center justify-center">
+    <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden">
+      
+      {/* Desktop External Header (Top Left of Screen) */}
+      <div className="hidden sm:flex absolute top-8 left-8 md:left-12 xl:left-16 items-center gap-4 z-30">
+        <a href="/" className="text-white hover:bg-white/10 transition flex items-center justify-center p-2 rounded-full border border-transparent hover:border-white/20 backdrop-blur-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+          </svg>
+        </a>
+        <div className="flex items-center gap-3">
+          <img src="/HKM White logo.webp" alt="HKM Logo" className="h-14 w-auto object-contain drop-shadow-md" />
+          <span className="text-white font-bold text-3xl tracking-wide drop-shadow-md pb-1">Reels</span>
+        </div>
+      </div>
+
       {/* 
         On mobile: full height and width.
         On desktop: limited height and width with rounded corners to resemble a phone screen.
@@ -76,10 +90,11 @@ export default function ReelsPage() {
           `
         }} />
 
+
         {/* Top navigation gradient (to ensure back button visibility) */}
-        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none sm:rounded-t-3xl" />
-        {/* Top Header: Back Button, Logo, Title */}
-        <div className="absolute top-5 left-4 z-30 flex items-center gap-3 pointer-events-auto">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none sm:hidden" />
+        {/* Top Header: Back Button, Logo, Title (Mobile Only) */}
+        <div className="absolute top-5 left-4 z-30 flex sm:hidden items-center gap-3 pointer-events-auto">
           <a href="/" className="text-white hover:opacity-80 transition flex items-center justify-center p-1 -ml-1">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
