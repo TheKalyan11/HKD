@@ -56,16 +56,21 @@ export default function ReelsPage() {
     <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden">
       
       {/* Desktop External Header (Top Left of Screen) */}
-      <div className="hidden sm:flex absolute top-8 left-8 md:left-12 xl:left-16 items-center gap-4 z-30">
-        <a href="/" className="text-white hover:bg-white/10 transition flex items-center justify-center p-2 rounded-full border border-transparent hover:border-white/20 backdrop-blur-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+      <div className="hidden sm:flex absolute top-8 left-8 md:left-12 xl:left-16 items-center z-30">
+        <div className="flex items-center gap-4">
+          <img src="/HKM White logo.webp" alt="HKM Logo" className="h-20 w-auto object-contain drop-shadow-md" />
+          <span className="text-white font-bold text-5xl tracking-wide drop-shadow-md pb-1">Reels</span>
+        </div>
+      </div>
+
+      {/* Desktop External Header (Top Right of Screen) */}
+      <div className="hidden sm:flex absolute top-10 right-8 md:right-12 xl:right-16 items-center z-30">
+        <a href="/" className="text-white font-bold text-lg tracking-wide hover:opacity-90 transition flex items-center gap-3 drop-shadow-md bg-white/10 px-6 py-3.5 rounded-full backdrop-blur-md border border-white/20 hover:bg-white/20 hover:scale-105 active:scale-95 shadow-xl">
+          <span className="pb-0.5">Back to Website</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         </a>
-        <div className="flex items-center gap-3">
-          <img src="/HKM White logo.webp" alt="HKM Logo" className="h-14 w-auto object-contain drop-shadow-md" />
-          <span className="text-white font-bold text-3xl tracking-wide drop-shadow-md pb-1">Reels</span>
-        </div>
       </div>
 
       {/* 
