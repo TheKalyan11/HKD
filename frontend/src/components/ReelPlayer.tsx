@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Heart, Share2, Volume2, VolumeX, Play } from 'lucide-react';
+import { Heart, Share2, Volume2, VolumeX, Play, ChevronUp, ChevronDown } from 'lucide-react';
 
 export type Reel = {
   id: string;
@@ -12,9 +12,13 @@ export type Reel = {
 interface ReelPlayerProps {
   reel: Reel;
   isActive: boolean;
+  onNext?: () => void;
+  onPrev?: () => void;
+  hasNext?: boolean;
+  hasPrev?: boolean;
 }
 
-export default function ReelPlayer({ reel, isActive }: ReelPlayerProps) {
+export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, hasPrev }: ReelPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -142,6 +146,24 @@ export default function ReelPlayer({ reel, isActive }: ReelPlayerProps) {
             </div>
             <span className="text-white text-xs font-semibold drop-shadow-md">Share</span>
           </button>
+
+          {/* Desktop Navigation Arrows */}
+          <div className="hidden sm:flex flex-col gap-4 mt-2">
+            <button 
+              onClick={(e) => { e.stopPropagation(); onPrev?.(); }}
+              disabled={!hasPrev}
+              className="p-2.5 bg-[#2a2a2a]/80 backdrop-blur-md rounded-full border border-white/10 hover:bg-[#3a3a3a] transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 active:scale-95 shadow-lg"
+            >
+              <ChevronUp className="w-6 h-6 text-white" />
+            </button>
+            <button 
+              onClick={(e) => { e.stopPropagation(); onNext?.(); }}
+              disabled={!hasNext}
+              className="p-2.5 bg-[#2a2a2a]/80 backdrop-blur-md rounded-full border border-white/10 hover:bg-[#3a3a3a] transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 active:scale-95 shadow-lg"
+            >
+              <ChevronDown className="w-6 h-6 text-white" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
