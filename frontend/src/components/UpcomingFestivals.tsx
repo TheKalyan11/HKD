@@ -604,35 +604,36 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
           <div className="grid grid-cols-1 gap-8 max-w-md mx-auto relative z-20 mt-12 md:mt-16">
 
             {/* Card 2: Janmashtami */}
-            <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
-              <div className="w-full h-56 rounded-2xl shrink-0 overflow-hidden">
-                <img src="https://hkmdehradun.org/live-site/assets/images/sri-gaura-purnima.png" alt="Janmashtami Temple" loading="lazy" className="group-hover:scale-105 w-full h-full object-cover object-center duration-500" />
-              </div>
-              <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
-                <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Janmashtami</span>
-                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-0 group-hover:mt-3 opacity-0 group-hover:opacity-100">
-                  <p className="overflow-hidden text-[14px] text-[#5c5245] leading-relaxed">
-                    Commemorate the appearance of Lord Krishna with fasting, midnight aarti, kirtans and joyful celebrations.
-                  </p>
+            <div className="bg-white rounded-[40px] p-3 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-2xl border border-gray-100 transition-shadow duration-300 flex flex-col h-full min-h-[440px] group font-sans">
+              <div className="relative w-full h-full flex-grow flex flex-col justify-end rounded-[32px] overflow-hidden pb-4 px-4 pt-32">
+                <img
+                  src="https://hkmdehradun.org/live-site/assets/images/sri-gaura-purnima.png"
+                  alt="Janmashtami Temple"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none"></div>
+
+                <div className="relative z-10 px-2 pb-2">
+                  <h3 className="text-[28px] lg:text-[32px] font-bold text-[#FCD34D] drop-shadow-md tracking-tight mb-4 leading-tight">
+                    Janmashtami
+                  </h3>
+                  
+                  <div className="flex gap-3">
+                    <Link
+                      href="/festivals/janmashtami"
+                      className="flex-1 flex items-center justify-center bg-white/95 backdrop-blur-sm hover:bg-white text-black rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg no-underline"
+                    >
+                      Explore
+                    </Link>
+                    <Link
+                      href="/festivals/janmashtami#donate"
+                      className="flex-1 flex items-center justify-center bg-white/20 backdrop-blur-md hover:bg-white/30 border border-white/30 text-white rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg no-underline"
+                    >
+                      Donate
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="pt-3.5 mt-2 px-3 pb-2 border-t border-[#eae4d5]/60 flex items-center justify-between gap-3 relative z-20 shrink-0">
-                <Link
-                  href="/festivals/janmashtami"
-                  className="text-[15px] sm:text-[16px] font-bold text-[#5c5245] hover:text-[#0a3d73] transition-colors flex items-center gap-1.5 group/link no-underline"
-                >
-                  <span>Explore</span>
-                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/festivals/janmashtami#donate"
-                  className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#FCD34D] hover:bg-[#FBBF24] text-[#0a3d73] font-extrabold text-[14px] sm:text-[15px] shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center no-underline border border-[#FCD34D]/80"
-                >
-                  <span>Donate</span>
-                </Link>
               </div>
             </div>
           </div>
@@ -643,23 +644,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
 
-        {/* View All Festivals Button */}
-        {isHomePage && (
-        <div className="w-full flex justify-center mt-12 mb-4 relative z-20">
-          <Link href="/events" className="no-underline">
-            <button className="relative px-10 py-4 rounded-full text-[#0c4a8a] font-medium tracking-widest uppercase text-sm bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_0_rgba(12,74,138,0.1)] hover:bg-white/60 hover:shadow-[0_8px_32px_0_rgba(12,74,138,0.2)] hover:-translate-y-1 transition-all duration-500 overflow-hidden group flex items-center justify-center font-serif">
-              <span className="relative z-10 flex items-center gap-2 drop-shadow-sm">
-                View All Festivals
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform duration-300">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </span>
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent group-hover:translate-x-full transition-transform duration-1000 ease-in-out skew-x-12" />
-            </button>
-          </Link>
-        </div>
-        )}
+
 
         {/* Bottom decorative pattern overlay */}
 
