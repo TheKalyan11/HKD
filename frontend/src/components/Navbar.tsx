@@ -71,6 +71,7 @@ export const Navbar: React.FC = () => {
     },
     { name: 'Youth Programs', href: '/youth', hasDropdown: false },
     { name: 'Blogs', href: '/blogs', hasDropdown: false },
+    { name: 'Reels', href: '/reels', hasDropdown: false },
     { name: 'Donate', href: '/donate', hasDropdown: false },
   ];
 
