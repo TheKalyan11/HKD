@@ -16,9 +16,10 @@ interface ReelPlayerProps {
   onPrev?: () => void;
   hasNext?: boolean;
   hasPrev?: boolean;
+  isNearby: boolean;
 }
 
-export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, hasPrev }: ReelPlayerProps) {
+export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, hasPrev, isNearby }: ReelPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -117,8 +118,9 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
       {/* Video Element */}
       <video
         ref={videoRef}
-        src={reel.videoUrl}
-        className="w-full h-full object-cover sm:rounded-3xl"
+        src={isNearby ? reel.videoUrl : undefined}
+        preload={isActive ? "auto" : "metadata"}
+        className="w-full h-full object-cover sm:rounded-3xl bg-black"
         loop
         playsInline
         muted={isMuted}

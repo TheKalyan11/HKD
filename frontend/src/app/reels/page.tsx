@@ -121,6 +121,7 @@ export default function ReelsPage() {
             <ReelPlayer 
               reel={reel} 
               isActive={activeIndex === index} 
+              isNearby={Math.abs(activeIndex - index) <= 1}
               onNext={() => {
                 const elements = containerRef.current?.querySelectorAll('.reel-container');
                 elements?.[index + 1]?.scrollIntoView({ behavior: 'smooth' });
