@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Heart, Share2, Volume2, VolumeX, Play, ChevronUp, ChevronDown } from 'lucide-react';
+import { Heart, Volume2, VolumeX, Play, Pause, ChevronUp, ChevronDown, Forward } from 'lucide-react';
 
 export type Reel = {
   id: string;
@@ -108,13 +108,19 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
         </div>
       )}
 
-      {/* Top Header / Audio Control */}
-      <div className="absolute top-4 right-4 z-10">
+      {/* Top Header / Audio & Play Control */}
+      <div className="absolute top-4 right-4 z-10 flex gap-2">
+        <button 
+          onClick={(e) => { e.stopPropagation(); togglePlay(); }}
+          className="p-2 bg-black/30 backdrop-blur-md rounded-full text-white hover:bg-black/50 transition flex items-center justify-center w-10 h-10"
+        >
+          {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
+        </button>
         <button 
           onClick={toggleMute}
-          className="p-2 bg-black/30 backdrop-blur-md rounded-full text-white hover:bg-black/50 transition"
+          className="p-2 bg-black/30 backdrop-blur-md rounded-full text-white hover:bg-black/50 transition flex items-center justify-center w-10 h-10"
         >
-          {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5 fill-current" />}
         </button>
       </div>
 
@@ -142,7 +148,7 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
           
           <button onClick={handleShare} className="flex flex-col items-center gap-1 group">
             <div className="p-3 bg-black/20 backdrop-blur-sm rounded-full group-hover:bg-black/40 transition hover:scale-110 active:scale-95">
-              <Share2 className="w-7 h-7 text-white" />
+              <Forward className="w-7 h-7 text-white" />
             </div>
             <span className="text-white text-xs font-semibold drop-shadow-md">Share</span>
           </button>
