@@ -105,7 +105,7 @@ export default function DonatePage() {
       </section>
 
       {/* ── SEVA CARDS SECTION ────────────────────────────────── */}
-      <section className="pt-2 sm:pt-3 pb-12 lg:pt-4 lg:pb-16 relative z-10">
+      <section className="pt-2 sm:pt-3 pb-4 lg:pt-4 lg:pb-6 relative z-10">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {sevaCards.map((seva, i) => (
@@ -154,12 +154,12 @@ export default function DonatePage() {
       </section>
 
       {/* ── RESPECTED CONTRIBUTORS SECTION ──────────────────────── */}
-      <section className="pb-16 relative z-10">
+      <section className="pb-4 relative z-10">
         <RespectedContributors />
       </section>
 
       {/* ── DONOR PRIVILEGES SECTION ────────────────────────────── */}
-      <section className="relative z-10 bg-gradient-to-b from-transparent to-white pt-2">
+      <section className="relative z-10 bg-gradient-to-b from-transparent to-white py-2">
         <DonorPrivileges />
       </section>
 
