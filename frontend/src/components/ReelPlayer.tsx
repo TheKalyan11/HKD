@@ -24,6 +24,8 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
   const [isMuted, setIsMuted] = useState(true);
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(reel.likes);
+  const [showHeartAnimation, setShowHeartAnimation] = useState(false);
+  const lastTapRef = useRef<number>(0);
 
   // Play/Pause logic based on intersection observer (isActive prop)
   useEffect(() => {
@@ -66,6 +68,32 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
     setIsLiked(!isLiked);
   };
 
+  const handleVideoTap = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const now = Date.now();
+    const DOUBLE_PRESS_DELAY = 300;
+    
+    if (now - lastTapRef.current < DOUBLE_PRESS_DELAY) {
+      // Double tap detected
+      if (!isLiked) {
+        setLikesCount(prev => prev + 1);
+        setIsLiked(true);
+      }
+      setShowHeartAnimation(true);
+      setTimeout(() => setShowHeartAnimation(false), 800);
+      
+      // Ensure video keeps playing if it was paused by the first tap
+      if (videoRef.current?.paused) {
+        videoRef.current.play().catch(console.error);
+        setIsPlaying(true);
+      }
+    } else {
+      // Single tap
+      togglePlay();
+    }
+    lastTapRef.current = now;
+  };
+
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
@@ -94,8 +122,15 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
         loop
         playsInline
         muted={isMuted}
-        onClick={togglePlay}
+        onClick={handleVideoTap}
       />
+
+      {/* Big Heart Animation for Double Tap */}
+      {showHeartAnimation && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-50">
+          <Heart className="w-32 h-32 text-red-500 fill-current animate-ping" style={{ animationDuration: '0.8s' }} />
+        </div>
+      )}
 
       {/* Play Button Overlay (when paused) */}
       {!isPlaying && (
