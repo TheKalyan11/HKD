@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, Phone, ChevronDown, ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import ReelsButton from './ReelsButton';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,20 +139,26 @@ export const Navbar: React.FC = () => {
                     key={link.name} 
                     className="relative py-2 group flex items-center"
                   >
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`glass-nav-link ${isActive ? 'glass-nav-link-active' : ''} ${
-                        isHome && !scrolled ? '!text-white !font-black tracking-wider hover:!text-[#FF9933] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]' : ''
-                      }`}
-                    >
-                      <span>{link.name}</span>
-                      {hasDropdown && (
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 ${
-                          isHome && !scrolled ? '!text-white group-hover:!text-[#FF9933] drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]' : 'text-gray-500 group-hover:text-[#0B5DB7]'
-                        }`} />
-                      )}
-                    </Link>
+                    {link.name === 'Reels' ? (
+                      <Link href={link.href} onClick={() => setIsOpen(false)} className="flex items-center">
+                        <ReelsButton />
+                      </Link>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`glass-nav-link ${isActive ? 'glass-nav-link-active' : ''} ${
+                          isHome && !scrolled ? '!text-white !font-black tracking-wider hover:!text-[#FF9933] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]' : ''
+                        }`}
+                      >
+                        <span>{link.name}</span>
+                        {hasDropdown && (
+                          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 ${
+                            isHome && !scrolled ? '!text-white group-hover:!text-[#FF9933] drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]' : 'text-gray-500 group-hover:text-[#0B5DB7]'
+                          }`} />
+                        )}
+                      </Link>
+                    )}
                     
                     {hasDropdown && (
                       <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[400px] transition-all duration-300 z-50 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto">
@@ -252,6 +259,19 @@ export const Navbar: React.FC = () => {
               );
             }
             
+            if (link.name === 'Reels') {
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 flex items-center justify-center mt-2"
+                >
+                  <ReelsButton />
+                </Link>
+              );
+            }
+
             return (
               <Link
                 key={link.name}
