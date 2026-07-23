@@ -188,35 +188,35 @@ export default function VolunteerPage() {
     <div className="bg-[#faf8f5] min-h-screen font-sans overflow-x-hidden relative">
 
       {/* ── HERO SECTION ─────────────────────────────────────── */}
-      <section className="relative pt-4 sm:pt-6 pb-2 overflow-hidden z-10 bg-[#faf8f5]">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
-          
-          {/* Decorative Tag */}
-          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
-            <div className="h-px w-10 bg-current"></div>
-            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
-            <div className="h-px w-10 bg-current"></div>
+      <section className="pt-4 sm:pt-6 pb-4 px-4 sm:px-6 lg:px-12 max-w-[1400px] mx-auto relative z-10">
+        <div 
+          className="relative overflow-hidden rounded-[24px] bg-[#0c4a8a] text-white shadow-xl group"
+        >
+          {/* Static Background Image with Correct Ratio */}
+          <div 
+            className="absolute inset-0 bg-contain bg-right bg-no-repeat mix-blend-luminosity opacity-60 pointer-events-none"
+            style={{ 
+              backgroundImage: "url('/volunteer_cartoon_bg.png')",
+              backgroundPosition: "100% 50%" 
+            }}
+          />
+          {/* Gradient overlay to ensure text readability and fade smoothly into the image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c4a8a] via-[#0c4a8a]/90 to-[#0c4a8a]/10 pointer-events-none" />
+
+          {/* Text Content */}
+          <div className="relative z-10 p-8 sm:p-12 lg:p-14 md:w-3/4 lg:w-[65%]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 tracking-tight text-white">
+              Volunteer to <span className="text-[#d4af37]">Serve</span>
+            </h1>
+            <p className="text-[15px] sm:text-base lg:text-[17px] mb-8 leading-relaxed text-white/95 font-medium max-w-2xl">
+              Offer your talents, and heart in the loving service of Sri Sri Krishna Balaram. Support the temple&apos;s spiritual and outreach activities by volunteering and become an instrument in Srila Prabhupada&apos;s mission. Come serve — and be spiritually transformed.
+            </p>
+            <a href="#register-form">
+              <button className="bg-[#d4af37] text-[#072149] px-8 py-3.5 rounded-full font-extrabold text-[15px] tracking-wide uppercase hover:bg-white hover:text-[#0c4a8a] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 shadow-md">
+                BECOME A VOLUNTEER
+              </button>
+            </a>
           </div>
-
-          {/* Page Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-3">
-            Volunteer <span className="text-[#d4af37]">With Us</span>
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-6">
-            Offer your time, skills, and energy in devotion to Lord Sri Krishna and discover the pure joy of selfless service.
-          </p>
-
-          {/* Hero Banner Card */}
-          <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]">
-            <img 
-              src="/hero-deity-1.webp" 
-              alt="Volunteer With Us" 
-              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
-            />
-          </div>
-
         </div>
       </section>
 
