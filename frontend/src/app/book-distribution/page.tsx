@@ -104,28 +104,28 @@ export default function BookDistributionPage() {
 
   const initiatives = [
     {
-      icon: <SvgGradCap className="w-7 h-7" />,
-      title: "Schools",
+      icon: <SvgGradCap className="w-5 h-5 text-amber-600" />,
+      title: "Schools & Colleges",
       desc: "Interactive sessions, storytelling, and discussions help students apply Gita teachings in daily life.",
-      images: [
-        "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD4.webp"
-      ]
+      image: "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD4.webp",
+      stats: "15,000+ Students",
+      action: "Sponsor Books",
     },
     {
-      icon: <SvgHandHeart className="w-7 h-7" />,
+      icon: <SvgHandHeart className="w-5 h-5 text-amber-600" />,
       title: "Old Age Homes",
-      desc: "Spiritual guidance offering comfort, purpose, and inner peace.",
-      images: [
-        "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD7.webp"
-      ]
+      desc: "Spiritual guidance offering comfort, purpose, and inner peace to senior citizens in our community.",
+      image: "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD7.webp",
+      stats: "2,500+ Elders Served",
+      action: "Sponsor Books",
     },
     {
-      icon: <SvgSprout className="w-7 h-7" />,
-      title: "Villages",
-      desc: "Gita satsangs and book distribution to rural families in need.",
-      images: [
-        "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD2.webp"
-      ]
+      icon: <SvgSprout className="w-5 h-5 text-amber-600" />,
+      title: "Villages & Rural Areas",
+      desc: "Gita satsangs and free book distribution to rural families in need across mountain regions.",
+      image: "https://hkmdehradun.org/live-site/assets/uploads/gallery/BGBD2.webp",
+      stats: "100+ Villages Reached",
+      action: "Sponsor Books",
     },
   ];
 
@@ -302,10 +302,10 @@ export default function BookDistributionPage() {
         </div>
       </section>
 
-      {/* ── OUR INITIATIVES (Tabbed) ─────────────────── */}
+      {/* ── OUR INITIATIVES ─────────────────── */}
       <section className="py-8 lg:py-12 bg-[#faf8f5] relative">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
-          <Reveal className="mb-8 text-center">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
+          <Reveal className="mb-10 text-center">
             <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
               <div className="h-px w-10 bg-current"></div>
               <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">OUR INITIATIVES</span>
@@ -316,50 +316,61 @@ export default function BookDistributionPage() {
             </h2>
           </Reveal>
 
-          <div className="flex flex-col gap-10">
-            {initiatives.map((item, i) => {
-              const isEven = i % 2 === 0;
-              return (
-                <Reveal key={i} delay={100} className="w-full">
-                  <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_10px_40px_rgba(7,33,73,0.05)] border border-[#072149]/5 hover:shadow-[0_20px_50px_rgba(7,33,73,0.08)] transition-all duration-500`}>
-                    
-                    {/* Text Section */}
-                    <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 flex items-center justify-center text-[#072149] mb-6 shadow-inner">
-                        {item.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {initiatives.map((item, i) => (
+              <Reveal key={i} delay={i * 100} className="h-full">
+                <div className="bg-white rounded-[2rem] p-4 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(7,33,73,0.1)] transition-all duration-500 flex flex-col h-full group">
+                  
+                  {/* Top Image Container with rounded corners */}
+                  <div className="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden bg-gray-100 mb-5">
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                    />
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="px-2 flex-grow flex flex-col justify-between">
+                    <div>
+                      {/* Title & Verified Badge */}
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#072149] tracking-tight">
+                          {item.title}
+                        </h3>
+                        <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0 shadow-sm" title="Active Program">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
                       </div>
-                      <h3 className="text-2xl lg:text-3xl text-[#072149] mb-4 font-extrabold tracking-tight">
-                        {item.title}
-                      </h3>
-                      <p className="text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
+
+                      {/* Description */}
+                      <p className="text-[#5c5245] text-[15px] leading-relaxed mb-6 font-normal">
                         {item.desc}
                       </p>
                     </div>
 
-                    {/* Image Gallery Section */}
-                    <div className="w-full lg:w-1/2 flex flex-col gap-6">
-                      {item.images ? (
-                        item.images.map((img, idx) => (
-                          <div key={idx} className="rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(7,33,73,0.08)] w-full border border-[#072149]/5">
-                            <img src={img} alt={`${item.title} ${idx + 1}`} className="w-full h-auto object-contain transform hover:scale-105 transition-transform duration-700" />
-                          </div>
-                        ))
-                      ) : (
-                        <div className="w-full min-h-[250px] lg:min-h-[350px] rounded-3xl bg-gradient-to-br from-[#072149]/[0.02] to-[#072149]/[0.05] flex items-center justify-center border border-dashed border-[#072149]/10">
-                          <div className="text-center p-6 opacity-30">
-                            <div className="w-16 h-16 mx-auto mb-4 text-[#072149]">
-                              {item.icon}
-                            </div>
-                            <span className="text-[#072149] font-medium text-lg">Images coming soon</span>
-                          </div>
-                        </div>
-                      )}
+                    {/* Bottom Footer Row */}
+                    <div className="pt-4 border-t border-gray-100 flex items-center justify-between gap-3 mt-auto">
+                      <div className="flex items-center gap-2 text-[#072149] font-semibold text-xs sm:text-sm">
+                        {item.icon}
+                        <span>{item.stats}</span>
+                      </div>
+
+                      <Link
+                        href="/donate"
+                        className="inline-flex items-center gap-1.5 bg-[#f3f4f6] hover:bg-[#072149] hover:text-white text-[#072149] font-bold text-xs sm:text-sm px-4 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:scale-105"
+                      >
+                        <span>{item.action}</span>
+                        <span className="text-base font-normal">+</span>
+                      </Link>
                     </div>
-                    
                   </div>
-                </Reveal>
-              )
-            })}
+
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
