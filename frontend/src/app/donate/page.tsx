@@ -80,7 +80,7 @@ export default function DonatePage() {
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
       {/* ── HERO SECTION ─────────────────────────────────────── */}
-      <section className="relative pt-16 sm:pt-20 lg:pt-24 pb-2 overflow-hidden z-10">
+      <section className="relative pt-4 sm:pt-6 lg:pt-8 pb-2 overflow-hidden z-10">
         <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex flex-col items-center text-center animate-fade-in-up">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111] tracking-tight mb-2 font-bold" style={{ lineHeight: 1.25 }}>
               Join us in the service of Lord.<br />
@@ -105,7 +105,7 @@ export default function DonatePage() {
       </section>
 
       {/* ── SEVA CARDS SECTION ────────────────────────────────── */}
-      <section className="pt-4 sm:pt-6 pb-12 lg:pt-8 lg:pb-16 relative z-10">
+      <section className="pt-2 sm:pt-3 pb-12 lg:pt-4 lg:pb-16 relative z-10">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {sevaCards.map((seva, i) => (
