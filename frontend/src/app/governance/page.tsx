@@ -301,13 +301,8 @@ export default function GovernancePage() {
 
           {/* Page Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-4">
-            Governance & <span className="text-[#d4af37]">Leadership</span>
+            Governance
           </h1>
-
-          {/* Subheading */}
-          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-4">
-            Guided by spiritual principles, transparency, and exemplary leadership in service of Lord Sri Krishna and humanity.
-          </p>
 
         </div>
       </section>
