@@ -7,7 +7,7 @@ import ReelPlayer, { Reel } from '@/components/ReelPlayer';
 const MOCK_REELS: Reel[] = [
   {
     id: "reel-1",
-    videoUrl: "https://videos.pexels.com/video-files/3752531/3752531-uhd_1440_2560_24fps.mp4",
+    videoUrl: "/Video from Vishwas Murthy.mp4",
     title: "Morning Mangala Aarti",
     description: "Experience the divine energy of early morning Mangala Aarti at Hare Krishna Mandir Dehradun. The perfect start to the day.",
     likes: 1240,
@@ -16,7 +16,7 @@ const MOCK_REELS: Reel[] = [
   },
   {
     id: "reel-2",
-    videoUrl: "https://videos.pexels.com/video-files/5896379/5896379-uhd_1440_2560_24fps.mp4",
+    videoUrl: "/donation video .mp4",
     title: "Maha Abhishek Preparation",
     description: "Glimpses behind the scenes as devotees lovingly prepare for the upcoming Maha Abhishek ceremony.",
     likes: 856,
@@ -25,7 +25,7 @@ const MOCK_REELS: Reel[] = [
   },
   {
     id: "reel-3",
-    videoUrl: "https://videos.pexels.com/video-files/4458897/4458897-uhd_1440_2560_24fps.mp4",
+    videoUrl: "/jk.mp4",
     title: "Youth Festival Highlights",
     description: "Our recent youth empowerment festival was a massive success! Music, wisdom, and prasadam.",
     likes: 2104,
@@ -65,14 +65,14 @@ export default function ReelsPage() {
   }, []);
 
   return (
-    <main className="bg-black min-h-screen">
+    <main className="bg-[#0a0a0a] sm:bg-[#1a1a1a] min-h-screen flex items-center justify-center">
       {/* 
-        We use h-[100dvh] (dynamic viewport height) for optimal mobile browser experience
-        snap-y and snap-mandatory create the TikTok-like vertical swipe effect 
+        On mobile: full height and width.
+        On desktop: limited height and width with rounded corners to resemble a phone screen.
       */}
       <div 
         ref={containerRef}
-        className="h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar relative flex justify-center"
+        className="h-[100dvh] sm:h-[90vh] sm:max-h-[850px] w-full sm:max-w-[430px] overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar relative bg-black sm:rounded-3xl sm:border-[6px] sm:border-gray-900 shadow-2xl"
       >
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -88,35 +88,30 @@ export default function ReelsPage() {
           `
         }} />
 
-        {/* Content Container: limits width on desktop, full width on mobile */}
-        <div className="w-full sm:max-w-md h-full bg-black shadow-2xl relative">
-          
-          {/* Top navigation gradient (to ensure back button visibility) */}
-          <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none" />
-          
-          {/* Back button */}
-          <a href="/" className="absolute top-6 left-4 z-30 text-white flex items-center gap-2 hover:opacity-80 transition pointer-events-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="font-semibold shadow-sm">Home</span>
-          </a>
-          
-          {/* Render the reels */}
-          {MOCK_REELS.map((reel, index) => (
-            <div 
-              key={reel.id} 
-              data-index={index}
-              className="reel-container h-full w-full snap-start snap-always"
-            >
-              <ReelPlayer 
-                reel={reel} 
-                isActive={activeIndex === index} 
-              />
-            </div>
-          ))}
-
-        </div>
+        {/* Top navigation gradient (to ensure back button visibility) */}
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none sm:rounded-t-3xl" />
+        
+        {/* Back button */}
+        <a href="/" className="absolute top-6 left-4 z-30 text-white flex items-center gap-2 hover:opacity-80 transition pointer-events-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+          </svg>
+          <span className="font-semibold drop-shadow-md">Home</span>
+        </a>
+        
+        {/* Render the reels */}
+        {MOCK_REELS.map((reel, index) => (
+          <div 
+            key={reel.id} 
+            data-index={index}
+            className="reel-container h-full w-full snap-start snap-always relative"
+          >
+            <ReelPlayer 
+              reel={reel} 
+              isActive={activeIndex === index} 
+            />
+          </div>
+        ))}
       </div>
     </main>
   );

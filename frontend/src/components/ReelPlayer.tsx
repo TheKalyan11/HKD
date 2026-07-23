@@ -90,7 +90,7 @@ export default function ReelPlayer({ reel, isActive }: ReelPlayerProps) {
       <video
         ref={videoRef}
         src={reel.videoUrl}
-        className="w-full h-full object-cover sm:object-contain"
+        className="w-full h-full object-cover sm:rounded-3xl"
         loop
         playsInline
         muted={isMuted}
