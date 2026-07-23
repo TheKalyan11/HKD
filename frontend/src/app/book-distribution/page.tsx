@@ -130,7 +130,7 @@ export default function BookDistributionPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FFFBF2] font-sans selection:bg-amber-100">
+    <main className="min-h-screen bg-[#faf8f5] font-sans selection:bg-amber-100">
 
       {/* ── HERO ─────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
@@ -203,7 +203,7 @@ export default function BookDistributionPage() {
       </section>
 
       {/* ── ABOUT GITA DISTRIBUTION ──────────────────── */}
-      <section className="pt-20 lg:pt-28 pb-10 bg-[#faf8f5] relative" style={governanceBgStyle}>
+      <section className="py-8 lg:py-12 bg-[#faf8f5] relative">
         <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10 hidden md:block">
           <motion.div 
             className="relative w-full aspect-[2/1.3] flex items-center justify-center perspective-[2500px] cursor-pointer"
@@ -217,10 +217,10 @@ export default function BookDistributionPage() {
               <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black/10 to-transparent pointer-events-none" />
               <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/60 pointer-events-none" />
               <div className="relative z-10">
-                <p className="text-[#072149]/80 text-lg md:text-xl leading-relaxed mb-8">
+                <p className="text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed mb-8 font-normal">
                   The teachings of the Gita go beyond religion, addressing universal themes such as purpose, duty, self-realization, and liberation.
                 </p>
-                <p className="text-[#072149]/80 text-lg md:text-xl leading-relaxed font-medium text-amber-600">
+                <p className="text-amber-700 text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-semibold">
                   Gita distribution is about planting seeds of wisdom that inspire positive change. Studies show improvements in mental well-being, academic focus, and social behavior.
                 </p>
               </div>
@@ -260,11 +260,11 @@ export default function BookDistributionPage() {
                 <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/10 to-transparent pointer-events-none" />
                 <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#072149]/20 pointer-events-none" />
                 <div className="relative z-10">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#072149] font-bold mb-6">
-                    About Gita <br/>Distribution
+                  <h2 className="text-2xl sm:text-3xl md:text-[36px] font-extrabold text-[#072149] tracking-tight mb-4">
+                    About Gita <span className="text-[#d4af37]">Distribution</span>
                   </h2>
-                  <div className="w-16 h-[3px] bg-amber-500 mb-8 rounded-full" />
-                  <p className="text-[#072149]/80 text-lg md:text-xl leading-relaxed font-medium">
+                  <div className="w-16 h-[3px] bg-amber-500 mb-6 rounded-full" />
+                  <p className="text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
                     The Bhagavad Gita is a 700-verse poem embedded within the Mahabharata. It presents a divine conversation between Lord Krishna and Arjuna on the battlefield of Kurukshetra.
                   </p>
                 </div>
@@ -275,22 +275,26 @@ export default function BookDistributionPage() {
 
         {/* Mobile View (Static Cards) */}
         <div className="md:hidden max-w-5xl mx-auto px-6 relative z-10">
-          <Reveal className="text-center mb-10">
-            <h2 className="text-3xl text-[#072149] font-bold">About Gita Distribution</h2>
-            <div className="w-16 h-[2px] bg-amber-500 mx-auto mt-4" />
+          <Reveal className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs">TRANSFORMATION & WISDOM</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl text-[#072149] font-extrabold">About Gita <span className="text-[#d4af37]">Distribution</span></h2>
           </Reveal>
           
           <div className="flex flex-col gap-6">
-            <div className="bg-[#FFFBF2] p-8 rounded-2xl shadow-sm border border-[#072149]/10">
-              <p className="text-[#072149]/80 text-lg leading-relaxed font-medium">
+            <div className="bg-[#FFFBF2] p-6 rounded-2xl shadow-sm border border-[#072149]/10">
+              <p className="text-[#5c5245] text-[16px] leading-relaxed font-normal">
                 The Bhagavad Gita is a 700-verse poem embedded within the Mahabharata. It presents a divine conversation between Lord Krishna and Arjuna on the battlefield of Kurukshetra.
               </p>
             </div>
-            <div className="bg-[#FFFBF2] p-8 rounded-2xl shadow-sm border border-[#072149]/10">
-               <p className="text-[#072149]/80 text-lg leading-relaxed mb-6">
+            <div className="bg-[#FFFBF2] p-6 rounded-2xl shadow-sm border border-[#072149]/10">
+               <p className="text-[#5c5245] text-[16px] leading-relaxed mb-4 font-normal">
                   The teachings of the Gita go beyond religion, addressing universal themes such as purpose, duty, self-realization, and liberation.
                 </p>
-                <p className="text-[#072149]/80 text-lg leading-relaxed font-medium text-amber-600">
+                <p className="text-amber-700 text-[16px] leading-relaxed font-semibold">
                   Gita distribution is about planting seeds of wisdom that inspire positive change. Studies show improvements in mental well-being, academic focus, and social behavior.
                 </p>
             </div>
@@ -299,19 +303,20 @@ export default function BookDistributionPage() {
       </section>
 
       {/* ── OUR INITIATIVES (Tabbed) ─────────────────── */}
-      <section className="py-10 bg-[#faf8f5] relative" style={governanceBgStyle}>
+      <section className="py-8 lg:py-12 bg-[#faf8f5] relative">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
-          <Reveal className="mb-6">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-[1px] bg-[#072149]/30" />
-              <span className="text-xs tracking-[0.3em] uppercase text-[#072149]/50" style={{ fontWeight: 600 }}>Our initiatives</span>
+          <Reveal className="mb-8 text-center">
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">OUR INITIATIVES</span>
+              <div className="h-px w-10 bg-current"></div>
             </div>
-            <h2 className="text-4xl md:text-5xl text-[#072149] leading-[1.1]" style={{ fontWeight: 700 }}>
-              Where we reach
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-2">
+              Where We <span className="text-[#d4af37]">Reach</span>
             </h2>
           </Reveal>
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-10">
             {initiatives.map((item, i) => {
               const isEven = i % 2 === 0;
               return (
@@ -320,13 +325,13 @@ export default function BookDistributionPage() {
                     
                     {/* Text Section */}
                     <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 flex items-center justify-center text-[#072149] mb-8 shadow-inner">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 flex items-center justify-center text-[#072149] mb-6 shadow-inner">
                         {item.icon}
                       </div>
-                      <h3 className="text-3xl lg:text-4xl text-[#072149] mb-6 font-extrabold tracking-tight">
+                      <h3 className="text-2xl lg:text-3xl text-[#072149] mb-4 font-extrabold tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="text-[#072149]/70 text-lg lg:text-xl leading-relaxed">
+                      <p className="text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
                         {item.desc}
                       </p>
                     </div>
@@ -360,7 +365,7 @@ export default function BookDistributionPage() {
       </section>
 
       {/* ── GET INVOLVED ─────────────────────────────── */}
-      <section className="pt-10 pb-24 lg:pb-32 bg-[#faf8f5] relative overflow-hidden" style={governanceBgStyle}>
+      <section className="py-8 lg:py-12 bg-[#faf8f5] relative overflow-hidden">
         {/* Background Decorative Rings */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#072149]/10 rounded-full" />
@@ -369,9 +374,14 @@ export default function BookDistributionPage() {
         </div>
 
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20 relative z-10">
-          <Reveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl text-[#072149] font-extrabold tracking-tight">
-              Get <span className="text-amber-500 font-instrument italic font-normal">Involved</span>
+          <Reveal className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">JOIN THE MISSION</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#072149] font-extrabold tracking-tight">
+              Get <span className="text-[#d4af37]">Involved</span>
             </h2>
           </Reveal>
 
@@ -400,14 +410,14 @@ export default function BookDistributionPage() {
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className="h-full">
-                <div className="group h-full bg-white border border-[#072149]/5 rounded-3xl p-10 hover:shadow-[0_20px_40px_rgba(7,33,73,0.08)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 text-[#072149] flex items-center justify-center mb-8 group-hover:bg-[#072149] group-hover:text-amber-400 transition-colors duration-500">
+                <div className="group h-full bg-white border border-[#072149]/5 rounded-3xl p-8 hover:shadow-[0_20px_40px_rgba(7,33,73,0.08)] transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#072149]/5 to-[#072149]/10 text-[#072149] flex items-center justify-center mb-6 group-hover:bg-[#072149] group-hover:text-amber-400 transition-colors duration-500">
                     {item.icon}
                   </div>
-                  <h3 className="text-2xl text-[#072149] mb-4 font-bold tracking-wide group-hover:text-amber-500 transition-colors duration-300">
+                  <h3 className="text-2xl text-[#072149] mb-3 font-bold tracking-wide group-hover:text-amber-500 transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-[#072149]/70 leading-relaxed mb-10 flex-grow text-lg">
+                  <p className="text-[#5c5245] leading-relaxed mb-8 flex-grow text-[15px] sm:text-[16px] font-normal">
                     {item.desc}
                   </p>
                   <Link
