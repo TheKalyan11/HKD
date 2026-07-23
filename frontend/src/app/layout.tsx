@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 
 const AdminControlBar = dynamic(() => import("@/components/AdminControlBar"), { ssr: false });
 const SocialFloatWidget = dynamic(() => import("@/components/SocialFloatWidget"), { ssr: false });
+const FloatingReelsWidget = dynamic(() => import("@/components/FloatingReelsWidget"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Hare Krishna Dharma Trust - Gau Seva & Annadana Seva",
@@ -55,6 +56,7 @@ export default function RootLayout({
           <Script async data-id="2451993731" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js" strategy="lazyOnload" />
           <AdminControlBar />
           <SocialFloatWidget />
+          <FloatingReelsWidget />
         </CmsProvider>
       </body>
 
