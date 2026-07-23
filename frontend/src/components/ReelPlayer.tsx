@@ -1,16 +1,12 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Heart, MessageCircle, Share2, Volume2, VolumeX, Play } from 'lucide-react';
+import { Heart, Share2, Volume2, VolumeX, Play } from 'lucide-react';
 
 export type Reel = {
   id: string;
   videoUrl: string;
-  title: string;
-  description: string;
   likes: number;
-  comments: number;
-  hashtags: string[];
 };
 
 interface ReelPlayerProps {
@@ -121,46 +117,30 @@ export default function ReelPlayer({ reel, isActive }: ReelPlayerProps) {
       {/* Bottom Information Overlay */}
       <div className="absolute bottom-0 left-0 w-full p-4 pb-20 sm:pb-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex justify-between items-end">
         
-        {/* Left Side: Title & Description */}
+        {/* Left Side: Title */}
         <div className="text-white max-w-[75%]">
-          <h2 className="text-lg font-bold mb-2 flex items-center gap-2">
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2 drop-shadow-md">
             Hare Krishna Dehradun
-            <svg className="w-4 h-4 text-blue-500 fill-current" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-blue-500 fill-current drop-shadow-md" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
           </h2>
-          <p className="text-sm text-gray-200 mb-1">{reel.title}</p>
-          <p className="text-xs text-gray-300 line-clamp-2 mb-2">{reel.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {reel.hashtags.map(tag => (
-              <span key={tag} className="text-sm font-semibold text-white/90">
-                #{tag}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Right Side: Action Buttons */}
         <div className="flex flex-col gap-6 items-center">
           <button onClick={handleLike} className="flex flex-col items-center gap-1 group">
-            <div className="p-3 bg-black/20 backdrop-blur-sm rounded-full group-hover:bg-black/40 transition">
+            <div className="p-3 bg-black/20 backdrop-blur-sm rounded-full group-hover:bg-black/40 transition hover:scale-110 active:scale-95">
               <Heart className={`w-7 h-7 transition-colors ${isLiked ? 'text-red-500 fill-current' : 'text-white'}`} />
             </div>
-            <span className="text-white text-xs font-semibold">{likesCount}</span>
+            <span className="text-white text-xs font-semibold drop-shadow-md">{likesCount}</span>
           </button>
           
-          <button className="flex flex-col items-center gap-1 group">
-            <div className="p-3 bg-black/20 backdrop-blur-sm rounded-full group-hover:bg-black/40 transition">
-              <MessageCircle className="w-7 h-7 text-white" />
-            </div>
-            <span className="text-white text-xs font-semibold">{reel.comments}</span>
-          </button>
-
           <button onClick={handleShare} className="flex flex-col items-center gap-1 group">
-            <div className="p-3 bg-black/20 backdrop-blur-sm rounded-full group-hover:bg-black/40 transition">
+            <div className="p-3 bg-black/20 backdrop-blur-sm rounded-full group-hover:bg-black/40 transition hover:scale-110 active:scale-95">
               <Share2 className="w-7 h-7 text-white" />
             </div>
-            <span className="text-white text-xs font-semibold">Share</span>
+            <span className="text-white text-xs font-semibold drop-shadow-md">Share</span>
           </button>
         </div>
       </div>

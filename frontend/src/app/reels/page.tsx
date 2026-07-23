@@ -8,29 +8,17 @@ const MOCK_REELS: Reel[] = [
   {
     id: "reel-1",
     videoUrl: "/Video from Vishwas Murthy.mp4",
-    title: "Morning Mangala Aarti",
-    description: "Experience the divine energy of early morning Mangala Aarti at Hare Krishna Mandir Dehradun. The perfect start to the day.",
     likes: 1240,
-    comments: 86,
-    hashtags: ["MangalaAarti", "HareKrishna", "DehradunTemple", "MorningVibes"]
   },
   {
     id: "reel-2",
     videoUrl: "/donation video .mp4",
-    title: "Maha Abhishek Preparation",
-    description: "Glimpses behind the scenes as devotees lovingly prepare for the upcoming Maha Abhishek ceremony.",
     likes: 856,
-    comments: 42,
-    hashtags: ["MahaAbhishek", "Devotion", "Seva", "KrishnaConsciousness"]
   },
   {
     id: "reel-3",
     videoUrl: "/jk.mp4",
-    title: "Youth Festival Highlights",
-    description: "Our recent youth empowerment festival was a massive success! Music, wisdom, and prasadam.",
     likes: 2104,
-    comments: 154,
-    hashtags: ["YouthFestival", "Empowerment", "Kirtan", "Prasadam"]
   }
 ];
 
@@ -112,6 +100,39 @@ export default function ReelsPage() {
             />
           </div>
         ))}
+      </div>
+
+      {/* Desktop Navigation Arrows */}
+      <div className="hidden sm:flex flex-col gap-4 absolute right-8 md:right-12 xl:right-32 top-1/2 -translate-y-1/2 z-30">
+        <button 
+          onClick={() => {
+            if (activeIndex > 0) {
+              const elements = containerRef.current?.querySelectorAll('.reel-container');
+              elements?.[activeIndex - 1]?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          disabled={activeIndex === 0}
+          className="p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-full text-white disabled:opacity-30 disabled:hover:bg-white/10 disabled:cursor-not-allowed transition-all shadow-xl"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+        
+        <button 
+          onClick={() => {
+            if (activeIndex < MOCK_REELS.length - 1) {
+              const elements = containerRef.current?.querySelectorAll('.reel-container');
+              elements?.[activeIndex + 1]?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          disabled={activeIndex === MOCK_REELS.length - 1}
+          className="p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-full text-white disabled:opacity-30 disabled:hover:bg-white/10 disabled:cursor-not-allowed transition-all shadow-xl"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
     </main>
   );
