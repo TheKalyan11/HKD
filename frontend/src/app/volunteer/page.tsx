@@ -522,7 +522,7 @@ export default function VolunteerPage() {
                       {cat.items.map((item) => (
                         <span
                           key={item}
-                          className="px-3 py-1.5 bg-white/80 backdrop-blur-md border border-white/80 text-[#5c5245] text-xs rounded-full font-semibold shadow-2xs"
+                          className="px-4 py-2 bg-white/90 backdrop-blur-md border border-white/90 text-[#072149] text-sm sm:text-[15px] rounded-full font-bold shadow-2xs"
                         >
                           {item}
                         </span>
