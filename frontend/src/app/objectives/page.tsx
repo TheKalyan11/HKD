@@ -133,12 +133,37 @@ export default function OurObjectivesPage() {
         />
       </div>
 
-      <section className="relative w-full overflow-hidden z-10">
-        <img 
-          src="/ourobjectives .webp" 
-          alt="Our Objectives" 
-          className="w-full h-auto max-h-[40vh] object-cover" 
-        />
+      {/* ── HERO SECTION ─────────────────────────────────────── */}
+      <section className="relative pt-8 sm:pt-12 pb-6 overflow-hidden z-10 bg-[#faf8f5]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+
+          {/* Page Heading */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-3">
+            Our <span className="text-[#d4af37]">Objectives</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-[#5c5245] max-w-2xl text-[15px] sm:text-[16px] leading-relaxed font-medium mb-8">
+            Guiding principles and core spiritual objectives dedicated to propagating Krishna consciousness and uplifting human society.
+          </p>
+
+          {/* Hero Banner Card */}
+          <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]">
+            <img 
+              src="/ourobjectives .webp" 
+              alt="Our Objectives" 
+              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
+            />
+          </div>
+
+        </div>
       </section>
 
       {/* Main Content Area */}
@@ -153,12 +178,12 @@ export default function OurObjectivesPage() {
               if (!obj.image) {
                 return (
                   <Reveal key={index} direction="up" delay={100}>
-                    <div className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-orange-50/50 relative overflow-hidden group">
+                    <div className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-orange-50/50 relative overflow-hidden group font-sans">
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-[#072149] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                       <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
                         <div>
-                          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#072149] mb-4">{obj.title}</h2>
-                          <p className="text-lg text-gray-600 leading-relaxed max-w-4xl">{obj.text}</p>
+                          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#072149] mb-4 tracking-tight">{obj.title}</h2>
+                          <p className="text-[15px] sm:text-[16px] text-[#5c5245] leading-relaxed max-w-4xl font-normal">{obj.text}</p>
                         </div>
                       </div>
                     </div>
@@ -167,7 +192,7 @@ export default function OurObjectivesPage() {
               }
 
               return (
-                <div key={index} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center`}>
+                <div key={index} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center font-sans`}>
                   {/* Image Side */}
                   <div className="w-full lg:w-1/2">
                     <Reveal direction={isEven ? "right" : "left"} delay={100}>
@@ -191,13 +216,13 @@ export default function OurObjectivesPage() {
                     <Reveal direction={isEven ? "left" : "right"} delay={200}>
                       <div className="space-y-6">
 
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#072149] tracking-tight leading-tight">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#072149] tracking-tight leading-tight">
                           {obj.title}
                         </h2>
                         <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-[#072149] rounded-full" />
-                        <div className="prose prose-lg text-gray-600">
+                        <div className="space-y-4">
                           {obj.text.split('\n\n').map((paragraph, i) => (
-                            <p key={i} className="leading-relaxed mb-4">{paragraph}</p>
+                            <p key={i} className="text-[15px] sm:text-[16px] text-[#5c5245] leading-relaxed font-normal">{paragraph}</p>
                           ))}
                         </div>
                       </div>
