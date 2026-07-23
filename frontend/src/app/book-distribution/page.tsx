@@ -413,16 +413,16 @@ export default function BookDistributionPage() {
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className="h-full">
-                <div className="bg-[#F8FBFE] border border-[#072149]/10 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(7,33,73,0.06)] hover:shadow-[0_20px_40px_rgba(7,33,73,0.12)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full z-[1]">
+                <div className="bg-[#f0f9ff] border border-sky-200/80 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(7,33,73,0.06)] hover:shadow-[0_20px_40px_rgba(14,165,233,0.18)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full z-[1]">
                   
                   {/* macOS Style Window Tools Bar */}
-                  <div className="flex items-center px-4 py-3 bg-[#eef4fb] border-b border-[#072149]/10">
+                  <div className="flex items-center px-4 py-3 bg-[#e0f2fe] border-b border-sky-200/80">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#ff605c] inline-block" />
                       <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd44] inline-block" />
                       <span className="w-2.5 h-2.5 rounded-full bg-[#00ca4e] inline-block" />
                     </div>
-                    <span className="ml-auto text-[11px] font-mono text-[#072149]/40 uppercase tracking-wider font-semibold">
+                    <span className="ml-auto text-[11px] font-mono text-[#072149]/50 uppercase tracking-wider font-semibold">
                       {item.title}
                     </span>
                   </div>
