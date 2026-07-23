@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
                   >
                     {link.name === 'Reels' ? (
                       <Link href={link.href} onClick={() => setIsOpen(false)} className="flex items-center">
-                        <ReelsButton />
+                        <ReelsButton isDarkText={!isHome || scrolled} />
                       </Link>
                     ) : (
                       <Link
