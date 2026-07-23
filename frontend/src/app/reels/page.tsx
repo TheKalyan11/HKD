@@ -78,15 +78,19 @@ export default function ReelsPage() {
 
         {/* Top navigation gradient (to ensure back button visibility) */}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none sm:rounded-t-3xl" />
-        
-        {/* Back button */}
-        <a href="/" className="absolute top-6 left-4 z-30 text-white flex items-center gap-2 hover:opacity-80 transition pointer-events-auto">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-          </svg>
-          <span className="font-semibold drop-shadow-md">Home</span>
-        </a>
-        
+        {/* Top Header: Back Button, Logo, Title */}
+        <div className="absolute top-5 left-4 z-30 flex items-center gap-3 pointer-events-auto">
+          <a href="/" className="text-white hover:opacity-80 transition flex items-center justify-center p-1 -ml-1">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </a>
+          
+          <div className="flex items-center gap-2.5">
+            <img src="/HKM White logo.webp" alt="HKM Logo" className="h-9 w-auto object-contain drop-shadow-md" />
+            <span className="text-white font-bold text-[22px] tracking-wide drop-shadow-md pb-0.5">Reels</span>
+          </div>
+        </div>
         {/* Render the reels */}
         {MOCK_REELS.map((reel, index) => (
           <div 
