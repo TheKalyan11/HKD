@@ -14,7 +14,7 @@ export default function FloatingReelsWidget() {
         {/* Glow effect on hover */}
         <div className="absolute inset-0 bg-white/20 blur-md rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
         <img 
-          src="https://png.pngtree.com/png-vector/20260118/ourlarge/pngtree-instagram-reels-logo-featuring-a-play-button-within-gradient-square-resembling-png-image_18532941.webp" 
+          src="/08b1b2257696356af258a73cb2776de9-removebg-preview.png" 
           alt="Reels" 
           className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] object-cover rounded-xl relative z-10" 
         />
