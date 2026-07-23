@@ -100,8 +100,8 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
     try {
       if (navigator.share) {
         await navigator.share({
-          title: reel.title,
-          text: reel.description,
+          title: 'HKD Reels',
+          text: 'Watch this amazing reel from Hare Krishna Movement Dehradun!',
           url: window.location.href,
         });
       } else {
