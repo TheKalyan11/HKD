@@ -185,46 +185,71 @@ export default function VolunteerPage() {
   ];
 
   return (
-    <div className="bg-[#FFFBF2] min-h-screen font-sans overflow-x-hidden relative">
+    <div className="bg-[#faf8f5] min-h-screen font-sans overflow-x-hidden relative">
 
-      {/* ── HERO SECTION ──────────────────── */}
-      <section className="flex items-center justify-center px-6 pt-10 pb-4">
-        <h1 className="text-[#072149] font-bold text-4xl sm:text-5xl md:text-6xl tracking-wide uppercase">
-          Volunteer With Us
-        </h1>
+      {/* ── HERO SECTION ─────────────────────────────────────── */}
+      <section className="relative pt-4 sm:pt-6 pb-2 overflow-hidden z-10 bg-[#faf8f5]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+
+          {/* Page Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-3">
+            Volunteer <span className="text-[#d4af37]">With Us</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-6">
+            Offer your time, skills, and energy in devotion to Lord Sri Krishna and discover the pure joy of selfless service.
+          </p>
+
+          {/* Hero Banner Card */}
+          <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]">
+            <img 
+              src="/hero-deity-1.webp" 
+              alt="Volunteer With Us" 
+              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
+            />
+          </div>
+
+        </div>
       </section>
 
-      <section className="bg-[#faf9f6]">
-        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 pt-12 pb-2 lg:pt-16 lg:pb-2">
-          <div className="grid lg:grid-cols-12 gap-16 lg:gap-20">
+      <section id="register-form" className="bg-[#faf8f5]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 py-8 lg:py-12">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* ── LEFT COLUMN (Info) ────────────────────── */}
-            <div className="lg:col-span-7 space-y-24">
+            <div className="lg:col-span-7 space-y-12">
               
               {/* Intro Section */}
               <Reveal>
-                <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4rem] text-gray-900 leading-[1.15] mb-6 sm:mb-8 tracking-tight" style={{ fontWeight: 800 }}>
-                  Offer your time,<br/>
-                  <span className="font-instrument italic font-light text-orange-500">energy and love</span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#072149] leading-tight mb-6 font-extrabold tracking-tight">
+                  Offer your time, <span className="text-[#d4af37]">energy and love</span>
                 </h2>
-                <div className="space-y-6 text-gray-600 text-lg md:text-xl leading-relaxed">
+                <div className="space-y-6 text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
                   <p>
-                    <strong className="text-gray-900">To be a servant is our true identity and to serve is our true essence.</strong> What better way to serve the Lordships of Narasimha Giridhari and the devotee community, than to Volunteer with us!
+                    <strong className="text-[#072149] font-semibold">To be a servant is our true identity and to serve is our true essence.</strong> What better way to serve the Lordships of Narasimha Giridhari and the devotee community, than to Volunteer with us!
                   </p>
                   <p>
                     The temple is a wonderful spiritual oasis in an otherwise materially surcharged city of Dehradun, dedicated to the spiritual upliftment of society. Get on our Volunteer team and discover the pure joy of serving selflessly.
                   </p>
                 </div>
                 
-                <div className="mt-12 bg-white p-8 md:p-10 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-orange-100/50 relative overflow-hidden">
-                  <div className="absolute -top-10 -left-6 text-[120px] text-orange-50 font-serif leading-none opacity-80 pointer-events-none">"</div>
+                <div className="mt-8 bg-white p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-amber-100 relative overflow-hidden">
+                  <div className="absolute -top-10 -left-6 text-[120px] text-amber-100/50 font-serif leading-none pointer-events-none">&ldquo;</div>
                   <div className="relative z-10">
-                    <p className="text-2xl md:text-3xl font-instrument italic text-gray-800 leading-relaxed">
+                    <p className="text-xl md:text-2xl italic text-[#072149] leading-relaxed font-medium">
                       Devotional Service is not a job, it is a privilege.
                     </p>
                     <div className="mt-6 flex items-center gap-4">
-                      <div className="w-10 h-[1px] bg-orange-300"></div>
-                      <p className="text-sm font-bold tracking-widest uppercase text-orange-500">
+                      <div className="w-10 h-[1px] bg-amber-400"></div>
+                      <p className="text-xs font-bold tracking-widest uppercase text-amber-600">
                         Srila Prabhupada
                       </p>
                     </div>
@@ -236,22 +261,24 @@ export default function VolunteerPage() {
 
             {/* ── RIGHT COLUMN (Sticky Form) ────────────── */}
             <div className="lg:col-span-5 relative">
-              <div className="sticky top-28">
+              <div className="sticky top-24">
                 <Reveal delay={200}>
-                  {/* Decorative background glow */}
-                  <div className="absolute -inset-4 bg-gradient-to-br from-orange-100 via-orange-50 to-blue-50 rounded-[48px] blur-2xl opacity-70"></div>
-                  
-                  <div className="relative bg-white/90 backdrop-blur-2xl rounded-[40px] p-8 sm:p-12 border border-white shadow-[0_20px_80px_rgba(0,0,0,0.08)]">
-                    <div className="text-center mb-10">
-                      <h2 className="text-3xl md:text-4xl text-gray-900 mb-3" style={{ fontWeight: 800 }}>
+                  <div className="relative bg-white rounded-[32px] p-8 sm:p-10 border border-[#eae4d5] shadow-[0_20px_80px_rgba(7,33,73,0.08)]">
+                    <div className="text-center mb-8">
+                      <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+                        <div className="h-px w-6 bg-current"></div>
+                        <span className="uppercase tracking-[0.2em] font-bold text-xs">REGISTRATION</span>
+                        <div className="h-px w-6 bg-current"></div>
+                      </div>
+                      <h2 className="text-2xl sm:text-3xl text-[#072149] font-extrabold tracking-tight mb-2">
                         Join Our Team
                       </h2>
-                      <p className="text-gray-500 text-[15px]">
+                      <p className="text-[#5c5245] text-sm">
                         Fill out the form below and we will get in touch.
                       </p>
                     </div>
 
-                    <form ref={formRef} onSubmit={handleRegister} className="space-y-5">
+                    <form ref={formRef} onSubmit={handleRegister} className="space-y-4">
                       {errorMsg && (
                         <div className="bg-red-50 text-red-600 rounded-2xl p-4 text-sm border border-red-100 flex items-center gap-2 font-medium">
                           <div className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
@@ -260,7 +287,7 @@ export default function VolunteerPage() {
                       )}
 
                       <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 pl-1">
+                        <label className="block text-xs font-bold tracking-widest uppercase text-[#072149] mb-1.5 pl-1">
                           Full Name *
                         </label>
                         <input
@@ -269,13 +296,13 @@ export default function VolunteerPage() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Enter your full name"
-                          className="w-full bg-gray-50/50 border border-gray-200/60 rounded-2xl px-5 py-4 text-[15px] text-gray-900 focus:bg-white focus:outline-none focus:border-orange-300 focus:ring-4 focus:ring-orange-50 placeholder:text-gray-400 transition-all font-medium"
+                          className="w-full bg-[#faf8f5] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#072149] focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 placeholder:text-gray-400 transition-all font-medium"
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 pl-1">
+                          <label className="block text-xs font-bold tracking-widest uppercase text-[#072149] mb-1.5 pl-1">
                             Email *
                           </label>
                           <input
@@ -284,11 +311,11 @@ export default function VolunteerPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="you@email.com"
-                            className="w-full bg-gray-50/50 border border-gray-200/60 rounded-2xl px-5 py-4 text-[15px] text-gray-900 focus:bg-white focus:outline-none focus:border-orange-300 focus:ring-4 focus:ring-orange-50 placeholder:text-gray-400 transition-all font-medium"
+                            className="w-full bg-[#faf8f5] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#072149] focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 placeholder:text-gray-400 transition-all font-medium"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 pl-1">
+                          <label className="block text-xs font-bold tracking-widest uppercase text-[#072149] mb-1.5 pl-1">
                             Phone *
                           </label>
                           <input
@@ -297,26 +324,29 @@ export default function VolunteerPage() {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             placeholder="+91 XXXXX XXXXX"
-                            className="w-full bg-gray-50/50 border border-gray-200/60 rounded-2xl px-5 py-4 text-[15px] text-gray-900 focus:bg-white focus:outline-none focus:border-orange-300 focus:ring-4 focus:ring-orange-50 placeholder:text-gray-400 transition-all font-medium"
+                            className="w-full bg-[#faf8f5] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#072149] focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 placeholder:text-gray-400 transition-all font-medium"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 pl-1">
+                        <label className="block text-xs font-bold tracking-widest uppercase text-[#072149] mb-1.5 pl-1">
                           Area of Interest
                         </label>
                         <select
                           value={areaOfInterest}
                           onChange={(e) => setAreaOfInterest(e.target.value)}
-                          className="w-full bg-gray-50/50 border border-gray-200/60 rounded-2xl px-5 py-4 text-[15px] text-gray-900 focus:bg-white focus:outline-none focus:border-orange-300 focus:ring-4 focus:ring-orange-50 appearance-none cursor-pointer transition-all font-medium"
+                          className="w-full bg-[#faf8f5] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#072149] focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 appearance-none cursor-pointer transition-all font-medium"
                           style={{
                             backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                            backgroundPosition: "right 1.25rem center",
+                            backgroundPosition: "right 1rem center",
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "1.25em 1.25em",
                           }}
                         >
+                          <option value="Daily Services">Daily Services</option>
+                          <option value="Occasional Services">Occasional Services</option>
+                          <option value="Online Services">Online Services</option>
                           <option value="Temple Services & Maintenance">Temple Services &amp; Maintenance</option>
                           <option value="Food Distribution (Annadaan)">Food Distribution (Annadaan)</option>
                           <option value="Cow Protection (Gau Seva)">Cow Protection (Gau Seva)</option>
@@ -327,7 +357,7 @@ export default function VolunteerPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 pl-1">
+                        <label className="block text-xs font-bold tracking-widest uppercase text-[#072149] mb-1.5 pl-1">
                           Message (Optional)
                         </label>
                         <textarea
@@ -335,20 +365,20 @@ export default function VolunteerPage() {
                           onChange={(e) => setMsg(e.target.value)}
                           placeholder="Tell us about your background, skills, and availability..."
                           rows={3}
-                          className="w-full bg-gray-50/50 border border-gray-200/60 rounded-2xl px-5 py-4 text-[15px] text-gray-900 focus:bg-white focus:outline-none focus:border-orange-300 focus:ring-4 focus:ring-orange-50 placeholder:text-gray-400 resize-none transition-all font-medium"
+                          className="w-full bg-[#faf8f5] border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#072149] focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 placeholder:text-gray-400 resize-none transition-all font-medium"
                         />
                       </div>
 
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-gray-900 text-white py-4 rounded-2xl text-sm font-bold tracking-wider uppercase hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 mt-4"
+                        className="w-full bg-[#072149] text-white py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase hover:bg-amber-500 hover:text-[#072149] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 mt-2 shadow-sm"
                       >
                         {isLoading ? "Submitting..." : "Submit Application"}
-                        {!isLoading && <SvgArrowRight className="w-5 h-5" />}
+                        {!isLoading && <SvgArrowRight className="w-4 h-4" />}
                       </button>
 
-                      <div className="flex items-center justify-center gap-2 pt-3 text-gray-400">
+                      <div className="flex items-center justify-center gap-2 pt-2 text-gray-400">
                         <SvgShield className="w-4 h-4" />
                         <span className="text-[11px] font-bold uppercase tracking-widest">Your information is secure</span>
                       </div>
@@ -362,132 +392,146 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* ── WHY VOLUNTEER (Editorial Text Style) ──────────── */}
-      <section className="bg-[#faf9f6]">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-2 pb-10 lg:pt-2 lg:pb-6">
-            
-            <Reveal>
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
-                <div>
-                  <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-tight leading-tight mb-3">Why<br />Volunteer?</h3>
-                  <div className="w-12 h-1 rounded-full bg-orange-400"></div>
-                </div>
-                <p className="text-gray-400 text-lg md:text-xl font-medium max-w-sm leading-relaxed md:text-right">
-                  Four reasons that will change how you see the world.
-                </p>
-              </div>
-            </Reveal>
+      {/* ── WHY VOLUNTEER ──────────── */}
+      <section className="bg-[#faf8f5] py-8 lg:py-12">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+          
+          <Reveal className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">TRANSFORMATION & PURPOSE</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-2">
+              Why <span className="text-[#d4af37]">Volunteer?</span>
+            </h2>
+          </Reveal>
 
-            <div className="space-y-0">
-              {[
-                {
-                  num: "01",
-                  title: "Spiritual Growth",
-                  desc: "Engage in Seva, the highest form of spiritual practice in Vedic culture. By offering your time and energy, you transform your inner consciousness and connect deeply with the divine.",
-                  accent: "text-orange-500",
-                },
-                {
-                  num: "02",
-                  title: "Community",
-                  desc: "Become part of a loving, supportive community of devotees. Build lifelong friendships rooted in shared values, purpose, and a genuine desire to uplift one another.",
-                  accent: "text-blue-500",
-                },
-                {
-                  num: "03",
-                  title: "Make an Impact",
-                  desc: "Directly contribute to food distribution, cow protection, and powerful outreach programs. See the tangible difference your service makes in people's lives every single day.",
-                  accent: "text-green-500",
-                },
-                {
-                  num: "04",
-                  title: "Find Purpose",
-                  desc: "Step away from the material rush and discover true inner peace. In selfless dedication, you will find the kind of lasting fulfillment that no career or possession can ever provide.",
-                  accent: "text-purple-500",
-                },
-              ].map((item, i) => (
-                <Reveal key={i} delay={i * 80}>
-                  <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-6 border-b border-gray-200 hover:border-gray-400 transition-colors duration-300 cursor-default">
-                    {/* Number */}
-                    <div className="md:col-span-1">
-                      <span className={`text-sm font-black tracking-widest uppercase ${item.accent}`}>{item.num}</span>
-                    </div>
-                    {/* Title */}
-                    <div className="md:col-span-4">
-                      <h4 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight leading-none group-hover:text-gray-600 transition-colors duration-300">{item.title}</h4>
-                    </div>
-                    {/* Description */}
-                    <div className="md:col-span-6">
-                      <p className="text-gray-500 text-lg leading-relaxed">{item.desc}</p>
-                    </div>
-                    {/* Arrow */}
-                    <div className="md:col-span-1 flex items-start justify-end">
-                      <div className={`w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-300 group-hover:border-current group-hover:${item.accent.replace('text-', 'border-')} group-hover:${item.accent} transition-all duration-300`}>
-                        <SvgArrowRight className="w-4 h-4" />
-                      </div>
+          <div className="space-y-0 border-t border-[#072149]/10">
+            {[
+              {
+                num: "01",
+                title: "Spiritual Growth",
+                desc: "Engage in Seva, the highest form of spiritual practice in Vedic culture. By offering your time and energy, you transform your inner consciousness and connect deeply with the divine.",
+                accent: "text-amber-600",
+              },
+              {
+                num: "02",
+                title: "Community",
+                desc: "Become part of a loving, supportive community of devotees. Build lifelong friendships rooted in shared values, purpose, and a genuine desire to uplift one another.",
+                accent: "text-[#072149]",
+              },
+              {
+                num: "03",
+                title: "Make an Impact",
+                desc: "Directly contribute to food distribution, cow protection, and powerful outreach programs. See the tangible difference your service makes in people's lives every single day.",
+                accent: "text-emerald-600",
+              },
+              {
+                num: "04",
+                title: "Find Purpose",
+                desc: "Step away from the material rush and discover true inner peace. In selfless dedication, you will find the kind of lasting fulfillment that no career or possession can ever provide.",
+                accent: "text-indigo-600",
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-6 border-b border-[#072149]/10 hover:border-[#072149]/30 transition-colors duration-300 cursor-default">
+                  {/* Number */}
+                  <div className="md:col-span-1">
+                    <span className={`text-sm font-black tracking-widest uppercase ${item.accent}`}>{item.num}</span>
+                  </div>
+                  {/* Title */}
+                  <div className="md:col-span-4">
+                    <h3 className="text-2xl md:text-3xl font-extrabold text-[#072149] tracking-tight leading-none group-hover:text-amber-600 transition-colors duration-300">{item.title}</h3>
+                  </div>
+                  {/* Description */}
+                  <div className="md:col-span-6">
+                    <p className="text-[#5c5245] text-[15px] sm:text-[16px] leading-relaxed font-normal">{item.desc}</p>
+                  </div>
+                  {/* Arrow */}
+                  <div className="md:col-span-1 flex items-start justify-end">
+                    <div className="w-9 h-9 rounded-full border border-[#072149]/20 flex items-center justify-center text-[#072149]/40 group-hover:border-[#072149] group-hover:text-[#072149] transition-all duration-300">
+                      <SvgArrowRight className="w-4 h-4" />
                     </div>
                   </div>
-                </Reveal>
-              ))}
-            </div>
-
+                </div>
+              </Reveal>
+            ))}
           </div>
+
+        </div>
       </section>
 
-      {/* ── AREAS OF SEVA (Editorial Text Style) ──────────── */}
-      <section className="bg-white">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 pb-16 lg:pt-16 lg:pb-8">
+      {/* ── AREAS OF SEVA (macOS Sky Blue Cards Style) ──────────── */}
+      <section className="bg-[#faf8f5] py-8 lg:py-12">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
 
-            <Reveal>
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-10">
-                <div>
-                  <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 tracking-tight leading-tight mb-3">Areas of Seva</h3>
-                  <div className="w-12 h-1 rounded-full bg-orange-400"></div>
-                </div>
-                <p className="text-gray-400 text-lg md:text-xl font-medium max-w-sm leading-relaxed md:text-right">
-                  Explore our wide range of services and find where your passion lies.
-                </p>
-              </div>
-            </Reveal>
+          <Reveal className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">OPPORTUNITIES FOR SERVICE</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-2">
+              Areas of <span className="text-[#d4af37]">Seva</span>
+            </h2>
+          </Reveal>
 
-            <div className="space-y-0">
-              {serviceCategories.map((cat, i) => (
-                <Reveal key={i} delay={i * 80}>
-                  <div className="group grid md:grid-cols-12 gap-6 md:gap-12 items-start py-6 border-b border-gray-200 hover:border-gray-400 transition-colors duration-300 cursor-default">
-                    {/* Number */}
-                    <div className="md:col-span-1">
-                      <span className="text-sm font-black tracking-widest uppercase text-orange-500">0{i + 1}</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {serviceCategories.map((cat, i) => (
+              <Reveal key={i} delay={i * 100} className="h-full">
+                <div className="bg-[#f0f9ff] border border-sky-200/80 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(7,33,73,0.06)] hover:shadow-[0_20px_40px_rgba(14,165,233,0.18)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full z-[1]">
+                  
+                  {/* macOS Style Window Tools Bar */}
+                  <div className="flex items-center px-4 py-3 bg-[#e0f2fe] border-b border-sky-200/80">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ff605c] inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd44] inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#00ca4e] inline-block" />
                     </div>
-                    {/* Title */}
-                    <div className="md:col-span-3">
-                      <h4 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight leading-none group-hover:text-gray-500 transition-colors duration-300">
-                        {cat.title}
-                        <span className="block text-base font-normal text-gray-400 mt-2 tracking-widest uppercase">{cat.subtitle}</span>
-                      </h4>
-                    </div>
-                    {/* Items */}
-                    <div className="md:col-span-7 flex flex-wrap gap-2.5">
-                      {cat.items.map((item) => (
-                        <span
-                          key={item}
-                          className="px-4 py-2 bg-gray-50 border border-gray-100 text-gray-600 text-sm rounded-xl font-medium hover:bg-orange-50 hover:text-orange-600 hover:border-orange-100 transition-all cursor-default"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                    {/* Arrow */}
-                    <div className="md:col-span-1 flex items-start justify-end">
-                      <div className="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-300 group-hover:border-orange-400 group-hover:text-orange-400 transition-all duration-300">
-                        <SvgArrowRight className="w-4 h-4" />
+                    <span className="ml-auto text-[11px] font-mono text-[#072149]/50 uppercase tracking-wider font-semibold">
+                      {cat.title} {cat.subtitle}
+                    </span>
+                  </div>
+
+                  {/* Card Content Area */}
+                  <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 rounded-xl bg-[#072149] text-amber-400 flex items-center justify-center mb-5 shadow-sm">
+                        {cat.icon}
+                      </div>
+                      <h3 className="text-2xl text-[#072149] mb-1 font-bold tracking-tight">
+                        {cat.title} <span className="text-[#d4af37]">{cat.subtitle}</span>
+                      </h3>
+                      <div className="flex flex-wrap gap-2 mt-4 mb-6">
+                        {cat.items.map((item) => (
+                          <span
+                            key={item}
+                            className="px-3 py-1.5 bg-white border border-sky-200/60 text-[#5c5245] text-xs rounded-lg font-medium shadow-2xs"
+                          >
+                            {item}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
 
+                    <a
+                      href="#register-form"
+                      onClick={() => setAreaOfInterest(`${cat.title} ${cat.subtitle}`)}
+                      className="inline-flex items-center justify-between w-full bg-[#072149] hover:bg-amber-500 text-white hover:text-[#072149] px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-sm mt-auto group"
+                    >
+                      <span>Apply for {cat.title} Seva</span>
+                      <SvgArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+
+                </div>
+              </Reveal>
+            ))}
           </div>
-        </section>
+
+        </div>
+      </section>
 
 
       {/* ── SUCCESS POPUP ────────────────────────────── */}
