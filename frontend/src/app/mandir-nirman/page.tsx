@@ -72,18 +72,9 @@ export default function MandirNirmanPage() {
           </h1>
 
           {/* Subheading */}
-          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-6">
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-4">
             Discover the grand architectural vision, serene landscapes, and magnificent renders of the upcoming Hare Krishna Movement temple complex in Dehradun.
           </p>
-
-          {/* Hero Banner Card */}
-          <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]">
-            <img 
-              src="/mandir-nirman/render-1.webp" 
-              alt="Mandir Nirman Main Temple View" 
-              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
-            />
-          </div>
 
         </div>
       </section>
