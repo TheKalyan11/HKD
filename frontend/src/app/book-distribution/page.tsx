@@ -395,6 +395,7 @@ export default function BookDistributionPage() {
                 title: "Donate",
                 desc: "Support book printing, logistics, and outreach programs. Every contribution counts.",
                 action: "Donate Now",
+                hoverText: "DONATE NOW",
                 link: "/donate",
               },
               {
@@ -402,6 +403,7 @@ export default function BookDistributionPage() {
                 title: "Volunteer",
                 desc: "Help distribute books, organize events, or share knowledge in your local community.",
                 action: "Join Us",
+                hoverText: "JOIN US",
                 link: "/volunteer",
               },
               {
@@ -409,37 +411,39 @@ export default function BookDistributionPage() {
                 title: "Spread the Word",
                 desc: "Share our mission on social media and inspire others to participate in this noble cause.",
                 action: "Follow Us",
+                hoverText: "FOLLOW US",
                 link: "/#social",
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className="h-full">
-                <div className="relative group overflow-hidden h-full bg-white border border-[#072149]/10 rounded-[24px] p-8 shadow-[0_10px_30px_rgba(7,33,73,0.05)] hover:shadow-[0_20px_50px_rgba(7,33,73,0.15)] transition-all duration-500 cursor-pointer flex flex-col justify-between
-                  before:absolute before:content-[''] before:top-0 before:right-0 before:w-[20%] before:h-[20%] before:bg-[#072149] before:rounded-bl-[100%] before:rounded-tr-[24px] before:transition-all before:duration-500 before:z-0
-                  after:absolute after:content-[''] after:bottom-0 after:left-0 after:w-[20%] after:h-[20%] after:bg-[#072149] after:rounded-tr-[100%] after:rounded-bl-[24px] after:transition-all after:duration-500 after:z-0
-                  group-hover:before:w-full group-hover:before:h-full group-hover:before:rounded-[24px]
-                  group-hover:after:w-full group-hover:after:h-full group-hover:after:rounded-[24px]"
-                >
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="w-16 h-16 rounded-2xl bg-[#072149]/5 group-hover:bg-amber-400 text-[#072149] group-hover:text-[#072149] flex items-center justify-center mb-6 transition-colors duration-500 shadow-sm">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-2xl text-[#072149] group-hover:text-amber-400 mb-3 font-bold tracking-wide transition-colors duration-500">
-                      {item.title}
-                    </h3>
-                    <p className="text-[#5c5245] group-hover:text-white/90 leading-relaxed mb-8 flex-grow text-[15px] sm:text-[16px] font-normal transition-colors duration-500">
-                      {item.desc}
-                    </p>
-                    <Link
-                      href={item.link}
-                      className="inline-flex items-center gap-3 text-[#072149] group-hover:text-amber-400 text-sm tracking-widest font-bold group-hover:gap-5 transition-all duration-300 mt-auto"
-                    >
-                      <span>{item.action}</span>
-                      <div className="w-8 h-[2px] bg-[#072149] group-hover:bg-amber-400 group-hover:w-12 transition-all duration-300 relative">
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-[#072149] group-hover:border-amber-400 rotate-45 transition-colors duration-300" />
+                <Link href={item.link} className="block h-full">
+                  <div 
+                    data-hover={item.hoverText}
+                    className="relative group overflow-hidden h-full bg-white border border-[#072149]/10 rounded-[24px] p-8 shadow-[0_10px_30px_rgba(7,33,73,0.05)] hover:shadow-[0_20px_50px_rgba(7,33,73,0.15)] transition-all duration-500 cursor-pointer flex flex-col justify-between
+                      before:absolute before:content-[''] before:top-0 before:right-0 before:w-[20%] before:h-[20%] before:bg-[#072149] before:rounded-bl-[100%] before:rounded-tr-[24px] before:transition-all before:duration-500 before:z-0
+                      after:absolute after:content-[attr(data-hover)] after:flex after:items-center after:justify-center after:text-transparent after:font-extrabold after:text-xl sm:after:text-2xl after:tracking-widest after:bottom-0 after:left-0 after:w-[20%] after:h-[20%] after:bg-[#072149] after:rounded-tr-[100%] after:rounded-bl-[24px] after:transition-all after:duration-500 after:z-[1]
+                      group-hover:before:w-full group-hover:before:h-full group-hover:before:rounded-[24px]
+                      group-hover:after:w-full group-hover:after:h-full group-hover:after:rounded-[24px] group-hover:after:text-amber-400"
+                  >
+                    <div className="relative z-10 flex flex-col h-full group-hover:opacity-0 transition-opacity duration-300">
+                      <div className="w-16 h-16 rounded-2xl bg-[#072149]/5 text-[#072149] flex items-center justify-center mb-6 transition-colors duration-500 shadow-sm">
+                        {item.icon}
                       </div>
-                    </Link>
+                      <h3 className="text-2xl text-[#072149] mb-3 font-bold tracking-wide transition-colors duration-500">
+                        {item.title}
+                      </h3>
+                      <p className="text-[#5c5245] leading-relaxed mb-8 flex-grow text-[15px] sm:text-[16px] font-normal transition-colors duration-500">
+                        {item.desc}
+                      </p>
+                      <div className="inline-flex items-center gap-3 text-[#072149] text-sm tracking-widest font-bold mt-auto">
+                        <span>{item.action}</span>
+                        <div className="w-8 h-[2px] bg-[#072149] relative">
+                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-[#072149] rotate-45" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
