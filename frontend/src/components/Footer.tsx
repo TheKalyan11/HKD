@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 /* ─────────────────────────────────────────────
    Animated birds (Subtle gliding near spire)
@@ -68,6 +69,12 @@ const NAV_COLS = [
    Footer Component
 ───────────────────────────────────────────── */
 export function Footer() {
+  const pathname = usePathname();
+
+  if (pathname && pathname.startsWith('/reels')) {
+    return null;
+  }
+
   return (
     <footer className="relative bg-white pt-8 pb-4 overflow-hidden border-t border-gray-100 font-sans">
       
