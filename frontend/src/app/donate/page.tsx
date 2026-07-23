@@ -133,13 +133,13 @@ export default function DonatePage() {
                       {seva.link ? (
                         <Link
                           href={seva.link}
-                          className="w-full flex items-center justify-center bg-[#18181b] hover:bg-black text-white rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg"
+                          className="w-full flex items-center justify-center bg-[#ffc107] hover:bg-[#e0a800] text-black font-bold rounded-[24px] py-3.5 text-[16px] transition-colors shadow-md"
                         >
                           Donate
                         </Link>
                       ) : (
                         <button
-                          className="w-full flex items-center justify-center bg-[#18181b] hover:bg-black text-white rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg cursor-pointer"
+                          className="w-full flex items-center justify-center bg-[#ffc107] hover:bg-[#e0a800] text-black font-bold rounded-[24px] py-3.5 text-[16px] transition-colors shadow-md cursor-pointer"
                         >
                           Donate
                         </button>

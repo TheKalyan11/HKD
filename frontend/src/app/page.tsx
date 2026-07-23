@@ -549,7 +549,7 @@ export default function Home() {
                   <div className="flex items-center gap-3 mt-auto pb-2">
                     <Link
                       href={seva.link}
-                      className="w-full flex items-center justify-center bg-[#18181b] hover:bg-black text-white rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg"
+                      className="w-full flex items-center justify-center bg-[#ffc107] hover:bg-[#e0a800] text-black font-bold rounded-[24px] py-3.5 text-[16px] transition-colors shadow-md"
                     >
                       Donate
                     </Link>
