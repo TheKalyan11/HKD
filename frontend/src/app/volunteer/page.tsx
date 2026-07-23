@@ -234,10 +234,16 @@ export default function VolunteerPage() {
                 </h2>
                 <div className="space-y-6 text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
                   <p>
-                    <strong className="text-[#072149] font-semibold">To be a servant is our true identity and to serve is our true essence.</strong> What better way to serve the Lordships of Narasimha Giridhari and the devotee community, than to Volunteer with us!
+                    <strong className="text-[#072149] font-semibold">To be a servant is our true identity, and to serve is our true essence.</strong> According to eternal Vedic philosophy, our deepest purpose and natural state of being is found in devotional service to the Supreme Divine. What better way to serve the divine Lordships of Sri Sri Narasimha Giridhari and the devotee community than to volunteer with us!
                   </p>
                   <p>
-                    The temple is a wonderful spiritual oasis in an otherwise materially surcharged city of Dehradun, dedicated to the spiritual upliftment of society. Get on our Volunteer team and discover the pure joy of serving selflessly.
+                    Nestled in the foothills of Uttarakhand, Hare Krishna Movement Dehradun stands as a vibrant spiritual sanctuary — an oasis of peace, devotion, and wisdom in an otherwise materially surcharged world. Our mission is dedicated to the spiritual and cultural upliftment of society through daily deity worship, mass sanctified prasadam distribution, educational courses, and festival celebrations.
+                  </p>
+                  <p>
+                    Volunteering with us is not just an activity or a duty — it is a soul-transforming privilege. Whether you contribute a few hours a week or participate during major festival celebrations, your selfless service directly supports noble causes such as Gau Seva (Cow Protection), Annadaan (Food Distribution), Gita Daan (Wisdom Sharing), and community welfare.
+                  </p>
+                  <p>
+                    Get on our volunteer team today, connect with like-minded souls, and discover the pure, unalloyed joy of serving selflessly for the pleasure of Lord Sri Krishna and humanity.
                   </p>
                 </div>
                 
