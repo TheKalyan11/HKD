@@ -486,7 +486,7 @@ export default function Home() {
       <UpcomingFestivals isHomePage={true} />
 
       {/* 6. ONLINE DONATIONS SECTION */}
-      <section className="relative w-full pt-10 pb-16 bg-[#faf8f5] overflow-hidden flex flex-col items-center">
+      <section className="relative w-full pt-10 pb-2 sm:pb-4 bg-[#faf8f5] overflow-hidden flex flex-col items-center">
         <div className="w-full max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
 
           {/* Section Header */}
