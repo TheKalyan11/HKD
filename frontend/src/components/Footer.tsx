@@ -196,7 +196,7 @@ export function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="relative pt-6 flex flex-col items-center justify-center gap-3.5 text-center text-[14.5px] text-gray-500 font-medium w-full">
+        <div className="relative pt-6 flex flex-col items-center justify-center gap-3.5 text-center text-sm text-gray-500 font-medium w-full">
           {/* Elegant Gradient Border */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#eab308]/50 to-transparent"></div>
           
