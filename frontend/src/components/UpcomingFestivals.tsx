@@ -563,10 +563,6 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
                 <>Latest <span className="text-[#d4af37]">Events</span></>
               )}
             </h2>
-          </div>
-
-
-
             <p className="text-[#5c5245] max-w-2xl text-[15px] leading-relaxed pt-3 font-medium">
 
               Celebrate divine moments and spiritual traditions with us. <br className="hidden md:block" />

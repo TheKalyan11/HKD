@@ -81,7 +81,12 @@ export default function DonatePage() {
 
       {/* ── HERO SECTION ─────────────────────────────────────── */}
       <section className="relative pt-4 sm:pt-6 lg:pt-8 pb-2 overflow-hidden z-10">
-        <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex flex-col items-center text-center animate-fade-in-up">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex flex-col items-center text-center"
+        >
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111] tracking-tight mb-2 font-bold" style={{ lineHeight: 1.25 }}>
               Join us in the service of Lord.<br />
               <span className="relative inline-block pb-1.5">
@@ -101,7 +106,7 @@ export default function DonatePage() {
                 />
               </span>
             </h1>
-        </div>
+        </motion.div>
       </section>
 
       {/* ── SEVA CARDS SECTION ────────────────────────────────── */}
