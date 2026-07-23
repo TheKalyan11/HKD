@@ -189,6 +189,20 @@ export default function VolunteerPage() {
 
       {/* ── HERO SECTION ─────────────────────────────────────── */}
       <section className="pt-4 sm:pt-6 pb-4 px-4 sm:px-6 lg:px-12 max-w-[1400px] mx-auto relative z-10">
+        
+        {/* Decorative Tag & Page Heading */}
+        <div className="flex flex-col items-center text-center mb-6">
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight">
+            Volunteer <span className="text-[#d4af37]">With Us</span>
+          </h1>
+        </div>
+
+        {/* Volunteer Banner */}
         <div 
           className="relative overflow-hidden rounded-[24px] bg-[#0c4a8a] text-white shadow-xl group"
         >
@@ -205,9 +219,9 @@ export default function VolunteerPage() {
 
           {/* Text Content */}
           <div className="relative z-10 p-8 sm:p-12 lg:p-14 md:w-3/4 lg:w-[65%]">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-5 tracking-tight text-white">
               Volunteer to <span className="text-[#d4af37]">Serve</span>
-            </h1>
+            </h2>
             <p className="text-[15px] sm:text-base lg:text-[17px] mb-8 leading-relaxed text-white/95 font-medium max-w-2xl">
               Offer your talents, and heart in the loving service of Sri Sri Krishna Balaram. Support the temple&apos;s spiritual and outreach activities by volunteering and become an instrument in Srila Prabhupada&apos;s mission. Come serve — and be spiritually transformed.
             </p>
