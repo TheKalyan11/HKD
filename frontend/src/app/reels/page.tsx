@@ -7,12 +7,12 @@ import ReelPlayer, { Reel } from '@/components/ReelPlayer';
 const MOCK_REELS: Reel[] = [
   {
     id: "reel-1",
-    videoUrl: "/Video from Vishwas Murthy.mp4",
+    videoUrl: "/vishwas-murthy.mp4",
     likes: 1240,
   },
   {
     id: "reel-2",
-    videoUrl: "/donation video .mp4",
+    videoUrl: "/donation-video.mp4",
     likes: 856,
   },
   {
