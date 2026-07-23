@@ -378,19 +378,21 @@ export default function GitaLifeCoursePage() {
         
         <div className="max-w-4xl mx-auto relative z-10 text-center mb-16">
           <AnimeReveal direction="up" delay={80}>
-            <p className="text-amber-600 text-xs uppercase tracking-[0.4em] mb-4" style={{ fontWeight: 600 }}>About the Course</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#072149] leading-tight mb-8" style={{ fontWeight: 600 }}>
-              From the Battlefield{" "}
-              <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>of Kurukshetra</span>
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">ABOUT THE COURSE</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-4">
+              From the Battlefield <span className="text-[#d4af37]">of Kurukshetra</span>
             </h2>
-            <div className="w-24 h-1 bg-amber-400 mx-auto rounded-full" />
           </AnimeReveal>
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
             <AnimeReveal direction="up" delay={120}>
-              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+              <div className="space-y-6 text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed">
                 <p>
                   One of India&apos;s greatest spiritual gifts to the world is the{" "}
                   <strong className="text-[#072149] font-semibold">Shrimad Bhagavad Gita</strong>. Spoken by{" "}
@@ -411,7 +413,7 @@ export default function GitaLifeCoursePage() {
             </AnimeReveal>
 
             <AnimeReveal direction="up" delay={160}>
-              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+              <div className="space-y-6 text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed">
                 <p>
                   The Bhagavad Gita teaches not only the true purpose of human life but how to perform one&apos;s
                   responsibilities with sincerity, dedication, and spiritual consciousness. Lasting happiness does not
@@ -425,7 +427,7 @@ export default function GitaLifeCoursePage() {
                 <div className="bg-gradient-to-br from-[#072149] to-[#0a2d60] rounded-3xl p-8 relative overflow-hidden shadow-xl mt-8">
                   <div className="absolute top-4 right-6 text-white/10 text-8xl font-serif select-none leading-none">&ldquo;</div>
                   <div className="relative z-10">
-                    <p className="text-white/95 text-lg leading-relaxed italic mb-6">
+                    <p className="text-white/95 text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed italic mb-6">
                       We are trying to give human society the opportunity for a life of happiness, good health,
                       peace of mind, and all good qualities through God consciousness.
                     </p>
@@ -472,12 +474,15 @@ export default function GitaLifeCoursePage() {
         <div className="max-w-7xl mx-auto">
 
           <AnimeReveal direction="up" delay={80} className="mb-12 max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#990000] mb-3" style={{ fontWeight: 500 }}>Curriculum</p>
-            <h2 className="text-3xl md:text-5xl text-[#072149] leading-tight mb-5" style={{ fontWeight: 600 }}>
-              What You Will{" "}
-              <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Learn</span>
+            <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">CURRICULUM</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-4">
+              What You Will <span className="text-[#d4af37]">Learn</span>
             </h2>
-            <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+            <p className="text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
               The vast knowledge of Vedic literature is condensed in Bhagavad-gita, known as the crown jewel of Vedic wisdom. The course unfolds the mystery of Gita practically and sublimely. It includes,
             </p>
           </AnimeReveal>
@@ -548,12 +553,15 @@ export default function GitaLifeCoursePage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <AnimeReveal direction="up" delay={80} className="mb-14">
             <div className="max-w-3xl">
-              <p className="text-amber-500 text-xs uppercase tracking-[0.3em] mb-3" style={{ fontWeight: 500 }}>What You Get</p>
-              <h2 className="text-3xl md:text-5xl text-[#072149] leading-tight mb-5" style={{ fontWeight: 600 }}>
-                Special{" "}
-                <span className="font-instrument" style={{ fontStyle: "italic", fontWeight: 400 }}>Features</span>
+              <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+                <div className="h-px w-10 bg-current"></div>
+                <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">WHAT YOU GET</span>
+                <div className="h-px w-10 bg-current"></div>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-4">
+                Special <span className="text-[#d4af37]">Features</span>
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              <p className="text-[#5c5245] text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed font-normal">
                 Every detail of the Gita Life Course is designed to make your learning immersive,
                 practical, and deeply personal. Here&apos;s what comes with your enrollment.
               </p>
