@@ -25,7 +25,6 @@ export const Navbar: React.FC = () => {
       pathname.startsWith('/happiness-workshops') ||
       pathname.startsWith('/self-empowerment-workshops') ||
       pathname.startsWith('/life-coach') ||
-      pathname.startsWith('/blog') ||
       pathname.startsWith('/blogs_youthprogram') ||
       pathname.startsWith('/blogs-youth-program') ||
       pathname.startsWith('/gallery'))
@@ -166,10 +165,10 @@ export const Navbar: React.FC = () => {
                                 onClick={() => {
                                   setIsOpen(false);
                                 }}
-                                className={`flex items-start gap-3 px-4 py-3 text-left capitalize tracking-wide text-gray-800 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item ${
+                                className={`flex items-start gap-3 px-4 py-3 text-left tracking-wide text-gray-800 hover:text-[#0B5DB7] hover:bg-[#0B5DB7]/5 rounded-xl transition-all duration-200 whitespace-normal leading-relaxed group/item ${
                                   link.name === 'Youth Programs'
                                     ? 'text-base sm:text-[1.0625rem] font-semibold'
-                                    : 'text-[15px] font-medium'
+                                    : 'text-[14px] font-medium'
                                 }`}
                               >
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#0B5DB7]/40 group-hover/item:bg-[#0B5DB7] mt-1.5 transition-colors flex-shrink-0" />

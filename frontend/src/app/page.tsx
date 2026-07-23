@@ -16,6 +16,7 @@ import FolkYouthPrograms from '@/components/FolkYouthPrograms';
 import UpcomingFestivals from '@/components/UpcomingFestivals';
 import MusicWaves from '@/components/MusicWaves';
 import FaqSection from '@/components/FaqSection';
+import VolunteerBanner from '@/components/VolunteerBanner';
 
 
 
@@ -832,6 +833,9 @@ export default function Home() {
 
       {/* FAQ SECTION */}
       <FaqSection />
+
+      {/* VOLUNTEER BANNER */}
+      <VolunteerBanner />
 
 
 
