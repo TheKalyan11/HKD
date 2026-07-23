@@ -53,19 +53,58 @@ export default function MandirNirmanPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8f7f4] pt-24 pb-20 text-[#333]">
+    <main className="min-h-screen bg-[#faf8f5] font-sans pb-20 text-[#333]">
       
-      {/* Header Section */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 mb-8">
-        <h1 className="text-3xl md:text-4xl font-light tracking-wide flex items-center gap-4">
-          <span className="w-8 md:w-12 h-[1px] bg-[#333] inline-block"></span>
-          ARCHITECTURE GALLERY
-        </h1>
-      </div>
+      {/* ── HERO SECTION ─────────────────────────────────────── */}
+      <section className="relative pt-4 sm:pt-6 pb-2 overflow-hidden z-10 bg-[#faf8f5]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
 
-      {/* Grid Gallery */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-[300px]">
+          {/* Page Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-3">
+            Mandir <span className="text-[#d4af37]">Nirman</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-6">
+            Discover the grand architectural vision, serene landscapes, and magnificent renders of the upcoming Hare Krishna Movement temple complex in Dehradun.
+          </p>
+
+          {/* Hero Banner Card */}
+          <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]">
+            <img 
+              src="/mandir-nirman/render-1.webp" 
+              alt="Mandir Nirman Main Temple View" 
+              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-8 lg:py-12 bg-[#faf8f5]">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+          
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
+              <div className="h-px w-10 bg-current"></div>
+              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">GRAND VISION</span>
+              <div className="h-px w-10 bg-current"></div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#072149] tracking-tight mb-2">
+              Architecture <span className="text-[#d4af37]">Gallery</span>
+            </h2>
+          </div>
+
+          {/* Grid Gallery */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-[300px]">
           {MOCK_DATA.map((img, idx) => {
             // Give some items a wider span to make the grid look organic like the reference
             const isWide = idx === 0 || idx === 5 || idx === 8;
@@ -102,6 +141,7 @@ export default function MandirNirmanPage() {
           })}
         </div>
       </div>
+    </section>
 
       {/* Lightbox Modal (No Share/Download buttons) */}
       <AnimatePresence>
