@@ -391,59 +391,66 @@ export default function BookDistributionPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: <SvgHeart className="w-8 h-8" />,
+                icon: <SvgHeart className="w-6 h-6" />,
                 title: "Donate",
                 desc: "Support book printing, logistics, and outreach programs. Every contribution counts.",
                 action: "Donate Now",
-                hoverText: "DONATE NOW",
                 link: "/donate",
               },
               {
-                icon: <SvgUsers className="w-8 h-8" />,
+                icon: <SvgUsers className="w-6 h-6" />,
                 title: "Volunteer",
                 desc: "Help distribute books, organize events, or share knowledge in your local community.",
                 action: "Join Us",
-                hoverText: "JOIN US",
                 link: "/volunteer",
               },
               {
-                icon: <SvgShare className="w-8 h-8" />,
+                icon: <SvgShare className="w-6 h-6" />,
                 title: "Spread the Word",
                 desc: "Share our mission on social media and inspire others to participate in this noble cause.",
                 action: "Follow Us",
-                hoverText: "FOLLOW US",
                 link: "/#social",
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100} className="h-full">
-                <Link href={item.link} className="block h-full">
-                  <div 
-                    data-hover={item.hoverText}
-                    className="relative group overflow-hidden h-full bg-white border border-[#072149]/10 rounded-[24px] p-8 shadow-[0_10px_30px_rgba(7,33,73,0.05)] hover:shadow-[0_20px_50px_rgba(7,33,73,0.15)] transition-all duration-500 cursor-pointer flex flex-col justify-between
-                      before:absolute before:content-[''] before:top-0 before:right-0 before:w-[20%] before:h-[20%] before:bg-[#072149] before:rounded-bl-[100%] before:rounded-tr-[24px] before:transition-all before:duration-500 before:z-0
-                      after:absolute after:content-[attr(data-hover)] after:flex after:items-center after:justify-center after:text-transparent after:font-extrabold after:text-xl sm:after:text-2xl after:tracking-widest after:bottom-0 after:left-0 after:w-[20%] after:h-[20%] after:bg-[#072149] after:rounded-tr-[100%] after:rounded-bl-[24px] after:transition-all after:duration-500 after:z-[1]
-                      group-hover:before:w-full group-hover:before:h-full group-hover:before:rounded-[24px]
-                      group-hover:after:w-full group-hover:after:h-full group-hover:after:rounded-[24px] group-hover:after:text-amber-400"
-                  >
-                    <div className="relative z-10 flex flex-col h-full group-hover:opacity-0 transition-opacity duration-300">
-                      <div className="w-16 h-16 rounded-2xl bg-[#072149]/5 text-[#072149] flex items-center justify-center mb-6 transition-colors duration-500 shadow-sm">
+                <div className="bg-[#F8FBFE] border border-[#072149]/10 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(7,33,73,0.06)] hover:shadow-[0_20px_40px_rgba(7,33,73,0.12)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full z-[1]">
+                  
+                  {/* macOS Style Window Tools Bar */}
+                  <div className="flex items-center px-4 py-3 bg-[#eef4fb] border-b border-[#072149]/10">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ff605c] inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd44] inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#00ca4e] inline-block" />
+                    </div>
+                    <span className="ml-auto text-[11px] font-mono text-[#072149]/40 uppercase tracking-wider font-semibold">
+                      {item.title}
+                    </span>
+                  </div>
+
+                  {/* Card Content Area */}
+                  <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 rounded-xl bg-[#072149] text-amber-400 flex items-center justify-center mb-5 shadow-sm">
                         {item.icon}
                       </div>
-                      <h3 className="text-2xl text-[#072149] mb-3 font-bold tracking-wide transition-colors duration-500">
+                      <h3 className="text-2xl text-[#072149] mb-3 font-bold tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="text-[#5c5245] leading-relaxed mb-8 flex-grow text-[15px] sm:text-[16px] font-normal transition-colors duration-500">
+                      <p className="text-[#5c5245] text-[15px] sm:text-[16px] leading-relaxed mb-6 font-normal">
                         {item.desc}
                       </p>
-                      <div className="inline-flex items-center gap-3 text-[#072149] text-sm tracking-widest font-bold mt-auto">
-                        <span>{item.action}</span>
-                        <div className="w-8 h-[2px] bg-[#072149] relative">
-                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-[#072149] rotate-45" />
-                        </div>
-                      </div>
                     </div>
+
+                    <Link
+                      href={item.link}
+                      className="inline-flex items-center justify-between w-full bg-[#072149] hover:bg-amber-500 text-white hover:text-[#072149] px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-sm mt-auto group"
+                    >
+                      <span>{item.action}</span>
+                      <SvgArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
-                </Link>
+
+                </div>
               </Reveal>
             ))}
           </div>
