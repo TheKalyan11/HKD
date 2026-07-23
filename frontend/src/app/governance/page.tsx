@@ -286,23 +286,37 @@ export default function GovernancePage() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-gray-900 font-sans overflow-x-hidden" style={{ backgroundImage: "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nODAwJyBoZWlnaHQ9JzQwMCcgdmlld0JveD0nMCAwIDgwMCA0MDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+CjxnIGZpbGw9J25vbmUnIHN0cm9rZT0nI2NjYTc1Yicgc3Ryb2tlLXdpZHRoPScxLjUnIG9wYWNpdHk9JzAuMyc+CjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDE2MCwgNjApIHNjYWxlKDEuNSknPgo8cGF0aCBkPSdNMjAgNUMyMCA1IDEwIDE1IDIwIDM1QzMwIDE1IDIwIDUgMjAgNVonLz4KPHBhdGggZD0nTTIwIDM1QzEwIDMwIDUgMjAgMTAgMTJDMTUgMTIgMTggMjUgMjAgMzVaJy8+CjxwYXRoIGQ9J00yMCAzNUMzMCAzMCAzNSAyMCAzMCAxMkMyNSAxMiAyMiAyNSAyMCAzNVonLz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg1NjAsIDI2MCkgc2NhbGUoMS41KSc+CjxsaW5lIHgxPSc1JyB5MT0nMzUnIHgyPSczNScgeTI9JzUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPgo8Y2lyY2xlIGN4PScxMicgY3k9JzI4JyByPScxJyBmaWxsPScjY2NhNzViJyBzdHJva2U9J25vbmUnLz4KPGNpcmNsZSBjeD0nMTcnIGN5PScyMycgcj0nMScgZmlsbD0nI2NjYTc1Yicgc3Ryb2tlPSdub25lJy8+CjxjaXJjbGUgY3g9JzIyJyBjeT0nMTgnIHI9JzEnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScvPgo8cGF0aCBkPSdNMzUgNSBRIDQwIC01IDQ1IDUgUSA0MCAxNSAzNSA1JyBzdHJva2Utd2lkdGg9JzEnLz4KPGNpcmNsZSBjeD0nNDAnIGN5PSc1JyByPScxLjUnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScvPgo8cGF0aCBkPSdNMTAgMzAgUSAxNSAzNSAxMCA0MCBNIDE1IDI1IFEgMjAgMzUgMTUgNDAnIHN0cm9rZS13aWR0aD0nMScvPgo8L2c+CjwvZz4KPHRleHQgeD0nNDAwJyB5PScxODAnIGZvbnQtZmFtaWx5PSdHZW9yZ2lhLCBzZXJpZicgZm9udC1zaXplPScyMCcgZmlsbD0nI2NjYTc1Yicgc3Ryb2tlPSdub25lJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBvcGFjaXR5PScwLjMnIGxldHRlci1zcGFjaW5nPScyJyBmb250LXN0eWxlPSdpdGFsaWMnPkhhcmUgS3Jpc2huYSBIYXJlIEtyaXNobmEsIEtyaXNobmEgS3Jpc2huYSBIYXJlIEhhcmU8L3RleHQ+Cjx0ZXh0IHg9JzQwMCcgeT0nMjEwJyBmb250LWZhbWlseT0nR2VvcmdpYSwgc2VyaWYnIGZvbnQtc2l6ZT0nMjAnIGZpbGw9JyNjY2E3NWInIHN0cm9rZT0nbm9uZScgdGV4dC1hbmNob3I9J21pZGRsZScgb3BhY2l0eT0nMC4zJyBsZXR0ZXItc3BhY2luZz0nMicgZm9udC1zdHlsZT0naXRhbGljJz5IYXJlIFJhbWEgSGFyZSBSYW1hLCBSYW1hIFJhbWEgSGFyZSBIYXJlPC90ZXh0Pgo8L3N2Zz4=\")", backgroundRepeat: 'repeat', backgroundSize: '800px 400px' }}>
+    <div className="min-h-screen bg-[#faf8f5] text-gray-900 font-sans overflow-x-hidden">
 
-      {/* ── PAGE HEADER ───────────────────────────────────────────── */}
-      <div className="pt-36 pb-8 px-5 max-w-7xl mx-auto relative z-10">
-        <h1 className="text-4xl md:text-5xl font-medium text-black tracking-tight">
-          Governance
-        </h1>
-        <div className="mt-4">
-          <div className="h-1 w-24 bg-[#7a9cf6]" />
+      {/* ── HERO SECTION ─────────────────────────────────────── */}
+      <section className="relative pt-8 sm:pt-12 pb-6 overflow-hidden z-10 bg-[#faf8f5]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+
+          {/* Page Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-4">
+            Governance & <span className="text-[#d4af37]">Leadership</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-4">
+            Guided by spiritual principles, transparency, and exemplary leadership in service of Lord Sri Krishna and humanity.
+          </p>
+
         </div>
-      </div>
+      </section>
 
       {/* ── MAIN CONTENT ───────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-28">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-28 relative z-10">
 
         {/* Leaders Grid */}
-        <div className="mt-8">
+        <div className="mt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {leaders.map((leader, idx) => (
               <motion.div
@@ -315,23 +329,23 @@ export default function GovernancePage() {
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}>
                 
                 {/* Image Container */}
-                <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden mb-6 bg-gray-100">
+                <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden mb-6 bg-gray-100 shadow-md group-hover:shadow-xl transition-shadow duration-500 border border-gray-100">
                   <Image
                     src={leader.image}
                     alt={leader.name}
                     fill
-                    className="object-cover transition-all duration-700 ease-in-out"
+                    className="object-cover group-hover:scale-105 transition-all duration-700 ease-in-out"
                   />
                   {/* Subtle overlay */}
-                  <div className="absolute inset-0 bg-black/0 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                 </div>
 
                 {/* Text Content */}
                 <div className="flex flex-col px-1">
-                  <h3 className="text-[26px] font-semibold text-gray-900 tracking-tight leading-tight mb-1.5 transition-colors duration-300">
+                  <h3 className="text-[22px] sm:text-[24px] font-bold text-[#072149] tracking-tight leading-tight mb-1.5 transition-colors duration-300 group-hover:text-[#d4af37]">
                     {leader.name}
                   </h3>
-                  <p className="text-[17px] font-medium text-gray-500">
+                  <p className="text-[16px] sm:text-[17px] font-medium text-[#5c5245]">
                     {leader.title}
                   </p>
                 </div>
