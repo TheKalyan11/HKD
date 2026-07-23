@@ -33,7 +33,7 @@ export default function AboutDonationSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white relative z-10 font-sans border-t border-gray-100">
+    <section className="pt-2 pb-16 sm:pt-4 sm:pb-24 bg-[#faf8f5] relative z-10 font-sans overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
@@ -46,7 +46,7 @@ export default function AboutDonationSection() {
             </div>
 
             <h2 className="text-3xl sm:text-[42px] font-extrabold text-[#18181b] leading-[1.2] tracking-tight mb-8">
-              Temple Donation Online – Donate Online to Hare Krishna Mandir
+              Temple Donation Online – Donate Online to Hare Krishna Movement Dehradun
             </h2>
 
             <div className="space-y-5 text-[#4a4a4a] text-base sm:text-[17px] leading-relaxed font-medium">
