@@ -326,7 +326,7 @@ export default function BookDistributionPage() {
                     <img 
                       src={item.image} 
                       alt={item.title} 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                     />
                   </div>
 
@@ -357,14 +357,6 @@ export default function BookDistributionPage() {
                         {item.icon}
                         <span>{item.stats}</span>
                       </div>
-
-                      <Link
-                        href="/donate"
-                        className="inline-flex items-center gap-1.5 bg-[#f3f4f6] hover:bg-[#072149] hover:text-white text-[#072149] font-bold text-xs sm:text-sm px-4 py-2.5 rounded-full transition-all duration-300 shadow-sm hover:scale-105"
-                      >
-                        <span>{item.action}</span>
-                        <span className="text-base font-normal">+</span>
-                      </Link>
                     </div>
                   </div>
 
