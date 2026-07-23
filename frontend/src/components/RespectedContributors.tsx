@@ -55,31 +55,39 @@ export default function RespectedContributors() {
 
   return (
     <div className="w-full max-w-5xl mx-auto py-8 sm:py-12 px-4">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-section-heading text-[#0c4a8a] text-center mb-6 sm:mb-8">
-        Respected Contributors
-      </h2>
+      {/* Section Header */}
+      <div className="flex flex-col items-center text-center mb-8 sm:mb-10 relative">
+        <div className="flex items-center gap-3 text-[#d4af37] mb-3">
+          <div className="h-px w-10 bg-current"></div>
+          <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">ONLINE DONATIONS</span>
+          <div className="h-px w-10 bg-current"></div>
+        </div>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#3b2b2f] tracking-tight">
+          Recent <span className="text-[#d4af37]">Contributions</span>
+        </h2>
+      </div>
 
       <div className="flex justify-center mb-6 sm:mb-10">
-        <div className="bg-[#e8f4fd] p-1 rounded-full inline-flex">
+        <div className="bg-[#f4f4f5] p-1.5 rounded-full inline-flex border border-gray-200">
           <button
             onClick={() => setFilter('recent')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+            className={`px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 ${
               filter === 'recent'
-                ? 'bg-[#1e88e5] text-white shadow-md'
-                : 'text-[#0c4a8a] hover:bg-[#d0e9fc]'
+                ? 'bg-[#18181b] text-white shadow-md transform scale-105'
+                : 'text-gray-600 hover:text-[#18181b] hover:bg-gray-200'
             }`}
           >
-            Recent
+            Latest Donations
           </button>
           <button
             onClick={() => setFilter('generous')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+            className={`px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 ${
               filter === 'generous'
-                ? 'bg-[#1e88e5] text-white shadow-md'
-                : 'text-[#0c4a8a] hover:bg-[#d0e9fc]'
+                ? 'bg-[#18181b] text-white shadow-md transform scale-105'
+                : 'text-gray-600 hover:text-[#18181b] hover:bg-gray-200'
             }`}
           >
-            Most Generous
+            Top Donations
           </button>
         </div>
       </div>
@@ -101,16 +109,16 @@ export default function RespectedContributors() {
           {donations.map((donation) => (
             <div 
               key={donation.id} 
-              className="bg-[#eef6fc] p-4 rounded-xl flex items-center gap-4 transition-transform hover:-translate-y-1 hover:shadow-md"
+              className="bg-white border border-gray-100 p-5 rounded-[24px] flex items-center gap-4 transition-all duration-300 hover:-translate-y-1 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-sans"
             >
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm text-lg font-bold text-[#0c4a8a] flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#faf8f5] flex items-center justify-center border border-[#eae4d5] text-lg font-bold text-[#d4af37] flex-shrink-0 shadow-sm">
                 {donation.name ? donation.name.charAt(0).toUpperCase() : 'A'}
               </div>
               <div className="flex flex-col">
-                <p className="text-[#0c4a8a] font-medium text-sm md:text-base">
-                  {donation.name || 'Anonymous'} <span className="font-normal text-gray-600">donated</span> ₹ {donation.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+                <p className="text-[#18181b] font-bold text-[15px] md:text-[16px]">
+                  {donation.name || 'Anonymous'} <span className="font-normal text-gray-500">donated</span> <span className="text-[#d4af37]">₹ {donation.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                 </p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-[13px] text-gray-400 mt-1 font-medium tracking-wide uppercase">
                   {donation.timestamp 
                     ? formatDistanceToNow(donation.timestamp.toDate(), { addSuffix: true })
                     : 'Just now'}

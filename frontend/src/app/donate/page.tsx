@@ -1,10 +1,16 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Script from "next/script";
 import Link from "next/link";
 import RespectedContributors from "@/components/RespectedContributors";
+import DonorPrivileges from "@/components/DonorPrivileges";
+import DonationVideoSection from "@/components/DonationVideoSection";
+import ScripturalImportanceSection from "@/components/ScripturalImportanceSection";
+import FaqSection from "@/components/FaqSection";
+import AboutDonationSection from "@/components/AboutDonationSection";
+
 /* ── Scroll-triggered reveal ──────────────────────────── */
 function Reveal({
   children,
@@ -33,14 +39,6 @@ function Reveal({
     </motion.div>
   );
 }
-
-/* ── Inline SVG icons ─────────────────────────────────── */
-const SvgArrowRight = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="5" y1="12" x2="19" y2="12" />
-    <polyline points="12 5 19 12 12 19" />
-  </svg>
-);
 
 /* ── Seva categories data ─────────────────────────────── */
 const sevaCards = [
@@ -75,53 +73,15 @@ const sevaCards = [
 ];
 
 export default function DonatePage() {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
-
   return (
     <main 
       className="min-h-screen bg-[#FAFAFA] font-sans selection:bg-amber-100 selection:text-[#072149] relative"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setMousePos({ x: -1000, y: -1000 })}
     >
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
-      {/* ── FULL PAGE INTERACTIVE GRID BACKGROUND ─────────────────────────────────────── */}
-      <div className="fixed inset-0 pointer-events-none z-[0]">
-        {/* Base Grid */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '4rem 4rem'
-          }}
-        />
-        
-        {/* Interactive Highlighted Grid */}
-        <div 
-          className="absolute inset-0 transition-opacity duration-300"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(7,33,73,0.2) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(7,33,73,0.2) 1px, transparent 1px)
-            `,
-            backgroundSize: '4rem 4rem',
-            WebkitMaskImage: `radial-gradient(circle 250px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-            maskImage: `radial-gradient(circle 250px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`
-          }}
-        />
-      </div>
-
       {/* ── HERO SECTION ─────────────────────────────────────── */}
       <section className="relative pt-16 sm:pt-20 lg:pt-24 pb-2 overflow-hidden z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8 relative z-10 flex flex-col items-center text-center">
-          <Reveal delay={100}>
+        <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex flex-col items-center text-center animate-fade-in-up">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111] tracking-tight mb-2 font-bold" style={{ lineHeight: 1.25 }}>
               Join us in the service of Lord.<br />
               <span className="relative inline-block pb-1.5">
@@ -141,52 +101,47 @@ export default function DonatePage() {
                 />
               </span>
             </h1>
-          </Reveal>
         </div>
       </section>
 
       {/* ── SEVA CARDS SECTION ────────────────────────────────── */}
       <section className="pt-4 sm:pt-6 pb-12 lg:pt-8 lg:pb-16 relative z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {sevaCards.map((seva, i) => (
-              <Reveal key={i} delay={i * 100} direction="up">
-                <div className="group relative bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgb(7,33,73,0.08)] border border-gray-100 transition-all duration-500 hover:-translate-y-1.5 h-full flex flex-col">
-                  {/* Image Container */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#072149]/5 to-[#072149]/15">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Reveal key={i} delay={i * 100} direction="up" className="flex">
+                <div className="bg-white rounded-[40px] p-3 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-2xl border border-gray-100 transition-shadow duration-300 flex flex-col h-full w-full min-h-[500px] group font-sans">
+                  <div className="relative w-full aspect-[16/9] rounded-[32px] overflow-hidden mb-6 shrink-0 bg-[#f8f9fa]">
                     <img
                       src={seva.image}
                       alt={seva.title}
                       loading="lazy"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     />
                   </div>
 
-                  {/* Content */}
-                  <div className="p-4 sm:p-5 flex flex-col flex-grow relative bg-white z-20">
-                    <h3 className="text-base sm:text-lg text-[#072149] mb-2" style={{ fontWeight: 800 }}>
+                  <div className="px-4 flex flex-col flex-grow">
+                    <h3 className="text-[32px] lg:text-[36px] font-bold text-[#18181b] tracking-tight mb-2 leading-tight">
                       {seva.title}
                     </h3>
-                    <p className="text-[#072149]/60 text-xs sm:text-sm leading-relaxed mb-4 flex-grow">
+                    <p className="text-[#8c8c93] text-[16px] lg:text-[17px] leading-relaxed mb-6 flex-grow line-clamp-3">
                       {seva.desc}
                     </p>
-
-                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between mt-auto">
-                      <span className="text-xs text-[#072149]/50 font-semibold tracking-wide">Donate Now</span>
+                    
+                    <div className="flex items-center gap-3 mt-auto pb-2">
                       {seva.link ? (
                         <Link
                           href={seva.link}
-                          className="w-9 h-9 rounded-full bg-[#FAFAFA] text-[#072149] flex items-center justify-center group-hover:bg-[#072149] group-hover:text-white transition-colors duration-300 shadow-sm"
+                          className="w-full flex items-center justify-center bg-[#18181b] hover:bg-black text-white rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg"
                         >
-                          <SvgArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform duration-300" />
+                          Donate
                         </Link>
                       ) : (
                         <button
-                          className="w-9 h-9 rounded-full bg-[#FAFAFA] text-[#072149] flex items-center justify-center group-hover:bg-[#072149] group-hover:text-white transition-colors duration-300 shadow-sm"
+                          className="w-full flex items-center justify-center bg-[#18181b] hover:bg-black text-white rounded-[24px] py-3.5 font-semibold text-[16px] transition-colors shadow-lg cursor-pointer"
                         >
-                          <SvgArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform duration-300" />
+                          Donate
                         </button>
                       )}
                     </div>
@@ -199,9 +154,26 @@ export default function DonatePage() {
       </section>
 
       {/* ── RESPECTED CONTRIBUTORS SECTION ──────────────────────── */}
-      <section className="pb-16 sm:pb-24 lg:pb-32 relative z-10">
+      <section className="pb-16 relative z-10">
         <RespectedContributors />
       </section>
+
+      {/* ── DONOR PRIVILEGES SECTION ────────────────────────────── */}
+      <section className="relative z-10 bg-gradient-to-b from-transparent to-white pt-2">
+        <DonorPrivileges />
+      </section>
+
+      {/* ── DONATION VIDEO SECTION ───────────────────────────────── */}
+      <DonationVideoSection />
+
+      {/* ── SCRIPTURAL IMPORTANCE SECTION ───────────────────────── */}
+      <ScripturalImportanceSection />
+
+      {/* ── FAQ SECTION ─────────────────────────────────────────── */}
+      <FaqSection />
+
+      {/* ── ABOUT DONATION SECTION ────────────────────────────── */}
+      <AboutDonationSection />
     </main>
   );
 }

@@ -1,158 +1,113 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-interface FaqItem {
-  id: number;
-  question: string;
-  answer: string;
-}
-
-const allFaqs: FaqItem[] = [
+const faqData = [
   {
     id: 1,
-    question: "What is Hare Krishna Movement Dehradun?",
-    answer: "Hare Krishna Movement Dehradun is a vibrant spiritual and cultural center dedicated to promoting Vedic wisdom, social service, daily prasadam distribution, and traditional devotional worship under the guidance of Srila Prabhupada."
+    question: "1. Why should I donate to Hare Krishna Movement Dehradun?",
+    answer: "Your valuable donations support daily Nitya Seva, grand temple construction, free sanctified Annadana meals to thousands of needy people, cow protection (Gau Seva), and spiritual education for children and youth."
   },
   {
     id: 2,
-    question: "Who is the Founder-Acharya of the Hare Krishna Movement?",
-    answer: "His Divine Grace A.C. Bhaktivedanta Swami Prabhupada is the Founder-Acharya of the International Society for Krishna Consciousness (ISKCON) and the guiding inspiration behind the Hare Krishna Movement globally."
+    question: "2. How can my donation help the temple?",
+    answer: "Every contribution directly funds essential activities such as deity worship, festival celebrations, distributing hot prasadam, maintaining our Gaushala, and spreading divine Krishna consciousness across Uttarakhand."
   },
   {
     id: 3,
-    question: "What are the temple darshan and aarti timings?",
-    answer: "The temple opens daily at 4:30 AM for Mangala Aarti and remains open until Shayana Aarti at 8:30 PM. Key aartis include Darshan Aarti at 7:15 AM, Raj Bhoga Aarti at 12:30 PM, and Sandhya Aarti at 7:00 PM."
+    question: "3. Is 80G Tax Exemption available for my donation?",
+    answer: "Yes! All donations made to Hare Krishna Movement Dehradun are eligible for 80G Tax Exemption under the Income Tax Act. You will receive an official 80G tax-exempt receipt immediately upon donation."
   },
   {
     id: 4,
-    question: "How can I contribute to Gau Seva and Annadana Seva?",
-    answer: "You can support our daily cow care (Gau Seva) and free prasadam meal distribution (Annadana Seva) directly online through our Online Donation section or at the temple counters."
+    question: "4. Where is Hare Krishna Mandir Dehradun located?",
+    answer: "Hare Krishna Mandir is situated in Dehradun, Uttarakhand. You are warmly welcome to visit for daily darshan, mangala aarti, sanctified prasadam, and inspirational spiritual discourses."
   },
   {
     id: 5,
-    question: "What spiritual and educational programs are offered for youth?",
-    answer: "We offer weekly FOLK (Friends of Lord Krishna) youth programs, Bhagavad Gita Life courses, stress-management workshops, and weekend retreats designed to empower young minds with spiritual wisdom."
-  },
-  {
-    id: 6,
-    question: "How can I visit or support the Hare Krishna Movement Dehradun?",
-    answer: "Visitors and devotees are welcome to visit the temple daily. You can reach out to us via our Contact Us page for location directions, event schedules, or volunteer opportunities."
+    question: "5. How will I receive the receipt for my online donation?",
+    answer: "Instant digital donation receipts are automatically generated and sent to your registered email address and phone number right after a successful transaction."
   }
 ];
 
 export default function FaqSection() {
-  const [openId, setOpenId] = useState<number | null>(null);
-  const [showAll, setShowAll] = useState<boolean>(false);
-
-  const visibleFaqs = showAll ? allFaqs : allFaqs.slice(0, 4);
+  const [openId, setOpenId] = useState<number | null>(1); // Default open first question
 
   const toggleFaq = (id: number) => {
     setOpenId(openId === id ? null : id);
   };
 
-  const renderQuestionWithStyledMark = (questionText: string) => {
-    if (questionText.endsWith('?')) {
-      const mainText = questionText.slice(0, -1);
-      return (
-        <span>
-          {mainText}
-          <span className="text-[#d4af37] font-black text-xl sm:text-2xl inline-block ml-[2px] transform hover:scale-110 transition-transform">?</span>
-        </span>
-      );
-    }
-    return <span>{questionText}</span>;
-  };
-
   return (
-    <section className="relative w-full py-16 md:py-24 bg-[#faf8f5] overflow-hidden font-sans border-t border-[#eae4d5]/40">
-      
-      {/* Background Ornaments */}
-      <div className="absolute top-1/2 left-[-10%] w-80 h-80 bg-[#cca75b]/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/3 right-[-5%] w-[350px] h-[350px] bg-[#0c4a8a]/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="pt-2 pb-12 sm:pt-4 sm:pb-20 bg-[#faf8f5] relative z-10 font-sans overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          {/* Left Header Column */}
+          <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-28">
+            {/* FAQ Tag Badge */}
+            <span className="bg-[#072149] text-white font-extrabold text-xs px-4 py-1.5 rounded-full uppercase tracking-[0.15em] mb-4 shadow-sm">
+              FAQ
+            </span>
 
-      <div className="max-w-[1300px] mx-auto px-6 lg:px-12 relative z-10">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          
-          {/* Left Side: Title & Description matching Website Header Hierarchy */}
-          <div className="lg:col-span-5 flex flex-col justify-start pr-0 lg:pr-4">
-            
-            {/* Top Gold Ornament matching website standard */}
-            <div className="flex items-center gap-3 text-[#d4af37] mb-3">
-              <div className="h-px w-10 bg-current"></div>
-              <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HELP & INFO</span>
-              <div className="h-px w-10 bg-current"></div>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#3b2b2f] tracking-tight leading-[1.15] mb-5">
-              Frequently Asked Questions<span className="text-[#d4af37] font-black text-5xl md:text-6xl inline-block ml-[2px]">?</span>
+            {/* Main Section Title */}
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#3b2b2f] leading-[1.2] tracking-tight mb-4">
+              Frequently Asked <br className="hidden sm:inline" />
+              <span className="text-[#d4af37]">Questions!</span>
             </h2>
-            
-            <p className="text-[#5c5245] text-[15px] sm:text-[16px] leading-relaxed max-w-md font-normal">
-              Hare Krishna Movement Dehradun is not only a place of worship but a beacon of social service, spiritual wisdom, and cultural preservation.
+
+            {/* Description Paragraph */}
+            <p className="text-[#4a4a4a] text-base sm:text-lg font-medium leading-relaxed max-w-md">
+              Hare Krishna Movement Dehradun, a spiritual sanctuary and grand temple project, is not only a place of worship but a beacon of social service and cultural preservation.
             </p>
           </div>
 
-          {/* Right Side: Accordion Items */}
+          {/* Right Accordion List Column */}
           <div className="lg:col-span-7 flex flex-col gap-4 w-full">
-            {visibleFaqs.map((faq) => {
-              const isOpen = openId === faq.id;
-
+            {faqData.map((item) => {
+              const isOpen = openId === item.id;
               return (
                 <div
-                  key={faq.id}
-                  className={`rounded-[24px] transition-all duration-300 overflow-hidden cursor-pointer border ${
-                    isOpen 
-                      ? 'bg-white border-[#d4af37]/60 shadow-[0_8px_25px_rgb(212,175,55,0.12)]' 
-                      : 'bg-white/80 hover:bg-white border-[#eae4d5] shadow-[0_4px_15px_rgb(0,0,0,0.03)]'
-                  }`}
-                  onClick={() => toggleFaq(faq.id)}
+                  key={item.id}
+                  className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(7,33,73,0.06)] transition-all duration-300"
                 >
-                  {/* Header Row */}
-                  <div className="p-4 sm:p-5 flex items-center justify-between gap-4">
-                    <h3 className="text-lg sm:text-xl font-bold text-[#3b2b2f] leading-snug flex items-start gap-2.5">
-                      <span className="text-[#d4af37] font-extrabold">{faq.id}.</span>
-                      {renderQuestionWithStyledMark(faq.question)}
-                    </h3>
-                    
-                    <button
-                      type="button"
-                      className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-xl transition-colors shrink-0 shadow-sm ${
-                        isOpen 
-                          ? 'bg-[#d4af37] text-white' 
-                          : 'bg-[#f4efe6] text-[#3b2b2f] hover:bg-[#d4af37] hover:text-white'
+                  <button
+                    onClick={() => toggleFaq(item.id)}
+                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-[#072149] text-base sm:text-lg cursor-pointer select-none"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="leading-snug">{item.question}</span>
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                        isOpen
+                          ? "bg-[#072149] text-white rotate-180 shadow-md"
+                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                       }`}
-                      aria-label="Toggle answer"
                     >
-                      {isOpen ? '−' : '+'}
-                    </button>
-                  </div>
-
-                  {/* Expanded Answer Content */}
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-0 text-[#5c5245] text-[15px] sm:text-[16px] leading-relaxed border-t border-[#eae4d5]/60 mt-1">
-                      <p className="pt-3.5">{faq.answer}</p>
+                      <ChevronDown className="w-5 h-5" />
                     </div>
-                  )}
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 sm:px-6 pb-6 pt-1 text-[#4a4a4a] text-sm sm:text-base leading-relaxed border-t border-gray-50 font-normal">
+                          {item.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
-
-            {/* Show More / Show Less Toggle Button */}
-            <div className="flex justify-center mt-6">
-              <button
-                onClick={() => setShowAll(!showAll)}
-                className="px-8 py-3.5 rounded-full border border-[#cca75b]/60 bg-white hover:bg-[#fcfaf7] text-[#0a3d73] font-bold text-xs uppercase tracking-widest shadow-sm hover:shadow transition-all duration-300 cursor-pointer"
-              >
-                {showAll ? 'Show Less' : 'Show More'}
-              </button>
-            </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
