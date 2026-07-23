@@ -317,10 +317,10 @@ export default function GitaLifeCoursePage() {
   if (!isMounted) return null;
 
   return (
-    <div className="bg-white font-inter">
+    <div className="bg-white font-sans">
 
       {/* ── HERO SECTION ─────────────────────────────────────── */}
-      <section className="relative pt-8 sm:pt-12 pb-6 overflow-hidden z-10 bg-[#faf8f5]">
+      <section className="relative pt-4 sm:pt-6 pb-2 overflow-hidden z-10 bg-[#faf8f5]">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
           
           {/* Decorative Tag */}
@@ -336,7 +336,7 @@ export default function GitaLifeCoursePage() {
           </h1>
 
           {/* Subheading */}
-          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-8">
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-6">
             A systematic foundation course on Shrimad Bhagavad Gita to discover purpose, inner peace, and divine wisdom.
           </p>
 
@@ -373,10 +373,10 @@ export default function GitaLifeCoursePage() {
 
 
       {/* ══ ABOUT — redesigned narrative ═══════════════════ */}
-      <section id="about" className="bg-[#FFFBF2]/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-16 lg:py-24 relative overflow-hidden">
+      <section id="about" className="bg-[#FFFBF2]/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-8 lg:py-12 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 100% 0%, #fef3c7 0%, transparent 40%)" }} />
         
-        <div className="max-w-4xl mx-auto relative z-10 text-center mb-16">
+        <div className="max-w-4xl mx-auto relative z-10 text-center mb-10">
           <AnimeReveal direction="up" delay={80}>
             <div className="flex items-center justify-center gap-3 text-[#d4af37] mb-2">
               <div className="h-px w-10 bg-current"></div>
@@ -448,8 +448,8 @@ export default function GitaLifeCoursePage() {
           </div>
 
           <AnimeReveal direction="up" delay={200}>
-            <div className="mt-16 text-center max-w-3xl mx-auto">
-              <p className="text-xl md:text-2xl text-[#072149] leading-relaxed mb-8" style={{ fontWeight: 500 }}>
+            <div className="mt-12 text-center max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-[#072149] leading-relaxed mb-6" style={{ fontWeight: 500 }}>
                 As a service to humanity, we present a systematic and practical{" "}
                 <span className="text-amber-600 font-semibold">6-session foundation course on Bhagavad Gita</span>, 
                 designed to share the essence of eternal Vedic wisdom.
@@ -470,10 +470,10 @@ export default function GitaLifeCoursePage() {
 
 
       {/* ══ CURRICULUM — redesigned with image & text ════════════════════ */}
-      <section id="modules" className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-12 lg:py-8">
+      <section id="modules" className="bg-white/80 backdrop-blur-sm px-5 sm:px-10 lg:px-20 py-8 lg:py-10">
         <div className="max-w-7xl mx-auto">
 
-          <AnimeReveal direction="up" delay={80} className="mb-12 max-w-3xl">
+          <AnimeReveal direction="up" delay={80} className="mb-8 max-w-3xl">
             <div className="flex items-center gap-3 text-[#d4af37] mb-2">
               <div className="h-px w-10 bg-current"></div>
               <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">CURRICULUM</span>
@@ -523,7 +523,7 @@ export default function GitaLifeCoursePage() {
       </section>
 
       {/* ══ SCROLLING BANNER ═══════════════════════════════════ */}
-      <div className="bg-[#072149] text-white overflow-hidden py-4 border-y border-amber-500/30 relative z-10 flex items-center shadow-lg">
+      <div className="bg-[#072149] text-[#5c5245] overflow-hidden py-4 border-y border-amber-500/30 relative z-10 flex items-center shadow-lg">
         <motion.div 
           animate={{ x: ["0%", "-50%"] }}
           transition={{ ease: "linear", duration: 30, repeat: Infinity }}
@@ -531,13 +531,13 @@ export default function GitaLifeCoursePage() {
         >
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="flex items-center gap-12 shrink-0">
-              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold">Hare Krishna Hare Rama</span>
+              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-white">Hare Krishna Hare Rama</span>
               <PILotus className="w-5 h-5 text-amber-400" />
-              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold">Gita Life Course</span>
+              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-white">Gita Life Course</span>
               <PISpark className="w-5 h-5 text-amber-400" />
-              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold">Transform Your Life</span>
+              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-white">Transform Your Life</span>
               <PIBookOpen className="w-5 h-5 text-amber-400" />
-              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold">Spiritual Journey</span>
+              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-white">Spiritual Journey</span>
               <PILotus className="w-5 h-5 text-amber-400" />
             </div>
           ))}
@@ -545,13 +545,13 @@ export default function GitaLifeCoursePage() {
       </div>
 
       {/* ══ SPECIAL FEATURES — redesigned with image & text ═════════════════ */}
-      <section className="bg-white/80 backdrop-blur-3xl px-5 sm:px-10 lg:px-20 py-12 lg:py-20 relative overflow-hidden border-y border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)]">
+      <section className="bg-white/80 backdrop-blur-3xl px-5 sm:px-10 lg:px-20 py-8 lg:py-12 relative overflow-hidden border-y border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)]">
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: "radial-gradient(circle, #000000 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-amber-400/30 blur-[80px] -translate-y-1/2 translate-x-1/4" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <AnimeReveal direction="up" delay={80} className="mb-14">
+          <AnimeReveal direction="up" delay={80} className="mb-10">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 text-[#d4af37] mb-2">
                 <div className="h-px w-10 bg-current"></div>
