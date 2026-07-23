@@ -469,30 +469,20 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
 
 
         {/* Peach/Orange Sky Glow behind Gopuram */}
-
-        <div className="absolute top-0 right-0 w-[320px] md:w-[420px] lg:w-[460px] h-[100%] pointer-events-none z-0 hidden sm:block overflow-hidden">
-
-          <div className="absolute top-24 right-6 w-72 h-72 bg-[#fde9d2]/90 rounded-full blur-3xl opacity-85" />
-
-          <div className="absolute top-48 right-24 w-56 h-56 bg-[#ebd9b3]/60 rounded-full blur-3xl opacity-70" />
-
-          <div className="absolute top-64 right-12 w-64 h-64 bg-[#ebd5c2]/80 rounded-full blur-[100px] opacity-80" />
-
+        <div className="absolute -top-2 md:-top-4 left-[75%] -translate-x-1/2 w-[320px] md:w-[420px] lg:w-[460px] h-[100%] pointer-events-none z-0 hidden sm:block overflow-visible">
+          <div className="absolute top-24 left-6 w-72 h-72 bg-[#fde9d2]/90 rounded-full blur-3xl opacity-85" />
+          <div className="absolute top-48 left-24 w-56 h-56 bg-[#ebd9b3]/60 rounded-full blur-3xl opacity-70" />
+          <div className="absolute top-64 left-12 w-64 h-64 bg-[#ebd5c2]/80 rounded-full blur-[100px] opacity-80" />
         </div>
 
 
 
-        {/* Right side Temple Illustration & Clouds Background */}
-
-        <div className="absolute top-0 right-0 w-[32%] lg:w-[28%] h-full pointer-events-none z-0 hidden sm:block overflow-hidden">
-
+        {/* Center Temple Illustration & Clouds Background */}
+        <div className="absolute -top-2 md:-top-4 left-[75%] -translate-x-1/2 w-[320px] lg:w-[360px] h-full pointer-events-none z-0 hidden sm:block overflow-visible">
           <img
-
-            src="/ti.webp"
-
+            src="/iskcon-blr-line-art-removebg-preview.png"
             alt="Temple Gopuram"
-
-            className="absolute top-4 md:top-2 right-0 h-[85%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-right-top opacity-[0.94] transition-all duration-700 select-none mix-blend-darken"
+            className="absolute top-4 md:top-2 left-1/2 -translate-x-1/2 h-[85%] w-[260px] md:w-[320px] lg:w-[360px] object-contain object-top opacity-[0.94] transition-all duration-700 select-none"
 
             style={{
 
@@ -507,9 +497,8 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
         </div>
 
 
-        {/* Animated Flying Birds in the Sky (left of gopuram) */}
-
-        <div className="absolute top-24 right-[180px] md:right-[230px] lg:right-[260px] w-48 h-32 pointer-events-none z-10 hidden md:block select-none">
+        {/* Animated Flying Birds in the Sky (above gopuram) */}
+        <div className="absolute top-0 md:top-2 left-[75%] -translate-x-1/2 w-48 h-32 pointer-events-none z-10 hidden md:block select-none">
 
           {/* Bird 1 */}
 
@@ -562,12 +551,43 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
           {/* Section Header with Lotus & Ornament Lines */}
 
           <div className="flex flex-col items-center text-center space-y-2 mb-8 relative">
-
-
+            {/* Top Gold Ornament */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-1.5 text-[#cca75b]">
+              <div className="flex-1 flex items-center">
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                <span className="text-[10px] -ml-1">◆</span>
+              </div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
+                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+              </svg>
+              <div className="flex-1 flex items-center">
+                <span className="text-[10px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+              </div>
+            </div>
 
             <h2 className="text-4xl md:text-[44px] font-serif text-[#0a3d73] tracking-normal mb-1 font-medium">
               {isHomePage ? 'Upcoming Festivals' : 'Latest Events'}
             </h2>
+
+            {/* Bottom ornament */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[260px] mb-1 mt-2 text-[#cca75b]">
+              <div className="flex-1 flex items-center">
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+                <span className="text-[8px] -ml-1">◆</span>
+              </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
+                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
+              </svg>
+              <div className="flex-1 flex items-center justify-start">
+                <span className="text-[8px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+              </div>
+            </div>
 
 
 
@@ -581,40 +601,7 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
           </div>
 
           {/* Festivals Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto relative z-20">
-            {/* Card 1: Panihati */}
-            <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
-              <div className="w-full h-56 overflow-hidden rounded-2xl shrink-0">
-                <img src="/deity-1.webp" alt="Panihati Festival" loading="lazy" className="group-hover:scale-110 w-full h-full object-cover duration-500" />
-              </div>
-              <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
-                <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Panihati Chida Dahi Utsav</span>
-                <span className="text-[11px] text-[#cca75b] font-medium tracking-widest uppercase block mt-1">June 11, 2025</span>
-                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-0 group-hover:mt-3 opacity-0 group-hover:opacity-100">
-                  <p className="overflow-hidden text-[14px] text-[#5c5245] leading-relaxed">
-                    The famous Festival of Chipped Rice celebrated in honor of Lord Nityananda Prabhu. Devotees relish chida, dahi and sweets in joyful kirtan.
-                  </p>
-                </div>
-              </div>
-              <div className="pt-3.5 mt-2 px-3 pb-2 border-t border-[#eae4d5]/60 flex items-center justify-between gap-3 relative z-20 shrink-0">
-                <Link
-                  href="/festivals/panihati"
-                  className="text-[15px] sm:text-[16px] font-bold text-[#5c5245] hover:text-[#0a3d73] transition-colors flex items-center gap-1.5 group/link no-underline"
-                >
-                  <span>Explore</span>
-                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/festivals/panihati#donate"
-                  className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#FCD34D] hover:bg-[#FBBF24] text-[#0a3d73] font-extrabold text-[14px] sm:text-[15px] shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center no-underline border border-[#FCD34D]/80"
-                >
-                  <span>Donate</span>
-                </Link>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 gap-8 max-w-md mx-auto relative z-20 mt-12 md:mt-16">
 
             {/* Card 2: Janmashtami */}
             <div className="group cursor-pointer overflow-hidden duration-500 w-full bg-white/85 backdrop-blur-md text-gray-800 p-3 rounded-3xl border border-[#eae4d5]/40 shadow-md hover:shadow-xl font-card flex flex-col h-full sm:min-h-[380px]">
@@ -623,7 +610,6 @@ export default function UpcomingFestivals({ isHomePage = false }: { isHomePage?:
               </div>
               <div className="flex flex-col pt-4 px-2 pb-2 relative z-20 flex-grow">
                 <span className="text-[22px] font-medium font-serif block text-[#0a3d73] leading-tight">Janmashtami</span>
-                <span className="text-[11px] text-[#cca75b] font-medium tracking-widest uppercase block mt-1">August 16, 2025</span>
                 <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-0 group-hover:mt-3 opacity-0 group-hover:opacity-100">
                   <p className="overflow-hidden text-[14px] text-[#5c5245] leading-relaxed">
                     Commemorate the appearance of Lord Krishna with fasting, midnight aarti, kirtans and joyful celebrations.

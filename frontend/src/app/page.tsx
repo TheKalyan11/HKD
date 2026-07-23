@@ -501,17 +501,44 @@ export default function Home() {
 
 
           {/* Section Header with Lotus & Ornament Lines */}
-
           <div className="flex flex-col items-center text-center space-y-2 mb-6 relative">
-
-
+            {/* Top Gold Ornament */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[340px] md:max-w-[420px] mb-1.5 text-[#cca75b]">
+              <div className="flex-1 flex items-center">
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+                <span className="text-[10px] -ml-1">◆</span>
+              </div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="mx-1">
+                <path d="M12 3C12 3 9 9 12 21C15 9 12 3 12 3Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C8 18 5 13 7 9C9 9 11 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C5 19 3 16 5 12C7 12 10 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+                <path d="M12 21C16 18 19 13 17 9C15 9 13 15 12 21Z" fill="currentColor" fillOpacity="0.1" />
+                <path d="M12 21C19 19 21 16 19 12C17 12 14 17 12 21Z" fill="currentColor" fillOpacity="0.05" />
+              </svg>
+              <div className="flex-1 flex items-center">
+                <span className="text-[10px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/60" />
+              </div>
+            </div>
 
             <h2 className="text-3xl md:text-[36px] font-section-heading text-[#0c4a8a] tracking-normal mb-1 font-medium">
               Latest Blogs
             </h2>
 
-
-
+            {/* Bottom ornament */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[260px] mb-1 mt-2 text-[#cca75b]">
+              <div className="flex-1 flex items-center">
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+                <span className="text-[8px] -ml-1">◆</span>
+              </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-1">
+                <path d="M12 6 C10 4, 8 4, 8 6 C8 8, 12 10, 12 12 C12 14, 8 16, 8 18 C8 20, 10 20, 12 18 C14 20, 16 20, 16 18 C16 16, 12 14, 12 12 C12 10, 16 8, 16 6 C16 4, 14 4, 12 6 Z" fill="none" />
+              </svg>
+              <div className="flex-1 flex items-center justify-start">
+                <span className="text-[8px] -mr-1">◆</span>
+                <div className="h-[1px] w-full bg-[#cca75b]/50" />
+              </div>
+            </div>
           </div>
 
 
@@ -815,7 +842,7 @@ export default function Home() {
             </div>
 
             <h2 className="text-4xl md:text-[44px] font-section-heading text-[#0a3d73] tracking-normal mb-1">
-              Charitable Sevas
+              Online Donation
             </h2>
 
             {/* Bottom ornament */}
