@@ -319,17 +319,38 @@ export default function GitaLifeCoursePage() {
   return (
     <div className="bg-white font-inter">
 
-      {/* ── HERO ──────────────────────────────────────────────── */}
-      <div className="min-h-screen p-3 sm:p-4 md:p-6">
-        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)]">
-          <img 
-            src="/gita hero.webp" 
-            alt="Gita Life Course" 
-            className="absolute inset-0 w-full h-full object-cover" 
-          />
+      {/* ── HERO SECTION ─────────────────────────────────────── */}
+      <section className="relative pt-8 sm:pt-12 pb-6 overflow-hidden z-10 bg-[#faf8f5]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+
+          {/* Page Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-3">
+            Gita Life <span className="text-[#d4af37]">Course</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-[#5c5245] max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-8">
+            A systematic foundation course on Shrimad Bhagavad Gita to discover purpose, inner peace, and divine wisdom.
+          </p>
+
+          {/* Hero Banner Card */}
+          <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]">
+            <img 
+              src="/gita hero.webp" 
+              alt="Gita Life Course" 
+              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
+            />
+          </div>
+
         </div>
-      </div>
-      {/* ── end hero ──────────────────────────────────────────── */ }
+      </section>
       <div className="relative w-full">
         {/* Mantra and Icon Watermark Background */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none flex flex-col justify-evenly opacity-[0.03] select-none" style={{ minHeight: '100%' }}>
