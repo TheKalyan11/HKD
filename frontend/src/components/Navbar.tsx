@@ -215,9 +215,9 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer menu */}
       {isOpen && (
-        <div className="xl:hidden bg-black/95 border-t border-white/10 px-4 pt-2 pb-6 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto">
-          <div className="flex gap-2 mb-4 mt-2">
-             <a href="tel:+919876543210" className="flex-1 flex items-center justify-center gap-2 bg-[#0B5DB7] text-white py-2.5 rounded-lg text-sm font-medium">
+        <div className="xl:hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-t border-gray-200/50 px-5 pt-4 pb-8 space-y-2 shadow-2xl max-h-[85vh] overflow-y-auto z-50">
+          <div className="flex gap-3 mb-6 mt-2">
+             <a href="tel:+919876543210" className="flex-1 flex items-center justify-center gap-2 bg-[#0B5DB7] hover:bg-[#094a93] transition-colors text-white py-3 rounded-xl text-[15px] font-semibold tracking-wide shadow-md">
                <Phone className="w-4 h-4" /> Call Now
              </a>
           </div>
@@ -231,15 +231,15 @@ export const Navbar: React.FC = () => {
                 <div key={link.name} className="space-y-1">
                   <button
                     onClick={() => setOpenMobileDropdown(isDropdownOpen ? null : link.name)}
-                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[15px] font-medium tracking-wide transition-colors text-white hover:bg-white/5 hover:text-saffron`}
+                    className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-[16px] font-semibold tracking-wide transition-colors text-gray-800 hover:bg-gray-100"
                   >
                     <span>{link.name}</span>
-                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-saffron' : ''}`} />
+                    <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-[#0B5DB7]' : ''}`} />
                   </button>
                   
                   {/* Collapsible Accordion content */}
-                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isDropdownOpen ? 'max-h-[300px] opacity-100 py-1' : 'max-h-0 opacity-0'}`}>
-                    <div className="pl-4 space-y-1 border-l-2 border-white/10 ml-3">
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isDropdownOpen ? 'max-h-[400px] opacity-100 py-1' : 'max-h-0 opacity-0'}`}>
+                    <div className="pl-6 space-y-1 border-l-2 border-gray-200 ml-6">
                       {link.dropdownItems?.map((subLink) => (
                         <Link
                           key={subLink.name}
@@ -248,7 +248,7 @@ export const Navbar: React.FC = () => {
                             setIsOpen(false);
                             setOpenMobileDropdown(null);
                           }}
-                          className="block px-3 py-2 text-[14px] font-medium text-gray-300 hover:text-saffron transition-colors tracking-wide whitespace-normal leading-tight"
+                          className="block px-4 py-2.5 text-[15px] font-medium text-gray-600 hover:text-[#0B5DB7] transition-colors tracking-wide whitespace-normal leading-tight"
                         >
                           {subLink.name}
                         </Link>
@@ -261,14 +261,11 @@ export const Navbar: React.FC = () => {
             
             if (link.name === 'Reels') {
               return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 flex items-center justify-center mt-2"
-                >
-                  <ReelsButton />
-                </Link>
+                <div key={link.name} className="px-2 mt-4 mb-2 flex items-center">
+                  <Link href={link.href} onClick={() => setIsOpen(false)}>
+                    <ReelsButton isDarkText={true} />
+                  </Link>
+                </div>
               );
             }
 
@@ -280,10 +277,10 @@ export const Navbar: React.FC = () => {
                   setIsOpen(false);
                   setOpenMobileDropdown(null);
                 }}
-                className={`block px-3 py-2 rounded-lg text-[15px] font-medium tracking-wide transition-colors ${
+                className={`block px-4 py-3.5 rounded-xl text-[16px] font-semibold tracking-wide transition-colors ${
                   isActive 
-                    ? 'bg-saffron/20 text-saffron-light' 
-                    : 'text-white hover:bg-white/5 hover:text-saffron'
+                    ? 'bg-[#0B5DB7]/10 text-[#0B5DB7]' 
+                    : 'text-gray-800 hover:bg-gray-100'
                 }`}
               >
                 {link.name}
