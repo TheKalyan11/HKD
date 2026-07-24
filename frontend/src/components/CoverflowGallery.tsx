@@ -2,22 +2,15 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
-const galleryItems = [
-  { id: 1,  src: '/darshan/DSC04178.webp',       title: 'Daily Darshan',         subtitle: 'Divine Darshan',           pos: 'object-top' },
-  { id: 2,  src: '/darshan/DSC04071.webp',       title: 'Radha Krishna Darshan', subtitle: 'Daily Darshan',            pos: 'object-top' },
-  { id: 3,  src: '/darshan/DSC04179.webp',       title: 'Daily Darshan',         subtitle: 'Morning Darshan',          pos: 'object-top' },
-  { id: 4,  src: '/darshan/DSC04180.webp',       title: 'Daily Darshan',         subtitle: 'Evening Aarti',            pos: 'object-top' },
-  { id: 5,  src: '/darshan/DSC04181.webp',       title: 'Daily Darshan',         subtitle: 'Deity Darshan',            pos: 'object-top' },
-  { id: 6,  src: '/darshan/DSC04083.webp',       title: 'Daily Darshan',         subtitle: 'Divine Blessings',         pos: 'object-top' },
-  { id: 7,  src: '/mandir-nirman/render-1.webp', title: 'Mandir Nirman',         subtitle: 'Temple Architecture',      pos: 'object-center' },
-  { id: 8,  src: '/mandir-nirman/render-2.webp', title: 'Mandir Nirman',         subtitle: 'Temple Design',            pos: 'object-center' },
-  { id: 9,  src: '/mandir-nirman/render-3.webp', title: 'Mandir Nirman',         subtitle: 'Temple Vision',            pos: 'object-center' },
-  { id: 10, src: '/mandir-nirman/render-4.webp', title: 'Mandir Nirman',         subtitle: 'Grand Temple',             pos: 'object-center' },
-  { id: 11, src: '/mandir-nirman/render-5.webp', title: 'Mandir Nirman',         subtitle: 'Temple Construction',      pos: 'object-center' },
-  { id: 12, src: '/deity-1.webp',                title: 'Jhulan Yatra',          subtitle: 'Divine Swing Festival',    pos: 'object-center' },
-  { id: 13, src: '/deity-2.webp',                title: 'Janmashtami',           subtitle: 'Appearance of Lord Krishna', pos: 'object-center' },
-];
+const galleryItems = Array.from({ length: 29 }, (_, i) => ({
+  id: i + 1,
+  src: `/Photo from Vishwas Murthy(${i + 1}).jpg`,
+  title: 'Hare Krishna Dehradun',
+  subtitle: `Event Highlights ${i + 1}`,
+  pos: 'object-center'
+}));
 
 const TOTAL = galleryItems.length;
 
@@ -117,11 +110,13 @@ export default function CoverflowGallery() {
                   else           { setLightbox(item.src); }
                 }}
               >
-                <img
+                <Image
                   src={item.src}
                   alt={item.title}
                   loading="lazy"
-                  className={`w-full h-full object-cover ${item.pos}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className={`object-cover ${item.pos}`}
                   style={{ borderRadius, display: 'block' }}
                 />
               </div>
@@ -165,10 +160,11 @@ export default function CoverflowGallery() {
             className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center cursor-pointer backdrop-blur-sm"
             onClick={() => setLightbox(null)}
           >
-            <img
+            <Image
               src={lightbox}
               alt="Gallery fullscreen"
-              className="max-w-[94vw] max-h-[92vh] object-contain rounded-2xl shadow-2xl"
+              fill
+              className="object-contain p-4"
             />
             <button
               className="absolute top-5 right-7 text-white/70 hover:text-white transition-colors"
