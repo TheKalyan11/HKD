@@ -163,7 +163,7 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
       </div>
 
       {/* Bottom Information Overlay */}
-      <div className="absolute bottom-0 left-0 w-full p-4 pb-20 sm:pb-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex justify-between items-end">
+      <div className="absolute bottom-0 left-0 w-full p-4 pb-8 sm:pb-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex justify-between items-end">
         
         {/* Left Side: Title & Caption */}
         <div className="text-white max-w-[80%] pb-1 sm:pb-0">
