@@ -215,17 +215,16 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer menu */}
       {isOpen && (
-        <div className="xl:hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-t border-gray-200/50 px-5 pt-4 pb-8 space-y-2 shadow-2xl max-h-[85vh] overflow-y-auto z-50">
-          <div className="flex gap-3 mb-6 mt-2">
-             <a href="tel:+919876543210" className="flex-1 flex items-center justify-center gap-2 bg-[#0B5DB7] hover:bg-[#094a93] transition-colors text-white py-3 rounded-xl text-[15px] font-semibold tracking-wide shadow-md">
-               <Phone className="w-4 h-4" /> Call Now
-             </a>
-          </div>
+        <div className="xl:hidden absolute top-full left-0 w-full bg-white border-t border-gray-200/50 px-5 pt-4 pb-8 space-y-2 shadow-2xl max-h-[85vh] overflow-y-auto z-50">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             const hasDropdown = link.dropdownItems && link.dropdownItems.length > 0;
             const isDropdownOpen = openMobileDropdown === link.name;
             
+            if (link.name === 'Donate') {
+              return null; // Remove Donate from the mobile drawer
+            }
+
             if (hasDropdown) {
               return (
                 <div key={link.name} className="space-y-1">
