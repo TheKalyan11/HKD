@@ -200,7 +200,7 @@ export default function GuptVrindavanDhamSection() {
               </button>
               
               <video 
-                src="/Video%20from%20Vishwas%20Murthy.mp4" 
+                src="/the.mp4" 
                 controls 
                 autoPlay 
                 className="w-full h-auto max-h-[85vh] object-contain outline-none"
