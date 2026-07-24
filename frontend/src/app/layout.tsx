@@ -50,10 +50,6 @@ export default function RootLayout({
           <Footer />
 
           {/* Floated Support Overlays */}
-          <Script id="chatling-config" strategy="lazyOnload">
-            {`window.chtlConfig = { chatbotId: "2451993731" }`}
-          </Script>
-          <Script async data-id="2451993731" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js" strategy="lazyOnload" />
           <AdminControlBar />
           <SocialFloatWidget />
           <FloatingReelsWidget />
