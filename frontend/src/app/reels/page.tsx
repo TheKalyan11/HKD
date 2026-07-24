@@ -9,16 +9,19 @@ const MOCK_REELS: Reel[] = [
     id: "reel-1",
     videoUrl: "/vishwas-murthy.mp4",
     likes: 1240,
+    caption: "Experience the profound teachings and transcendental bliss! 🙏✨ #krishna #spirituality"
   },
   {
     id: "reel-2",
     videoUrl: "/donation-video.mp4",
     likes: 856,
+    caption: "Your contribution makes a difference. Join our Gau Seva and Annadana initiatives today. 🐄❤️"
   },
   {
     id: "reel-3",
     videoUrl: "/jk.mp4",
     likes: 2104,
+    caption: "Beautiful Darshan and ecstatic kirtan! Radhe Radhe! 🌸🕉️ #vrindavan #darshan"
   }
 ];
 

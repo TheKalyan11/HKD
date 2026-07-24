@@ -7,6 +7,7 @@ export type Reel = {
   id: string;
   videoUrl: string;
   likes: number;
+  caption?: string;
 };
 
 interface ReelPlayerProps {
@@ -164,14 +165,17 @@ export default function ReelPlayer({ reel, isActive, onNext, onPrev, hasNext, ha
       {/* Bottom Information Overlay */}
       <div className="absolute bottom-0 left-0 w-full p-4 pb-20 sm:pb-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex justify-between items-end">
         
-        {/* Left Side: Title */}
-        <div className="text-white max-w-[75%]">
-          <h2 className="text-lg font-bold mb-2 flex items-center gap-2 drop-shadow-md">
+        {/* Left Side: Title & Caption */}
+        <div className="text-white max-w-[80%] pb-1 sm:pb-0">
+          <h2 className="text-[17px] font-bold mb-1 flex items-center gap-1.5 drop-shadow-md">
             Hare Krishna Dehradun
             <svg className="w-4 h-4 text-blue-500 fill-current drop-shadow-md" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
           </h2>
+          <p className="text-[14px] text-white/95 font-medium drop-shadow-md leading-snug line-clamp-2">
+            {reel.caption || "Ecstatic Kirtan and transcendental bliss at Hare Krishna Dehradun 🙏✨ #harekrishna #kirtan"}
+          </p>
         </div>
 
         {/* Right Side: Action Buttons */}
