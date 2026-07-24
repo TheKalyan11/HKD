@@ -55,11 +55,11 @@ export function middleware(request: NextRequest) {
 
   // Optional: Clean up old entries occasionally to prevent memory leaks in the Map
   if (Math.random() < 0.01) {
-    for (const [key, value] of rateLimitMap.entries()) {
+    rateLimitMap.forEach((value, key) => {
       if (now > value.resetTime) {
         rateLimitMap.delete(key);
       }
-    }
+    });
   }
 
   return NextResponse.next();
