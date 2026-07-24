@@ -24,7 +24,7 @@ export default function ExploreTemple() {
           {/* Gau Shala */}
           <div className="relative rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-[6px] border-white group col-span-1 lg:col-span-1 lg:row-span-2 row-span-1 bg-white">
             <img 
-              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRYFQk_5ty4jvIe8PulzNu69qjJoVzgNPsLv27KlT4QOEKHFNxe" 
+              src="https://pbs.twimg.com/media/FYuBDEzVUAAvfRf.jpg" 
               alt="Gau Shala" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
