@@ -1,8 +1,12 @@
 "use client";
 import React, { useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function SocialFloatWidget() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const pathname = usePathname();
+
+  if (pathname === '/reels') return null;
 
   const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (audioRef.current) {

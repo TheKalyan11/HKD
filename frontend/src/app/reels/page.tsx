@@ -52,6 +52,31 @@ export default function ReelsPage() {
     return () => observer.disconnect();
   }, []);
 
+  // Hide Chatling Chatbot and floating widgets when on Reels page
+  useEffect(() => {
+    const hideChatbot = () => {
+      const chatlingElems = document.querySelectorAll(
+        '[id*="chtl"], iframe[src*="chatling"], div[class*="chtl"], #chatling-embed-container'
+      );
+      chatlingElems.forEach((el) => {
+        (el as HTMLElement).style.setProperty('display', 'none', 'important');
+      });
+    };
+
+    hideChatbot();
+    const interval = setInterval(hideChatbot, 300);
+
+    return () => {
+      clearInterval(interval);
+      const chatlingElems = document.querySelectorAll(
+        '[id*="chtl"], iframe[src*="chatling"], div[class*="chtl"], #chatling-embed-container'
+      );
+      chatlingElems.forEach((el) => {
+        (el as HTMLElement).style.display = '';
+      });
+    };
+  }, []);
+
   return (
     <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden">
       
@@ -65,7 +90,7 @@ export default function ReelsPage() {
 
       {/* Desktop External Header (Top Right of Screen) */}
       <div className="hidden sm:flex absolute top-10 right-8 md:right-12 xl:right-16 items-center z-30">
-        <a href="/" className="text-white font-bold text-lg tracking-wide hover:opacity-90 transition flex items-center gap-3 drop-shadow-md bg-white/10 px-6 py-3.5 rounded-full backdrop-blur-md border border-white/20 hover:bg-white/20 hover:scale-105 active:scale-95 shadow-xl">
+        <a href="/" className="text-white font-bold text-lg tracking-wide hover:opacity-90 transition flex items-center gap-3 drop-shadow-md bg-[#ffffff1a] px-6 py-3.5 rounded-full backdrop-blur-md border border-white/20 hover:bg-white/20 hover:scale-105 active:scale-95 shadow-xl">
           <span className="pb-0.5">Back to Website</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -91,6 +116,14 @@ export default function ReelsPage() {
             .no-scrollbar {
               -ms-overflow-style: none;  /* IE and Edge */
               scrollbar-width: none;  /* Firefox */
+            }
+
+            /* Hide chatbot and floating widgets on reels page */
+            #chtl-script, [id*="chtl"], iframe[src*="chatling"], div[class*="chtl"], #chatling-embed-container {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
             }
           `
         }} />
