@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Phone, ChevronDown, ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import ReelsButton from './ReelsButton';
@@ -99,15 +100,21 @@ export const Navbar: React.FC = () => {
             
             <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
               <Link href="/" className="flex-shrink-0 flex items-center gap-2 sm:gap-3.5">
-                <img 
+                <Image 
                   src="/logo-dehradun.webp" 
                   alt="Hare Krishna Dehradun Movement Logo" 
+                  width={200}
+                  height={64}
+                  priority
                   className="h-12 sm:h-16 w-auto object-contain transition-transform hover:scale-105 drop-shadow-sm"
                 />
                 <div className={`h-8 sm:h-11 w-[1.5px] rounded-full ${isHome && !scrolled ? 'bg-white/50' : 'bg-gray-300/70'}`} />
-                <img 
+                <Image 
                   src="/sp%20logo.webp" 
-                  alt="Srila Prabhupada Portrait" 
+                  alt="Srila Prabhupada Portrait"
+                  width={200}
+                  height={64}
+                  priority 
                   className="h-12 sm:h-16 w-auto object-contain transition-transform hover:scale-105 drop-shadow-sm"
                 />
               </Link>

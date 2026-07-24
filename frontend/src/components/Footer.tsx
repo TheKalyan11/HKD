@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 /* ─────────────────────────────────────────────
@@ -83,10 +84,11 @@ export function Footer() {
       {/* ── Background Temple ── */}
       <div className="absolute z-10 pointer-events-none select-none hidden xl:block transition-all duration-500" style={{ width: '480px', right: '0%', bottom: '105px' }}>
         <div className="relative w-full h-full">
-          <img
+          <Image
             src="/bottom_corner_side-removebg-preview.png"
             alt="Temple"
-            loading="lazy"
+            width={480}
+            height={480}
             className="w-full h-auto object-contain block opacity-100 transform origin-bottom hover:scale-[1.02] transition-transform duration-700"
           />
         </div>
@@ -111,9 +113,11 @@ export function Footer() {
           <div className="w-full lg:w-auto lg:max-w-[280px]">
             <div className="mb-4">
               {/* Clean, border-less original logo-dehradun.jpg as shown in mockup */}
-              <img 
+              <Image 
                 src="/fh.webp" 
                 alt="Srila Prabhupada's Hare Krishna Movement Dehradun Logo" 
+                width={300}
+                height={96}
                 className="h-24 w-auto object-contain block"
               />
             </div>
