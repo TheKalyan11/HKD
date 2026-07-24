@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Script from "next/script";
 import axios from "axios";
+import RespectedContributors from "@/components/RespectedContributors";
 
 export default function GauSevaPage() {
   const [amount, setAmount] = useState<number>(500);
@@ -14,37 +15,35 @@ export default function GauSevaPage() {
     phone: "",
     pan: "",
   });
-  const [isMonthly, setIsMonthly] = useState(false);
-  const [donationPeriod, setDonationPeriod] = useState("12 Months");
   const [claim80G, setClaim80G] = useState(false);
   const [receivePrasadam, setReceivePrasadam] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  /* ── Interactive Background Grid ────────────────────────── */
-  const mouseX = useMotionValue(-1000);
-  const mouseY = useMotionValue(-1000);
-
-  const springConfig = { damping: 50, stiffness: 400, mass: 1 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const maskImage = useMotionTemplate`radial-gradient(circle 350px at ${smoothX}px ${smoothY}px, black 0%, transparent 100%)`;
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveImage(null);
+      }
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+    if (activeImage) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeImage]);
 
   const predefinedAmounts = [
-    { label: "Feed 4 Cows", value: 500 },
+    { label: "Feed 1 Cow", value: 500 },
     { label: "Medicines", value: 1000 },
-    { label: "Feed 2 Cows", value: 1500 },
-    { label: "Feed 3 Cows", value: 2000 },
-    { label: "Feed a Cow", value: 2500 },
+    { label: "Feed 3 Cows", value: 1500 },
+    { label: "Feed 4 Cows", value: 2000 },
+    { label: "Feed 5 Cows", value: 2500 },
   ];
 
   const getSelectedSevaLabel = () => {
@@ -116,285 +115,231 @@ export default function GauSevaPage() {
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative z-0">
       
-      {/* ── INTERACTIVE GRID BACKGROUND ────────────────────── */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]">
-        {/* Base faint grid */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #0A0A0A 1px, transparent 1px),
-              linear-gradient(to bottom, #0A0A0A 1px, transparent 1px)
-            `,
-            backgroundSize: '4rem 4rem'
-          }}
-        />
-        {/* Hover revealing grid */}
-        <motion.div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #0A0A0A 1px, transparent 1px),
-              linear-gradient(to bottom, #0A0A0A 1px, transparent 1px)
-            `,
-            backgroundSize: '4rem 4rem',
-            maskImage,
-            WebkitMaskImage: maskImage
-          }}
-        />
-      </div>
 
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
       {/* ── HERO BANNER ─────────────────────────────────────── */}
-      <section className="relative w-full pt-0 px-6 sm:px-10 max-w-[1440px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="w-full overflow-hidden rounded-b-2xl md:rounded-2xl"
-        >
-          <img 
-            src="https://hkmdehradun.org/live-site/assets/12/gau-home.png" 
-            alt="Gau Seva Banner" 
-            className="w-full h-auto max-h-[40vh] object-cover"
-          />
-        </motion.div>
+      <section className="relative pt-12 sm:pt-16 pb-2 overflow-hidden z-10">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+
+          {/* Page Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-3">
+            Contribute To <span className="text-[#d4af37]">Gau-Seva</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-gray-600 max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-8">
+            Nurture, protect, and serve the sacred cows. Your contribution helps provide nutritious food, medical care, and a safe shelter.
+          </p>
+
+          {/* Hero Banner Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]"
+          >
+            <img 
+              src="https://hkmdehradun.org/live-site/assets/12/gau-home.png" 
+              alt="Gau Seva Banner" 
+              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
+            />
+          </motion.div>
+        </div>
       </section>
 
       {/* ── QUOTE SECTION ───────────────────────────────────── */}
-      <section className="py-12 lg:py-20 px-6 sm:px-10 max-w-[1440px] mx-auto border-b border-gray-200">
-        <div className="max-w-4xl">
-          <p className="text-2xl lg:text-4xl font-light leading-snug mb-8">
+      <section className="py-6 lg:py-8 px-6 sm:px-10 max-w-[1200px] mx-auto border-b border-gray-100">
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+          <svg className="w-8 h-8 text-[#d4af37] mb-3 opacity-60" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8.6c.8-2 2.7-3.4 4.9-3.9V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-5.4c.8-2 2.7-3.4 4.9-3.9V8z"/>
+          </svg>
+          <p className="text-lg sm:text-xl lg:text-2xl font-serif italic text-gray-800 leading-relaxed mb-4">
             "Whoever feeds the cow with grass and water every day derives the benefit equivalent to performing Ashwamedha Yajna. There is no doubt about this."
           </p>
-          <p className="text-sm uppercase tracking-widest font-semibold text-gray-400">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-[#d4af37]">
             — Brhat Parasara Smriti 5.26–27
           </p>
         </div>
       </section>
 
-      {/* ── MAIN CONTENT & DONATION ──────────────────────────── */}
-      <section className="py-12 lg:py-20 px-6 sm:px-10 max-w-[1440px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-          
-          {/* Left Column: Information */}
-          <div className="lg:w-1/2 space-y-12">
-            
-            {/* Facilities */}
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-medium tracking-tight mb-8">
-                <span className="relative inline-block pb-2">
-                  Gaushala Facilities
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[3px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h2>
-              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-12">
-                <div>
-                  <h3 className="text-lg font-medium mb-3">Care & Medical</h3>
-                  <p className="text-gray-500 font-light leading-relaxed">
-                    Daily cow care, medical care, once a month routine check-up, emergency care.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-3">Nutritious Food</h3>
-                  <p className="text-gray-500 font-light leading-relaxed">
-                    Green grass, dry grass, jaggery, grains, chana churi, mung daal churi, toor daal churi, urad daal churi, and more.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-3">Additional Nutrition</h3>
-                  <p className="text-gray-500 font-light leading-relaxed">
-                    Herbs such as satavari, amla, harde, giloy, ashwagandha, brahmi, and tulsi leaves.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-3">Equipment</h3>
-                  <p className="text-gray-500 font-light leading-relaxed">
-                    Grass shredding machines, clean hygienic sheds, 24 hours clean water, and large grazing fields.
-                  </p>
-                </div>
-              </div>
+      {/* ── GAUSHALA FACILITIES SECTION (FULL WIDTH - LARGE) ──────────────────── */}
+      <section className="py-8 lg:py-12 px-6 sm:px-12 max-w-[1440px] mx-auto border-b border-gray-100">
+        <div className="flex items-center justify-center gap-3.5 mb-4 text-center">
+          <span className="h-10 w-2 bg-[#c89b27] rounded-full"></span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#051937] tracking-tight">
+            Gaushala Facilities
+          </h2>
+        </div>
+        <p className="text-[#556377] text-base sm:text-lg mb-8 text-center max-w-3xl mx-auto font-normal leading-relaxed">
+          Our Gaushala provides round-the-clock care, pristine living conditions, organic nutritional diet, and complete medical attention to our sacred cows.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Facility 1 */}
+          <div className="bg-white rounded-[32px] overflow-hidden border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between">
+            <div className="h-56 sm:h-60 lg:h-64 overflow-hidden relative">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/gau-1.png" 
+                alt="Care & Medical" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span className="absolute bottom-4 left-4 bg-[#c89b27] text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+                Care & Medical
+              </span>
             </div>
-
-            {/* Cost Breakdown */}
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-medium tracking-tight mb-8">
-                <span className="relative inline-block pb-2">
-                  Sponsorship Details
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[3px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h2>
-              <div className="space-y-10">
-                <div>
-                  <h3 className="text-xl font-medium text-gray-400 mb-6">Food Items (per kg)</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Green fodder: ₹5", "Mung daal: ₹25", "Wheat: ₹20", "Barley: ₹23", 
-                      "Taramira: ₹50", "Groundnut cake: ₹60", "Jaggery: ₹40", 
-                      "Dry fodder: ₹10", "Toor daal: ₹25", "Rice: ₹20", 
-                      "Cottonseeds: ₹45", "Ajwain: ₹100", "Sesame cake: ₹40", 
-                      "Sprout chana: ₹100", "Chana churi: ₹25", "Urad daal: ₹25", 
-                      "Corn: ₹22", "Haldi: ₹125", "Coconut cake: ₹60", "Mustard cake: ₹30"
-                    ].map((item, idx) => (
-                      <span key={idx} className="px-4 py-2 bg-gray-50 rounded-md text-sm font-light">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-medium text-[#0A0A0A] mb-6">
-                    <span className="relative inline-block pb-1">
-                      Medical Care
-                      <motion.span
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                        className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0A0A0A] origin-left rounded-full"
-                      />
-                    </span>
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { title: "First Aid Kit", cost: "₹300 / cow" },
-                      { title: "OPD Kit", cost: "₹1,500 / cow" },
-                      { title: "Yearly Treatment", cost: "₹1,80,000" },
-                      { title: "Surgical Cost", cost: "₹3,000 / cow" },
-                      { title: "Routine Check-up", cost: "₹1,500 / visit" },
-                      { title: "Gynaecological Kit", cost: "₹2,000 / cow" },
-                      { title: "Monthly Treatment", cost: "₹15,000" },
-                    ].map((med, idx) => (
-                      <div key={idx} className="border-b border-gray-200 py-3 flex justify-between items-center">
-                        <span className="font-light text-gray-600">{med.title}</span>
-                        <span className="font-medium">{med.cost}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <div className="p-6 lg:p-7 flex-grow flex items-center">
+              <p className="text-[#4a5568] text-sm sm:text-base leading-relaxed font-medium">
+                Daily cow care, medical treatment, monthly routine health check-ups, and 24/7 emergency veterinary support.
+              </p>
             </div>
-
           </div>
 
-          {/* Right Column: Donation Form */}
-          <div className="lg:w-1/2 relative">
-            <div className="bg-[#E2F1F8] rounded-2xl p-6 sm:p-8 sticky top-32 shadow-sm border border-white/50">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#5A9CEC] text-center mb-6 drop-shadow-sm">
-                Contribute To Nurture Cows
-              </h2>
+          {/* Facility 2 */}
+          <div className="bg-white rounded-[32px] overflow-hidden border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between">
+            <div className="h-56 sm:h-60 lg:h-64 overflow-hidden relative">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/gau-2.png" 
+                alt="Nutritious Food" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span className="absolute bottom-4 left-4 bg-[#c89b27] text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+                Nutritious Food
+              </span>
+            </div>
+            <div className="p-6 lg:p-7 flex-grow flex items-center">
+              <p className="text-[#4a5568] text-sm sm:text-base leading-relaxed font-medium">
+                Fresh green grass, dry fodder, natural jaggery, grains, chana churi, mung daal, toor daal, and urad daal churi.
+              </p>
+            </div>
+          </div>
+
+          {/* Facility 3 */}
+          <div className="bg-white rounded-[32px] overflow-hidden border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between">
+            <div className="h-56 sm:h-60 lg:h-64 overflow-hidden relative">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/gau-3.png" 
+                alt="Herbs & Supplements" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span className="absolute bottom-4 left-4 bg-[#c89b27] text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+                Herbs & Nutrition
+              </span>
+            </div>
+            <div className="p-6 lg:p-7 flex-grow flex items-center">
+              <p className="text-[#4a5568] text-sm sm:text-base leading-relaxed font-medium">
+                Ayurvedic herbal supplements including satavari, amla, harde, giloy, ashwagandha, brahmi, and fresh tulsi leaves.
+              </p>
+            </div>
+          </div>
+
+          {/* Facility 4 */}
+          <div className="bg-white rounded-[32px] overflow-hidden border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between">
+            <div className="h-56 sm:h-60 lg:h-64 overflow-hidden relative">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/gau-home.png" 
+                alt="Modern Infrastructure" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span className="absolute bottom-4 left-4 bg-[#c89b27] text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+                Infrastructure & Sheds
+              </span>
+            </div>
+            <div className="p-6 lg:p-7 flex-grow flex items-center">
+              <p className="text-[#4a5568] text-sm sm:text-base leading-relaxed font-medium">
+                Grass shredding machinery, clean hygienic sheds, 24-hour clean drinking water, and spacious open grazing fields.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DONATION FORM SECTION (FULL WIDTH CENTERED) ──────────────── */}
+      <section className="py-8 lg:py-12 px-6 sm:px-12 max-w-[1440px] mx-auto border-b border-gray-100">
+        <div className="flex justify-center">
+          
+          <div className="w-full max-w-2xl relative">
+            <div className="bg-white rounded-[32px] p-6 sm:p-10 shadow-2xl border border-[#c89b27]/30">
+              
+              <div className="text-center mb-8">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#051937] tracking-tight">
+                  Contribute To <span className="text-[#c89b27]">Gau-Seva</span>
+                </h2>
+              </div>
               
               <form onSubmit={handlePayment} className="space-y-6">
-                
-                {/* One Time / Monthly Toggle */}
-                <div className="flex justify-center mb-6">
-                  <div className="bg-white rounded-full p-1 inline-flex shadow-sm">
-                    <button
-                      type="button"
-                      onClick={() => setIsMonthly(false)}
-                      className={`px-8 py-2 rounded-full font-bold text-sm transition-colors ${
-                        !isMonthly ? "bg-[#1A82D6] text-white" : "text-black bg-transparent hover:bg-gray-50"
-                      }`}
-                    >
-                      One Time
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setIsMonthly(true)}
-                      className={`px-8 py-2 rounded-full font-bold text-sm transition-colors ${
-                        isMonthly ? "bg-[#1A82D6] text-white" : "text-black bg-transparent hover:bg-gray-50"
-                      }`}
-                    >
-                      Monthly Donation
-                    </button>
-                  </div>
-                </div>
 
                 {/* PAN Banner */}
-                <div className="bg-[#1A82D6] text-white text-center py-3 px-4 rounded-md font-bold text-sm sm:text-base shadow-sm">
-                  Hare Krishna Mandir Dehradun Pan No: AAAAH0992Q
+                <div className="bg-[#051937] text-white text-center py-3.5 px-4 rounded-2xl font-bold text-xs sm:text-sm shadow-md tracking-wider">
+                  HARE KRISHNA MOVEMENT DEHRADUN • PAN NO: AAAAH0992Q
                 </div>
                 
-                {/* Amount Grid */}
-                <div className="grid grid-cols-2 gap-x-4 gap-y-3 px-2">
+                {/* Amount List */}
+                <div className="flex flex-col gap-y-3">
                   {predefinedAmounts.map((opt) => (
                     <button
                       key={opt.value}
                       type="button"
                       onClick={() => { setAmount(opt.value); setCustomAmount(""); }}
-                      className={`py-2 sm:py-2.5 px-2 rounded-[0.85rem] text-center transition-all border-2 ${
+                      className={`py-4 px-6 rounded-2xl flex items-center justify-between transition-all border-2 ${
                         amount === opt.value && !customAmount
-                          ? "border-black bg-[#EAF4FB] shadow-md"
-                          : "border-transparent bg-white shadow-sm hover:border-gray-200"
+                          ? "border-[#c89b27] bg-[#fffcf5] shadow-md transform scale-[1.01]"
+                          : "border-[#eee8d7] bg-[#fbf9f4] hover:border-[#c89b27]/50 hover:bg-[#fffcf5]"
                       }`}
                     >
-                      <div className="text-[#1A82D6] font-bold text-[13px] sm:text-sm leading-tight mb-0.5">{opt.label}</div>
-                      <div className="text-[#1A82D6] font-black text-base">₹ {opt.value}</div>
+                      <span className={`font-semibold text-base transition-colors ${amount === opt.value && !customAmount ? "text-[#051937]" : "text-gray-600"}`}>{opt.label}</span>
+                      <span className={`font-extrabold text-xl transition-colors ${amount === opt.value && !customAmount ? "text-[#c89b27]" : "text-[#051937]"}`}>₹ {opt.value.toLocaleString('en-IN')}</span>
                     </button>
                   ))}
                   <button
                     type="button"
                     onClick={() => { setAmount(0); setCustomAmount(""); }}
-                    className={`py-2 sm:py-2.5 px-2 rounded-[0.85rem] text-center transition-all border-2 flex items-center justify-center ${
+                    className={`py-4 px-6 rounded-2xl flex items-center justify-center transition-all border-2 ${
                       customAmount || amount === 0
-                        ? "border-black bg-[#EAF4FB] shadow-md"
-                        : "border-transparent bg-white shadow-sm hover:border-gray-200"
+                        ? "border-[#c89b27] bg-[#fffcf5] shadow-md transform scale-[1.01]"
+                        : "border-[#eee8d7] bg-[#fbf9f4] hover:border-[#c89b27]/50 hover:bg-[#fffcf5]"
                     }`}
                   >
-                    <div className="text-[#1A82D6] font-bold text-base">Other</div>
+                    <span className={`font-bold text-base transition-colors ${customAmount || amount === 0 ? "text-[#c89b27]" : "text-[#051937]"}`}>Other Amount</span>
                   </button>
                 </div>
 
-                {/* Seva Dynamic Text */}
-                <div className="text-gray-700 text-sm">
-                  Seva: {getSelectedSevaLabel()}
-                </div>
-                
-                {isMonthly && (
-                  <div className="space-y-1">
-                    <label className="text-gray-700 text-sm">Donation Period</label>
-                    <select 
-                      value={donationPeriod}
-                      onChange={(e) => setDonationPeriod(e.target.value)}
-                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1A82D6]/20"
-                    >
-                      <option>12 Months</option>
-                      <option>24 Months</option>
-                      <option>36 Months</option>
-                    </select>
-                  </div>
-                )}
-
-                {customAmount !== "" || amount === 0 ? (
+                {/* Custom Amount Input */}
+                {(customAmount !== "" || amount === 0) && (
                   <input
                     type="number"
                     placeholder="Enter Custom Amount"
                     value={customAmount}
                     onChange={(e) => setCustomAmount(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1A82D6]/20"
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
                   />
-                ) : null}
+                )}
+
+                {/* Seva Dynamic Indicator */}
+                <div className="text-gray-600 text-sm font-medium px-1">
+                  Selected Seva: <span className="font-bold text-[#c89b27]">{getSelectedSevaLabel()}</span>
+                </div>
 
                 {/* User Details */}
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <input
                     type="text"
                     required
                     placeholder="Full Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1A82D6]/20"
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
                   />
                   <input
                     type="tel"
@@ -402,7 +347,7 @@ export default function GauSevaPage() {
                     placeholder="+91 Phone Number"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1A82D6]/20"
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
                   />
                   <input
                     type="email"
@@ -410,7 +355,7 @@ export default function GauSevaPage() {
                     placeholder="Email Address"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1A82D6]/20"
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
                   />
                   {claim80G && (
                     <input
@@ -419,30 +364,30 @@ export default function GauSevaPage() {
                       placeholder="PAN Card Number"
                       value={formData.pan}
                       onChange={(e) => setFormData({ ...formData, pan: e.target.value })}
-                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1A82D6]/20 uppercase"
+                      className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27] uppercase"
                     />
                   )}
                 </div>
 
                 {/* Checkboxes */}
-                <div className="space-y-2 mt-2">
+                <div className="space-y-2.5 pt-2">
                   <label className="flex items-center space-x-3 cursor-pointer group">
                     <input 
                       type="checkbox" 
                       checked={claim80G}
                       onChange={(e) => setClaim80G(e.target.checked)}
-                      className="w-5 h-5 rounded border-gray-300 text-[#1A82D6] focus:ring-[#1A82D6]"
+                      className="w-5 h-5 rounded border-gray-300 text-[#c89b27] focus:ring-[#c89b27]"
                     />
-                    <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors">Claim 80G Certificate</span>
+                    <span className="text-gray-700 text-sm font-medium group-hover:text-gray-900 transition-colors">Claim 80G Certificate</span>
                   </label>
                   <label className="flex items-center space-x-3 cursor-pointer group">
                     <input 
                       type="checkbox" 
                       checked={receivePrasadam}
                       onChange={(e) => setReceivePrasadam(e.target.checked)}
-                      className="w-5 h-5 rounded border-gray-300 text-[#1A82D6] focus:ring-[#1A82D6]"
+                      className="w-5 h-5 rounded border-gray-300 text-[#c89b27] focus:ring-[#c89b27]"
                     />
-                    <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors">Receive Prasadam (only in India)</span>
+                    <span className="text-gray-700 text-sm font-medium group-hover:text-gray-900 transition-colors">Receive Prasadam (only in India)</span>
                   </label>
                 </div>
 
@@ -450,12 +395,12 @@ export default function GauSevaPage() {
                 <button
                   type="submit"
                   disabled={loading || (!amount && !customAmount)}
-                  className="w-full py-4 mt-4 rounded-full border-[3px] border-[#1A82D6] bg-[#F5F5F5] text-[#1A82D6] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center"
+                  className="w-full py-4 mt-4 rounded-full bg-[#c89b27] hover:bg-[#b0871e] text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 flex items-center justify-center"
                 >
                   {loading ? (
-                    <span className="w-6 h-6 border-2 border-[#1A82D6]/30 border-t-[#1A82D6] rounded-full animate-spin"></span>
+                    <span className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
                   ) : (
-                    `Donate ₹ ${(customAmount ? parseInt(customAmount) : amount).toLocaleString()}`
+                    `Donate ₹ ${(customAmount ? parseInt(customAmount) : amount).toLocaleString('en-IN')}`
                   )}
                 </button>
 
@@ -466,14 +411,107 @@ export default function GauSevaPage() {
         </div>
       </section>
 
+      {/* ── ONLINE DONATIONS & RECENT CONTRIBUTIONS ─────────── */}
+      <section className="py-6 border-b border-gray-100 bg-[#fbf9f4]">
+        <RespectedContributors />
+      </section>
+
+      {/* ── SPONSORSHIP & MEDICAL DETAILS IMAGES SECTION (SIDE-BY-SIDE) ──────────────── */}
+      <section className="py-8 lg:py-12 px-6 sm:px-12 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          
+          {/* Sponsorship Image Card */}
+          <div 
+            onClick={() => setActiveImage("/gav-deta.png")}
+            className="bg-white rounded-3xl p-4 sm:p-5 border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+          >
+            <div className="flex items-center justify-between mb-3.5 px-1">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c89b27]"></span>
+                <h3 className="text-lg font-bold text-[#051937]">
+                  Sponsorship Details
+                </h3>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#c89b27] bg-[#c89b27]/10 px-3 py-1 rounded-full group-hover:bg-[#c89b27] group-hover:text-white transition-colors">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+                <span>Expand</span>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border border-[#e8dfc8] bg-[#fbf9f4] flex-grow flex items-center justify-center">
+              <img 
+                src="/gav-deta.png" 
+                alt="Sponsorship Details" 
+                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="bg-[#051937]/80 text-white p-3 rounded-full shadow-lg">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Medical Details Image Card */}
+          <div 
+            onClick={() => setActiveImage("/gmed.png")}
+            className="bg-white rounded-3xl p-4 sm:p-5 border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+          >
+            <div className="flex items-center justify-between mb-3.5 px-1">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c89b27]"></span>
+                <h3 className="text-lg font-bold text-[#051937]">
+                  Medical & Clinical Care
+                </h3>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#c89b27] bg-[#c89b27]/10 px-3 py-1 rounded-full group-hover:bg-[#c89b27] group-hover:text-white transition-colors">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+                <span>Expand</span>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border border-[#e8dfc8] bg-[#fbf9f4] flex-grow flex items-center justify-center">
+              <img 
+                src="/gmed.png" 
+                alt="Medical Care Details" 
+                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="bg-[#051937]/80 text-white p-3 rounded-full shadow-lg">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* ── IMAGE GALLERY ───────────────────────────────────── */}
-      <section className="py-10 pb-32 px-6 sm:px-10 max-w-[1440px] mx-auto">
+      <section className="py-12 pb-32 px-6 sm:px-10 max-w-[1440px] mx-auto">
+        <div className="flex items-center justify-center gap-3.5 mb-3 text-center">
+          <span className="h-8 w-1.5 bg-[#c89b27] rounded-full"></span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#051937] tracking-tight">
+            Gallery of <span className="text-[#c89b27]">Gau-Seva</span>
+          </h2>
+        </div>
+        <p className="text-[#556377] text-sm sm:text-base mb-10 text-center max-w-2xl mx-auto font-normal leading-relaxed">
+          Glimpses of daily cow protection, joyful feeding, and peaceful moments at our Gaushala.
+        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="overflow-hidden rounded-2xl aspect-[4/3]"
+            onClick={() => setActiveImage("https://hkmdehradun.org/live-site/assets/12/gau-1.png")}
+            className="overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
           >
             <img src="https://hkmdehradun.org/live-site/assets/12/gau-1.png" alt="Gau Seva" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
@@ -482,7 +520,8 @@ export default function GauSevaPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="overflow-hidden rounded-2xl aspect-[4/3]"
+            onClick={() => setActiveImage("https://hkmdehradun.org/live-site/assets/12/gau-2.png")}
+            className="overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
           >
             <img src="https://hkmdehradun.org/live-site/assets/12/gau-2.png" alt="Gau Seva" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
@@ -491,12 +530,54 @@ export default function GauSevaPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="overflow-hidden rounded-2xl aspect-[4/3]"
+            onClick={() => setActiveImage("https://hkmdehradun.org/live-site/assets/12/gau-3.png")}
+            className="overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
           >
             <img src="https://hkmdehradun.org/live-site/assets/12/gau-3.png" alt="Gau Seva" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
         </div>
       </section>
+
+      {/* ── FULL SCREEN IMAGE LIGHTBOX MODAL ────────────────── */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveImage(null)}
+            className="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 cursor-zoom-out select-none"
+          >
+            {/* Top Right Floating Close Button */}
+            <button
+              onClick={() => setActiveImage(null)}
+              className="fixed top-5 right-5 sm:top-8 sm:right-8 text-white bg-black/60 hover:bg-black/90 border border-white/20 rounded-full p-3.5 transition-all z-[100000] shadow-2xl hover:scale-110 active:scale-95 flex items-center gap-2 cursor-pointer"
+              aria-label="Close full screen image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span className="hidden sm:inline text-xs font-bold uppercase tracking-wider pr-1">Close</span>
+            </button>
+
+            {/* Image Wrapper */}
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-6xl max-h-[92vh] overflow-hidden rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] bg-white p-2.5 sm:p-3 border border-white/20 cursor-default flex items-center justify-center"
+            >
+              <img 
+                src={activeImage} 
+                alt="Full View" 
+                className="w-full h-auto max-h-[85vh] object-contain rounded-2xl" 
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

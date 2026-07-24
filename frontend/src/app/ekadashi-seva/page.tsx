@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Script from "next/script";
 import axios from "axios";
+import RespectedContributors from "@/components/RespectedContributors";
 
 export default function EkadashiSevaPage() {
   const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -17,33 +18,33 @@ export default function EkadashiSevaPage() {
   const [claim80G, setClaim80G] = useState(false);
   const [receivePrasadam, setReceivePrasadam] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  /* ── Interactive Background Grid ────────────────────────── */
-  const mouseX = useMotionValue(-1000);
-  const mouseY = useMotionValue(-1000);
-
-  const springConfig = { damping: 50, stiffness: 400, mass: 1 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const maskImage = useMotionTemplate`radial-gradient(circle 350px at ${smoothX}px ${smoothY}px, black 0%, transparent 100%)`;
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveImage(null);
+      }
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+    if (activeImage) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeImage]);
 
   const predefinedAmounts = [
     { id: "gauPoshana", label: "Gau Poshana Seva", value: 501, img: "https://hkmdehradun.org/live-site/assets/12/gau-home.png" },
     { id: "cowMedicines", label: "Cow Medicines", value: 2501, img: "https://hkmdehradun.org/live-site/assets/12/gau-3.png" },
     { id: "annadaan", label: "Annadaan Seva", value: 551, img: "https://hkmdehradun.org/live-site/assets/12/annadanam.jpeg" },
     { id: "brahmanBhojan", label: "Brahman Bhojan", value: 1001, img: "https://hkmdehradun.org/live-site/assets/12/annadaan-1.png" },
-    { id: "havan", label: "Nitya Narasimha Havan Seva", value: 1501, img: "https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png" },
-    { id: "aradhana", label: "Nitya Sri Vigraha Aradhana Seva", value: 2101, img: "https://hkmdehradun.org/live-site/assets/12/annadaan-2.png" },
+    { id: "havan", label: "Nitya Narasimha Havan", value: 1501, img: "https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png" },
+    { id: "aradhana", label: "Sri Vigraha Aradhana", value: 2101, img: "https://hkmdehradun.org/live-site/assets/12/annadaan-2.png" },
   ];
 
   const updateQuantity = (id: string, delta: number) => {
@@ -63,7 +64,7 @@ export default function EkadashiSevaPage() {
       .filter(item => (quantities[item.id] || 0) > 0)
       .map(item => `${item.label} x${quantities[item.id]}`);
     if (customAmount) sevas.push(`Custom (₹${customAmount})`);
-    return sevas.length > 0 ? sevas.join(", ") : "None";
+    return sevas.length > 0 ? sevas.join(", ") : "Select a Seva";
   };
 
   const handlePayment = async (e: React.FormEvent) => {
@@ -101,6 +102,7 @@ export default function EkadashiSevaPage() {
             alert("Payment Successful! Thank you for your Ekadashi Seva.");
             setFormData({ name: "", email: "", phone: "", pan: "" });
             setCustomAmount("");
+            setQuantities({});
           } catch (err) {
             console.error(err);
             alert("Payment verification failed.");
@@ -129,205 +131,203 @@ export default function EkadashiSevaPage() {
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative z-0">
       
-      {/* ── INTERACTIVE GRID BACKGROUND ────────────────────── */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]">
-        {/* Base faint grid */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #0A0A0A 1px, transparent 1px),
-              linear-gradient(to bottom, #0A0A0A 1px, transparent 1px)
-            `,
-            backgroundSize: '4rem 4rem'
-          }}
-        />
-        {/* Hover revealing grid */}
-        <motion.div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #0A0A0A 1px, transparent 1px),
-              linear-gradient(to bottom, #0A0A0A 1px, transparent 1px)
-            `,
-            backgroundSize: '4rem 4rem',
-            maskImage,
-            WebkitMaskImage: maskImage
-          }}
-        />
-      </div>
-
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
       {/* ── HERO BANNER ─────────────────────────────────────── */}
-      <section className="relative w-full pt-0 px-6 sm:px-10 max-w-[1440px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="w-full overflow-hidden rounded-b-2xl md:rounded-2xl"
-        >
-          <img 
-            src="https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png" 
-            alt="Ekadashi Seva Banner" 
-            className="w-full h-auto max-h-[40vh] object-cover"
-          />
-        </motion.div>
+      <section className="relative pt-12 sm:pt-16 pb-2 overflow-hidden z-10">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+          
+          {/* Decorative Tag */}
+          <div className="flex items-center gap-3 text-[#d4af37] mb-2">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">HARE KRISHNA MOVEMENT DEHRADUN</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+
+          {/* Page Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#072149] tracking-tight mb-3">
+            Contribute To <span className="text-[#d4af37]">Ekadashi-Seva</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-gray-600 max-w-2xl text-[16px] sm:text-[18px] leading-relaxed font-medium mb-8">
+            Ekadashi is the day of immense spiritual merit. Perform sacred sevas to earn eternal blessings of Lord Krishna.
+          </p>
+
+          {/* Hero Banner Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#eae4d5]"
+          >
+            <img 
+              src="https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png" 
+              alt="Ekadashi Seva Banner" 
+              className="w-full h-auto object-cover max-h-[350px] sm:max-h-[440px] md:max-h-[500px]"
+            />
+          </motion.div>
+        </div>
       </section>
 
       {/* ── QUOTE SECTION ───────────────────────────────────── */}
-      <section className="py-12 lg:py-20 px-6 sm:px-10 max-w-[1440px] mx-auto border-b border-gray-200">
-        <div className="max-w-4xl">
-          <p className="text-xl lg:text-3xl font-light leading-snug mb-8">
-            "दातव्यमिति यद्दानं दीयतेऽनुपकारिणे। देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम्॥"<br/><br/>
-            "कर्तव्यबुद्धि, प्रतिफल की आशा के बिना दिया गया दान सात्त्विक माना जाता है।"
+      <section className="py-6 lg:py-8 px-6 sm:px-10 max-w-[1200px] mx-auto border-b border-gray-100">
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+          <svg className="w-8 h-8 text-[#d4af37] mb-3 opacity-60" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8.6c.8-2 2.7-3.4 4.9-3.9V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-5.4c.8-2 2.7-3.4 4.9-3.9V8z"/>
+          </svg>
+          <p className="text-base sm:text-lg font-serif italic text-gray-800 leading-relaxed mb-2">
+            "दातव्यमिति यद्दानं दीयतेऽनुपकारिणे। देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम्॥"
           </p>
-          <p className="text-sm uppercase tracking-widest font-semibold text-gray-400">
+          <p className="text-sm sm:text-base font-serif text-gray-600 mb-4">
+            "Charity given out of duty, without expectation of return, at the proper time and place, is considered pure (Sattvic)."
+          </p>
+          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-[#d4af37]">
             — Bhagavad Gita 17.20
           </p>
         </div>
       </section>
 
-      {/* ── MAIN CONTENT & DONATION ──────────────────────────── */}
-      <section className="py-12 lg:py-20 px-6 sm:px-10 max-w-[1440px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+      {/* ── SIGNIFICANCE & SEVAS SECTION ──────────────────── */}
+      <section className="py-8 lg:py-12 px-6 sm:px-12 max-w-[1440px] mx-auto border-b border-gray-100">
+        <div className="flex items-center justify-center gap-3.5 mb-4 text-center">
+          <span className="h-10 w-2 bg-[#c89b27] rounded-full"></span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#051937] tracking-tight">
+            Blessings Multiply on <span className="text-[#c89b27]">Ekadashi</span>
+          </h2>
+        </div>
+        <p className="text-[#556377] text-base sm:text-lg mb-12 text-center max-w-3xl mx-auto font-normal leading-relaxed">
+          Ekadashi is a holy day dedicated to fasting, prayers, and noble charity. At Hare Krishna Movement Dehradun, we perform special sevas to shower Lord Krishna's divine mercy upon donors.
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          {/* Left Column: Information */}
-          <div className="lg:w-1/2 space-y-12">
-            
-            {/* Title & Content */}
+          {/* Card 1: Gau Poshana */}
+          <div className="bg-white rounded-[32px] p-6 border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-medium tracking-tight mb-8">
-                <span className="relative inline-block pb-2">
-                  Blessings Multiply on Ekadashi
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[3px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h2>
-              
-              <p className="text-xl font-light mb-12 text-gray-600 leading-relaxed">
-                Ekadashi donation is considered highly auspicious, a day of immense spiritual significance dedicated to devotion, fasting, and seva. At Hare Krishna Mandir, Bhadraj – Hare Krishna Movement Dehradun, we observe each Ekadashi with heartfelt offerings, prayers, and sacred services.
-              </p>
-
-              <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
-                <span className="relative inline-block pb-1">
-                  1. Gau Poshana Seva – Care for the Cows
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h3>
-              <p className="text-gray-500 font-light leading-relaxed mb-10">
-                Cows, revered by Lord Krishna and honored as Gaumata, hold a special place in Vedic culture. Through your spiritual contributions, you can support the upcoming Gaushala project in Rishikesh, which aims to provide a safe, clean, and caring environment for indigenous cows. Your support will help in developing proper shelters, arranging nutritious fodder, and ensuring medical care for the cows.
-              </p>
-
-              <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
-                <span className="relative inline-block pb-1">
-                  2. Khichdi Prasadam Seva – Share Krishna’s Mercy
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h3>
-              <p className="text-gray-500 font-light leading-relaxed mb-10">
-                Support Khichdi Prasadam Seva at Hare Krishna Movement Dehradun by helping distribute sanctified vegetarian meals to devotees, visitors, and the underprivileged. Your contribution allows us to serve thousands with warm, nutritious prasadam on this sacred day.
-              </p>
-
-              <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
-                <span className="relative inline-block pb-1">
-                  3. Nitya Bhog Seva – Daily Offerings
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h3>
-              <p className="text-gray-500 font-light leading-relaxed mb-10">
-                By joining Nitya Bhog Seva, you help prepare and offer fresh bhoga daily to Sri Sri Nitai Gauranga. This seva brings divine blessings and ensures the continuity of daily worship.
-              </p>
-
-              <h3 className="text-xl font-medium text-[#0A0A0A] mb-4">
-                <span className="relative inline-block pb-1">
-                  Why Donate on Ekadashi?
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 5 }}
-                    className="absolute bottom-0 left-0 w-full h-[2px] bg-[#0A0A0A] origin-left rounded-full"
-                  />
-                </span>
-              </h3>
-              <div className="space-y-4 mb-10">
-                <blockquote className="border-l-4 border-[#1A82D6] pl-5 py-2 italic text-gray-600 font-light bg-gray-50 rounded-r-lg leading-relaxed">
-                  Scriptures declare that donations on Ekadashi bring eternal blessings and spiritual merit. By supporting Ekadashi Annadana Seva and contributing to Hare Krishna Movement Dehradun donations, you not only serve the deities but also uplift your soul through devotion and compassion.
-                </blockquote>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c89b27]"></span>
+                <h3 className="text-lg font-bold text-[#051937]">1. Gau Poshana Seva</h3>
               </div>
+              <p className="text-[#4a5568] text-sm leading-relaxed font-medium mb-4">
+                Cows are revered as Gaumata in Vedic tradition. Supporting Gau Seva on Ekadashi yields immense spiritual merit and divine protection.
+              </p>
             </div>
-
+            <div className="overflow-hidden rounded-2xl border border-[#e8dfc8] bg-[#fffcf5] flex items-center justify-center p-2">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/gau-home.png" 
+                alt="Gau Poshana" 
+                className="w-full h-auto object-cover max-h-[160px] rounded-xl"
+              />
+            </div>
           </div>
 
-          {/* Right Column: Donation Form */}
-          <div className="lg:w-1/2 relative">
-            <div className="bg-[#2A91D9] rounded-2xl p-4 sm:p-6 sticky top-32 shadow-md border border-white/20">
+          {/* Card 2: Khichdi Prasadam */}
+          <div className="bg-white rounded-[32px] p-6 border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c89b27]"></span>
+                <h3 className="text-lg font-bold text-[#051937]">2. Khichdi Prasadam Seva</h3>
+              </div>
+              <p className="text-[#4a5568] text-sm leading-relaxed font-medium mb-4">
+                Distributing hot, sanctified meals to thousands of visiting pilgrims and underprivileged souls on the holy occasion of Ekadashi.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-[#e8dfc8] bg-[#fffcf5] flex items-center justify-center p-2">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/annadanam.jpeg" 
+                alt="Khichdi Prasadam" 
+                className="w-full h-auto object-cover max-h-[160px] rounded-xl"
+              />
+            </div>
+          </div>
+
+          {/* Card 3: Nitya Bhog & Aradhana */}
+          <div className="bg-white rounded-[32px] p-6 border border-[#eee8d7] shadow-[0_6px_30px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c89b27]"></span>
+                <h3 className="text-lg font-bold text-[#051937]">3. Sri Vigraha Aradhana</h3>
+              </div>
+              <p className="text-[#4a5568] text-sm leading-relaxed font-medium mb-4">
+                Offering fresh bhoga, flowers, and elaborate aradhana to Sri Sri Nitai Gauranga for the spiritual well-being of your entire family.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-[#e8dfc8] bg-[#fffcf5] flex items-center justify-center p-2">
+              <img 
+                src="https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png" 
+                alt="Sri Vigraha Aradhana" 
+                className="w-full h-auto object-cover max-h-[160px] rounded-xl"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── DONATION FORM SECTION (FULL WIDTH CENTERED) ──────────────── */}
+      <section className="py-8 lg:py-12 px-6 sm:px-12 max-w-[1440px] mx-auto border-b border-gray-100">
+        <div className="flex justify-center">
+          
+          <div className="w-full max-w-2xl relative">
+            <div className="bg-white rounded-[32px] p-6 sm:p-10 shadow-2xl border border-[#c89b27]/30">
               
-              <div className="bg-[#1A77BB] rounded-xl py-3 px-4 mb-4 text-center shadow-inner">
-                <h2 className="text-white font-bold sm:text-lg tracking-wide drop-shadow-sm">
-                  Blessings Multiply on Ekadashi – Contribute to Sacred Sevas
+              <div className="text-center mb-8">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#051937] tracking-tight">
+                  Contribute To <span className="text-[#c89b27]">Ekadashi-Seva</span>
                 </h2>
               </div>
               
-              <div className="text-center mb-6">
-                <p className="text-white font-black text-xl sm:text-2xl drop-shadow-sm">
-                  Total Donation Amount: ₹ {totalAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                </p>
-              </div>
-              
-              <form onSubmit={handlePayment} className="space-y-4">
+              <form onSubmit={handlePayment} className="space-y-6">
+
+                {/* PAN Banner */}
+                <div className="bg-[#051937] text-white text-center py-3.5 px-4 rounded-2xl font-bold text-xs sm:text-sm shadow-md tracking-wider">
+                  HARE KRISHNA MOVEMENT DEHRADUN • PAN NO: AAAAH0992Q
+                </div>
                 
-                {/* Seva Cards */}
-                <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                {/* Total Amount Indicator */}
+                <div className="bg-[#fffcf5] border-2 border-[#c89b27] rounded-2xl p-4 text-center">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#4a5568]">Total Donation Amount:</span>
+                  <div className="text-3xl font-extrabold text-[#c89b27] mt-0.5">
+                    ₹ {totalAmount.toLocaleString('en-IN')}
+                  </div>
+                </div>
+
+                {/* Seva Selection List with Clean Counters */}
+                <div className="space-y-3">
                   {predefinedAmounts.map((opt) => (
-                    <div key={opt.id} className="bg-white rounded-xl p-3 flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-4 flex-1">
-                        <div className="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border border-gray-100">
-                          <img src={opt.img} alt={opt.label} className="w-full h-full object-cover" />
-                          <div className="absolute bottom-0 w-full bg-black/40 backdrop-blur-sm pt-4 pb-1 px-1 text-center">
-                            <span className="text-[9px] text-white font-medium leading-none block line-clamp-2">{opt.label}</span>
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="text-[#0A0A0A] font-bold text-sm sm:text-base leading-tight mb-1">{opt.label}</h3>
-                          <p className="text-gray-500 font-medium text-sm">₹ {opt.value}</p>
-                        </div>
+                    <div 
+                      key={opt.id}
+                      className={`p-4 rounded-2xl flex items-center justify-between border-2 transition-all ${
+                        (quantities[opt.id] || 0) > 0 
+                          ? "border-[#c89b27] bg-[#fffcf5] shadow-md transform scale-[1.01]"
+                          : "border-[#eee8d7] bg-[#fbf9f4] hover:border-[#c89b27]/50 hover:bg-[#fffcf5]"
+                      }`}
+                    >
+                      <div>
+                        <h4 className={`font-semibold text-base transition-colors ${(quantities[opt.id] || 0) > 0 ? "text-[#051937]" : "text-gray-700"}`}>
+                          {opt.label}
+                        </h4>
+                        <span className={`font-extrabold text-lg transition-colors ${(quantities[opt.id] || 0) > 0 ? "text-[#c89b27]" : "text-[#051937]"}`}>
+                          ₹ {opt.value.toLocaleString('en-IN')}
+                        </span>
                       </div>
-                      
-                      <div className="flex items-center gap-3 shrink-0 ml-2">
+
+                      <div className="flex items-center gap-3">
                         <button
                           type="button"
                           onClick={() => updateQuantity(opt.id, -1)}
-                          className="w-8 h-8 rounded-md bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 font-bold transition-colors"
+                          className="w-9 h-9 rounded-full bg-white border-2 border-[#e8dfc8] hover:bg-[#c89b27] hover:border-[#c89b27] hover:text-white text-[#051937] font-bold text-base transition-colors flex items-center justify-center shadow-sm"
                         >
                           -
                         </button>
-                        <div className="w-8 text-center font-bold border border-gray-300 rounded-md py-1">
+                        <span className="w-6 text-center font-extrabold text-lg text-[#051937]">
                           {quantities[opt.id] || 0}
-                        </div>
+                        </span>
                         <button
                           type="button"
                           onClick={() => updateQuantity(opt.id, 1)}
-                          className="w-8 h-8 rounded-md bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 font-bold transition-colors"
+                          className="w-9 h-9 rounded-full bg-white border-2 border-[#e8dfc8] hover:bg-[#c89b27] hover:border-[#c89b27] hover:text-white text-[#051937] font-bold text-base transition-colors flex items-center justify-center shadow-sm"
                         >
                           +
                         </button>
@@ -337,111 +337,89 @@ export default function EkadashiSevaPage() {
                 </div>
 
                 {/* Custom Amount Input */}
-                <div className="bg-white rounded-xl p-3 shadow-sm mt-4">
-                  <input
-                    type="number"
-                    placeholder="Enter Choice Amount"
-                    value={customAmount}
-                    onChange={(e) => setCustomAmount(e.target.value)}
-                    className="w-full bg-transparent border border-gray-300 rounded-lg px-4 py-2.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2A91D9]"
-                  />
+                <input
+                  type="number"
+                  placeholder="Enter Custom / Additional Amount"
+                  value={customAmount}
+                  onChange={(e) => setCustomAmount(e.target.value)}
+                  className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
+                />
+
+                {/* Seva Dynamic Indicator */}
+                <div className="text-gray-600 text-xs sm:text-sm font-medium px-1">
+                  Selected Seva(s): <span className="font-bold text-[#c89b27]">{getSelectedSevaLabel()}</span>
                 </div>
 
-                {/* Donor Details */}
-                <div className="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                  <div>
-                    <label className="block text-sm font-bold text-[#0A0A0A] mb-1.5">Donor Name*</label>
+                {/* User Details */}
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    required
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 Phone Number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
+                  />
+                  <input
+                    type="email"
+                    required
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27]"
+                  />
+                  {claim80G && (
                     <input
                       type="text"
                       required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2A91D9]"
+                      placeholder="PAN Card Number"
+                      value={formData.pan}
+                      onChange={(e) => setFormData({ ...formData, pan: e.target.value })}
+                      className="w-full bg-[#fbf9f4] border border-[#e8dfc8] rounded-2xl px-5 py-3.5 text-[#051937] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c89b27] uppercase"
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-[#0A0A0A] mb-1.5">Mobile*</label>
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2A91D9]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-[#0A0A0A] mb-1.5">Email*</label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2A91D9]"
-                    />
-                  </div>
+                  )}
+                </div>
 
-                  <div className="pt-2">
-                    <label className="flex items-center space-x-3 cursor-pointer group">
-                      <input 
-                        type="checkbox" 
-                        checked={claim80G}
-                        onChange={(e) => setClaim80G(e.target.checked)}
-                        className="w-5 h-5 rounded border-gray-300 text-[#2A91D9] focus:ring-[#2A91D9]"
-                      />
-                      <span className="text-[#0A0A0A] text-sm group-hover:text-black transition-colors font-medium">I wish to receive 80G certificate</span>
-                    </label>
-                    
-                    {claim80G && (
-                      <div className="mt-3">
-                        <label className="block text-sm font-bold text-[#0A0A0A] mb-1.5">PAN Card Number*</label>
-                        <input
-                          type="text"
-                          required
-                          value={formData.pan}
-                          onChange={(e) => setFormData({ ...formData, pan: e.target.value })}
-                          className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2A91D9] uppercase"
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="pt-2 border-t border-gray-100">
-                    <p className="font-bold text-[#0A0A0A] text-sm mb-2">Receive Prasadam?</p>
-                    <div className="flex items-center space-x-6">
-                      <label className="flex items-center space-x-2 cursor-pointer">
-                        <input 
-                          type="radio" 
-                          name="prasadam"
-                          checked={receivePrasadam}
-                          onChange={() => setReceivePrasadam(true)}
-                          className="w-4 h-4 text-[#2A91D9] focus:ring-[#2A91D9]"
-                        />
-                        <span className="text-sm font-medium">Yes</span>
-                      </label>
-                      <label className="flex items-center space-x-2 cursor-pointer">
-                        <input 
-                          type="radio" 
-                          name="prasadam"
-                          checked={!receivePrasadam}
-                          onChange={() => setReceivePrasadam(false)}
-                          className="w-4 h-4 text-[#2A91D9] focus:ring-[#2A91D9]"
-                        />
-                        <span className="text-sm font-medium">No</span>
-                      </label>
-                    </div>
-                  </div>
+                {/* Checkboxes */}
+                <div className="space-y-2.5 pt-2">
+                  <label className="flex items-center space-x-3 cursor-pointer group">
+                    <input 
+                      type="checkbox" 
+                      checked={claim80G}
+                      onChange={(e) => setClaim80G(e.target.checked)}
+                      className="w-5 h-5 rounded border-gray-300 text-[#c89b27] focus:ring-[#c89b27]"
+                    />
+                    <span className="text-gray-700 text-sm font-medium group-hover:text-gray-900 transition-colors">Claim 80G Certificate</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer group">
+                    <input 
+                      type="checkbox" 
+                      checked={receivePrasadam}
+                      onChange={(e) => setReceivePrasadam(e.target.checked)}
+                      className="w-5 h-5 rounded border-gray-300 text-[#c89b27] focus:ring-[#c89b27]"
+                    />
+                    <span className="text-gray-700 text-sm font-medium group-hover:text-gray-900 transition-colors">Receive Prasadam (only in India)</span>
+                  </label>
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={loading || totalAmount === 0}
-                  className="w-full py-4 mt-4 rounded-full bg-[#EAEAEA] text-[#2A91D9] font-bold text-lg hover:bg-white hover:shadow-md transition-all disabled:opacity-50 flex items-center justify-center"
+                  className="w-full py-4 mt-4 rounded-full bg-[#c89b27] hover:bg-[#b0871e] text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 flex items-center justify-center"
                 >
                   {loading ? (
-                    <span className="w-6 h-6 border-2 border-[#2A91D9]/30 border-t-[#2A91D9] rounded-full animate-spin"></span>
+                    <span className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
                   ) : (
-                    `Donate ₹ ${totalAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                    `Donate ₹ ${totalAmount.toLocaleString('en-IN')}`
                   )}
                 </button>
 
@@ -452,6 +430,98 @@ export default function EkadashiSevaPage() {
         </div>
       </section>
 
+      {/* ── ONLINE DONATIONS & RECENT CONTRIBUTIONS ─────────── */}
+      <section className="py-6 border-b border-gray-100 bg-[#fbf9f4]">
+        <RespectedContributors />
+      </section>
+
+      {/* ── IMAGE GALLERY ───────────────────────────────────── */}
+      <section className="py-12 pb-32 px-6 sm:px-10 max-w-[1440px] mx-auto">
+        <div className="flex items-center justify-center gap-3.5 mb-3 text-center">
+          <span className="h-8 w-1.5 bg-[#c89b27] rounded-full"></span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#051937] tracking-tight">
+            Gallery of <span className="text-[#c89b27]">Ekadashi-Seva</span>
+          </h2>
+        </div>
+        <p className="text-[#556377] text-sm sm:text-base mb-10 text-center max-w-2xl mx-auto font-normal leading-relaxed">
+          Spiritual highlights, deity worship, and Gau Seva on Ekadashi.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {[
+            "https://hkmdehradun.org/live-site/assets/12/ekadashi-home.png",
+            "https://hkmdehradun.org/live-site/assets/12/gau-home.png",
+            "https://hkmdehradun.org/live-site/assets/12/annadanam.jpeg",
+            "https://hkmdehradun.org/live-site/assets/12/annadaan-1.png",
+            "https://hkmdehradun.org/live-site/assets/12/annadaan-2.png",
+            "https://hkmdehradun.org/live-site/assets/12/gau-3.png"
+          ].map((src, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.08 }}
+              onClick={() => setActiveImage(src)}
+              className="relative overflow-hidden rounded-2xl aspect-[16/9] shadow-sm cursor-pointer group border border-[#e8dfc8] bg-[#fffcf5] p-2 flex items-center justify-center"
+            >
+              <img 
+                src={src} 
+                alt={`Ekadashi Seva ${idx + 1}`} 
+                className="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
+                <div className="bg-[#051937]/80 text-white p-3 rounded-full shadow-lg">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  </svg>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FULL SCREEN IMAGE LIGHTBOX MODAL ────────────────── */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveImage(null)}
+            className="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 cursor-zoom-out select-none"
+          >
+            {/* Top Right Floating Close Button */}
+            <button
+              onClick={() => setActiveImage(null)}
+              className="fixed top-5 right-5 sm:top-8 sm:right-8 text-white bg-black/60 hover:bg-black/90 border border-white/20 rounded-full p-3.5 transition-all z-[100000] shadow-2xl hover:scale-110 active:scale-95 flex items-center gap-2 cursor-pointer"
+              aria-label="Close full screen image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span className="hidden sm:inline text-xs font-bold uppercase tracking-wider pr-1">Close</span>
+            </button>
+
+            {/* Image Wrapper */}
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-6xl max-h-[92vh] overflow-hidden rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] bg-white p-2.5 sm:p-3 border border-white/20 cursor-default flex items-center justify-center"
+            >
+              <img 
+                src={activeImage} 
+                alt="Full View" 
+                className="w-full h-auto max-h-[85vh] object-contain rounded-2xl" 
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
