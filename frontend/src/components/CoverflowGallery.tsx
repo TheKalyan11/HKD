@@ -45,10 +45,14 @@ export default function CoverflowGallery() {
         onTouchEnd={() => setIsPaused(false)}
       >
         {/* ── Header ─────────────────────────────── */}
-        <div className="flex items-center gap-3 pt-10 pb-6 px-6 md:px-14 lg:px-20">
-          <span className="text-black font-bold text-xl leading-none">—</span>
-          <h2 className="text-base md:text-lg font-bold tracking-[0.18em] uppercase text-black">
-            GALLERY
+        <div className="flex flex-col items-center pt-12 pb-10 px-6">
+          <div className="flex items-center gap-3 text-[#d4af37] mb-3">
+            <div className="h-px w-10 bg-current"></div>
+            <span className="uppercase tracking-[0.2em] font-bold text-xs sm:text-sm">Glimpses</span>
+            <div className="h-px w-10 bg-current"></div>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#3b2b2f] tracking-tight text-center">
+            Temple <span className="text-[#d4af37]">Gallery</span>
           </h2>
         </div>
 
