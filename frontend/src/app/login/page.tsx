@@ -23,14 +23,14 @@ export default function LoginPage() {
     setErrorMsg('');
     setIsLoading(true);
 
-    const success = await login(email, password);
+    const result = await login(email, password);
     setIsLoading(false);
 
-    if (success) {
+    if (result.success) {
       // Redirect back home with administration session initialized
       router.push('/');
     } else {
-      setErrorMsg('Invalid administrative email address or password.');
+      setErrorMsg(result.error || 'Invalid administrative email address or password.');
     }
   };
 

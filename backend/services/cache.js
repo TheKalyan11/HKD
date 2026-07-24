@@ -7,7 +7,13 @@ async function initRedis() {
   const redisUrl = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
 
   try {
-    client = createClient({ url: redisUrl });
+    client = createClient({ 
+      url: redisUrl,
+      socket: {
+        connectTimeout: 2000,
+        reconnectStrategy: false
+      }
+    });
     client.on('error', (err) => {
       if (isConnected) {
         console.warn('[Redis] Connection lost:', err.message);

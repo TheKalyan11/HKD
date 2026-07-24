@@ -9,7 +9,7 @@ interface CmsContextType {
   role: 'admin' | 'staff' | null;
   setRole: (role: 'admin' | 'staff' | null) => void;
   token: string | null;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<{success: boolean; error?: string}>;
   logout: () => void;
   pageContent: Record<string, any>;
   fetchPageContent: (pageId: string) => Promise<void>;
@@ -43,7 +43,7 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, password: string): Promise<{success: boolean; error?: string}> => {
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000'}/api/cms/auth/login`, {
         email,
@@ -55,10 +55,13 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setRole(user.role);
       localStorage.setItem('hkd_admin_token', jwtToken);
       localStorage.setItem('hkd_admin_role', user.role);
-      return true;
-    } catch (error) {
+      return { success: true };
+    } catch (error: any) {
       console.error("Sign-in failed:", error);
-      return false;
+      if (error.response?.data?.error) {
+        return { success: false, error: error.response.data.error };
+      }
+      return { success: false, error: "Network error: Unable to connect to backend server." };
     }
   };
 
