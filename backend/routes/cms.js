@@ -300,4 +300,41 @@ router.get('/blogs', async (req, res) => {
   }
 });
 
+/**
+ * GET /api/cms/leads
+ */
+router.get('/leads', authenticateCms(['admin', 'staff']), async (req, res) => {
+  try {
+    const snapshot = await db.collection('leads').orderBy('createdAt', 'desc').limit(100).get();
+    if (snapshot.empty) {
+      return res.json([]);
+    }
+    const leads = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    res.json(leads);
+  } catch (error) {
+    console.error('Error fetching leads:', error);
+    res.status(500).json({ error: 'Failed to retrieve leads.' });
+  }
+});
+
+/**
+ * GET /api/cms/dashboard-stats
+ */
+router.get('/dashboard-stats', authenticateCms(['admin', 'staff']), async (req, res) => {
+  try {
+    const leadsSnapshot = await db.collection('leads').count().get();
+    const blogsSnapshot = await db.collection('blogs').count().get();
+    const paymentsSnapshot = await db.collection('payments').where('status', '==', 'captured').count().get();
+    
+    res.json({
+      totalLeads: leadsSnapshot.data().count,
+      totalBlogs: blogsSnapshot.data().count,
+      totalDonations: paymentsSnapshot.data().count,
+    });
+  } catch (error) {
+    console.error('Error fetching dashboard stats:', error);
+    res.status(500).json({ error: 'Failed to retrieve stats.' });
+  }
+});
+
 module.exports = router;
