@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 
 import { CmsProvider } from "@/components/CmsContext";
+import NextTopLoader from 'nextjs-toploader';
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -37,6 +38,17 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="bg-cream-50 antialiased overflow-x-clip max-w-[100vw] w-full">
+        <NextTopLoader
+          color="#d4af37"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #d4af37,0 0 5px #d4af37"
+        />
         <CmsProvider>
           {/* Header Navigation */}
           <Navbar />

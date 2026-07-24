@@ -38,7 +38,7 @@ export default function FolkNavbar() {
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           
           {/* Logo */}
-          <Link href="/youth" className="flex items-center gap-2">
+          <Link href="/youth" prefetch={true} className="flex items-center gap-2">
             <img
               src="/channels4_profile-removebg-preview.png"
               alt="FOLK Logo"
@@ -96,6 +96,7 @@ export default function FolkNavbar() {
                 <div key={item.label} className="relative py-2 group flex items-center">
                   <Link
                     href={item.href}
+                    prefetch={true}
                     className="glass-nav-link transition-colors duration-200"
                   >
                     <span>{item.label}</span>

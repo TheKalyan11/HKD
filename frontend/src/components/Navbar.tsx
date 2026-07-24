@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center justify-between gap-8 w-full">
             
             <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
-              <Link href="/" className="flex-shrink-0 flex items-center gap-2 sm:gap-3.5">
+              <Link href="/" prefetch={true} className="flex-shrink-0 flex items-center gap-2 sm:gap-3.5">
                 <Image 
                   src="/logo-dehradun.webp" 
                   alt="Hare Krishna Dehradun Movement Logo" 
@@ -132,6 +132,7 @@ export const Navbar: React.FC = () => {
                     <div key={link.name} className="relative py-2 group flex items-center">
                       <Link
                         href={link.href}
+                        prefetch={true}
                         onClick={() => setIsOpen(false)}
                         className="btn-custom-donate"
                       >
@@ -147,12 +148,13 @@ export const Navbar: React.FC = () => {
                     className="relative py-2 group flex items-center"
                   >
                     {link.name === 'Reels' ? (
-                      <Link href={link.href} onClick={() => setIsOpen(false)} className="flex items-center">
+                      <Link href={link.href} prefetch={true} onClick={() => setIsOpen(false)} className="flex items-center">
                         <ReelsButton isDarkText={!isHome || scrolled} />
                       </Link>
                     ) : (
                       <Link
                         href={link.href}
+                        prefetch={true}
                         onClick={() => setIsOpen(false)}
                         className={`glass-nav-link ${isActive ? 'glass-nav-link-active' : ''} ${
                           isHome && !scrolled ? '!text-white !font-black tracking-wider hover:!text-[#FF9933] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]' : ''
@@ -178,6 +180,7 @@ export const Navbar: React.FC = () => {
                               <Link
                                 key={item.name}
                                 href={item.href}
+                                prefetch={true}
                                 onClick={() => {
                                   setIsOpen(false);
                                 }}
@@ -204,6 +207,7 @@ export const Navbar: React.FC = () => {
             <div className="xl:hidden flex items-center gap-3">
               <Link 
                 href="/donate" 
+                prefetch={true}
                 className="btn-custom-donate !h-8 !min-w-[76px] !text-[12.5px] !px-3 !m-0"
               >
                 Donate
@@ -268,7 +272,7 @@ export const Navbar: React.FC = () => {
             if (link.name === 'Reels') {
               return (
                 <div key={link.name} className="px-2 mt-4 mb-2 flex items-center">
-                  <Link href={link.href} onClick={() => setIsOpen(false)}>
+                  <Link href={link.href} prefetch={true} onClick={() => setIsOpen(false)}>
                     <ReelsButton isDarkText={true} />
                   </Link>
                 </div>
