@@ -63,7 +63,7 @@ export default function DonationVideoSection() {
           <div className="relative bg-black rounded-[28px] sm:rounded-[36px] overflow-hidden border-[6px] sm:border-[8px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
             <video
               ref={videoRef}
-              src="/donation%20video%20.mp4"
+              src="/22.mp4"
               autoPlay
               muted
               loop
